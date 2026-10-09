@@ -3,126 +3,193 @@ export const navigationData = {
     {
       id: "ai",
       title: "AI & Innovation",
+      href: "/services/ai-automation",
       leadIcon: "i-ai",
       type: "dropdown",
       items: [
-        { label: "AI Lab", href: "#ai" },
-        { label: "Generative AI", href: "#ai" },
-        { label: "AI Consulting", href: "#ai" },
-        { label: "AI Case Studies", href: "#work" }
-      ]
+        { label: "AI & Automation", href: "/services/ai-automation" },
+        { label: "Custom AI Agents", href: "/services/ai-automation" },
+        { label: "Enterprise RAG Systems", href: "/services/ai-automation" },
+        { label: "Case Studies", href: "/#work" }
+      ],
+      bottomAction: {
+        label: "Explore AI Solutions",
+        href: "/services/ai-automation"
+      }
     },
     {
       id: "services",
       title: "Services",
+      href: "/services",
       type: "mega",
       columns: [
         {
-          title: "Development",
+          title: "Engineering",
           links: [
-            { label: "Website Development", href: "#services" },
-            { label: "Mobile App Development", href: "#services" },
-            { label: "Custom Software Development", href: "#services" },
-            { label: "API Development", href: "#services" }
+            { label: "Website Development", href: "/services/website-development" },
+            { label: "Mobile App Development", href: "/services/mobile-app-development" },
+            { label: "Custom Software & CRM", href: "/services/custom-software-crm" },
+            { label: "All Engineering Services", href: "/services" }
           ]
         },
         {
           title: "AI & Automation",
           links: [
-            { label: "AI Agent Development", href: "#ai" },
-            { label: "Generative AI Solutions", href: "#ai" },
-            { label: "Workflow Automation", href: "#ai" },
-            { label: "AI Chatbots", href: "#ai" }
+            { label: "AI & Autonomous Agents", href: "/services/ai-automation" },
+            { label: "Multi-Agent Systems", href: "/services/ai-automation" },
+            { label: "RAG Knowledge Bases", href: "/services/ai-automation" },
+            { label: "Workflow Automation", href: "/services/ai-automation" }
           ]
         },
         {
-          title: "Ecommerce & Marketing",
+          title: "Commerce & Growth",
           links: [
-            { label: "Ecommerce Solutions", href: "#services" },
-            { label: "Meta Ads", href: "#services" },
-            { label: "Google Ads", href: "#services" },
-            { label: "SEO & Content Marketing", href: "#services" }
+            { label: "Ecommerce Solutions", href: "/services/ecommerce-solutions" },
+            { label: "Shopify Development", href: "/services/ecommerce-solutions" },
+            { label: "Meta & Google Ads", href: "/services/meta-google-ads" },
+            { label: "Conversion Rate CRO", href: "/services/meta-google-ads" }
           ]
         },
         {
-          title: "Get Started",
+          title: "Ways to Engage",
           links: [
-            { label: "Hire Developers", href: "#contact" },
-            { label: "Dedicated Team", href: "#contact" },
-            { label: "Fixed-Price Project", href: "#contact" }
+            { label: "Dedicated Agile Team", href: "/#contact" },
+            { label: "Fixed-Scope Delivery", href: "/#contact" },
+            { label: "Staff Augmentation", href: "/#contact" },
+            { label: "Rapid 5-Day POC", href: "/#contact" }
           ]
         }
       ],
-      megaStrip: {
-        text: "Not sure what you need? Talk to a solution architect.",
-        actionText: "Book a free call →",
-        href: "#contact"
+      bottomAction: {
+        label: "Explore All Services",
+        href: "/services"
       }
     },
     {
       id: "industries",
       title: "Industries",
+      href: "/industries",
       type: "dropdown",
       items: [
-        { label: "Healthcare", href: "#industries" },
-        { label: "Real Estate", href: "#industries" },
-        { label: "Fintech", href: "#industries" },
-        { label: "Ecommerce", href: "#industries" },
-        { label: "Manufacturing", href: "#industries" },
-        { label: "Retail", href: "#industries" },
-        { label: "Travel", href: "#industries" },
-        { label: "SaaS", href: "#industries" }
-      ]
+        { label: "Fintech & Banking", href: "/industries/fintech-banking" },
+        { label: "Healthcare & MedTech", href: "/industries/healthcare-medtech" },
+        { label: "Ecommerce & Retail", href: "/industries/ecommerce-retail" },
+        { label: "Real Estate & PropTech", href: "/industries/real-estate-proptech" },
+        { label: "Logistics & Supply Chain", href: "/industries/logistics-supply-chain" },
+        { label: "Manufacturing & Industrial IoT", href: "/industries/manufacturing-iot" },
+        { label: "SaaS & Cloud Platforms", href: "/industries/saas-cloud-platforms" },
+        { label: "Travel & Hospitality", href: "/industries/travel-hospitality" },
+        { label: "EdTech & E-Learning", href: "/industries/edtech-elearning" }
+      ],
+      bottomAction: {
+        label: "Explore All Industries",
+        href: "/industries"
+      }
     },
     {
       id: "products",
       title: "Products",
-      type: "link",
-      href: "#"
+      href: "/products",
+      type: "mega",
+      columns: [
+        {
+          title: "AI & SaaS Platforms",
+          links: [
+            { label: "Lumez AI — Visual & Copy", href: "/products/lumez-ai" },
+            { label: "Reach O — Autonomous Outreach", href: "/products/reach-o" },
+            { label: "Generative Commerce AI", href: "/products/lumez-ai" },
+            { label: "All AI Platforms", href: "/products" }
+          ]
+        },
+        {
+          title: "Shopify & Commerce",
+          links: [
+            { label: "Store Locator Pro (Shopify)", href: "/products/mspl-store-locator" },
+            { label: "Cookie Shield (GDPR / CCPA)", href: "/products/cookie-shield" },
+            { label: "MMY Parts Finder (Auto)", href: "/products/make-model-year-search" },
+            { label: "All Commerce Apps", href: "/products" }
+          ]
+        },
+        {
+          title: "Turnkey Solutions",
+          links: [
+            { label: "LodgeFlow — Hotel & Resort PMS", href: "/products/hotel-management-system" },
+            { label: "HelioTrack — Solar EPC Platform", href: "/products/solar-epc-platform" },
+            { label: "FleetRide — Taxi & Dispatch Suite", href: "/products/on-demand-taxi-suite" },
+            { label: "CarePulse — Telehealth & Clinic", href: "/products/telemedicine-suite" }
+          ]
+        },
+        {
+          title: "Ways to Deploy",
+          links: [
+            { label: "Managed Cloud SaaS (AWS/GCP)", href: "/products#deployment-models" },
+            { label: "White-Label Reseller Model", href: "/products#deployment-models" },
+            { label: "100% Source Code Buyout", href: "/products#deployment-models" },
+            { label: "Rapid 2–5 Day Sandbox Demo", href: "/#contact" }
+          ]
+        }
+      ],
+      bottomAction: {
+        label: "Explore All Products",
+        href: "/products"
+      }
     },
     {
       id: "work",
       title: "Work",
+      href: "/work",
       type: "dropdown",
       items: [
-        { label: "Case Studies", href: "#work" },
-        { label: "Portfolio", href: "#work" },
-        { label: "Video Reviews", href: "#videos" },
-        { label: "Testimonials", href: "#testimonials" }
-      ]
+        { label: "All Case Studies & Portfolio", href: "/work" },
+        { label: "FinEdge — Digital Lending Platform", href: "/work/finedge-lending" },
+        { label: "NovaPay — Merchant Portal & Analytics", href: "/work/novapay-b2b-portal" },
+        { label: "Aura Botanicals — Shopify Plus Store", href: "/work/luxe-d2c-storefront" },
+        { label: "CareSync — Telehealth Mobile App", href: "/work/caresync-telehealth" },
+        { label: "Nexus — Autonomous AI Support", href: "/work/nexus-ai-support-agents" },
+        { label: "ShipFast — Logistics CRM & Fleet Hub", href: "/work/shipfast-logistics" }
+      ],
+      bottomAction: {
+        label: "Explore All Case Studies",
+        href: "/work"
+      }
     },
     {
       id: "blogs",
       title: "Blogs",
       type: "link",
-      href: "#blog"
+      href: "/blog"
     },
     {
-      id: "company",
-      title: "Company",
-      type: "dropdown",
-      items: [
-        { label: "About Us", href: "#about" },
-        { label: "Our Guarantees", href: "#guarantees" },
-        { label: "Careers", href: "#" },
-        { label: "Contact", href: "#contact" }
-      ]
+      id: "contact",
+      title: "Contact",
+      type: "link",
+      href: "/contact"
     }
   ],
   footerLinks: {
     services: [
-      { label: "Website Development", href: "#services" },
-      { label: "Ecommerce Solutions", href: "#services" },
-      { label: "Mobile Apps", href: "#services" },
-      { label: "AI & Automation", href: "#ai" },
-      { label: "Meta & Google Ads", href: "#services" }
+      { label: "Website Development", href: "/services/website-development" },
+      { label: "Ecommerce Solutions", href: "/services/ecommerce-solutions" },
+      { label: "Mobile App Development", href: "/services/mobile-app-development" },
+      { label: "AI & Automation", href: "/services/ai-automation" },
+      { label: "Custom Software & CRM", href: "/services/custom-software-crm" },
+      { label: "Meta & Google Ads", href: "/services/meta-google-ads" }
     ],
     company: [
-      { label: "About Us", href: "#about" },
-      { label: "Our Work", href: "#work" },
-      { label: "Video Reviews", href: "#videos" },
-      { label: "Blogs", href: "#blog" },
-      { label: "Contact", href: "#contact" }
+      { label: "About Us", href: "/#services" },
+      { label: "All Services", href: "/services" },
+      { label: "All Industries", href: "/industries" },
+      { label: "Products", href: "/products" },
+      { label: "Case Studies", href: "/work" },
+      { label: "Engineering Blog", href: "/blog" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "Testimonials", href: "/#testimonials" },
+      { label: "Delivery Guarantees", href: "/#guarantees" }
+    ],
+    legal: [
+      { label: "Privacy Policy", href: "#privacy" },
+      { label: "Terms of Service", href: "#terms" },
+      { label: "Security & Compliance", href: "#security" }
     ]
   }
 };
