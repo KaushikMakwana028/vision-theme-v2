@@ -137,21 +137,8 @@ export const navigationData = {
     {
       id: "work",
       title: "Work",
-      href: "/work",
-      type: "dropdown",
-      items: [
-        { label: "All Case Studies & Portfolio", href: "/work" },
-        { label: "FinEdge — Digital Lending Platform", href: "/work/finedge-lending" },
-        { label: "NovaPay — Merchant Portal & Analytics", href: "/work/novapay-b2b-portal" },
-        { label: "Aura Botanicals — Shopify Plus Store", href: "/work/luxe-d2c-storefront" },
-        { label: "CareSync — Telehealth Mobile App", href: "/work/caresync-telehealth" },
-        { label: "Nexus — Autonomous AI Support", href: "/work/nexus-ai-support-agents" },
-        { label: "ShipFast — Logistics CRM & Fleet Hub", href: "/work/shipfast-logistics" }
-      ],
-      bottomAction: {
-        label: "Explore All Case Studies",
-        href: "/work"
-      }
+      type: "link",
+      href: "/work"
     },
     {
       id: "blogs",

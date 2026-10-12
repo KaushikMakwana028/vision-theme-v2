@@ -28,7 +28,7 @@ const styles = `
 
 /* ---------- Redirection bar / Breadcrumbs ---------- */
 .breadcrumbs-bar {
-  display: flex; width: 100%; margin-bottom: 0.85rem;
+  display: flex; width: 100%; margin-bottom: 0.45rem;
 }
 .svp .breadcrumbs {
   display: inline-flex; align-items: center; flex-wrap: wrap; gap: .45rem;
@@ -37,7 +37,7 @@ const styles = `
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
   border: 1px solid rgba(15, 23, 42, .08);
   box-shadow: 0 1px 2px rgba(11, 16, 32, .03);
-  font-size: .81rem; line-height: 1.25; margin-bottom: .85rem;
+  font-size: .81rem; line-height: 1.25; margin-bottom: 0;
   width: fit-content;
 }
 .svp .breadcrumbs a {
@@ -249,11 +249,12 @@ const styles = `
 }
 .svp .card.flush { padding: 0; }
 
-/* ---------- Project cards (spotlight + animated border) ---------- */
+/* ---------- Project cards (uniform height, spotlight + animated border) ---------- */
 .svp-proj {
   position: relative; display: flex; flex-direction: column; overflow: hidden; height: 100%;
   animation: svp-in .65s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 80ms);
   transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
 }
 .svp-proj > * { position: relative; z-index: 1; }
 .svp-proj::before {
@@ -272,46 +273,72 @@ const styles = `
 .svp-proj:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
 .svp-proj:hover::before, .svp-proj:hover::after { opacity: 1; }
 
-.svp-thumb { position: relative; overflow: hidden; aspect-ratio: 800 / 520; background: var(--g, #1e1b4b); }
-.svp-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
+/* Image container - FULL image display, edge-to-edge 16:9, no crop */
+.svp-thumb {
+  position: relative; overflow: hidden; width: 100%; aspect-ratio: 1672 / 941;
+  background: #090d16; border-bottom: 1px solid rgba(255, 255, 255, .08);
+  display: flex; align-items: center; justify-content: center; padding: 0;
+}
+.svp-thumb img {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover !important; object-position: center;
+  transition: transform .5s var(--ease);
+}
 .svp-thumb::before {
   content: ""; position: absolute; top: 0; bottom: 0; left: -70%; width: 45%; z-index: 2; pointer-events: none;
   background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .35), transparent); transform: skewX(-20deg);
   transition: left .9s var(--ease);
 }
-.svp-thumb::after {
-  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .4s;
-  background: linear-gradient(180deg, transparent 45%, rgba(11, 16, 32, .55));
-}
-.svp-proj:hover .svp-thumb img { transform: scale(1.08); }
+.svp-proj:hover .svp-thumb img { transform: scale(1.025); }
 .svp-proj:hover .svp-thumb::before { left: 130%; }
-.svp-proj:hover .svp-thumb::after { opacity: 1; }
 
-.svp-wb { display: flex; flex-direction: column; flex: 1; padding: 1.6rem; }
-.svp-wb h3 { margin: .85rem 0 .5rem; color: var(--ink); font-size: 1.25rem; transition: color .3s; }
-.svp-proj:hover .svp-wb h3 { color: var(--primary); }
-.svp-wb p { margin: 0 0 1.25rem; color: var(--muted); line-height: 1.65; font-size: .95rem; }
+/* Card body - unified flex column */
+.svp-wb { display: flex; flex-direction: column; flex: 1 1 auto; padding: 1.5rem; }
 
-.svp .svp-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+/* Tags - fixed height container so titles align perfectly */
+.svp .svp-tags {
+  display: flex; flex-wrap: wrap; gap: .4rem;
+  min-height: 54px; align-content: flex-start; margin-bottom: .6rem;
+}
 .svp .svp-tags span {
   font-size: .74rem; font-weight: 600; padding: .25rem .65rem; border-radius: 999px;
-  background: var(--surface); color: var(--primary);
+  background: var(--surface); color: var(--primary); border: 1px solid var(--line);
+  line-height: 1.25;
 }
 
+/* Title - clamped to 2 lines with consistent min-height */
+.svp-wb h3 {
+  margin: 0 0 .55rem; color: var(--ink); font-size: 1.22rem; font-weight: 700; line-height: 1.35;
+  min-height: 3.3rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; transition: color .3s;
+}
+.svp-proj:hover .svp-wb h3 { color: var(--primary); }
+.svp-wb h3 a { color: inherit; text-decoration: none; }
+
+/* Description - clamped to 3 lines with consistent min-height */
+.svp-wb p {
+  margin: 0 0 1.25rem; color: var(--muted); line-height: 1.6; font-size: .92rem;
+  min-height: 4.45rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Metrics - pinned to bottom baseline */
 .svp .svp-met {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: auto;
-  padding-top: 1.1rem; border-top: 1px dashed var(--line);
+  padding-top: 1.15rem; border-top: 1px dashed var(--line); min-height: 64px;
 }
 .svp .svp-met > div { min-width: 0; }
 .svp .svp-met strong {
   display: block; font-size: 1.45rem; font-weight: 800; font-variant-numeric: tabular-nums;
   background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+  line-height: 1.2;
 }
-.svp .svp-met span { display: block; font-size: .78rem; color: var(--muted); }
+.svp .svp-met span { display: block; font-size: .78rem; color: var(--muted); line-height: 1.35; margin-top: .2rem; }
 
+/* Explore Link - pinned bottom */
 .svp-proj .more {
   margin-top: 1.15rem; display: inline-flex; align-items: center; gap: .45rem; font-weight: 700; color: var(--primary);
-  font-size: .92rem;
+  font-size: .92rem; text-decoration: none;
 }
 .svp-proj .more .i { width: 17px; height: 17px; transition: transform .35s var(--ease); }
 .svp-proj:hover .more .i { transform: translateX(6px); }
@@ -461,7 +488,12 @@ const styles = `
   .svp-poc-card { padding: 1.6rem 1.25rem; }
   .svp-marquee { padding: 1rem 0; }
   .svp-wb { padding: 1.25rem; }
-  .svp-thumb { aspect-ratio: 16 / 10; }
+  .svp-thumb { aspect-ratio: 1672 / 941; padding: 0; }
+  .svp .svp-tags { min-height: auto; }
+  .svp-wb h3 { min-height: auto; -webkit-line-clamp: 3; font-size: 1.15rem; }
+  .svp-wb p { min-height: auto; -webkit-line-clamp: 4; font-size: .9rem; }
+  .svp-hero h1 { font-size: clamp(1.55rem, 6.5vw, 2.2rem); line-height: 1.2; }
+  .svp-hero .lead { font-size: 0.95rem; line-height: 1.55; }
 }
 @media (hover: none) {
   .svp-proj:hover, .svp-step:hover, .t-card:hover { transform: none; }
@@ -731,18 +763,18 @@ export default function WorkPage() {
 
   const marqueeKeywords = useMemo(() => {
     return [
-      "Fintech Digital Lending",
-      "Next.js 15 & React 19",
-      "Headless Shopify Hydrogen",
-      "Multi-Market D2C Commerce",
-      "HIPAA-Ready Telehealth",
-      "Flutter Fitness Companions",
-      "LangGraph Autonomous Agents",
-      "Private Enterprise RAG",
-      "Real-Time Freight Telemetry",
-      "Multi-Site Construction ERP",
-      "Paid Search ROAS Engines",
-      "High-Converting CRO Systems"
+      "Car Rental ERP & Booking Engines",
+      "Addressable LED Neon E-Commerce",
+      "Hyperlocal On-Demand Marketplaces",
+      "Paying Guest & PG Hostel CRMs",
+      "B2B Enterprise Distribution Portals",
+      "Clinical Drug Interaction Checkers",
+      "Multi-Business Billing & Invoicing SaaS",
+      "Dompdf Vector Invoices & WhatsApp POS",
+      "CodeIgniter MVC Architecture",
+      "Real-Time Bed-Level Occupancy Sync",
+      "Sub-Second Geodesic Road Routing",
+      "Razorpay & Dynamic UPI Integrations"
     ];
   }, []);
 
@@ -790,7 +822,7 @@ export default function WorkPage() {
               </nav>
             </div>
 
-            <div style={{ marginBottom: "1rem" }}>
+            <div style={{ marginBottom: "0.5rem" }}>
               <span className="eyebrow-hero">
                 <strong>Vision</strong> Proven Engineering Outcomes
               </span>
@@ -923,12 +955,7 @@ export default function WorkPage() {
                 className="card flush svp-card svp-proj"
                 onMouseMove={onSpot}
               >
-                <div
-                  className="thumb svp-thumb"
-                  style={{
-                    "--g": proj.gradient || "linear-gradient(135deg,#4f46e5,#7c3aed)",
-                  }}
-                >
+                <div className="svp-thumb">
                   <img
                     src={proj.image}
                     alt={proj.title}
