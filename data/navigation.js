@@ -24,67 +24,43 @@ export const navigationData = {
       type: "mega",
       columns: [
         {
-          title: "Engineering",
+          title: "Web & Mobile Engineering",
           links: [
             { label: "Website Development", href: "/services/website-development" },
+            { label: "Full-Stack Web Apps & SaaS", href: "/services/custom-web-apps" },
             { label: "Mobile App Development", href: "/services/mobile-app-development" },
-            { label: "Custom Software & CRM", href: "/services/custom-software-crm" },
-            { label: "All Engineering Services", href: "/services" }
+            { label: "Flutter Cross-Platform Apps", href: "/services/flutter-app-development" }
           ]
         },
         {
-          title: "AI & Automation",
+          title: "AI, Cloud & Enterprise",
           links: [
             { label: "AI & Autonomous Agents", href: "/services/ai-automation" },
-            { label: "Multi-Agent Systems", href: "/services/ai-automation" },
-            { label: "RAG Knowledge Bases", href: "/services/ai-automation" },
-            { label: "Workflow Automation", href: "/services/ai-automation" }
+            { label: "Enterprise RAG & Search Engines", href: "/services/rag-knowledge-bases" },
+            { label: "Cloud & DevOps Engineering", href: "/services/cloud-devops-engineering" },
+            { label: "Custom Software & CRM", href: "/services/custom-software-crm" }
           ]
         },
         {
-          title: "Commerce & Growth",
+          title: "Ecommerce & Growth",
           links: [
             { label: "Ecommerce Solutions", href: "/services/ecommerce-solutions" },
-            { label: "Shopify Development", href: "/services/ecommerce-solutions" },
+            { label: "Shopify Plus & App Engineering", href: "/services/shopify-plus-development" },
             { label: "Meta & Google Ads", href: "/services/meta-google-ads" },
-            { label: "Conversion Rate CRO", href: "/services/meta-google-ads" }
-          ]
-        },
-        {
-          title: "Ways to Engage",
-          links: [
-            { label: "Dedicated Agile Team", href: "/#contact" },
-            { label: "Fixed-Scope Delivery", href: "/#contact" },
-            { label: "Staff Augmentation", href: "/#contact" },
-            { label: "Rapid 5-Day POC", href: "/#contact" }
+            { label: "Conversion Rate CRO", href: "/services/cro-conversion-optimization" }
           ]
         }
       ],
       bottomAction: {
-        label: "Explore All Services",
+        label: "Explore All 12 Services",
         href: "/services"
       }
     },
     {
       id: "industries",
       title: "Industries",
-      href: "/industries",
-      type: "dropdown",
-      items: [
-        { label: "Fintech & Banking", href: "/industries/fintech-banking" },
-        { label: "Healthcare & MedTech", href: "/industries/healthcare-medtech" },
-        { label: "Ecommerce & Retail", href: "/industries/ecommerce-retail" },
-        { label: "Real Estate & PropTech", href: "/industries/real-estate-proptech" },
-        { label: "Logistics & Supply Chain", href: "/industries/logistics-supply-chain" },
-        { label: "Manufacturing & Industrial IoT", href: "/industries/manufacturing-iot" },
-        { label: "SaaS & Cloud Platforms", href: "/industries/saas-cloud-platforms" },
-        { label: "Travel & Hospitality", href: "/industries/travel-hospitality" },
-        { label: "EdTech & E-Learning", href: "/industries/edtech-elearning" }
-      ],
-      bottomAction: {
-        label: "Explore All Industries",
-        href: "/industries"
-      }
+      type: "link",
+      href: "/industries"
     },
     {
       id: "products",
@@ -93,44 +69,35 @@ export const navigationData = {
       type: "mega",
       columns: [
         {
-          title: "AI & SaaS Platforms",
+          title: "Shopify Apps & Plugins",
+          links: [
+            { label: "Store Locator Pro (Shopify)", href: "/products/mspl-store-locator" },
+            { label: "Cookie Shield (GDPR & CCPA)", href: "/products/cookie-shield" },
+            { label: "MMY Parts Finder (Auto)", href: "/products/make-model-year-search" },
+            { label: "Explore Shopify Solutions →", href: "/products" }
+          ]
+        },
+        {
+          title: "AI & Autonomous SaaS",
           links: [
             { label: "Lumez AI — Visual & Copy", href: "/products/lumez-ai" },
             { label: "Reach O — Autonomous Outreach", href: "/products/reach-o" },
-            { label: "Generative Commerce AI", href: "/products/lumez-ai" },
-            { label: "All AI Platforms", href: "/products" }
+            { label: "Generative Commerce Studio", href: "/products/lumez-ai" },
+            { label: "Explore All AI Platforms →", href: "/products" }
           ]
         },
         {
-          title: "Shopify & Commerce",
-          links: [
-            { label: "Store Locator Pro (Shopify)", href: "/products/mspl-store-locator" },
-            { label: "Cookie Shield (GDPR / CCPA)", href: "/products/cookie-shield" },
-            { label: "MMY Parts Finder (Auto)", href: "/products/make-model-year-search" },
-            { label: "All Commerce Apps", href: "/products" }
-          ]
-        },
-        {
-          title: "Turnkey Solutions",
-          links: [
-            { label: "LodgeFlow — Hotel & Resort PMS", href: "/products/hotel-management-system" },
-            { label: "HelioTrack — Solar EPC Platform", href: "/products/solar-epc-platform" },
-            { label: "FleetRide — Taxi & Dispatch Suite", href: "/products/on-demand-taxi-suite" },
-            { label: "CarePulse — Telehealth & Clinic", href: "/products/telemedicine-suite" }
-          ]
-        },
-        {
-          title: "Ways to Deploy",
+          title: "Deployment & Licensing",
           links: [
             { label: "Managed Cloud SaaS (AWS/GCP)", href: "/products#deployment-models" },
-            { label: "White-Label Reseller Model", href: "/products#deployment-models" },
+            { label: "White-Label Reseller Licensing", href: "/products#deployment-models" },
             { label: "100% Source Code Buyout", href: "/products#deployment-models" },
-            { label: "Rapid 2–5 Day Sandbox Demo", href: "/#contact" }
+            { label: "Schedule Live Sandbox Demo →", href: "/#contact" }
           ]
         }
       ],
       bottomAction: {
-        label: "Explore All Products",
+        label: "Explore Complete Products & Apps Catalog",
         href: "/products"
       }
     },

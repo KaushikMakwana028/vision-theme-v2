@@ -168,14 +168,19 @@ export default function Header() {
                         ))}
                         {(item.bottomAction || item.megaStrip) && (
                           <div className="mega-bottom">
+                            <div className="mega-bottom-note">
+                              <span className="mega-pulse-dot" />
+                              <span>{item.id === "services" ? "Production-ready engineering & fixed sprints" : "Battle-tested Shopify apps & autonomous AI platforms"}</span>
+                            </div>
                             <Link
                               href={item.bottomAction?.href || item.megaStrip?.href || "/services"}
                               onClick={handleLinkClick}
                               className="mega-bottom-btn"
                             >
                               <span>{item.bottomAction?.label || "Explore All Services"}</span>
-                              <svg className="i arrow-ic" aria-hidden="true">
-                                <use href="#i-arrow" />
+                              <svg className="i arrow-ic" aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
                               </svg>
                             </Link>
                           </div>

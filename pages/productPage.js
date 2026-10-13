@@ -218,11 +218,11 @@ const styles = `
 .svp-marquee-group span:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
 
 /* ---------- Filter tabs ---------- */
-.svp .filter-wrap { position: relative; margin: 0 auto 2.25rem; }
+.svp .filter-wrap { position: relative; margin: 0 auto 2.25rem; width: 100%; }
 .svp .filter-tabs { display: flex; gap: .55rem; justify-content: center; flex-wrap: wrap; }
 .svp .filter-tab {
-  display: inline-flex; align-items: center; gap: .5rem; cursor: pointer;
-  padding: .6rem 1.1rem; border-radius: 999px; font: inherit; font-weight: 600; font-size: .92rem;
+  display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; flex-shrink: 0;
+  padding: .6rem 1.15rem; border-radius: 999px; font: inherit; font-weight: 600; font-size: .92rem;
   white-space: nowrap; color: var(--ink); background: var(--bg); border: 1px solid var(--line);
   transition: transform .3s var(--ease), background .3s, color .3s, border-color .3s, box-shadow .3s;
 }
@@ -421,6 +421,39 @@ const styles = `
   .svp .cols.c3, .svp .cols.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .svp-chip { display: none; }
 }
+@media (max-width: 900px) {
+  .svp .filter-wrap {
+    margin-left: calc(var(--gutter, 1.25rem) * -1) !important;
+    margin-right: calc(var(--gutter, 1.25rem) * -1) !important;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+  .svp .filter-wrap::after {
+    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 36px; pointer-events: none;
+    background: linear-gradient(90deg, transparent, var(--bg)); z-index: 2;
+  }
+  .svp .sec.alt .filter-wrap::after { background: linear-gradient(90deg, transparent, var(--surface)); }
+  .svp .filter-tabs {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x !important;
+    scroll-snap-type: none !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    padding: .35rem var(--gutter, 1.25rem) .75rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .svp .filter-tabs::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
+  .svp .filter-tab {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    scroll-snap-align: none !important;
+  }
+}
 @media (max-width: 860px) {
   .svp-cta { grid-template-columns: 1fr; gap: 1.75rem; }
   .svp-hero-card { transform: none !important; }
@@ -435,18 +468,6 @@ const styles = `
   .svp-orb-a { width: 240px; height: 240px; }
   .svp-orb-b { width: 200px; height: 200px; }
   .svp-orb-c { display: none; }
-  .svp .filter-wrap { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
-  .svp .filter-wrap::after {
-    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 30px; pointer-events: none;
-    background: linear-gradient(90deg, transparent, var(--bg));
-  }
-  .svp .sec.alt .filter-wrap::after { background: linear-gradient(90deg, transparent, var(--surface)); }
-  .svp .filter-tabs {
-    flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; padding: .35rem var(--gutter) .7rem;
-    scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch;
-  }
-  .svp .filter-tabs::-webkit-scrollbar { display: none; }
-  .svp .filter-tab { scroll-snap-align: start; }
   .svp .card { padding: 1.4rem; }
   .svp-why { flex-direction: column; gap: .9rem; }
   .svp .faq-card:hover { transform: none; }
@@ -621,7 +642,7 @@ const onTiltEnd = (e) => {
    ========================================================= */
 
 const heroStats = [
-  { value: "9+", label: "Turnkey Products" },
+  { value: "5+", label: "Proprietary Products" },
   { value: "10x", label: "Faster Launch" },
   { value: "99.9%", label: "Uptime SLA" },
   { value: "100%", label: "Source Code IP" },
@@ -725,12 +746,10 @@ export default function ProductPage() {
     return [
       "Autonomous AI Copywriting",
       "Shopify App Bridge 3.0",
-      "Multi-Tenant Hotel PMS",
       "GDPR / CCPA Consent Shield",
       "Automotive MMY Search Engine",
-      "Solar EPC Workflows",
-      "On-Demand Dispatch Engine",
-      "HIPAA-Ready Telehealth",
+      "Multichannel AI Outreach",
+      "Custom Store Locator & MapBox",
       "White-Label SaaS",
       "100% Source Code Ownership",
       "REST & GraphQL APIs",
@@ -757,20 +776,6 @@ export default function ProductPage() {
 
         <div className="container hero-wrap">
           <div className="copy svp-hero-copy">
-            <div className="breadcrumbs-bar">
-              <nav className="breadcrumbs" aria-label="Breadcrumb">
-                <Link href="/">
-                  <svg className="i bc-icon" aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                  </svg>
-                  <span>Home</span>
-                </Link>
-                <span className="sep">/</span>
-                <span className="current">Products</span>
-              </nav>
-            </div>
-
             <div style={{ marginBottom: "1rem" }}>
               <span className="eyebrow-hero">
                 <strong>Vision</strong> Turnkey SaaS &amp; Commerce Platforms
@@ -884,7 +889,10 @@ export default function ProductPage() {
                     role="tab"
                     aria-selected={isActive}
                     className={`filter-tab ${isActive ? "active" : ""}`}
-                    onClick={() => setSelectedCategory(cat)}
+                    onClick={(e) => {
+                      setSelectedCategory(cat);
+                      e.currentTarget.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+                    }}
                   >
                     <span>{cat}</span>
                     <em>{count}</em>

@@ -22,14 +22,18 @@ export const processSteps = [
 ];
 
 export const clientLogos = [
-  "Lumina",
-  "Finora",
-  "MedixCare",
-  "Shopwave",
-  "Torquely",
-  "Cloudnest",
-  "Nexabridge",
-  "Brightpath"
+  "Medicheck",
+  "KreditMitraa",
+  "BillBook",
+  "ReComm",
+  "Thakar Mart",
+  "StayFlow CRM",
+  "Surya Deep",
+  "SRL Pixel",
+  "SiteDesk",
+  "FilterBook",
+  "Fitcket",
+  "Lok Sangeet"
 ];
 
 export const whyChooseUs = [

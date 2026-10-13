@@ -646,22 +646,6 @@ export default function ProductDetailPage({ product }) {
 
         <div className="container hero-wrap">
           <div className="copy svp-hero-copy">
-            <div className="breadcrumbs-bar">
-              <nav className="breadcrumbs" aria-label="Breadcrumb">
-                <Link href="/">
-                  <svg className="i bc-icon" aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                  </svg>
-                  <span>Home</span>
-                </Link>
-                <span className="sep">/</span>
-                <Link href="/products">Products</Link>
-                <span className="sep">/</span>
-                <span className="current">{product.shortTitle}</span>
-              </nav>
-            </div>
-
             <div style={{ marginBottom: "1rem" }}>
               <span className="eyebrow-hero">
                 <strong>{product.badge}</strong> · Turnkey Deployment

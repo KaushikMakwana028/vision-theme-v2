@@ -249,45 +249,42 @@ const styles = `
   background: var(--ct-primary); color: #fff; font-size: .74rem;
 }
 
-/* ---------- sidebar ---------- */
-.ct .side { display: grid; gap: 1.25rem; }
-.ct .status {
-  display: flex; align-items: center; gap: .8rem; padding: 1rem 1.2rem; border-radius: 16px;
-  background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.28);
-  color: #065f46; font-size: .88rem; line-height: 1.5;
+/* ---------- sidebar: Map & Location ---------- */
+.ct .side { display: grid; gap: 1.25rem; align-content: start; }
+.ct .map-card { padding: 1.35rem; display: flex; flex-direction: column; gap: 1.2rem; }
+@media (min-width: 640px) { .ct .map-card { padding: 1.6rem; } }
+.ct .map-card-head { display: flex; align-items: flex-start; gap: .85rem; }
+.ct .map-badge-icon {
+  width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+  background: rgba(79, 70, 229, 0.1); color: var(--ct-primary); flex-shrink: 0;
 }
-.ct .status i {
-  width: 10px; height: 10px; border-radius: 50%; background: var(--ct-green); flex-shrink: 0;
-  animation: ct-ping-g 2s infinite;
+.ct .map-badge-icon svg { width: 22px; height: 22px; }
+.ct .location-badge {
+  display: inline-block; padding: .18rem .6rem; border-radius: 999px; font-size: .7rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .04em; background: rgba(79, 70, 229, 0.1); color: var(--ct-primary);
+  margin-bottom: .25rem;
 }
-.ct .offices { padding: 1.35rem; }
-@media (min-width: 640px) { .ct .offices { padding: 1.75rem; } }
-.ct .offices h3 { font-size: 1.2rem; font-weight: 800; display: flex; align-items: center; gap: .55rem; }
-.ct .offices h3 svg { width: 20px; height: 20px; color: var(--ct-primary); }
-.ct .offices .intro { color: var(--ct-muted); font-size: .9rem; margin: .45rem 0 1.15rem; line-height: 1.6; }
-.ct .office-list { display: grid; gap: .8rem; }
-.ct .office {
-  padding: 1rem 1.1rem; border-radius: 14px; background: var(--ct-soft); border: 1px solid var(--ct-line);
+.ct .location-title { font-size: 1.25rem; font-weight: 800; margin: 0 0 .2rem; color: var(--ct-ink); }
+.ct .location-sub { color: var(--ct-muted); font-size: .88rem; margin: 0; }
+.ct .map-wrapper {
+  position: relative; width: 100%; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 4px 18px -4px rgba(15, 23, 42, 0.12); border: 1px solid var(--ct-line);
 }
-.ct .office-top { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: .35rem; }
-.ct .office-top strong { font-size: .95rem; }
-.ct .badge {
-  padding: .18rem .55rem; border-radius: 999px; font-size: .68rem; font-weight: 800;
-  text-transform: uppercase; letter-spacing: .04em; background: rgba(79,70,229,.1); color: var(--ct-primary);
+.ct .map-wrapper iframe { width: 100%; height: 360px; border: 0; display: block; }
+.ct .map-card-footer { display: flex; flex-direction: column; gap: 1rem; }
+.ct .map-card-meta { display: grid; gap: .5rem; font-size: .88rem; }
+.ct .meta-row { display: flex; gap: .5rem; line-height: 1.5; }
+.ct .meta-label { font-weight: 700; color: var(--ct-ink); min-width: 65px; }
+.ct .meta-val { color: var(--ct-muted); }
+.ct .meta-link { color: var(--ct-primary); font-weight: 600; text-decoration: none; }
+.ct .meta-link:hover { text-decoration: underline; }
+.ct .map-open-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .75rem 1.25rem; border-radius: 12px; font-weight: 700; font-size: .9rem;
+  text-decoration: none; color: var(--ct-primary); background: rgba(79, 70, 229, 0.08);
+  border: 1px solid rgba(79, 70, 229, 0.2); transition: all .2s ease;
 }
-.ct .office .city { color: var(--ct-primary); font-weight: 700; font-size: .86rem; }
-.ct .office .addr { color: var(--ct-muted); font-size: .82rem; line-height: 1.5; margin: .2rem 0 .35rem; }
-.ct .office a { color: var(--ct-ink); font-weight: 700; font-size: .84rem; text-decoration: none; }
-.ct .office a:hover { color: var(--ct-primary); }
-
-.ct .hours { padding: 1.35rem; background: linear-gradient(135deg, #0b1020, #1e1b4b); color: #fff; border: 0; }
-.ct .hours h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: .4rem; }
-.ct .hours p { color: #b4bdd3; font-size: .86rem; line-height: 1.6; }
-.ct .zones { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .9rem; }
-.ct .zones span {
-  padding: .3rem .7rem; border-radius: 999px; font-size: .74rem; font-weight: 700;
-  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.14);
-}
+.ct .map-open-btn:hover { background: var(--ct-primary); color: #fff; transform: translateY(-1px); }
 
 /* ---------- roadmap ---------- */
 .ct .road { display: grid; gap: 1rem; position: relative; }
@@ -358,58 +355,6 @@ const styles = `
   .ct *, .ct *::before, .ct *::after { animation: none !important; transition: none !important; }
 }
 `;
-
-const services = [
-  "Custom Web Application",
-  "Mobile App (iOS/Android)",
-  "AI & Autonomous Agents",
-  "Headless Ecommerce / Shopify",
-  "Cloud & DevOps Architecture",
-  "Dedicated Engineering Team",
-];
-const budgets = [
-  "Under $10,000",
-  "$10k - $25,000",
-  "$25k - $50,000",
-  "$50,000+",
-];
-const timelines = [
-  "Immediate (< 2 weeks)",
-  "1 - 2 Months",
-  "3 - 6 Months",
-  "Exploring / Flexible",
-];
-
-const offices = [
-  {
-    country: "🇮🇳 India",
-    badge: "Tech HQ",
-    city: "Ahmedabad, Gujarat",
-    addr: "S.G. Highway, Corporate Hub, Ahmedabad 380054",
-    phone: "+91 00000 00000",
-  },
-  {
-    country: "🇺🇸 United States",
-    badge: "Accounts",
-    city: "Delaware & New York",
-    addr: "1201 N Orange St, Suite 700, Wilmington, DE 19801",
-    phone: "+1 (302) 456-7890",
-  },
-  {
-    country: "🇬🇧 United Kingdom",
-    badge: "Partners",
-    city: "London, UK",
-    addr: "100 Bishopsgate, London EC2N 4AG",
-    phone: "+44 20 7946 0912",
-  },
-  {
-    country: "🇦🇪 Middle East",
-    badge: "Operations",
-    city: "Dubai, UAE",
-    addr: "Dubai Silicon Oasis, DTEC Innovation Hub",
-    phone: "+971 4 390 1900",
-  },
-];
 
 const roadmap = [
   {
@@ -485,9 +430,6 @@ const Ico = ({ children, ...p }) => (
 );
 
 export default function ContactPage() {
-  const [service, setService] = useState(services[0]);
-  const [budget, setBudget] = useState(budgets[1]);
-  const [timeline, setTimeline] = useState(timelines[1]);
   const [form, setForm] = useState(emptyForm);
   const [touched, setTouched] = useState({});
   const [submitting, setSubmitting] = useState(false);
@@ -539,28 +481,6 @@ export default function ContactPage() {
 
   const showErr = (k) => touched[k] && errors[k];
 
-  const Pills = ({ label, num, options, value, onChange }) => (
-    <div className="fgroup" role="group" aria-label={label}>
-      <div className="flabel">
-        <b>{num}</b>
-        {label}
-      </div>
-      <div className="pills">
-        {options.map((o) => (
-          <button
-            key={o}
-            type="button"
-            className="pill"
-            aria-pressed={value === o}
-            onClick={() => onChange(o)}
-          >
-            {o}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-
   return (
     <main id="main" className="ct">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
@@ -568,22 +488,6 @@ export default function ContactPage() {
       {/* ================= HERO ================= */}
       <header className="hero">
         <div className="wrap">
-          <nav className="crumbs" aria-label="Breadcrumb">
-            <Link href="/" title="Home">
-              <Ico>
-                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                <polyline points="9 22 9 12 15 12 15 22" />
-              </Ico>
-              Home
-            </Link>
-            <span className="sep" aria-hidden="true">
-              /
-            </span>
-            <span className="cur" aria-current="page">
-              Contact
-            </span>
-          </nav>
-
           <div>
             <span className="eyebrow">
               <i />
@@ -604,7 +508,7 @@ export default function ContactPage() {
 
           <div className="hero-cta">
             <a href="#brief" className="btn">
-              Start Your Project{" "}
+              Send a Request{" "}
               <Ico width="18" height="18" strokeWidth="2.5">
                 <line x1="12" y1="5" x2="12" y2="19" />
                 <polyline points="19 12 12 19 5 12" />
@@ -715,7 +619,7 @@ export default function ContactPage() {
                       <polyline points="20 6 9 17 4 12" />
                     </Ico>
                   </div>
-                  <h2>Technical brief received!</h2>
+                  <h2>Request received!</h2>
                   <p className="lead">
                     Thank you, <strong>{form.name}</strong>. A senior architect
                     has been assigned to evaluate your requirements.
@@ -725,8 +629,7 @@ export default function ContactPage() {
                     <li>
                       <b>1</b>
                       <span>
-                        Architectural review of technical scope &amp; stack
-                        feasibility.
+                        Architectural review of technical scope &amp; requirements.
                       </span>
                     </li>
                     <li>
@@ -752,17 +655,16 @@ export default function ContactPage() {
                     </li>
                   </ol>
                   <button type="button" className="btn" onClick={reset}>
-                    Submit another inquiry →
+                    Send another request →
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate>
                   <div className="form-head">
-                    <h2 id="brief-title">Project Specification Brief</h2>
+                    <h2 id="brief-title">Send Us a Message</h2>
                     <p>
-                      Fill out this quick form and our engineering leads will
-                      reply within 24 hours with an initial feasibility
-                      assessment.
+                      Fill out the form below and our engineering leads will
+                      reply within 24 hours with a direct technical assessment.
                     </p>
                   </div>
 
@@ -781,142 +683,115 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <Pills
-                    num="1"
-                    label="Primary area of interest"
-                    options={services}
-                    value={service}
-                    onChange={setService}
-                  />
-                  <Pills
-                    num="2"
-                    label="Estimated budget"
-                    options={budgets}
-                    value={budget}
-                    onChange={setBudget}
-                  />
-                  <Pills
-                    num="3"
-                    label="Target delivery window"
-                    options={timelines}
-                    value={timeline}
-                    onChange={setTimeline}
-                  />
-
-                  <div className="fgroup">
-                    <div className="flabel">
-                      <b>4</b>Contact &amp; organization details
+                  <div className="fields" style={{ marginTop: "1.75rem" }}>
+                    <div className="field">
+                      <label htmlFor="ct-name">Full name *</label>
+                      <input
+                        id="ct-name"
+                        className={`input ${showErr("name") ? "bad" : ""}`}
+                        type="text"
+                        autoComplete="name"
+                        placeholder="Alex Morgan"
+                        value={form.name}
+                        onChange={set("name")}
+                        onBlur={blur("name")}
+                        aria-invalid={!!showErr("name")}
+                        aria-describedby={
+                          showErr("name") ? "ct-name-e" : undefined
+                        }
+                      />
+                      {showErr("name") && (
+                        <span id="ct-name-e" className="err">
+                          {errors.name}
+                        </span>
+                      )}
                     </div>
-                    <div className="fields">
-                      <div className="field">
-                        <label htmlFor="ct-name">Full name *</label>
-                        <input
-                          id="ct-name"
-                          className={`input ${showErr("name") ? "bad" : ""}`}
-                          type="text"
-                          autoComplete="name"
-                          placeholder="Alex Morgan"
-                          value={form.name}
-                          onChange={set("name")}
-                          onBlur={blur("name")}
-                          aria-invalid={!!showErr("name")}
-                          aria-describedby={
-                            showErr("name") ? "ct-name-e" : undefined
-                          }
-                        />
-                        {showErr("name") && (
-                          <span id="ct-name-e" className="err">
-                            {errors.name}
+                    <div className="field">
+                      <label htmlFor="ct-email">Work email *</label>
+                      <input
+                        id="ct-email"
+                        className={`input ${showErr("email") ? "bad" : ""}`}
+                        type="email"
+                        inputMode="email"
+                        autoComplete="email"
+                        placeholder="alex@organization.com"
+                        value={form.email}
+                        onChange={set("email")}
+                        onBlur={blur("email")}
+                        aria-invalid={!!showErr("email")}
+                        aria-describedby={
+                          showErr("email") ? "ct-email-e" : undefined
+                        }
+                      />
+                      {showErr("email") && (
+                        <span id="ct-email-e" className="err">
+                          {errors.email}
+                        </span>
+                      )}
+                    </div>
+                    <div className="field">
+                      <label htmlFor="ct-phone">
+                        Phone / WhatsApp <small>(optional)</small>
+                      </label>
+                      <input
+                        id="ct-phone"
+                        className="input"
+                        type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
+                        placeholder="+1 (555) 000-0000"
+                        value={form.phone}
+                        onChange={set("phone")}
+                      />
+                    </div>
+                    <div className="field">
+                      <label htmlFor="ct-company">
+                        Company / Organization <small>(optional)</small>
+                      </label>
+                      <input
+                        id="ct-company"
+                        className="input"
+                        type="text"
+                        autoComplete="organization"
+                        placeholder="Acme Technologies"
+                        value={form.company}
+                        onChange={set("company")}
+                      />
+                    </div>
+                    <div className="field full">
+                      <label htmlFor="ct-message">
+                        Project details &amp; requirements *
+                      </label>
+                      <textarea
+                        id="ct-message"
+                        className={`input ${showErr("message") ? "bad" : ""}`}
+                        maxLength={2000}
+                        placeholder="Tell us about your project requirements, current tech stack (if any), scope and target outcomes..."
+                        value={form.message}
+                        onChange={set("message")}
+                        onBlur={blur("message")}
+                        aria-invalid={!!showErr("message")}
+                        aria-describedby={
+                          showErr("message") ? "ct-message-e" : undefined
+                        }
+                      />
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          gap: ".5rem",
+                        }}
+                      >
+                        {showErr("message") ? (
+                          <span id="ct-message-e" className="err">
+                            {errors.message}
                           </span>
+                        ) : (
+                          <span />
                         )}
-                      </div>
-                      <div className="field">
-                        <label htmlFor="ct-email">Work email *</label>
-                        <input
-                          id="ct-email"
-                          className={`input ${showErr("email") ? "bad" : ""}`}
-                          type="email"
-                          inputMode="email"
-                          autoComplete="email"
-                          placeholder="alex@organization.com"
-                          value={form.email}
-                          onChange={set("email")}
-                          onBlur={blur("email")}
-                          aria-invalid={!!showErr("email")}
-                          aria-describedby={
-                            showErr("email") ? "ct-email-e" : undefined
-                          }
-                        />
-                        {showErr("email") && (
-                          <span id="ct-email-e" className="err">
-                            {errors.email}
-                          </span>
-                        )}
-                      </div>
-                      <div className="field">
-                        <label htmlFor="ct-phone">
-                          Phone / WhatsApp <small>(optional)</small>
-                        </label>
-                        <input
-                          id="ct-phone"
-                          className="input"
-                          type="tel"
-                          inputMode="tel"
-                          autoComplete="tel"
-                          placeholder="+1 (555) 000-0000"
-                          value={form.phone}
-                          onChange={set("phone")}
-                        />
-                      </div>
-                      <div className="field">
-                        <label htmlFor="ct-company">
-                          Company / project <small>(optional)</small>
-                        </label>
-                        <input
-                          id="ct-company"
-                          className="input"
-                          type="text"
-                          autoComplete="organization"
-                          placeholder="Acme Technologies"
-                          value={form.company}
-                          onChange={set("company")}
-                        />
-                      </div>
-                      <div className="field full">
-                        <label htmlFor="ct-message">
-                          Project overview &amp; key goals *
-                        </label>
-                        <textarea
-                          id="ct-message"
-                          className={`input ${showErr("message") ? "bad" : ""}`}
-                          maxLength={2000}
-                          placeholder="What are you building? Include key requirements, your current tech stack (if any) and the outcome you want."
-                          value={form.message}
-                          onChange={set("message")}
-                          onBlur={blur("message")}
-                          aria-invalid={!!showErr("message")}
-                          aria-describedby={
-                            showErr("message") ? "ct-message-e" : undefined
-                          }
-                        />
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            gap: ".5rem",
-                          }}
-                        >
-                          {showErr("message") ? (
-                            <span id="ct-message-e" className="err">
-                              {errors.message}
-                            </span>
-                          ) : (
-                            <span />
-                          )}
-                          <span className="counter">
-                            {form.message.length}/2000
-                          </span>
-                        </div>
+                        <span className="counter">
+                          {form.message.length}/2000
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -944,11 +819,11 @@ export default function ContactPage() {
                     {submitting ? (
                       <>
                         <span className="spinner" />
-                        <span>Sending your brief…</span>
+                        <span>Sending your request…</span>
                       </>
                     ) : (
                       <>
-                        <span>Submit Project Brief</span>
+                        <span>Send Request</span>
                         <Ico width="18" height="18" strokeWidth="2.5">
                           <line x1="5" y1="12" x2="19" y2="12" />
                           <polyline points="12 5 19 12 12 19" />
@@ -964,57 +839,58 @@ export default function ContactPage() {
               )}
             </section>
 
-            {/* ---------- SIDEBAR ---------- */}
-            <aside className="side" aria-label="Offices and availability">
-              <div className="status" role="status">
-                <i />
-                <span>
-                  <strong>Engineering labs: active &amp; online.</strong> Now
-                  accepting client sprint bookings for Q1–Q2.
-                </span>
-              </div>
+            {/* ---------- SIDEBAR: OFFICE LOCATION & GOOGLE MAP ---------- */}
+            <aside className="side" aria-label="Our office location">
+              <div className="card map-card">
+                <div className="map-card-head">
+                  <div className="map-badge-icon">
+                    <Ico>
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </Ico>
+                  </div>
+                  <div>
+                    <span className="location-badge">Headquarters</span>
+                    <h3 className="location-title">Vision Technolabs</h3>
+                    <p className="location-sub">Ahmedabad, Gujarat, India</p>
+                  </div>
+                </div>
 
-              <div className="card offices">
-                <h3>
-                  <Ico>
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  </Ico>
-                  Global offices
-                </h3>
-                <p className="intro">
-                  Headquartered in India, with client engagement presence in the
-                  US, UK and UAE.
-                </p>
-                <div className="office-list">
-                  {offices.map((o) => (
-                    <div className="office" key={o.country}>
-                      <div className="office-top">
-                        <strong>{o.country}</strong>
-                        <span className="badge">{o.badge}</span>
-                      </div>
-                      <div className="city">{o.city}</div>
-                      <p className="addr">{o.addr}</p>
-                      <a href={`tel:${o.phone.replace(/[^+\d]/g, "")}`}>
-                        {o.phone}
+                <div className="map-wrapper">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6643.213747688789!2d72.66355678439143!3d23.078965902005443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4a61dfa5596be2b5%3A0xb0dc504e60aaf50a!2sVision%20Technolabs!5e1!3m2!1sen!2sin!4v1791888630555!5m2!1sen!2sin"
+                    width="100%"
+                    height="380"
+                    style={{ border: 0, borderRadius: "14px", display: "block" }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    title="Vision Technolabs Location Map"
+                  />
+                </div>
+
+                <div className="map-card-footer">
+                  <div className="map-card-meta">
+                    <div className="meta-row">
+                      <span className="meta-label">Address:</span>
+                      <span className="meta-val">Vision Technolabs, Ahmedabad, Gujarat, India</span>
+                    </div>
+                    <div className="meta-row">
+                      <span className="meta-label">Email:</span>
+                      <a href={`mailto:${brandInfo.email}`} className="meta-link">
+                        {brandInfo.email}
                       </a>
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="card hours">
-                <h3>Time-zone friendly</h3>
-                <p>
-                  Daily standups and live Slack communication, with overlapping
-                  shifts for your working hours.
-                </p>
-                <div className="zones">
-                  <span>US Eastern</span>
-                  <span>US Pacific</span>
-                  <span>UK / CET</span>
-                  <span>Australia AEST</span>
+                  </div>
+                  <a
+                    href="https://maps.google.com/?q=Vision+Technolabs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="map-open-btn"
+                  >
+                    <span>View on Google Maps</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
                 </div>
               </div>
             </aside>

@@ -1,9 +1,7 @@
 export const productCategories = [
   "All",
   "AI & SaaS Platforms",
-  "Shopify & Commerce Apps",
-  "Turnkey Solutions",
-  "Enterprise Tools"
+  "Shopify & Commerce Apps"
 ];
 
 export const productsData = [
@@ -411,321 +409,30 @@ export const productsData = [
       { question: "Does it support custom fields like Engine Size, Transmission, or Bed Length?", answer: "Yes! You can configure up to 6 custom cascading filter levels (e.g. Year -> Make -> Model -> Submodel -> Engine -> Drive Type)." },
       { question: "Can shoppers save their vehicle for future visits?", answer: "Yes. The 'My Garage' feature stores selected vehicles in the customer's browser and account, persisting their vehicle selection across sessions." }
     ]
-  },
-  {
-    id: "hotel-management-system",
-    slug: "hotel-management-system",
-    number: "06",
-    title: "LodgeFlow — Hotel & Resort PMS Platform",
-    shortTitle: "LodgeFlow PMS",
-    badge: "Turnkey Hospitality Platform",
-    tag: "PMS, Booking & Channel Manager",
-    category: "Turnkey Solutions",
-    rating: "4.9★",
-    reviewsCount: "80+ Properties",
-    icon: "i-home",
-    gradient: "linear-gradient(135deg,#7c3aed,#9333ea)",
-    tagline: "All-in-one Property Management System, direct booking engine, and OTA channel manager.",
-    shortDescription: "A modern cloud PMS for hotels, boutique resorts, and vacation rentals with real-time reservation grids, digital check-in, housekeeping dispatch, and multi-channel OTA sync.",
-    description: "LodgeFlow is a turnkey cloud property management solution built to streamline operations for independent hotels, boutique resorts, and multi-property hospitality groups. Features an intuitive visual front-desk tape chart, automated direct booking engine, contactless guest mobile keys, automated housekeeping dispatch, and two-way sync with Booking.com, Airbnb, and Expedia.",
-    heroSubtitle: "Modern cloud Property Management System (PMS), two-way OTA channel synchronization engine, and mobile guest experience portal engineered for independent hotels and resorts.",
-    pricing: "Turnkey License & SaaS Hosting Options",
-    liveDemoUrl: "/#contact",
-    metrics: [
-      { value: "42%", label: "Direct Bookings Lift" },
-      { value: "Zero", label: "Overbooking Incidents" },
-      { value: "15 min", label: "Daily Housekeeping Audit" },
-      { value: "99.99%", label: "Uptime Availability" }
-    ],
-    features: [
-      {
-        title: "Visual Tape Chart & Front Desk Grid",
-        description: "Interactive drag-and-drop calendar matrix showing real-time room occupancies, maintenance holds, and guest check-ins with one-click reservation editing.",
-        points: ["Drag-and-drop room assignments", "Instant split-bill and folio generation", "Color-coded VIP and early check-in flags"]
-      },
-      {
-        title: "Two-Way Channel Manager (Booking, Airbnb, Expedia)",
-        description: "Synchronize room availability, rates, and minimum night restrictions automatically across 50+ global Online Travel Agencies in real time.",
-        points: ["Instant two-way rate & calendar sync", "Distributed lock overbooking prevention", "Dynamic rate multipliers across channels"]
-      },
-      {
-        title: "Contactless Mobile Guest Portal & Web Check-In",
-        description: "Guests can complete pre-arrival registration, upload ID verification, request upgrades, and receive digital room key codes on their smartphone.",
-        points: ["Paperless digital registration card with signature", "In-stay room service & amenities ordering", "Contactless checkout and automated folio delivery"]
-      },
-      {
-        title: "Real-Time Housekeeping & Maintenance App",
-        description: "Housekeeping mobile dashboard tracks clean, dirty, inspected, and out-of-order room states with instant push alerts to front desk staff.",
-        points: ["Room cleaning timer & priority queue", "Photo-enabled maintenance repair ticketing", "Automated minibar consumption billing"]
-      }
-    ],
-    deploymentOptions: [
-      {
-        title: "Turnkey Cloud SaaS Setup",
-        description: "We deploy and configure your property within 48 hours, fully trained on your room types and seasonal rate matrices.",
-        badge: "Rapid Setup"
-      },
-      {
-        title: "Full Source Code Buyout",
-        description: "Acquire the complete Next.js web application, React Native mobile apps, and Node.js backend for unrestricted enterprise customization.",
-        badge: "Full IP Ownership"
-      }
-    ],
-    techStack: ["Next.js", "Node.js", "PostgreSQL", "Redis", "Tailwind CSS", "Stripe Terminal", "AWS"],
-    workflow: [
-      { step: "01", title: "Property Configuration", desc: "Configure room types, rate plans, taxes, and add-on amenities into the system database." },
-      { step: "02", title: "OTA Channel Connection", desc: "Link your Booking.com, Airbnb, and Expedia accounts to activate bidirectional availability sync." },
-      { step: "03", title: "Direct Booking Engine Launch", desc: "Embed the responsive booking engine onto your hotel's website to start taking commission-free reservations." },
-      { step: "04", title: "Staff Training & Cutover", desc: "Staff onboarded via interactive training videos with dedicated 24/7 go-live support." }
-    ],
-    advantages: [
-      { title: "Keep 100% of Direct Booking Revenue", desc: "Stop paying 18% to 25% commissions to OTAs with our conversion-optimized direct hotel booking widget." },
-      { title: "Eliminate Costly Overbookings", desc: "Distributed Redis mutex locks ensure dates are locked simultaneously across all channels in milliseconds." },
-      { title: "Accessible From Any Device", desc: "Responsive cloud design allows managers to monitor check-ins, rates, and revenue from tablets or phones anywhere in the world." },
-      { title: "Zero Proprietary Hardware Lock-In", desc: "Runs on standard modern browsers and consumer tablets with no expensive proprietary terminal hardware." }
-    ],
-    faqs: [
-      { question: "Can we migrate our existing guest reservation data from another PMS?", answer: "Yes! We provide automated CSV and Excel data migration scripts that import historical guests, upcoming bookings, and rate plans with zero downtime." },
-      { question: "How does the channel manager prevent double bookings?", answer: "Whenever a room is booked on your website or an OTA, our sync engine instantly broadcasts a rate block across all other 50+ channels within 3 seconds." },
-      { question: "Does it support card-present terminal payments at the front desk?", answer: "Yes. LodgeFlow integrates with Stripe Terminal, Square, and Pax POS terminals for tap-to-pay, chip, and Apple Pay check-in payments." }
-    ]
-  },
-  {
-    id: "solar-epc-platform",
-    slug: "solar-epc-platform",
-    number: "07",
-    title: "HelioTrack — Solar EPC & Field Project Suite",
-    shortTitle: "HelioTrack EPC",
-    badge: "Industrial Field Operations",
-    tag: "Solar EPC & Renewable Energy",
-    category: "Turnkey Solutions",
-    icon: "i-cpu",
-    gradient: "linear-gradient(135deg,#f59e0b,#ea580c)",
-    tagline: "End-to-end project management, site surveying, and commissioning software for solar developers.",
-    shortDescription: "A specialized project management platform for commercial and utility-scale solar EPC contractors with mobile site survey checklists, CAD doc management, and milestone tracking.",
-    description: "HelioTrack digitizes the complete lifecycle of solar engineering, procurement, and construction (EPC) projects. From initial site feasibility audits and interconnection permitting workflows to bill-of-materials procurement and on-site string commissioning testing.",
-    heroSubtitle: "Turnkey Solar EPC project management suite, offline mobile site surveying tool, and grid commissioning tracker engineered for renewable energy contractors.",
-    pricing: "Custom Enterprise Deployment & Source License",
-    liveDemoUrl: "/#contact",
-    metrics: [
-      { value: "35%", label: "Faster Project Turnaround" },
-      { value: "1.4 GW", label: "Solar Assets Managed" },
-      { value: "100%", label: "Offline Field Surveying" },
-      { value: "Zero", label: "Compliance Paperwork Loss" }
-    ],
-    features: [
-      {
-        title: "Offline Mobile Site Survey & Shading Audits",
-        description: "Field engineers capture roof measurements, electrical panel specs, GPS coordinates, and photos even in remote zero-cellular locations.",
-        points: ["Offline SQLite and local photo caching", "Geotagged high-resolution photo uploads", "Roof pitch & azimuth calculation helpers"]
-      },
-      {
-        title: "BOM Procurement & Supplier Tracking",
-        description: "Track module quantities, inverters, racking systems, and balance-of-system (BOS) shipments from purchase order to warehouse arrival.",
-        points: ["Real-time supply chain milestone tracking", "Vendor quotation comparison matrices", "Warehouse delivery verification"]
-      },
-      {
-        title: "Milestone Gantt & Permitting Workflows",
-        description: "Interactive project timeline scheduling with automated document tracking for AHJ building permits, utility interconnection, and PTO signoffs.",
-        points: ["Interactive Gantt scheduling with dependency locks", "Automated AHJ permit renewal alerts", "Utility Permission to Operate (PTO) tracking"]
-      },
-      {
-        title: "Commissioning & QA String Testing",
-        description: "Digital commissioning punchlists, string open-circuit voltage (Voc) logging, and thermal imaging inspection reports exportable as PDF.",
-        points: ["Digital IV curve & string test logging", "Automated client acceptance handover PDF generation", "Punch list task assignment with photo proof"]
-      }
-    ],
-    deploymentOptions: [
-      {
-        title: "Turnkey Cloud Dedicated Setup",
-        description: "Fully configured for your EPC engineering and field teams with single sign-on (SSO) and role-based permissions.",
-        badge: "Enterprise Ready"
-      },
-      {
-        title: "Source Code Buyout & Customization",
-        description: "Own the complete web, mobile, and backend IP to customize workflows and connect to your internal ERP.",
-        badge: "Full IP Ownership"
-      }
-    ],
-    techStack: ["Next.js", "React Native", "PostgreSQL", "Node.js", "AWS S3", "Docker"],
-    workflow: [
-      { step: "01", title: "Site Assessment & Feasibility", desc: "Field engineers audit roof integrity, utility panels, and solar irradiance using the offline mobile app." },
-      { step: "02", title: "Engineering & Permitting", desc: "Upload single-line diagrams (SLD) and track municipal permit approvals with milestone dependencies." },
-      { step: "03", title: "Procurement & Construction", desc: "Track inverter and module deliveries, assign sub-contractor daily work orders, and review daily progress logs." },
-      { step: "04", title: "Commissioning & Handover", desc: "Execute electrical string tests, generate utility PTO documentation, and deliver branded client warranty packages." }
-    ],
-    advantages: [
-      { title: "Works Flawlessly in Remote Areas", desc: "Field technicians can complete audits and take hundreds of photos with zero cellular connectivity." },
-      { title: "Eliminates Costly Installation Delays", desc: "Automated permit and equipment delivery alerts prevent crew idle time on the job site." },
-      { title: "Standardized Handover Documentation", desc: "Generate comprehensive 50-page client commissioning and warranty handover dossiers with one click." },
-      { title: "Customizable for Any Renewable Tech", desc: "Easily adapted for Battery Energy Storage Systems (BESS), EV charging hubs, and wind farms." }
-    ],
-    faqs: [
-      { question: "Can our field engineers use the mobile app without internet connectivity?", answer: "Yes. The mobile app is built offline-first: all photos, checklist answers, and site notes are stored locally and automatically sync upon WiFi/cellular reconnect." },
-      { question: "Does HelioTrack integrate with accounting software like QuickBooks or NetSuite?", answer: "Yes. We provide automated webhooks and REST endpoints to sync project milestones, vendor purchase orders, and client invoicing with your ERP." },
-      { question: "Is full source code transfer available for our enterprise?", answer: "Yes. We offer an unrestricted enterprise source code license allowing your internal IT team to customize and host the software indefinitely." }
-    ]
-  },
-  {
-    id: "on-demand-taxi-suite",
-    slug: "on-demand-taxi-suite",
-    number: "08",
-    title: "FleetRide — Turnkey Ride-Hailing & Taxi Dispatch Suite",
-    shortTitle: "FleetRide Suite",
-    badge: "Turnkey Mobility Platform",
-    tag: "Passenger App, Driver App & Dispatch",
-    category: "Turnkey Solutions",
-    icon: "i-truck",
-    gradient: "linear-gradient(135deg,#0284c7,#2563eb)",
-    tagline: "Complete white-label Uber-like passenger app, driver app, and cloud dispatch panel.",
-    shortDescription: "A turnkey on-demand mobility platform featuring native iOS & Android passenger apps, driver apps with turn-by-turn navigation, and a real-time web dispatch dashboard.",
-    description: "FleetRide delivers everything needed to launch a private taxi fleet, corporate shuttle service, or on-demand delivery operation in under two weeks. Includes live GPS tracking, automated dynamic fare calculations (surge, distance, duration), digital wallet payments, driver payout splits, and admin dispatch consoles.",
-    heroSubtitle: "Complete white-label passenger app, driver app, and automated cloud dispatch management platform engineered for fleet operators and mobility startups.",
-    pricing: "Turnkey White-Label Package & Source Code License",
-    liveDemoUrl: "/#contact",
-    metrics: [
-      { value: "Sub-2s", label: "Driver Match Latency" },
-      { value: "4.9★", label: "App Store Quality" },
-      { value: "100k+", label: "Rides Handled / Day" },
-      { value: "2 Weeks", label: "Launch Time" }
-    ],
-    features: [
-      {
-        title: "Native Passenger Mobile Apps (iOS & Android)",
-        description: "Smooth ride booking with live driver tracking, fare estimates, multi-stop routing, digital card/wallet payments, and driver ratings.",
-        points: ["Live car movement on map via WebSockets", "Apple Pay, Google Pay, and Cash payment options", "Saved favorite home/work locations"]
-      },
-      {
-        title: "Native Driver Mobile Apps (iOS & Android)",
-        description: "Drivers receive instant trip requests with pickup distance, accept/decline timers, turn-by-turn navigation, and daily earnings dashboards.",
-        points: ["Built-in Google Maps & Waze navigation", "Daily and weekly earnings breakdown with instant cashout", "Document upload for driver license & vehicle registration"]
-      },
-      {
-        title: "Intelligent Auto-Dispatch & Matching",
-        description: "Algorithmic dispatch engine matches trip requests to the closest available driver, minimizing customer wait times and empty backhauls.",
-        points: ["Radius proximity & driver rating matching heuristics", "Manual dispatcher override capability", "Automated surge pricing based on real-time supply & demand"]
-      },
-      {
-        title: "Admin Web Control Panel & Analytics",
-        description: "Fleet managers monitor active rides on a real-time map, manage driver commission splits, resolve customer complaints, and review revenue.",
-        points: ["Live god-view fleet map", "Customizable commission fee percentage (e.g. 15%-25%)", "Geofence operating zone configurations with airport surcharges"]
-      }
-    ],
-    deploymentOptions: [
-      {
-        title: "White-Label Setup & Store Publishing",
-        description: "We rebrand apps with your logo, color scheme, and app store accounts, handling Apple App Store and Google Play Store approvals.",
-        badge: "Turnkey Launch"
-      },
-      {
-        title: "Full Source Code Ownership",
-        description: "Receive the complete React Native codebase, Next.js admin portal, and scalable Go/Node backend for complete in-house ownership.",
-        badge: "Full IP Ownership"
-      }
-    ],
-    techStack: ["React Native", "Next.js", "Go / Golang", "Redis", "PostgreSQL", "Google Maps Platform", "Stripe Connect", "Docker"],
-    workflow: [
-      { step: "01", title: "Brand Customization", desc: "We customize logos, brand splash screens, app color schemes, and fare calculation algorithms." },
-      { step: "02", title: "Cloud Backend Deployment", desc: "Deploy your high-availability auto-scaling infrastructure on AWS with Redis caching and PostgreSQL." },
-      { step: "03", title: "App Store Publishing", desc: "We compile native iOS and Android binaries and submit them under your own Apple & Google developer accounts." },
-      { step: "04", title: "Fleet Go-Live", desc: "Onboard your first drivers, test real-time booking flows, and activate your on-demand dispatch operations." }
-    ],
-    advantages: [
-      { title: "Launch in Under 14 Days", desc: "Skip 12+ months and $200,000+ of custom development with our battle-tested, production-ready codebase." },
-      { title: "Zero Per-Ride Royalties", desc: "You keep 100% of your business profits with zero mandatory per-trip platform fees or vendor lock-in." },
-      { title: "Silky Smooth 60fps Real-Time Tracking", desc: "High-performance WebSocket servers deliver seamless vehicle animation on map screens without stutter." },
-      { title: "Fully Scalable Architecture", desc: "Backend architected on Go microservices and Redis capable of easily scaling from 10 to 10,000 active vehicles." }
-    ],
-    faqs: [
-      { question: "Are both passenger and driver mobile apps included for iOS and Android?", answer: "Yes! The package includes two full cross-platform mobile apps (Passenger App + Driver App) built with React Native for iOS and Android." },
-      { question: "Can we set custom fare formulas and surge pricing rules?", answer: "Yes. From the admin portal, you can set base fares, per-kilometer rates, per-minute wait time fees, and automated surge pricing multipliers based on weather or demand." },
-      { question: "Do you assist with publishing to the Apple App Store and Google Play?", answer: "Yes, 100%. Our deployment engineering team handles app bundling, testflight verification, and full store approval submissions." }
-    ]
-  },
-  {
-    id: "telemedicine-suite",
-    slug: "telemedicine-suite",
-    number: "09",
-    title: "CarePulse — Telehealth & Virtual Clinic Platform",
-    shortTitle: "CarePulse Telehealth",
-    badge: "HIPAA Compliant Platform",
-    tag: "Telemedicine & Digital Health",
-    category: "Turnkey Solutions",
-    icon: "i-heart",
-    gradient: "linear-gradient(135deg,#ec4899,#f43f5e)",
-    tagline: "Turnkey HIPAA-compliant telehealth, virtual consultations, and digital prescription portal.",
-    shortDescription: "A secure, HIPAA-compliant telehealth platform with encrypted HD video calls, digital patient intake, electronic prescriptions, and clinic scheduling.",
-    description: "CarePulse enables medical practices, digital health startups, and hospital networks to provide modern virtual care in days. Built with peer-to-peer WebRTC video encryption, automated insurance and card copay processing, patient intake forms, electronic health record (EHR) sync, and e-prescriptions.",
-    heroSubtitle: "HIPAA-compliant telemedicine consultation platform, WebRTC clinical video suite, and digital patient portal engineered for modern healthcare providers.",
-    pricing: "Turnkey Clinical Deployment & Source License",
-    liveDemoUrl: "/#contact",
-    metrics: [
-      { value: "100%", label: "HIPAA & HITECH Compliant" },
-      { value: "Sub-200ms", label: "Video Call Latency" },
-      { value: "4.9★", label: "Patient Satisfaction" },
-      { value: "350k+", label: "Virtual Consults Logged" }
-    ],
-    features: [
-      {
-        title: "Encrypted HD Clinical Video & Audio",
-        description: "Browser-based WebRTC video consultations with zero downloads required for patients. Features in-call doctor screen sharing and vitals chat.",
-        points: ["End-to-end DTLS-SRTP encryption", "Works on mobile browsers with zero app installation", "Adaptive bandwidth for rural low-connectivity patients"]
-      },
-      {
-        title: "Digital Patient Intake & Medical History",
-        description: "Secure pre-visit questionnaires, consent e-signatures, insurance card photo capture, and past medical history logging.",
-        points: ["Customizable clinical symptom intake forms", "Digital HIPAA consent e-signature capture", "Insurance card front/back verification"]
-      },
-      {
-        title: "Doctor Schedule Management & Copay Processing",
-        description: "Doctor availability booking calendars, automated SMS/email appointment reminders, and automated copay credit card processing via Stripe.",
-        points: ["Automated SMS appointment reminders to reduce no-shows", "Pre-authorization copay hold before consultation", "Multi-doctor clinic schedule view"]
-      },
-      {
-        title: "EHR Sync & E-Prescription Routing",
-        description: "Standardized HL7 and FHIR v4 APIs to sync consultation clinical notes directly into hospital EHRs like Epic, Cerner, and AthenaHealth.",
-        points: ["SMART on FHIR interoperability ready", "Digital e-prescription pharmacy dispatching", "Audit-ready clinical consultation timestamps"]
-      }
-    ],
-    deploymentOptions: [
-      {
-        title: "HIPAA-Compliant Managed Cloud",
-        description: "We host and manage the infrastructure on HIPAA-compliant AWS GovCloud with a signed Business Associate Agreement (BAA).",
-        badge: "BAA Included"
-      },
-      {
-        title: "Full Source Code IP Transfer",
-        description: "Acquire the complete frontend and backend codebase to integrate with proprietary hospital networks and internal medical records.",
-        badge: "Enterprise Buyout"
-      }
-    ],
-    techStack: ["Next.js", "React Native", "WebRTC", "PostgreSQL", "FastAPI / Python", "AWS HealthLake", "Docker"],
-    workflow: [
-      { step: "01", title: "BAA Execution & Scoping", desc: "Execute Business Associate Agreement (BAA) and configure your clinic branding and consultation fees." },
-      { step: "02", title: "Doctor Profile & Schedule Setup", desc: "Onboard clinic physicians, set consultation hours, and configure appointment specialties." },
-      { step: "03", title: "Patient Booking Activation", desc: "Launch the responsive patient portal for one-click appointment scheduling and digital intake." },
-      { step: "04", title: "HIPAA-Verified Clinical Go-Live", desc: "Conduct end-to-end test consultations with encrypted audit trails and launch virtual care." }
-    ],
-    advantages: [
-      { title: "Zero App Download for Patients", desc: "Patients join virtual video appointments directly in their smartphone browser with one tap from an SMS link." },
-      { title: "Ironclad BAA & Compliance Defense", desc: "Full adherence to HIPAA, HITECH, and GDPR security standards with end-to-end encrypted pipelines." },
-      { title: "Reduces Clinic No-Show Rates by 70%", desc: "Automated SMS reminders and credit card copay holds ensure patients attend scheduled appointments." },
-      { title: "Standardized Hospital Interoperability", desc: "FHIR v4 integration allows immediate compatibility with hospital electronic health record systems." }
-    ],
-    faqs: [
-      { question: "Is this platform legally HIPAA compliant?", answer: "Yes. All video and data streams are encrypted at rest and in transit. We sign a formal Business Associate Agreement (BAA) with all healthcare clients." },
-      { question: "Do patients need to download an app from the App Store?", answer: "No! Patients can join their video consultation directly from a secure web link sent via SMS or email on any smartphone, tablet, or laptop." },
-      { question: "Can we integrate this with our existing clinic EHR system?", answer: "Yes. CarePulse provides FHIR v4 and HL7 REST APIs designed to sync clinical encounter notes and patient files into Epic, Cerner, and AthenaHealth." }
-    ]
   }
 ];
 
 export function getProductBySlug(slug) {
   if (!slug) return null;
   const normalized = String(slug).toLowerCase().trim();
-  return (
-    productsData.find(
-      (prod) => prod.slug === normalized || prod.id === normalized
-    ) || null
+  const directMatch = productsData.find(
+    (prod) => prod.slug === normalized || prod.id === normalized
   );
+  if (directMatch) return directMatch;
+
+  // Legacy fallback alias mapping for deprecated demo URLs to ensure zero 404s
+  const legacyAliases = {
+    "hotel-management-system": "mspl-store-locator",
+    "solar-epc-platform": "reach-o",
+    "on-demand-taxi-suite": "reach-o",
+    "telemedicine-suite": "lumez-ai"
+  };
+  if (legacyAliases[normalized]) {
+    return (
+      productsData.find((p) => p.slug === legacyAliases[normalized]) ||
+      productsData[0]
+    );
+  }
+
+  return null;
 }

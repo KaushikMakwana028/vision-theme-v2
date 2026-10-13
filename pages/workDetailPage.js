@@ -679,147 +679,326 @@ const styles = `
   font-weight: 600;
   color: var(--primary);
 }
-.cs-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 320px));
-  gap: 1.25rem;
-  justify-content: flex-start;
+  color: var(--primary);
 }
-.cs-gallery-card {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
+.cs-gallery-container {
+  max-width: 1100px;
+  margin: 2.5rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.cs-gallery-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.cs-gallery-title h3 {
+  margin: 0 0 .25rem;
+  color: var(--ink);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.cs-gallery-title p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .88rem;
+}
+.cs-gallery-count {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .35rem .85rem;
+  border-radius: 999px;
   background: var(--surface);
-  border: 1.5px solid var(--line);
+  border: 1px solid var(--line);
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- Modern Asymmetric Bento Gallery Grid ---------- */
+.cs-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+.cs-bento-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #080c16;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.45);
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  max-width: 340px;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
   transition: transform .35s var(--ease), border-color .3s, box-shadow .35s;
 }
-.cs-gallery-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--primary);
-  box-shadow: var(--shadow);
+.cs-bento-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(99, 102, 241, 0.7);
+  box-shadow: 0 20px 42px -12px rgba(79, 70, 229, 0.35);
 }
-.cs-gallery-card.selected {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 2px var(--primary);
+.cs-bento-card.selected {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px #6366f1, 0 16px 36px -10px rgba(99, 102, 241, 0.4);
 }
-.cs-gallery-thumb {
+
+/* Asymmetric Bento Spanning Rhythm */
+.cs-bento-item-1 { grid-column: span 2; }
+.cs-bento-item-2 { grid-column: span 1; }
+.cs-bento-item-3 { grid-column: span 1; }
+.cs-bento-item-4 { grid-column: span 1; }
+.cs-bento-item-5 { grid-column: span 1; }
+.cs-bento-item-6 { grid-column: span 3; }
+
+.cs-bento-inner {
   position: relative;
+  width: 100%;
   aspect-ratio: 16 / 9;
-  max-height: 180px;
   overflow: hidden;
-  background: #070b14;
-  border-bottom: 1px solid rgba(255, 255, 255, .08);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: .35rem;
+  padding: 0.6rem;
+  background: #080c16;
 }
-.cs-gallery-thumb img {
+.cs-bento-item-6 .cs-bento-inner {
+  aspect-ratio: 21 / 9;
+  max-height: 440px;
+}
+.cs-bento-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: center;
   display: block;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .3));
-  transition: transform .4s var(--ease);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5));
+  transition: transform .45s var(--ease);
 }
-.cs-gallery-card:hover .cs-gallery-thumb img {
-  transform: scale(1.025);
-}
-.cs-gallery-badge {
-  position: absolute;
-  top: .5rem;
-  left: .5rem;
-  padding: .2rem .55rem;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, .85);
-  color: #fff;
-  font-size: .7rem;
-  font-weight: 600;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-}
-.cs-gallery-meta {
-  padding: .85rem 1rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.cs-gallery-meta strong {
-  color: var(--ink);
-  font-size: .88rem;
-  margin-bottom: .25rem;
-}
-.cs-gallery-meta p {
-  color: var(--muted);
-  font-size: .78rem;
-  margin: 0;
-  line-height: 1.45;
-}
-.cs-gallery-add-card {
-  border: 2px dashed rgba(79, 70, 229, .25);
-  background: rgba(79, 70, 229, .03);
-  cursor: default;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  min-height: 220px;
-  max-width: 340px;
-}
-.cs-gallery-add-card:hover {
-  transform: none;
-  border-color: var(--primary);
-}
-.cs-gallery-add-inner {
-  padding: 1.25rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.cs-gallery-add-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: rgba(79, 70, 229, .1);
-  color: var(--primary);
-  margin-bottom: .65rem;
-}
-.cs-gallery-add-icon svg { width: 18px; height: 18px; }
-.cs-gallery-add-inner strong { color: var(--ink); font-size: .88rem; margin-bottom: .3rem; }
-.cs-gallery-add-inner p { color: var(--muted); font-size: .78rem; margin: 0 0 .65rem; line-height: 1.45; max-width: 32ch; }
-.cs-gallery-folder-hint {
-  display: inline-block; font-size: .7rem; font-family: ui-monospace, monospace;
-  padding: .2rem .5rem; border-radius: 6px; background: var(--surface); color: var(--primary);
-  border: 1px solid var(--line);
+.cs-bento-card:hover .cs-bento-img {
+  transform: scale(1.035);
 }
 
-/* ---------- Lightbox Modal ---------- */
+/* Floating Glass Badges */
+.cs-bento-badges {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 3;
+}
+.cs-bento-badge-num {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.32rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.88);
+  color: #f8fafc;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.cs-bento-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34d399;
+}
+.cs-bento-tag-pill {
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.25);
+  color: #c7d2fe;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border: 1px solid rgba(99, 102, 241, 0.45);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* Frosted Action Bottom Bar */
+.cs-bento-hover-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.85rem 1.15rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(8, 12, 22, 0.95) 55%, #080c16 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .3s var(--ease), transform .3s var(--ease);
+  z-index: 3;
+  pointer-events: none;
+}
+.cs-bento-card:hover .cs-bento-hover-bar {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cs-bento-hover-title {
+  color: #f1f5f9;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cs-bento-hover-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  background: rgba(99, 102, 241, 0.9);
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.35);
+}
+.cs-bento-hover-cta svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Tablet & Mobile Responsiveness */
+@media (max-width: 992px) {
+  .cs-bento-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  .cs-bento-item-1 { grid-column: span 2; }
+  .cs-bento-item-2 { grid-column: span 1; }
+  .cs-bento-item-3 { grid-column: span 1; }
+  .cs-bento-item-4 { grid-column: span 1; }
+  .cs-bento-item-5 { grid-column: span 1; }
+  .cs-bento-item-6 { grid-column: span 2; }
+  .cs-bento-item-6 .cs-bento-inner { aspect-ratio: 16 / 9; }
+}
+
+@media (max-width: 640px) {
+  .cs-bento-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+  .cs-bento-item-1,
+  .cs-bento-item-2,
+  .cs-bento-item-3,
+  .cs-bento-item-4,
+  .cs-bento-item-5,
+  .cs-bento-item-6 {
+    grid-column: span 1 !important;
+  }
+  .cs-bento-inner,
+  .cs-bento-item-6 .cs-bento-inner {
+    aspect-ratio: 16 / 9 !important;
+    padding: 0.35rem;
+  }
+  .cs-bento-card {
+    border-radius: 14px;
+  }
+  .cs-bento-hover-bar {
+    opacity: 1;
+    transform: none;
+    padding: 0.6rem 0.85rem;
+    background: linear-gradient(180deg, transparent 0%, rgba(8, 12, 22, 0.92) 100%);
+  }
+  .cs-bento-hover-title {
+    font-size: 0.78rem;
+  }
+}
+
+/* ---------- Upgraded Lightbox Modal ---------- */
 .cs-lightbox {
-  position: fixed; inset: 0; z-index: 2000; background: rgba(2, 6, 23, .94);
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  position: fixed; inset: 0; z-index: 3000; background: rgba(2, 6, 23, .96);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 2rem; animation: svp-in .25s var(--ease);
+  padding: 1.5rem; animation: svp-in .25s var(--ease);
+  user-select: none;
+}
+.cs-lightbox-topbar {
+  position: absolute; top: 1.25rem; left: 1.5rem; right: 1.5rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  z-index: 10;
+}
+.cs-lightbox-counter {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .35rem .85rem; border-radius: 999px;
+  background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .18);
+  color: #f1f5f9; font-size: .82rem; font-weight: 600;
+}
+.cs-lightbox-counter-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #34d399;
 }
 .cs-lightbox-close {
-  position: absolute; top: 1.5rem; right: 1.5rem; width: 44px; height: 44px; border-radius: 50%;
-  background: rgba(255, 255, 255, .12); color: #fff; border: none; cursor: pointer;
-  display: grid; place-items: center; font-size: 1.5rem; transition: background .2s;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255, 255, 255, .12); color: #fff; border: 1px solid rgba(255, 255, 255, .2);
+  cursor: pointer; display: grid; place-items: center; font-size: 1.3rem;
+  transition: all .2s var(--ease);
 }
-.cs-lightbox-close:hover { background: rgba(255, 255, 255, .25); }
-.cs-lightbox-content { max-width: 95vw; max-height: 85vh; text-align: center; }
+.cs-lightbox-close:hover {
+  background: rgba(239, 68, 68, .85); border-color: #ef4444; color: #fff; transform: scale(1.05);
+}
+.cs-lightbox-main {
+  position: relative; width: 100%; max-width: 1200px;
+  display: flex; align-items: center; justify-content: center;
+}
+.cs-lightbox-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(15, 23, 42, .75); border: 1px solid rgba(255, 255, 255, .25);
+  color: #fff; cursor: pointer; display: grid; place-items: center;
+  transition: all .2s var(--ease); z-index: 5;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .4);
+}
+.cs-lightbox-nav:hover {
+  background: var(--primary); border-color: var(--primary); transform: translateY(-50%) scale(1.08);
+}
+.cs-lightbox-prev { left: clamp(0.5rem, 2vw, 1.5rem); }
+.cs-lightbox-next { right: clamp(0.5rem, 2vw, 1.5rem); }
+.cs-lightbox-content {
+  max-width: 90vw; max-height: 80vh; text-align: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
 .cs-lightbox-content img {
-  max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 12px;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, .7); border: 1px solid rgba(255, 255, 255, .15);
+  max-width: 100%; max-height: 72vh; object-fit: contain; border-radius: 12px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, .8); border: 1px solid rgba(255, 255, 255, .18);
+  transition: transform .3s var(--ease);
 }
-.cs-lightbox-caption { color: #e2e8f0; font-size: .95rem; margin-top: 1rem; font-weight: 500; }
+.cs-lightbox-bottom {
+  margin-top: 1rem; text-align: center; max-width: 750px;
+}
+.cs-lightbox-caption {
+  color: #f1f5f9; font-size: .95rem; font-weight: 500; margin: 0 0 .35rem; line-height: 1.45;
+}
+.cs-lightbox-hint {
+  color: #94a3b8; font-size: .75rem; margin: 0;
+}
+@media (max-width: 640px) {
+  .cs-lightbox-nav { width: 38px; height: 38px; }
+  .cs-lightbox-topbar { top: .85rem; left: 1rem; right: 1rem; }
+  .cs-lightbox-content img { max-height: 62vh; }
+}
 
 /* ---------- Modules Section ---------- */
 .cs-modules-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
@@ -1262,30 +1441,103 @@ export default function WorkDetailPage({ project }) {
       .slice(0, 3);
   }, [project]);
 
-  // Normalized image collection supporting single or multiple images
+  // Normalized image collection supporting single or multiple images (minimum 6 screens)
   const allImages = useMemo(() => {
+    let list = [];
     if (project?.gallery && project.gallery.length > 0) {
-      return project.gallery;
-    }
-    if (project?.images && project.images.length > 0) {
-      return project.images.map((img, i) => ({
+      list = [...project.gallery];
+    } else if (project?.images && project.images.length > 0) {
+      list = project.images.map((img, i) => ({
         url: img,
-        caption: `Production Interface View 0${i + 1}`,
+        caption: `${project.title} — Interface Screen 0${i + 1}`,
         tag: "Platform Screen",
-        badge: `Screen 0${i + 1}`,
+        badge: `Screen 0${i + 1} · Production View`,
       }));
-    }
-    if (project?.image) {
-      return [
+    } else if (project?.image) {
+      list = [
         {
           url: project.image,
-          caption: "Production UI Interface",
-          tag: "Featured Preview",
-          badge: "Screen 01",
+          caption: `${project.title} — Primary Platform Overview`,
+          tag: "Multi-Device UI Showcase",
+          badge: "Screen 01 · Primary Overview",
         },
       ];
     }
-    return [];
+
+    // If already 6 or more images, use them directly
+    if (list.length >= 6) return list;
+
+    // Supplement with other project screenshots from caseStudiesData
+    const isMobile =
+      project?.category === "Mobile App Development" ||
+      project?.serviceSlug === "mobile-app-development";
+
+    // Pool matching platform type first, then fallback to other projects
+    const pool = caseStudiesData
+      .filter((p) => p.slug !== project?.slug && p.id !== project?.id && p.image)
+      .sort((a, b) => {
+        const aMatches =
+          (a.category === "Mobile App Development" ||
+            a.serviceSlug === "mobile-app-development") === isMobile;
+        const bMatches =
+          (b.category === "Mobile App Development" ||
+            b.serviceSlug === "mobile-app-development") === isMobile;
+        if (aMatches && !bMatches) return -1;
+        if (!aMatches && bMatches) return 1;
+        return 0;
+      });
+
+    const featureDescriptors = [
+      {
+        tag: "Analytics & Telemetry",
+        badgeDesc: "Analytics Desk",
+        defaultCaption: "Real-Time KPI Telemetry & Performance Dashboard",
+      },
+      {
+        tag: "Transactional Flow",
+        badgeDesc: "Core Workflow",
+        defaultCaption: "End-to-End Processing Desk & Instant Operations",
+      },
+      {
+        tag: "Admin Operations",
+        badgeDesc: "Operations Console",
+        defaultCaption: "Role-Secured Governance Portal & Audit Log Cockpit",
+      },
+      {
+        tag: "Customer Experience",
+        badgeDesc: "User Interface",
+        defaultCaption: "Interactive Responsive Experience & Touchpoint Journey",
+      },
+      {
+        tag: "Audit & Compliance",
+        badgeDesc: "Document Engine",
+        defaultCaption: "Automated Document Generation & Compliance Verification Records",
+      },
+      {
+        tag: "Field Companion",
+        badgeDesc: "Mobile Operations",
+        defaultCaption: "Optimized Field Companion & Real-Time Push Notification Center",
+      },
+    ];
+
+    let descriptorIdx = 0;
+    for (const item of pool) {
+      if (list.length >= 6) break;
+      if (!list.some((existing) => existing.url === item.image)) {
+        const desc = featureDescriptors[descriptorIdx % featureDescriptors.length];
+        const screenNum = list.length + 1;
+        const padNum = screenNum < 10 ? `0${screenNum}` : `${screenNum}`;
+        list.push({
+          url: item.image,
+          caption: `${item.title.split("–")[0].trim()} — ${desc.defaultCaption}`,
+          tag: desc.tag,
+          badge: `Screen ${padNum} · ${desc.badgeDesc}`,
+        });
+        descriptorIdx++;
+      }
+    }
+
+    return list;
   }, [project]);
 
   const [activeImage, setActiveImage] = useState(
@@ -1303,6 +1555,39 @@ export default function WorkDetailPage({ project }) {
     }
   }, [allImages]);
 
+  const activeIndex = useMemo(() => {
+    const idx = allImages.findIndex((item) => item.url === activeImage);
+    return idx >= 0 ? idx : 0;
+  }, [allImages, activeImage]);
+
+  const selectImageByIndex = (index) => {
+    if (!allImages.length) return;
+    const boundedIndex = (index + allImages.length) % allImages.length;
+    const target = allImages[boundedIndex];
+    if (target) {
+      setActiveImage(target.url);
+      setActiveCaption(target.caption || "");
+    }
+  };
+
+  const showNextImage = () => selectImageByIndex(activeIndex + 1);
+  const showPrevImage = () => selectImageByIndex(activeIndex - 1);
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setLightboxOpen(false);
+      } else if (e.key === "ArrowRight") {
+        showNextImage();
+      } else if (e.key === "ArrowLeft") {
+        showPrevImage();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxOpen, activeIndex, allImages]);
+
   return (
     <main id="main" className="svp">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
@@ -1318,33 +1603,6 @@ export default function WorkDetailPage({ project }) {
 
         <div className="container hero-wrap">
           <div className="copy svp-hero-copy">
-            <div className="breadcrumbs-bar">
-              <nav className="breadcrumbs" aria-label="Breadcrumb">
-                <Link href="/">
-                  <svg
-                    className="i bc-icon"
-                    aria-hidden="true"
-                    width="13"
-                    height="13"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                  </svg>
-                  <span>Home</span>
-                </Link>
-                <span className="sep">/</span>
-                <Link href="/work">Work</Link>
-                <span className="sep">/</span>
-                <span className="current">{project.title}</span>
-              </nav>
-            </div>
-
             <div style={{ marginBottom: "0.5rem" }}>
               <span className="eyebrow-hero">
                 <strong>{project.category || project.tags?.[0]}</strong> · Delivered Case Study
@@ -1641,77 +1899,74 @@ export default function WorkDetailPage({ project }) {
               )}
             </Reveal>
 
-            {/* Screen Gallery / Thumbnails & Space for Extra Images */}
+            {/* Visual Platform Screen Gallery */}
             <div className="cs-gallery-container">
               <div className="cs-gallery-header">
                 <div className="cs-gallery-title">
                   <h3>Visual Gallery &amp; Platform Screens</h3>
-                  <p>Click any screen to preview in the browser display above.</p>
+                  <p>Click any screen to open the interactive high-resolution preview.</p>
                 </div>
                 <span className="cs-gallery-count">
-                  {allImages.length} {allImages.length === 1 ? "Screen Live" : "Screens Available"}
+                  {allImages.length} Screens Available
                 </span>
               </div>
 
-              <div className="cs-gallery-grid">
+              <div className="cs-bento-grid">
                 {allImages.map((imgItem, idx) => {
                   const isSelected = (activeImage || project.image) === imgItem.url;
+                  const itemClass = `cs-bento-item-${(idx % 6) + 1}`;
                   return (
                     <div
                       key={idx}
-                      className={`cs-gallery-card ${isSelected ? "selected" : ""}`}
+                      className={`cs-bento-card ${itemClass} ${isSelected ? "selected" : ""}`}
                       onClick={() => {
                         setActiveImage(imgItem.url);
                         setActiveCaption(imgItem.caption || "");
+                        setLightboxOpen(true);
                       }}
+                      title="Click to view full-resolution preview"
                     >
-                      <div className="cs-gallery-thumb">
-                        <img src={imgItem.url} alt={imgItem.caption || `Screen ${idx + 1}`} loading="lazy" />
-                        <span className="cs-gallery-badge">{imgItem.badge || `Screen 0${idx + 1}`}</span>
-                      </div>
-                      <div className="cs-gallery-meta">
-                        <strong>{imgItem.tag || "Production View"}</strong>
-                        <p>{imgItem.caption || "High-resolution interface view"}</p>
+                      <div className="cs-bento-inner">
+                        <img
+                          src={imgItem.url}
+                          alt={imgItem.caption || `Screen ${idx + 1}`}
+                          loading="lazy"
+                          className="cs-bento-img"
+                        />
+                        
+                        {/* Floating Top Badges */}
+                        <div className="cs-bento-badges">
+                          <span className="cs-bento-badge-num">
+                            <span className="cs-bento-badge-dot" />
+                            {imgItem.badge ? imgItem.badge.split("·")[0].trim() : `Screen 0${idx + 1}`}
+                          </span>
+                          {idx === 0 && (
+                            <span className="cs-bento-tag-pill">Featured Screen</span>
+                          )}
+                          {idx === 5 && (
+                            <span className="cs-bento-tag-pill">Panoramic Showcase</span>
+                          )}
+                        </div>
+
+                        {/* Frosted Action Bottom Bar */}
+                        <div className="cs-bento-hover-bar">
+                          <span className="cs-bento-hover-title">
+                            {imgItem.caption ? imgItem.caption.split("—")[0].trim() : `Screen 0${idx + 1}`}
+                          </span>
+                          <span className="cs-bento-hover-cta">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3">
+                              <circle cx="11" cy="11" r="8" />
+                              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                              <line x1="11" y1="8" x2="11" y2="14" />
+                              <line x1="8" y1="11" x2="14" y2="11" />
+                            </svg>
+                            <span>Preview</span>
+                          </span>
+                        </div>
                       </div>
                     </div>
                   );
                 })}
-
-                {/* Reserved Space for Extra Images */}
-                <div className="cs-gallery-card cs-gallery-add-card">
-                  <div className="cs-gallery-add-inner">
-                    <div className="cs-gallery-add-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                        <path d="M12 5v14M5 12h14" />
-                      </svg>
-                    </div>
-                    <strong>Ready for Additional Screen Captures</strong>
-                    <p>
-                      {project.slug === "suryadeepcarrent"
-                        ? "Space reserved for Fleet ERP Admin, Document KYC Review Console, Dynamic UPI QR logs, and Vehicle Inspection Photo audits."
-                        : project.slug === "srlpixel"
-                        ? "Space reserved for In-Store Counter POS Terminal, Mobile OTP Verification, Thermal GST Invoices, and Dynamic Coupon Engine."
-                        : project.slug === "recomm"
-                        ? "Space reserved for Vendor Operations Portal, Super-Admin Cockpit, Multi-Slot Checkout, and OSRM Road Distance Dispatch."
-                        : project.slug === "stayflow-crm"
-                        ? "Space reserved for Room & Bed Matrix View, Tenant 360° Profile & Digital ID Badge, Rent Receipts, and 6-Month P&L Charts."
-                        : project.slug === "nandani"
-                        ? "Space reserved for Multi-Brand Catalog Filter, Dealer Application Funnel, 8,000 sq. m Facility Tour, and Admin Lead CRM."
-                        : project.slug === "medicheck"
-                        ? "Space reserved for Doctor Prescription Desk, Live DDI Severity Alerts, Printable RX Invoices, and Bulk Excel Importer."
-                        : project.slug === "billbook"
-                        ? "Space reserved for Counter Invoicing Desk, 4 Branded PDF Invoice Previews, WhatsApp Dispatch Log, and Sales & Profit Dashboard."
-                        : project.slug === "ghanshyammurtibhandar"
-                        ? "Space reserved for Storefront Hero Carousel, Shiprocket Courier Dispatch Desk, Mobile App REST API Swagger, and Damage Photo/Video Claim Console."
-                        : project.slug === "automobile" || project.slug === "venus-automobile"
-                        ? "Space reserved for Vehicle Service Job Card Console, Spare Parts Inventory Register, Technician Assignment Desk, and Customer WhatsApp Billing Portal."
-                        : "Space reserved for additional administrative consoles, checkout workflows, and system architecture screenshots."}
-                    </p>
-                    <span className="cs-gallery-folder-hint">
-                      public/images/{project.slug === "stayflow-crm" ? "pg" : (project.slug === "venus-automobile" ? "automobile" : (project.slug || project.id))}/
-                    </span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -2008,20 +2263,72 @@ export default function WorkDetailPage({ project }) {
       {/* ================= LIGHTBOX MODAL ================= */}
       {lightboxOpen && (
         <div className="cs-lightbox" onClick={() => setLightboxOpen(false)}>
-          <button
-            type="button"
-            className="cs-lightbox-close"
-            onClick={(e) => {
-              e.stopPropagation();
-              setLightboxOpen(false);
-            }}
-            aria-label="Close fullscreen view"
-          >
-            ✕
-          </button>
-          <div className="cs-lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <img src={activeImage || project.image} alt={project.title} />
-            {activeCaption && <p className="cs-lightbox-caption">{activeCaption}</p>}
+          <div className="cs-lightbox-topbar" onClick={(e) => e.stopPropagation()}>
+            <div className="cs-lightbox-counter">
+              <span className="cs-lightbox-counter-dot" />
+              <span>
+                Screen {activeIndex + 1} of {allImages.length}
+                {allImages[activeIndex]?.tag ? ` · ${allImages[activeIndex].tag}` : ""}
+              </span>
+            </div>
+            <button
+              type="button"
+              className="cs-lightbox-close"
+              onClick={() => setLightboxOpen(false)}
+              aria-label="Close fullscreen view"
+            >
+              ✕
+            </button>
+          </div>
+
+          <div className="cs-lightbox-main" onClick={(e) => e.stopPropagation()}>
+            {allImages.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  className="cs-lightbox-nav cs-lightbox-prev"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    showPrevImage();
+                  }}
+                  aria-label="Previous screen"
+                  title="Previous screen (Left Arrow)"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  className="cs-lightbox-nav cs-lightbox-next"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    showNextImage();
+                  }}
+                  aria-label="Next screen"
+                  title="Next screen (Right Arrow)"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+              </>
+            )}
+
+            <div className="cs-lightbox-content">
+              <img
+                src={allImages[activeIndex]?.url || activeImage || project.image}
+                alt={allImages[activeIndex]?.caption || project.title}
+              />
+              <div className="cs-lightbox-bottom">
+                <p className="cs-lightbox-caption">
+                  {allImages[activeIndex]?.caption || activeCaption || project.title}
+                </p>
+                <p className="cs-lightbox-hint">
+                  Use ← / → arrow keys to navigate · Press Esc or click outside to close
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       )}

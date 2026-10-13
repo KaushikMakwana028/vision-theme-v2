@@ -2,7 +2,8 @@ export const workCategories = [
   "All",
   "Website Development",
   "Ecommerce Solutions",
-  "Custom Software & CRM"
+  "Custom Software & CRM",
+  "Mobile App Development"
 ];
 
 export const caseStudiesData = [
@@ -1479,6 +1480,1797 @@ export const caseStudiesData = [
       role: "General Manager",
       company: "Venus Motors Pvt. Ltd."
     }
+  },
+  {
+    id: "ananyahomeservice",
+    slug: "ananyahomeservice",
+    serviceSlug: "website-development",
+    category: "Website Development",
+    title: "Anaya Home Service – Interior Design & Home Finishing Website",
+    subtitle: "Corporate Interior Design Showcase, 10-Service Catalog & Multi-Channel Lead Engine",
+    client: "Anaya Home Service, New Ranip, Ahmedabad, Gujarat",
+    industry: "Interior Design, Home Improvement & Home Services",
+    duration: "4 Weeks",
+    country: "India",
+    website: "https://ananyahomeservice.com",
+    domain: "ananyahomeservice.com",
+    description: "A responsive corporate business and lead generation website for an Ahmedabad-based interior design and home-finishing company, showcasing 10 specialized residential services, project galleries, video testimonials, and instant WhatsApp & click-to-call booking workflows.",
+    shortPitch: "Anaya Home Service is a responsive business website built for an interior design and home-finishing company in New Ranip, Ahmedabad. Engineered with WordPress and Elementor for effortless no-code content management, it presents ten service categories, a project gallery, a YouTube video testimonial section, an FAQ, and a blog—complete with a 'Book Appointment' funnel, contact forms, one-tap WhatsApp chat, click-to-call, and Google Maps location routing to turn local visitors into qualified enquiries.",
+    tags: ["WordPress & Elementor", "Interior Design", "Lead Generation", "WhatsApp Integration", "Live Platform"],
+    gradient: "linear-gradient(135deg, #d97706, #78350f)",
+    image: "/images/ananyahomeservice/01_ananyahomeservice.png",
+    images: [
+      "/images/ananyahomeservice/01_ananyahomeservice.png"
+    ],
+    gallery: [
+      {
+        url: "/images/ananyahomeservice/01_ananyahomeservice.png",
+        caption: "Responsive Multi-Device Showcase — Hero Slider, 10-Service Catalogue & Instant Quote Booking",
+        tag: "Corporate & Lead Gen Website",
+        badge: "Screen 01 · Production View"
+      }
+    ],
+    metrics: [
+      { value: "10+", label: "Interior Service Verticals" },
+      { value: "1–3 BHK", label: "Turnkey Home Coverage" },
+      { value: "1-Tap", label: "WhatsApp & Call Leads" },
+      { value: "100%", label: "No-Code Self-Managed" }
+    ],
+    challenge: "Anaya Home Service offers full-spectrum residential interior design and home-finishing work—spanning kitchens, bedrooms, living rooms, wardrobes, pooja rooms, dining rooms, home offices, bathrooms, balconies, and complete 1–3 BHK homes in Ahmedabad. However, the company lacked a digital presence: local homeowners searching online for interior contractors had no website to discover, trust, or contact them; explaining ten distinct trades (Colour, Lighting, Texture, Design, Stencil, Tiles, Waterproofing, POP, PVC Furniture, and Plumbing) required structured, dedicated pages; prospective clients needed fast, frictionless ways to request quotes via web form, phone call, or WhatsApp; and the business owner needed to update text, portfolio photos, and blog articles without developer assistance.",
+    solution: "Vision built a modern, mobile-responsive corporate and lead-generation website powered by WordPress and Elementor. The platform combines a high-converting hero slider with dual CTAs, dedicated pages for all 10 interior and finishing services, an interactive project portfolio gallery, embedded YouTube video testimonials, a homeowner FAQ section, and multi-channel conversion touchpoints—including 'Book Appointment' buttons across every page, one-tap prefilled WhatsApp chat, mobile click-to-call links, and an embedded Google Maps location guide.",
+    deliverables: [
+      "Responsive WordPress & Elementor Corporate Website with No-Code Editing",
+      "10 Dedicated Interior & Home-Finishing Service Pages (Colour, Light, Texture, POP, PVC & More)",
+      "Interactive Project Portfolio Gallery with Detailed Showcase Pages",
+      "Multi-Channel Lead Capture Engine (Book Appointment CTAs & Enquiry Forms)",
+      "One-Tap Prefilled WhatsApp Chat & Mobile Click-to-Call Integration",
+      "Embedded YouTube Video Testimonial Showcase, Homeowner FAQ & SEO Blog",
+      "Next-Gen WebP & AVIF Image Optimization & Interactive Google Maps Embed"
+    ],
+    techStack: [
+      "WordPress CMS",
+      "Elementor Page Builder",
+      "PHP & MySQL",
+      "HTML5 & CSS3",
+      "JavaScript (ES6)",
+      "WebP & AVIF Image Optimization",
+      "WhatsApp Click-to-Chat API",
+      "Click-to-Call Telephony",
+      "Google Maps Embed API",
+      "YouTube Video Embed",
+      "Google Fonts"
+    ],
+    modules: [
+      {
+        title: "Public Website & 10-Service Catalogue",
+        icon: "i-layers",
+        description: "Comprehensive showcase of residential interior design and finishing trades structured for easy homeowner navigation.",
+        features: [
+          "High-impact hero slider with strong value proposition and dual CTAs (View Services & Contact Us)",
+          "Dedicated pages for 10 core services: Colour, Light, Texture, Design, Stencil, Tiles, Waterproofing, POP, PVC Furniture & Plumbing",
+          "Coverage for kitchens, bedrooms, living rooms, wardrobes, pooja rooms, home offices & 1–3 BHK turnkey homes",
+          "About Us & 'Why Choose Us' sections highlighting quality materials, skilled craftsmanship, and team expertise"
+        ]
+      },
+      {
+        title: "Project Portfolio, Video Testimonials & Trust Hub",
+        icon: "i-camera",
+        description: "Visual proof of finishing quality designed to build immediate homeowner confidence and credibility.",
+        features: [
+          "Filterable project gallery cards linking to dedicated residential interior showcase pages",
+          "Customer testimonial section featuring embedded YouTube video stories and client reviews",
+          "Interactive FAQ accordion answering common homeowner questions on interior timelines and materials",
+          "Design tips blog, team member showcase with social profiles, and footer newsletter signup"
+        ]
+      },
+      {
+        title: "Multi-Channel Lead Generation & Instant Contact",
+        icon: "i-smartphone",
+        description: "Frictionless conversion pathways enabling homeowners to request estimates via their preferred communication channel.",
+        features: [
+          "Prominent 'Book Appointment' CTA in the sticky header and conversion banners across all pages",
+          "Structured enquiry forms on Home and Contact pages capturing name, email, phone, address, subject & message",
+          "One-tap WhatsApp chat integration with prefilled enquiry text for instant mobile conversations",
+          "Direct click-to-call phone triggers, emergency call banners, and embedded Google Maps showroom pin"
+        ]
+      },
+      {
+        title: "No-Code Elementor CMS & Media Optimization",
+        icon: "i-layout",
+        description: "Self-service content administration paired with modern image compression for fast mobile loading.",
+        features: [
+          "Intuitive WordPress Admin + Elementor visual builder allowing staff to edit text and swap photos without code",
+          "Effortless publishing workflow for adding new completed home projects, service categories, and SEO blog posts",
+          "Next-gen WebP and AVIF media delivery ensuring rapid page loads across mobile networks",
+          "Fully responsive layout adapting seamlessly across smartphones, tablets, and desktop monitors"
+        ]
+      }
+    ],
+    featureHighlights: [
+      {
+        title: "10-Service Interior & Finishing Showcase",
+        desc: "Dedicated, clearly organized pages for Colour, Lighting, Texture, Design, Stencil, Tiles, Waterproofing, POP, PVC Furniture, and Plumbing.",
+        icon: "i-layers"
+      },
+      {
+        title: "One-Tap WhatsApp & Click-to-Call Leads",
+        desc: "Turns mobile visitors into immediate enquiries with prefilled WhatsApp messages, direct phone calling, and Book Appointment forms.",
+        icon: "i-smartphone"
+      },
+      {
+        title: "Project Gallery & Video Testimonials",
+        desc: "Showcases completed 1–3 BHK residential interiors alongside embedded YouTube video reviews and homeowner FAQs.",
+        icon: "i-camera"
+      },
+      {
+        title: "100% No-Code Owner Management",
+        desc: "Built on WordPress and Elementor so the business owner can update portfolios, pricing banners, and blog posts without developer help.",
+        icon: "i-code"
+      }
+    ],
+    resultsComparison: [
+      { metric: "Digital Presence & Trust", before: "No website for local homeowners to verify work", after: "Professional 24/7 showcase across 10 interior trades" },
+      { metric: "Customer Enquiry Channels", before: "Offline word-of-mouth & manual phone calls", after: "Web forms, 1-tap WhatsApp, click-to-call & map routing" },
+      { metric: "Service Clarity", before: "Customers unaware of full 10-service finishing scope", after: "Dedicated landing pages for every interior & finishing trade" },
+      { metric: "Content & Gallery Updates", before: "Dependent on technical help for every change", after: "100% self-managed via Elementor visual drag-and-drop" }
+    ],
+    architectureDetails: {
+      pattern: "Component-Driven WordPress & Elementor CMS Architecture with Multi-Channel Conversion Hooks",
+      highlights: [
+        "Visual Page Builder Architecture: Modular Elementor templates enabling zero-code updates across all 10 service pages",
+        "Next-Gen Media Pipeline: Automated WebP and AVIF image serving alongside lazy-loaded YouTube video embeds",
+        "Omnichannel Lead Routing: Unified conversion hooks connecting web forms, WhatsApp API links, and tel: handlers",
+        "Local SEO Structure: Semantic HTML5 headings, FAQ schema readiness, and embedded Google Maps location indexing",
+        "Mobile-First Responsive Grid: Fluid CSS3 flexbox/grid layouts optimized for homeowners browsing on smartphones"
+      ]
+    },
+    testimonial: {
+      quote: "Our new website gives homeowners in Ahmedabad a clear view of all ten interior and home-finishing services we offer. Customers can see our past work and reach us immediately on WhatsApp or phone to book an appointment, and we can update photos ourselves anytime.",
+      author: "Founder & Principal Contractor",
+      role: "Proprietor",
+      company: "Anaya Home Service, Ahmedabad"
+    }
+  },
+  {
+    id: "filterbook",
+    slug: "filterbook",
+    serviceSlug: "mobile-app-development",
+    category: "Mobile App Development",
+    title: "FilterBook – CRM, Billing & Service Management Platform for RO Water Purifier Businesses",
+    subtitle: "Manage Customers, Service Schedules, AMC Contracts, QR Complaints & WhatsApp Billing — All in One Place",
+    client: "FilterBook by Vision Technolabs",
+    industry: "B2B SaaS / CRM / Field Service Management / Retail & After-Sales Service",
+    duration: "12 Weeks",
+    country: "India",
+    website: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.filterbook",
+    domain: "com.visiontechnolabs.filterbook",
+    description: "FilterBook is a CRM and service management platform built for RO water purifier sales and service businesses. It replaces paper registers and spreadsheets with automatic service scheduling, WhatsApp PDF invoices, QR-code complaint registration, AMC contract tracking with audit logs, and a shareable digital product catalogue across Android, iOS, and Web.",
+    shortPitch: "Water purifier businesses depend on long-term relationships after the sale: filter changes, scheduled maintenance visits, Annual Maintenance Contract (AMC) renewals, and quick complaint handling. FilterBook brings all of this into one connected ecosystem—featuring a React Native (Expo) mobile app for daily field and counter operations, a Vendor Web Admin Panel, a Multi-Tenant Super Admin Console, and zero-login Public QR pages for customer complaints and product catalogue browsing.",
+    tags: ["React Native (Expo)", "Field Service CRM", "WhatsApp PDF Billing", "QR Complaints", "Android & iOS"],
+    gradient: "linear-gradient(135deg, #0284c7, #1d4ed8)",
+    image: "/app_images/Filterbook/01_app_FB.png",
+    images: [
+      "/app_images/Filterbook/01_app_FB.png"
+    ],
+    gallery: [
+      {
+        url: "/app_images/Filterbook/01_app_FB.png",
+        caption: "Omnichannel RO Service SaaS — Android & iOS Mobile App, Vendor Web Panel & Public QR Portals",
+        tag: "Mobile App & SaaS Suite",
+        badge: "Screen 01 · Production View"
+      }
+    ],
+    metrics: [
+      { value: "4-in-1", label: "App, Web, Admin & QR" },
+      { value: "100%", label: "Auto Service Schedules" },
+      { value: "<1 min", label: "QR Complaint Logging" },
+      { value: "Instant", label: "WhatsApp PDF Invoices" }
+    ],
+    challenge: "Water purifier businesses depend on long relationships after the sale—filter replacements, periodic maintenance visits, Annual Maintenance Contract (AMC) renewals, and rapid complaint resolution. Most shop owners managed hundreds of customers in paper diaries or disconnected Excel sheets, leading to missed recurring service dates, lost AMC renewal revenue once contracts expired, slow phone-based complaint handling, tedious manual invoice writing, and no simple way to share a digital product catalogue with prospective buyers or view orders, services, and complaints in one unified dashboard.",
+    solution: "Vision engineered FilterBook, a 4-tier multi-tenant SaaS ecosystem comprising a React Native (Expo) mobile app for Android and iOS, a Vendor Web Admin Panel, a Super Admin Console, and zero-login Public QR Web Pages. When an order is saved, FilterBook automatically generates the customer's full recurring maintenance schedule, renders an itemized A4 PDF invoice with upcoming service dates via TCPDF, and delivers it directly to the customer's WhatsApp via the Meta WhatsApp Cloud API. Customers register complaints in under a minute by scanning a QR code on their purifier, triggering instant push notifications to the shop owner's phone.",
+    deliverables: [
+      "Cross-Platform Mobile Application for Android & iOS (React Native / Expo)",
+      "Vendor Web Admin Panel for Store, Order, Service & AMC Operations",
+      "Multi-Tenant Super Admin Console for Platform-Wide Business Governance",
+      "Public QR Complaint Registration Portal (Zero App or Login Required)",
+      "Shareable Public QR Digital Product Catalogue with Direct WhatsApp Enquiry",
+      "Automated TCPDF A4 Invoice Generator & Meta WhatsApp Cloud API Delivery",
+      "AMC Contract Lifecycle Engine with Duplicate Protection & Full Audit Logs",
+      "Automated Daily Cron Reminders via Expo Push & Firebase Cloud Messaging (FCM)"
+    ],
+    techStack: [
+      "React Native (Expo)",
+      "PHP 7.4+ / 8.x",
+      "CodeIgniter 3 MVC",
+      "MySQL / MariaDB",
+      "REST API & Stateless JWT (HS256)",
+      "Meta WhatsApp Cloud API",
+      "TCPDF (A4 PDF Invoices)",
+      "Expo Push & Firebase FCM",
+      "Bootstrap 5.3 & DataTables",
+      "DLT SMS OTP Gateway",
+      "Zoho SMTP"
+    ],
+    modules: [
+      {
+        title: "Real-Time Business Dashboard & Smart Alerts",
+        icon: "i-chart",
+        description: "Live operational command center tracking monthly and lifetime business KPIs alongside automated daily push reminders.",
+        features: [
+          "Live counters for total customers, orders, active vs. expired AMCs, open vs. solved complaints, and pending vs. completed services",
+          "At-a-glance priority lists for upcoming service visits, expiring AMC contracts, and newly submitted customer complaints",
+          "Scheduled background jobs identifying services due today and tomorrow with automated push alerts to the owner's phones",
+          "Multi-device session synchronization ensuring push notifications reach every signed-in device"
+        ]
+      },
+      {
+        title: "Orders, Auto-Scheduling & WhatsApp PDF Invoices",
+        icon: "i-file-text",
+        description: "One-step order entry that simultaneously builds the maintenance calendar and dispatches a branded invoice on WhatsApp.",
+        features: [
+          "Smart 10-digit mobile number lookup that retrieves existing customer profiles or creates new accounts automatically",
+          "Automated recurring service calendar generation based on purchase date, interval (e.g., every 3 or 6 months), and service count",
+          "Dynamic TCPDF generation producing branded A4 invoices with itemized pricing and the complete upcoming service schedule",
+          "Zero-click Meta WhatsApp Cloud API integration uploading and sending the PDF invoice directly to the customer's WhatsApp"
+        ]
+      },
+      {
+        title: "Service Tracker & AMC Contract Management",
+        icon: "i-shield",
+        description: "End-to-end lifecycle tracking for routine filter maintenance visits and Annual Maintenance Contracts with full audit history.",
+        features: [
+          "Interactive service tracker filtering scheduled visits by Pending or Done across any month and year",
+          "Custom standalone service plans for customers who purchased purifiers elsewhere but enroll for recurring maintenance",
+          "AMC contract engine tracking start/end dates, contract value, remaining days, Active/Expired badges, and duplicate protection",
+          "Immutable audit log recording every AMC creation, modification, and deletion with before-and-after field snapshots"
+        ]
+      },
+      {
+        title: "Zero-Login QR Complaint System",
+        icon: "i-smartphone",
+        description: "Frictionless QR-based support workflow allowing customers to report purifier issues in seconds without installing an app.",
+        features: [
+          "Customer scans the shop's QR code sticker on their purifier, selects their product and issue type, and submits a ticket",
+          "Instant real-time push notification dispatched via Expo Push / FCM to the shop owner's mobile app",
+          "Centralized complaint queue allowing technicians and owners to transition tickets from Pending to Solved",
+          "Complete complaint history tied to the customer's profile for informed field technician visits"
+        ]
+      },
+      {
+        title: "Inventory & Shareable QR Digital Catalogue",
+        icon: "i-shopping-bag",
+        description: "Integrated stock control paired with a public-facing digital storefront shareable via a single QR code.",
+        features: [
+          "Catalog and inventory management covering categories, purifier models, brands, units, stock quantities, and purchase/selling prices",
+          "Public digital product catalogue showcasing featured RO models with high-res photos, specifications, and pricing",
+          "Single shareable QR code and link for showroom counters, visiting cards, and social media marketing",
+          "Built-in 'Enquire on WhatsApp' button on every product card to turn catalogue browsers into direct sales leads"
+        ]
+      },
+      {
+        title: "Multi-Tenant Super Admin & Security Architecture",
+        icon: "i-lock",
+        description: "Platform-level governance console with stateless JWT security, SMS OTP authentication, and remote session control.",
+        features: [
+          "Super Admin Console overseeing all registered RO businesses, platform-wide orders, complaints, and tenant customer bases",
+          "Instant tenant lifecycle controls to activate, suspend, or inspect any registered vendor account",
+          "DLT-compliant SMS OTP registration/login, stateless HS256 JWT authentication, and server-side remote token invalidation",
+          "Zoho SMTP password recovery, self-service account deletion compliance, and built-in Privacy, Terms & Refund policy pages"
+        ]
+      }
+    ],
+    featureHighlights: [
+      {
+        title: "Automatic Service Calendar Generation",
+        desc: "Entering an order's service interval and count automatically builds the entire multi-month maintenance schedule and triggers daily due-date push alerts.",
+        icon: "i-calendar"
+      },
+      {
+        title: "Instant WhatsApp Cloud PDF Invoicing",
+        desc: "Generates an itemized A4 PDF invoice containing the customer's upcoming service schedule and sends it directly to their WhatsApp number upon saving an order.",
+        icon: "i-file-text"
+      },
+      {
+        title: "Scan-to-Log QR Complaint Portal",
+        desc: "Customers scan a QR code on their water purifier to log service issues in under 60 seconds with zero app download or login, alerting the owner immediately.",
+        icon: "i-smartphone"
+      },
+      {
+        title: "AMC Tracking with Immutable Audit Logs",
+        desc: "Protects recurring AMC revenue with expiry dashboard alerts, duplicate contract prevention, and a complete before/after audit trail of every contract change.",
+        icon: "i-shield"
+      }
+    ],
+    resultsComparison: [
+      { metric: "Recurring Service Tracking", before: "Paper diaries & forgotten maintenance dates", after: "100% automated schedule & daily push reminders" },
+      { metric: "Customer Billing & Delivery", before: "Manual handwritten bills & separate sharing", after: "Instant A4 PDF invoice sent via WhatsApp Cloud API" },
+      { metric: "Complaint Registration", before: "Phone calls easily missed or forgotten", after: "<1 min customer QR scan with instant owner push alert" },
+      { metric: "AMC Renewal Visibility", before: "Expired contracts noticed only when customer calls", after: "Proactive dashboard expiry lists & full audit history" }
+    ],
+    architectureDetails: {
+      pattern: "Multi-Tenant SaaS MVC Backend with Stateless JWT REST API, React Native (Expo) Mobile App & Public QR Micro-Frontends",
+      highlights: [
+        "Omnichannel 4-Tier Sync: Unified MySQL relational schema serving the React Native app, Vendor Web Panel, Super Admin Console, and Public QR pages",
+        "Stateless JWT + Remote Revocation: HS256 token authentication paired with server-side session invalidation for instant multi-device security",
+        "Automated Document & Messaging Pipeline: Server-side TCPDF rendering piped directly into Meta WhatsApp Cloud API media endpoints",
+        "Dual Push Notification Engine: Coordinated Expo Push Service and Firebase Cloud Messaging (FCM) with cron-driven daily service reminders",
+        "Relational Audit Logging: Dedicated change-tracking tables capturing old and new state payloads across AMC contract lifecycles"
+      ]
+    },
+    testimonial: {
+      quote: "FilterBook replaced all our paper registers. Now whenever we sell an RO purifier, the customer immediately gets a PDF bill with their service dates on WhatsApp, our team gets daily reminders for filter changes, and customers just scan our QR code to log a complaint.",
+      author: "Product & Operations Team",
+      role: "SaaS Platform Division",
+      company: "FilterBook by Vision Technolabs"
+    }
+  },
+  {
+    id: "divyshakti",
+    slug: "divyshakti",
+    serviceSlug: "mobile-app-development",
+    category: "Mobile App Development",
+    title: "Divy Shakti – Wellness E-Commerce & Referral Network Mobile App",
+    subtitle: "Divine Wellness & Prosperity — Ayurvedic E-Commerce, 2D Genealogy Tree, 15-Field KYC & Digital Wallet App",
+    client: "Divy Shakti",
+    industry: "Direct Selling / Ayurvedic Wellness & Lifestyle Products / Social E-Commerce",
+    duration: "10 Weeks",
+    country: "India",
+    website: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.divyshakti",
+    domain: "com.visiontechnolabs.divyshakti",
+    description: "Divy Shakti is a cross-platform mobile app that combines Ayurvedic and lifestyle shopping with a multi-level referral network and a built-in digital wallet. Members register with mobile OTP, complete a 15-field KYC and bank verification, explore their team in an interactive 2D genealogy tree, top up their wallet through UPI, shop products, and request withdrawals to their verified bank account.",
+    shortPitch: "Divy Shakti brings community-driven direct selling of wellness, herbal, and lifestyle products onto one unified cross-platform mobile application. Built with React Native 0.81, Expo SDK 54, and React 19 (New Architecture), it combines sponsor-validated member onboarding, a 15-field Aadhaar/PAN/Bank KYC workflow with live admin polling, a custom interactive 2D SVG genealogy tree, a UPI-integrated digital wallet with protected on-hold withdrawal accounting, and a full e-commerce order lifecycle.",
+    tags: ["React Native 0.81 & Expo 54", "2D SVG Genealogy Tree", "Digital Wallet & UPI", "15-Field KYC Verification", "Android & iOS"],
+    gradient: "linear-gradient(135deg, #E64A78, #C89738)",
+    image: "/app_images/Divy_Shakti/01_app_DS.png",
+    images: [
+      "/app_images/Divy_Shakti/01_app_DS.png"
+    ],
+    gallery: [
+      {
+        url: "/app_images/Divy_Shakti/01_app_DS.png",
+        caption: "Divy Shakti Mobile App — Wellness Storefront, Interactive 2D Genealogy Network, KYC & Digital Wallet",
+        tag: "Cross-Platform Mobile App",
+        badge: "Screen 01 · Production View"
+      }
+    ],
+    metrics: [
+      { value: "23", label: "Native App Screens" },
+      { value: "15-Field", label: "KYC & Bank Verification" },
+      { value: "2D SVG", label: "Interactive Genealogy" },
+      { value: "4-Layer", label: "Self-Healing Storage" }
+    ],
+    challenge: "Direct-selling wellness networks frequently struggle with fake or unverified sign-ups, opaque downline structures where members cannot easily see who sits at each level or how active their team is, and manual deposit/withdrawal processes that lead to payout delays and double-spending disputes. Furthermore, shopping, digital wallet balances, team genealogy, and KYC verification were fragmented across disconnected tools, while Play Store and App Store policies required strict identity verification and in-app account compliance.",
+    solution: "Vision engineered Divy Shakti on React Native 0.81 and Expo SDK 54 (React 19 New Architecture)—delivering a 23-screen Android and iOS application styled in a custom 'Royal Warm Blush, Rose & Gold' theme. Every member joins via a validated sponsor code, completes a 3-section, 15-field Aadhaar, PAN, and Bank KYC workflow with 7-second live admin approval polling, visualizes their entire referral downline in a pinch-to-zoom 2D SVG genealogy tree, tops up their wallet via UPI deep links, shops Ayurvedic products with instant wallet checkout, and requests bank withdrawals protected by on-hold balance accounting.",
+    deliverables: [
+      "Cross-Platform Android & iOS Mobile Application (React Native 0.81, Expo SDK 54, React 19)",
+      "Passwordless SMS OTP Onboarding with Real-Time Sponsor Code Validation",
+      "3-Section, 15-Field KYC & Bank Verification Engine with 7-Second Live Approval Polling",
+      "Custom Recursive 2D SVG Genealogy Tree with Pinch-to-Zoom, Pan & Level Color-Coding",
+      "Digital Wallet with UPI Deep-Link Top-Ups, UTR/Receipt Upload & On-Hold Withdrawal Protection",
+      "Ayurvedic E-Commerce Catalogue, Smart Cart, Wallet Checkout & 4-Stage Order Tracking",
+      "Self-Healing 4-Layer Encrypted Session Storage (Memory, SecureStore & Dual AsyncStorage)",
+      "Play Store & App Store Compliance Suite (Account Deletion & Dynamic Legal CMS Pages)"
+    ],
+    techStack: [
+      "React Native 0.81 (New Architecture)",
+      "Expo SDK 54 & React 19",
+      "React Navigation (23 Screens)",
+      "react-native-svg (2D Tree Engine)",
+      "Expo SecureStore & AsyncStorage",
+      "RESTful APIs (30s Timeout & Auto-Token)",
+      "UPI Deep Links & QR Payments",
+      "Poppins Design System (#E64A78 / #C89738)"
+    ],
+    modules: [
+      {
+        title: "Sponsor-Validated Onboarding & 15-Field KYC",
+        icon: "i-shield",
+        description: "Strict identity and sponsor verification pipeline ensuring every member in the referral network is genuine and bank-verified.",
+        features: [
+          "Passwordless 10-digit Indian mobile login with 6-digit SMS OTP, auto-advancing inputs, and a 30-second resend timer",
+          "Real-time sponsor code validation at registration that blocks sign-ups under inactive or unapproved sponsors",
+          "Structured 3-section, 15-field KYC covering Personal Details (5), Aadhaar & PAN numbers with photo uploads (4), and Bank Details (6)",
+          "0% to 100% completion tracker with 7-second live status polling that automatically unlocks shopping and referrals upon admin approval"
+        ]
+      },
+      {
+        title: "Interactive 2D SVG Genealogy & Team Network",
+        icon: "i-users",
+        description: "Custom visual downline explorer and level-by-level directory giving members complete clarity across their referral organization.",
+        features: [
+          "Custom recursive 2D genealogy chart built with react-native-svg featuring parent-child connectors, pinch-to-zoom, and pan gestures",
+          "Level color-coding and instant search across the network by member name, phone number, or referral code",
+          "Filterable list view (All, Level 1, Level 2, etc.) displaying active/inactive badges, join dates, and direct team sizes",
+          "Deep member drill-down allowing users to inspect any downline profile, depth, and sponsor, and traverse further down their referrals"
+        ]
+      },
+      {
+        title: "Digital Wallet, UPI Top-Ups & Protected Payouts",
+        icon: "i-credit-card",
+        description: "End-to-end financial ledger combining seamless UPI deposits, revenue analytics, and double-spend-proof bank withdrawals.",
+        features: [
+          "Comprehensive financial dashboard displaying available balance, held balance, daily/monthly/total revenue, and commission summaries",
+          "UPI wallet top-up flow with admin QR code, bank details, one-tap 'Pay via UPI App' (GPay, PhonePe, Paytm, BHIM), quick-amount chips, UTR entry, and receipt upload",
+          "Protected withdrawal engine that immediately places requested payout amounts 'On Hold' across the app to prevent double spending",
+          "Instant wallet checkout for product orders with automatic wallet refunds whenever a pending order is cancelled"
+        ]
+      },
+      {
+        title: "Ayurvedic & Lifestyle E-Commerce Storefront",
+        icon: "i-shopping-bag",
+        description: "Purpose-built wellness shopping experience with herbal ingredient tagging, server-synced cart, and 4-stage order tracking.",
+        features: [
+          "Rich product catalogue with category filters, live search, multi-image galleries, MRP discount badges, herbal ingredient tags, key benefits, and size variants (S, M, L)",
+          "Smart cart with instant optimistic UI updates backed by server synchronization, supporting both multi-item checkout and single-item 'Buy Now'",
+          "4-stage visual order progress tracker (Order Placed, Confirmed, Shipped, Delivered) with full address book management",
+          "One-tap cancellation on pending orders that immediately credits the full order amount back to the member's digital wallet"
+        ]
+      },
+      {
+        title: "Self-Healing Storage & Royal Blush Design System",
+        icon: "i-layers",
+        description: "Resilient client architecture paired with a culturally tailored 'Royal Warm Blush, Rose & Gold' visual identity.",
+        features: [
+          "4-layer session persistence (in-memory cache, Expo SecureStore, and dual AsyncStorage backups) that automatically self-repairs if any layer resets",
+          "REST API client with 30-second timeout protection, automatic bearer token injection, and cross-platform multipart image upload handling",
+          "Bespoke 'Royal Warm Blush, Rose & Gold' UI (#FAF7F8 background, #E64A78 rose primary, #C89738 royal gold, #2A1E24 deep plum hero cards) with Poppins typography",
+          "Play Store and App Store compliance screens including self-service Account Deletion, dynamic CMS Privacy/Terms pages, and live IST support status"
+        ]
+      }
+    ],
+    featureHighlights: [
+      {
+        title: "Interactive 2D SVG Genealogy Tree",
+        desc: "Custom-rendered pinch-to-zoom and panable 2D downline tree with level color-coding, deep member drill-down, and instant search by name, phone, or code.",
+        icon: "i-users"
+      },
+      {
+        title: "15-Field KYC with Live 7s Approval Polling",
+        desc: "Captures personal details, Aadhaar/PAN card photos, and verified bank accounts while polling every 7 seconds to unlock shopping the moment an admin approves.",
+        icon: "i-shield"
+      },
+      {
+        title: "UPI Deep-Link Wallet & On-Hold Withdrawals",
+        desc: "Supports one-tap GPay/PhonePe/Paytm/BHIM top-ups with UTR receipt capture and locks requested withdrawal funds 'On Hold' to eliminate double spending.",
+        icon: "i-credit-card"
+      },
+      {
+        title: "4-Layer Self-Healing Session Storage",
+        desc: "Combines memory cache, Expo SecureStore, and dual AsyncStorage copies so authenticated member sessions automatically recover if any single storage layer clears.",
+        icon: "i-lock"
+      }
+    ],
+    resultsComparison: [
+      { metric: "Member Verification", before: "Unverified or fake direct-selling sign-ups", after: "100% sponsor-validated & 15-field KYC approved base" },
+      { metric: "Team Network Visibility", before: "Hard-to-follow spreadsheets & manual lists", after: "Interactive 2D pinch-to-zoom SVG genealogy tree" },
+      { metric: "Wallet & Withdrawal Safety", before: "Manual deposit tracking & payout disputes", after: "UPI deep-link top-ups & on-hold withdrawal protection" },
+      { metric: "Shopping & Refund Flow", before: "Disconnected catalogue & slow refund handling", after: "Integrated wallet checkout & instant cancellation refunds" }
+    ],
+    architectureDetails: {
+      pattern: "React Native 0.81 & Expo SDK 54 (React 19 New Architecture) Client with 4-Layer Self-Healing Storage & Recursive SVG Engine",
+      highlights: [
+        "React 19 & New Architecture: Built on React Native 0.81 and Expo SDK 54 with a 23-screen native stack and persistent bottom tab navigation",
+        "Recursive SVG Genealogy Engine: Custom react-native-svg tree renderer with gesture-driven pan/zoom, node connectors, and multi-level traversal",
+        "Self-Healing 4-Layer Persistence: Synchronizes auth state across RAM cache, Expo SecureStore, and redundant AsyncStorage keys for zero unexpected logouts",
+        "Atomic Wallet & Order State: Optimistic cart updates, on-hold balance locking during payout requests, and instant wallet re-crediting on order cancellation",
+        "India-First Localization & Store Compliance: Native en-IN Rupee formatting, IST live support hours, CMS legal pages, and store-compliant account deletion"
+      ]
+    },
+    testimonial: {
+      quote: "Divy Shakti brought our entire wellness catalogue, sponsor onboarding, Aadhaar/PAN KYC verification, 2D team genealogy tree, and UPI digital wallet into one smooth mobile app. Members can see their downline clearly and shop with complete confidence.",
+      author: "Management Team",
+      role: "Operations & Network Division",
+      company: "Divy Shakti"
+    }
+  },
+  {
+    id: "tripsbook",
+    slug: "tripsbook",
+    serviceSlug: "mobile-app-development",
+    category: "Mobile App Development",
+    title: "TripsBook – Fleet, Driver Trip & Fuel Management Mobile App",
+    subtitle: "Track Your Journeys — Drive Safe, Track Smart with Live GPS Trip Logging, Fuel Auditing & Instant PDF Duty Slips",
+    client: "TripsBook by Vision Technolabs",
+    industry: "Fleet Management / Logistics / Commercial Cab & Corporate Transport",
+    duration: "10 Weeks",
+    country: "India",
+    website: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.tripsbook",
+    domain: "com.visiontechnolabs.tripsbook",
+    description: "TripsBook is a fleet and driver trip management mobile app for commercial cab operators and corporate transport fleets. Drivers log Fix Cab and On Call trips in seconds, with pickup and drop areas detected automatically from GPS, live location sent to dispatch during active trips, fuel and odometer tracking, and one-tap PDF Duty Slips and Monthly Vehicle Log Sheets.",
+    shortPitch: "Fleet operators have traditionally relied on paper duty slips, handwritten odometer logs, and loose fuel receipts—leading to billing delays, calculation mistakes, and zero real-time visibility for dispatchers. Vision Technolabs built TripsBook on React Native 0.81, Expo SDK 54, and React 19 (New Architecture) to replace that paperwork with a mobile-first digital workflow where drivers record Fix Cab and On Call duties, share live GPS coordinates, track multi-fuel expenses, and produce print-ready A4 Duty Slips and Monthly Vehicle Log Sheets straight from their phone.",
+    tags: ["React Native 0.81 & Expo 54", "Live GPS Fleet Tracking", "PDF Duty Slips & Log Sheets", "Multi-Fuel Expense Audit", "Android & iOS"],
+    gradient: "linear-gradient(135deg, #0f172a, #2563eb)",
+    image: "/app_images/Tripsbook/01_app_TB.png",
+    images: [
+      "/app_images/Tripsbook/01_app_TB.png"
+    ],
+    gallery: [
+      {
+        url: "/app_images/Tripsbook/01_app_TB.png",
+        caption: "TripsBook Mobile App — Live Driver Dashboard, Fix Cab & On Call Trip Modes, GPS Tracking & A4 Duty Slip PDF",
+        tag: "Fleet & Driver Mobile App",
+        badge: "Screen 01 · Production View"
+      }
+    ],
+    metrics: [
+      { value: "2 Modes", label: "Fix Cab & On Call Trips" },
+      { value: "10 sec", label: "Live GPS Dispatch Pings" },
+      { value: "5 Fuels", label: "Multi-Fuel Mileage Audit" },
+      { value: "Instant", label: "A4 Duty Slip & Log PDFs" }
+    ],
+    challenge: "Commercial cab operators and corporate transport fleets traditionally relied on handwritten paper duty slips, manual odometer logbooks, and loose fuel receipts. Paper slips were easily lost or misread, manual distance and overnight duration calculations caused frequent corporate billing disputes, dispatchers had to phone drivers to know where an active trip stood, fuel receipts across petrol, diesel, CNG, electric, and LPG vehicles were disconnected from odometer readings, and preparing monthly corporate vehicle log sheets took days of clerical effort.",
+    solution: "Vision Technolabs engineered TripsBook, a cross-platform Android and iOS mobile app built with React Native 0.81, Expo SDK 54, and React 19 (New Architecture). Drivers log Fix Cab and On Call duties with automatic GPS reverse-geocoded pickup detection, strict odometer validation, and 10-second live location pings during active trips. Upon trip completion, TripsBook calculates total distance and overnight duration automatically, generates branded A4 Duty Slip PDFs and Monthly Vehicle Log Sheet PDFs via expo-print, and tracks fuel expenses across five fuel types linked directly to odometer readings.",
+    deliverables: [
+      "Cross-Platform Android & iOS Mobile App (React Native 0.81, Expo SDK 54, React 19)",
+      "Live Driver Dashboard with Daily & Monthly Trips, Kilometres & Driving Hours",
+      "Dual Trip Logging Engine (Fix Cab Point-to-Point & On Call Charter Duties)",
+      "Automatic Pickup Detection via expo-location & Google Maps Reverse Geocoding API",
+      "Active Trip GPS Telemetry (10-Second Coordinate Pings & Foreground Location Guard)",
+      "On-Device HTML-to-PDF Engine for A4 Duty Slips & Monthly Vehicle Log Sheets",
+      "5-Type Fuel & Expense Auditor (Petrol, Diesel, CNG, Electric, LPG) with Odometer Linking",
+      "Fleet Admin-Code Driver Onboarding, JWT Auth Interceptors & Store Compliance Suite"
+    ],
+    techStack: [
+      "React Native 0.81 (New Architecture)",
+      "Expo SDK 54 & React 19",
+      "React Navigation 7",
+      "expo-location & Google Maps Geocoding API",
+      "expo-print & expo-sharing (A4 PDFs)",
+      "Axios + JWT Bearer Interceptors",
+      "AsyncStorage",
+      "RESTful Fleet Backend API"
+    ],
+    modules: [
+      {
+        title: "Live Driver Dashboard & Dual Trip Modes",
+        icon: "i-truck",
+        description: "Real-time daily operational summary paired with specialized workflows for scheduled Fix Cab routes and on-demand On Call duties.",
+        features: [
+          "Four live summary cards tracking Today's Trips, This Month's Trips, Kilometres Driven Today, and Hours Driven Today",
+          "Today's trip feed with color-coded Running and Completed badges, customer details, route summary, duration, and distance",
+          "Fix Cab mode for scheduled point-to-point routes with automatic pickup area detection from phone GPS via Google Maps reverse geocoding",
+          "On Call mode for charter duties capturing customer name, mobile number, start date/time, and validated starting odometer readings"
+        ]
+      },
+      {
+        title: "Live GPS Telemetry & Odometer Guardrails",
+        icon: "i-compass",
+        description: "Automated location reporting during active trips combined with strict odometer validation to prevent entry mistakes.",
+        features: [
+          "Sends live GPS coordinates to the dispatch backend every 10 seconds while a trip is running, plus an immediate ping on app foregrounding",
+          "Persistent Location Guard banner and alert verifying device GPS and app permissions with one-tap deep linking to phone settings",
+          "Strict odometer validation blocking invalid characters, enforcing decimal precision, and ensuring closing km exceeds starting km",
+          "Automatic distance and duration calculation in hours and minutes, accurately handling trips that cross midnight"
+        ]
+      },
+      {
+        title: "Instant A4 Duty Slips & Monthly Log Sheet PDFs",
+        icon: "i-file-text",
+        description: "On-device PDF generation producing corporate-ready duty slips and monthly audit tables ready for printing or WhatsApp sharing.",
+        features: [
+          "Branded A4 Duty Slip PDF with company header, customer details, route, vehicle number, start/closing timestamps, start/closing/total km, and signature block",
+          "One-tap text receipt and PDF sharing through WhatsApp, SMS, or email via expo-sharing and React Native Share",
+          "Six-month trip archive filterable by month and organized into dedicated Fix Cab and On Call tabs",
+          "Monthly Vehicle Log Sheet PDF generating a chronological corporate billing table with business header, vehicle details, and audit signature columns"
+        ]
+      },
+      {
+        title: "Multi-Fuel & Mileage Expense Tracker",
+        icon: "i-chart",
+        description: "Comprehensive fuel ledger supporting conventional, gas, and electric fleet vehicles tied directly to odometer readings.",
+        features: [
+          "Supports five fuel types—Petrol, Diesel, CNG, Electric, and LPG—automatically selecting the right unit (Litres, Kilograms, or kWh)",
+          "Records fuel quantity, total cost in ₹, automatic price-per-unit calculation, current odometer reading, and driver notes",
+          "Month-by-month fuel history filter enabling fleet managers and drivers to audit fuel spend against kilometres driven",
+          "Eliminates loose paper fuel slips by keeping every refill chronologically linked to vehicle mileage"
+        ]
+      },
+      {
+        title: "Fleet-Linked Onboarding & Store Compliance",
+        icon: "i-shield",
+        description: "Verified driver registration tied to fleet Admin Codes with JWT session security and store-compliant account governance.",
+        features: [
+          "Fleet-linked registration capturing driver mobile, email, vehicle name, registration plate, driving licence number, and fleet Admin Code",
+          "Driver profile management with photo upload, company selection, and secure password update flows",
+          "Axios networking layer with automatic JWT bearer-token injection and graceful expired-session handling",
+          "Built-in Terms & Conditions, Privacy Policy, and confirmed self-service Delete Account flow for Play Store and App Store compliance"
+        ]
+      }
+    ],
+    featureHighlights: [
+      {
+        title: "Auto-Geocoded Fix Cab & On Call Logging",
+        desc: "Detects pickup areas automatically from GPS via Google Maps reverse geocoding and enforces strict odometer validation on every trip.",
+        icon: "i-compass"
+      },
+      {
+        title: "10-Second Active Trip GPS Pings",
+        desc: "Streams live driver coordinates to dispatch every 10 seconds during running trips, backed by an always-on permission and GPS status guard.",
+        icon: "i-truck"
+      },
+      {
+        title: "One-Tap A4 Duty Slip & Monthly Log PDFs",
+        desc: "Generates print-ready A4 Duty Slips and full Monthly Vehicle Log Sheet PDFs on the phone for instant WhatsApp sharing and corporate billing.",
+        icon: "i-file-text"
+      },
+      {
+        title: "5-Fuel Odometer-Linked Expense Tracker",
+        desc: "Tracks Petrol, Diesel, CNG, Electric, and LPG refills with automatic unit selection (L, kg, kWh), per-unit cost math, and odometer auditing.",
+        icon: "i-chart"
+      }
+    ],
+    resultsComparison: [
+      { metric: "Duty Slip & Log Preparation", before: "Handwritten paper slips & manual monthly tables", after: "Instant on-device A4 Duty Slip & Monthly Log PDFs" },
+      { metric: "Distance & Duration Math", before: "Manual odometer subtraction & billing disputes", after: "Validated odometer checks & auto overnight math" },
+      { metric: "Dispatch Trip Visibility", before: "Repeated phone calls to check driver location", after: "Live 10-second GPS pings & auto-geocoded pickups" },
+      { metric: "Fuel & Mileage Auditing", before: "Loose paper fuel receipts across vehicle types", after: "5-fuel digital ledger tied to odometer readings" }
+    ],
+    architectureDetails: {
+      pattern: "React Native 0.81 & Expo SDK 54 (React 19 New Architecture) Mobile Client with GPS Telemetry & On-Device HTML-to-PDF Engine",
+      highlights: [
+        "React 19 & New Architecture: Engineered on React Native 0.81, Expo SDK 54, and React Navigation 7 combining native stack and bottom-tab workflows",
+        "Geolocation & Reverse Geocoding Pipeline: Integrates expo-location with Google Maps Reverse Geocoding API for automatic pickup area detection and 10s telemetry",
+        "On-Device PDF Rendering: Uses expo-print and expo-sharing to compile dynamic HTML templates into branded A4 Duty Slips and Monthly Vehicle Log Sheets",
+        "Interceptor-Backed JWT Networking: Axios client with automated bearer token attachment, session expiry recovery, and AsyncStorage persistence",
+        "Multi-Fuel Unit & Odometer Validation Engine: Deterministic client-side guardrails enforcing monotonic odometer progression and automatic fuel unit mapping"
+      ]
+    },
+    testimonial: {
+      quote: "TripsBook eliminated our paper duty slips and manual monthly logbooks. Drivers log Fix Cab and On Call trips with automatic GPS pickup detection, our dispatch team sees live location updates during active trips, and corporate billing PDFs are ready in one tap.",
+      author: "Product & Fleet Operations Team",
+      role: "Mobility SaaS Division",
+      company: "TripsBook by Vision Technolabs"
+    }
+  },
+  {
+    id: "thakarmart",
+    slug: "thakarmart",
+    serviceSlug: "mobile-app-development",
+    category: "Mobile App Development",
+    title: "Thakar Mart – Grocery & Dairy Shopping Mobile App",
+    subtitle: "Your Local Kirana & Dairy Store at Your Fingertips — Fast, Easy, Reliable Doorstep Ordering",
+    client: "Thakar Mart (JP Thakar Mart)",
+    industry: "Retail / Grocery / Dairy / Local Kirana Store (Online Ordering)",
+    duration: "8 Weeks",
+    country: "India",
+    website: "https://play.google.com/store/apps/details?id=com.thakarmart.app",
+    domain: "com.thakarmart.app",
+    description: "Thakar Mart brings a neighbourhood kirana and dairy store onto the customer's phone. Shoppers sign in with their mobile number, browse groceries, dairy, snacks, fresh produce, and cold drinks by category, search products, see discounted prices at a glance, and order for doorstep delivery with live order tracking.",
+    shortPitch: "Thakar Mart is a dedicated single-store grocery and dairy mobile shopping application engineered by Vision Technolabs to extend a neighbourhood retail store beyond walk-in counter sales. Built with a clean violet-accented mobile UI and connected admin backend, the app puts the store's complete everyday range—from fresh milk and curd to biscuits, snacks, cold drinks, and daily staples—into the customer's pocket with category tiles, strike-through discount pricing, cart checkout, and real-time doorstep delivery tracking.",
+    tags: ["Grocery & Dairy App", "Single-Store E-Commerce", "Category & Offer Discovery", "Doorstep Order Tracking", "Android Mobile App"],
+    gradient: "linear-gradient(135deg, #6d28d9, #4f46e5)",
+    image: "/app_images/Thakar_Mart/01_app_TM.png",
+    images: [
+      "/app_images/Thakar_Mart/01_app_TM.png"
+    ],
+    gallery: [
+      {
+        url: "/app_images/Thakar_Mart/01_app_TM.png",
+        caption: "Thakar Mart Mobile App — Kirana & Dairy Category Storefront, Discount Product Cards & Doorstep Order Tracking",
+        tag: "Grocery & Dairy Mobile App",
+        badge: "Screen 01 · Google Play Live"
+      }
+    ],
+    metrics: [
+      { value: "5+ Depts", label: "Grocery, Dairy & Produce" },
+      { value: "5-Tab", label: "Bottom App Navigation" },
+      { value: "Live", label: "Order Status Tracking" },
+      { value: "24/7", label: "Digital Kirana Storefront" }
+    ],
+    challenge: "As a neighbourhood kirana and dairy store, Thakar Mart was previously limited to serving walk-in counter shoppers or handling slow, error-prone orders over phone calls and WhatsApp messages. Customers at home had no way to browse the store's full product range, compare MRP vs. discounted selling prices, see promotional offers, or track when their daily milk, curd, and grocery order would arrive at their doorstep.",
+    solution: "Vision Technolabs designed and developed the Thakar Mart Android mobile application (com.thakarmart.app) paired with a store management backend. Customers sign in with their mobile number, explore promotional banners, jump into visual departments (Biscuits & Snacks, Fresh Fruits & Vegetables, Daily Grocery Essentials, Cold Drinks & Beverages, and Dairy & Milk Products), search items instantaneously, inspect clear percentage-off badges and strike-through MRP savings, and place doorstep delivery orders with live status tracking.",
+    deliverables: [
+      "Native Android Grocery & Dairy Shopping Application (Live on Google Play: com.thakarmart.app)",
+      "Mobile Number & Password Authentication with Customer Profile Management",
+      "Promotional Banner Showcase & Curated Featured Products Carousel",
+      "Department-Wise 'Shop by Category' Grid (Dairy, Produce, Staples, Snacks & Beverages)",
+      "Instant Product Search & Discount Card Engine (MRP Strike-Through & % OFF Badges)",
+      "Streamlined Shopping Cart, Checkout & Doorstep Delivery Workflow",
+      "Real-Time Order Tracking & 5-Tab Bottom Navigation Architecture",
+      "Store Admin Backend for Catalogue, Pricing, Offer & Order Fulfilment Management"
+    ],
+    techStack: [
+      "Cross-Platform Mobile App (Android)",
+      "RESTful E-Commerce Backend API",
+      "Relational Product & Order Database",
+      "Store Admin Management Panel",
+      "Violet Light-Mode Retail UI System",
+      "Real-Time Order Status Sync",
+      "Google Play Store Production Release"
+    ],
+    modules: [
+      {
+        title: "Mobile Sign-In & Customer Account Flow",
+        icon: "i-smartphone",
+        description: "Fast, familiar authentication built around the customer's mobile number for quick repeat grocery ordering.",
+        features: [
+          "Mobile number and password sign-in with an accessible show/hide password toggle",
+          "Quick new-customer registration flow capturing essential delivery details",
+          "Dedicated Profile tab for managing customer account information and viewing past orders",
+          "Persistent session handling so daily dairy and grocery shoppers stay signed in"
+        ]
+      },
+      {
+        title: "Promotional Home Screen & Category Discovery",
+        icon: "i-shopping-bag",
+        description: "Visual storefront highlighting seasonal store offers, featured essentials, and one-tap department tiles.",
+        features: [
+          "Top promotional banner area showcasing store announcements, festive deals, and combo offers",
+          "Shop by Category tiles for Biscuits & Snacks, Fresh Fruits & Vegetables, Daily Grocery Essentials, Cold Drinks & Beverages, and Dairy & Milk Products",
+          "Handpicked 'Featured Products' row on the home screen with quick 'See All' expansion",
+          "Intuitive 5-tab bottom navigation bar covering Home, Shop, Category, Cart, and Profile"
+        ]
+      },
+      {
+        title: "Product Search & Transparent Discount Cards",
+        icon: "i-search",
+        description: "High-clarity product grid designed to surface savings and simplify daily basket building.",
+        features: [
+          "Responsive 2-column product grid paired with a fast keyword search bar for finding items immediately",
+          "Rich product cards displaying product photography, category label, item title, and net selling price",
+          "Clear strike-through original MRP alongside vibrant percentage discount badges (e.g., '17% OFF', '50% OFF')",
+          "Category-filtered browsing views allowing shoppers to compare items within a single department"
+        ]
+      },
+      {
+        title: "Cart, Checkout & Live Doorstep Delivery Tracking",
+        icon: "i-truck",
+        description: "End-to-end ordering pipeline replacing phone calls with structured cart checkout and delivery visibility.",
+        features: [
+          "Interactive shopping cart summarizing selected grocery and dairy items with instant quantity adjustments",
+          "Streamlined doorstep delivery checkout tailored for local neighbourhood fulfilment",
+          "Real-time order tracking allowing customers to follow their order status directly from the app",
+          "Eliminates miscommunicated phone orders by giving the store an exact itemized digital order ticket"
+        ]
+      }
+    ],
+    featureHighlights: [
+      {
+        title: "Neighbourhood Kirana & Dairy in One App",
+        desc: "Purpose-built for a single local store's catalogue—covering fresh milk, curd, fruits, vegetables, staples, snacks, and cold drinks.",
+        icon: "i-shopping-bag"
+      },
+      {
+        title: "Instant Discount & Savings Visibility",
+        desc: "Every product card highlights the exact selling price, strike-through MRP, and coloured percentage-off badge at a glance.",
+        icon: "i-tag"
+      },
+      {
+        title: "5-Department Category Navigation",
+        desc: "Shoppers jump straight into Dairy & Milk, Fresh Produce, Daily Grocery, Snacks, or Beverages via dedicated category tiles and bottom tabs.",
+        icon: "i-layers"
+      },
+      {
+        title: "Doorstep Delivery with Order Tracking",
+        desc: "Replaces manual phone and WhatsApp ordering with structured cart checkout and live order progress updates.",
+        icon: "i-truck"
+      }
+    ],
+    resultsComparison: [
+      { metric: "Customer Reach", before: "Limited to walk-in counter shoppers", after: "24/7 ordering from customers at home" },
+      { metric: "Catalogue & Offer Visibility", before: "Prices & discounts visible only in-store", after: "Live digital catalogue with % OFF badges" },
+      { metric: "Order Accuracy", before: "Slow phone/message orders prone to mistakes", after: "Structured cart & itemized digital checkout" },
+      { metric: "Delivery Transparency", before: "No way for shoppers to check order status", after: "Real-time in-app doorstep order tracking" }
+    ],
+    architectureDetails: {
+      pattern: "Single-Store Retail Mobile Application (Android) with RESTful Catalogue, Cart & Order Tracking Backend",
+      highlights: [
+        "Single-Vendor Kirana Architecture: Tailored specifically around Thakar Mart's inventory, pricing, and local delivery operations rather than a generic multi-seller marketplace",
+        "5-Tab Retail Navigation: Persistent bottom navigation (Home, Shop, Category, Cart, Profile) optimized for high-frequency daily dairy and grocery repeat orders",
+        "Dynamic Pricing & Discount Presentation: Automated calculation and badge rendering for MRP vs. selling price markdowns across all category grids",
+        "Real-Time Order Lifecycle Sync: Synchronizes customer cart checkouts with store fulfilment status updates for transparent doorstep delivery"
+      ]
+    },
+    testimonial: {
+      quote: "Vision Technolabs helped us bring Thakar Mart onto our customers' phones. Our regulars can now browse daily groceries, dairy products, and store offers from home and place doorstep delivery orders without having to call the shop.",
+      author: "Store Management",
+      role: "Retail Operations",
+      company: "Thakar Mart (JP Thakar Mart)"
+    }
+  },
+  {
+    id: "fitcket",
+    slug: "fitcket",
+    serviceSlug: "mobile-app-development",
+    category: "Mobile App Development",
+    title: "Fitcket – Fitness Booking, Live Sessions, FitTV & Cricket Pools Platform",
+    subtitle: "Location-Based Gym & Trainer Marketplace, Agora Live Workouts, FitTV Video Courses & Cricket Prediction Pools",
+    client: "Fitcket",
+    industry: "Fitness & Wellness / Marketplace / Live Streaming / Sports Engagement",
+    duration: "14 Weeks",
+    country: "India",
+    website: "https://play.google.com/store/apps/details?id=com.fitcket.app",
+    domain: "com.fitcket.app",
+    description: "Fitcket is a mobile-first fitness marketplace that connects users with gyms and personal trainers. Users discover nearby providers through location-based search, book day, week, month or year passes through a cart with Razorpay checkout, join live fitness sessions over Agora video, watch paid FitTV video courses, and take part in cricket prediction pools.",
+    shortPitch: "Fitcket brings gyms, personal trainers, live classes, on-demand FitTV courses, and interactive cricket prediction pools into a single Android and iOS mobile platform. Powered by a 55+ endpoint CodeIgniter 3 MVC REST API (~7,500 lines of controller architecture) and 40+ relational MySQL tables, the platform orchestrates Haversine geo-distance discovery, flexible duration-based pass bookings with Buy-X-Get-Y offers, server-verified Razorpay checkouts, Agora live video token streaming with 15-minute cron reminders, and JWT + SMS OTP security.",
+    tags: ["Expo Mobile App", "Agora Live Streaming", "Razorpay Checkout", "Haversine Geo-Search", "55+ REST API Endpoints"],
+    gradient: "linear-gradient(135deg, #10b981, #047857)",
+    image: "/app_images/Fitcket/01_app_FK.png",
+    images: [
+      "/app_images/Fitcket/01_app_FK.png"
+    ],
+    gallery: [
+      {
+        url: "/app_images/Fitcket/01_app_FK.png",
+        caption: "Fitcket Mobile Marketplace — Nearby Gym & Trainer Booking, Agora Live Sessions, FitTV Courses & Cricket Pools",
+        tag: "Fitness Marketplace & Live App",
+        badge: "Screen 01 · Production View"
+      }
+    ],
+    metrics: [
+      { value: "55+", label: "REST API Endpoints" },
+      { value: "40+", label: "Relational DB Tables" },
+      { value: "4-in-1", label: "Gyms, Live, FitTV & Pools" },
+      { value: "15 min", label: "Auto Live Class Reminders" }
+    ],
+    challenge: "Finding, comparing, and booking local gyms and personal trainers was fragmented across offline enquiries with inconsistent pricing and no verified reviews. Providers needed flexible membership passes (day, week, month, or year) alongside Buy-X-Get-Y-Free promotional logic. Beyond physical gym visits, the platform needed to monetize real-time live workout classes with participant caps and secure video access, gender-segmented FitTV video courses, and interactive cricket prediction pools to drive daily app engagement—all backed by strict OTP identity verification and server-verified payment callbacks.",
+    solution: "Vision engineered the complete Fitcket mobile ecosystem and its 55+ endpoint CodeIgniter 3 REST API across 40+ MySQL tables. Users sign in via passwordless SMS OTP with JWT blacklist protection, discover nearby gyms and trainers ranked by Haversine GPS distance and Google Maps reverse geocoding, book flexible passes with automated Buy-X-Get-Y-Free and platform-wide offers via server-verified Razorpay checkout, stream live fitness classes over Agora with unique subscriber UIDs and 15-minute cron push reminders, unlock FitTV video courses, and compete in host-created cricket prediction pools.",
+    deliverables: [
+      "Cross-Platform Android & iOS Mobile Application (Expo / React Native)",
+      "55+ Endpoint REST JSON API (~7,500 Lines of CodeIgniter 3 MVC Controller Logic)",
+      "Haversine GPS Distance Search & Google Maps Reverse Geocoding Discovery Engine",
+      "Duration-Based Pass Cart (Day/Week/Month/Year) with Buy-X-Get-Y-Free Offer Engine",
+      "Server-Verified Razorpay Checkout Across Gym Passes, Live Classes, FitTV & Cricket Pools",
+      "Agora Live Video Streaming Engine with Server-Generated Tokens, UIDs & Attendance Logs",
+      "FitTV On-Demand Video Course Catalogue with Category & Gender Track Filtering",
+      "Cricket Match Centre & Host Prediction Pools with Auto-Locking 30-Minute Cutoff"
+    ],
+    techStack: [
+      "Expo Mobile App (Android & iOS)",
+      "PHP & CodeIgniter 3 (MVC REST API)",
+      "MySQL / MariaDB (40+ Tables)",
+      "JWT (firebase/php-jwt) + Token Blacklist",
+      "Razorpay Orders, Transfers & Signature Auth",
+      "Agora Live Video Streaming SDK",
+      "Google Maps Geocoding & Haversine SQL",
+      "Expo Push Notifications & FCM",
+      "SMS OTP Gateway & Cron Scheduler"
+    ],
+    modules: [
+      {
+        title: "Geo-Location Gym & Trainer Discovery",
+        icon: "i-compass",
+        description: "Location-aware marketplace feed ranking nearby gyms, fitness studios, and personal trainers by real-time GPS distance.",
+        features: [
+          "Smart home feed featuring promotional banners, service categories, nearest providers, dedicated gym and trainer carousels, and active city lists",
+          "Haversine latitude/longitude distance ranking paired with Google Maps reverse geocoding to resolve user city and state automatically",
+          "Multi-parameter search and paginated filtering across service type, category, star rating, price bracket, trainer experience, and language",
+          "Comprehensive provider profiles showcasing photo galleries, certifications, expertise tags, weekly schedules, 4-tier pass pricing, active offers, and verified user reviews"
+        ]
+      },
+      {
+        title: "Flexible Pass Cart, Offers & Razorpay Checkout",
+        icon: "i-shopping-bag",
+        description: "Multi-duration booking cart supporting provider-level promotions and cryptographic Razorpay signature verification.",
+        features: [
+          "Duration-based pass selection allowing users to book Day, Week, Month, or Year memberships with custom quantities and validated future start dates",
+          "Dual promotional engine supporting provider-level Buy-X-Get-Y-Free rules and platform-wide percentage discounts with minimum order thresholds",
+          "Server-side Razorpay order creation and cryptographic signature verification before marking any booking as paid",
+          "Instant provider push and in-app notifications upon booking confirmation, plus filterable user booking history"
+        ]
+      },
+      {
+        title: "Agora Live Workout Sessions & Auto-Reminders",
+        icon: "i-video",
+        description: "Interactive live-streamed fitness classes with capacity enforcement, token-secured Agora video rooms, and attendance logs.",
+        features: [
+          "Live session catalogue displaying upcoming classes, pricing, max participant limits, booked seat counters, and real-time Full/Available badges",
+          "Instant booking for free classes and Razorpay-verified checkout for paid live sessions",
+          "Server-generated Agora subscriber tokens and unique participant UIDs ensuring only booked users can enter the live video stream",
+          "Automated join/leave attendance logging and cron-driven push + in-app reminders sent 15 minutes before class start with duplicate protection"
+        ]
+      },
+      {
+        title: "FitTV On-Demand Video Courses",
+        icon: "i-tv",
+        description: "Structured fitness video library offering categorized workout programmes and one-step course unlocking.",
+        features: [
+          "Curated FitTV video catalogue organized by workout category and gender-specific training tracks",
+          "Supports both free community workout videos and paid premium courses unlocked via Razorpay payment callbacks",
+          "Instant entitlement verification granting permanent in-app streaming access once payment signature validation succeeds",
+          "Integrated into the unified user profile alongside physical gym passes and live session bookings"
+        ]
+      },
+      {
+        title: "Cricket Match Centre & Prediction Pools",
+        icon: "i-award",
+        description: "High-engagement sports companion featuring live cricket fixtures and host-managed yes/no prediction pools.",
+        features: [
+          "Match Centre tracking Live, Today, Upcoming, and Completed cricket fixtures with tournament names, venues, team logos, scores, and featured matches",
+          "Approved hosts create prediction pools with custom entry fees and participant caps, joined seamlessly via Razorpay",
+          "Automated pool cutoff logic blocking duplicate entries, full pools, and joins within 30 minutes of match start",
+          "Interactive Yes/No prediction questions that lock at match cutoff and generate right/wrong performance summaries and payment logs"
+        ]
+      },
+      {
+        title: "Host Programme, Payouts & JWT Security",
+        icon: "i-shield",
+        description: "Creator onboarding, provider payout utilities, and stateless JWT authentication backed by a server-side token blacklist.",
+        features: [
+          "In-app 'Become a Host' application workflow (capturing profile and Instagram credentials) empowering approved creators to host live sessions and cricket pools",
+          "Provider bank account management (IFSC, account type, branch) and Razorpay-backed recipient and transfer history utilities",
+          "Passwordless SMS OTP sign-in issuing firebase/php-jwt tokens, paired with a database token blacklist on logout and self-service account deletion",
+          "Database-driven Terms, Privacy, and Refund policies, 1-to-5 star review moderation, notification centre, and in-app support ticketing"
+        ]
+      }
+    ],
+    featureHighlights: [
+      {
+        title: "Haversine GPS Gym & Trainer Discovery",
+        desc: "Ranks nearby gyms and personal trainers by exact latitude/longitude distance using Haversine SQL queries and Google Maps reverse geocoding.",
+        icon: "i-compass"
+      },
+      {
+        title: "Agora Live Classes with 15-Min Reminders",
+        desc: "Streams live workouts with unique Agora UIDs and subscriber tokens, attendance tracking, and automated 15-minute pre-session push alerts.",
+        icon: "i-video"
+      },
+      {
+        title: "Multi-Pass Cart & Buy-X-Get-Y Engine",
+        desc: "Handles Day, Week, Month, and Year gym passes with provider Buy-X-Get-Y-Free promotions and server-verified Razorpay checkout.",
+        icon: "i-shopping-bag"
+      },
+      {
+        title: "FitTV Courses & Cricket Prediction Pools",
+        desc: "Combines gender-filtered FitTV workout courses with a live Cricket Match Centre and host-run prediction pools that auto-lock 30 minutes before toss.",
+        icon: "i-award"
+      }
+    ],
+    resultsComparison: [
+      { metric: "Gym & Trainer Discovery", before: "Fragmented offline enquiries & opaque pricing", after: "Haversine GPS distance search & 4-tier pass comparison" },
+      { metric: "Pass & Offer Checkout", before: "Manual cash passes & untracked discounts", after: "Cart with Buy-X-Get-Y rules & verified Razorpay checkout" },
+      { metric: "Remote Workouts & Content", before: "Unsecured links & missed class timings", after: "Token-gated Agora live video, 15m cron alerts & FitTV" },
+      { metric: "Daily User Retention", before: "App opened only during gym visits", after: "Live Cricket Match Centre & host prediction pools" }
+    ],
+    architectureDetails: {
+      pattern: "CodeIgniter 3 MVC REST JSON API (55+ Endpoints, 40+ MySQL Tables) Powering an Expo Android & iOS Mobile Marketplace",
+      highlights: [
+        "High-Scale Controller Architecture: Over 7,500 lines of modular PHP CodeIgniter 3 API logic serving 55+ paginated JSON endpoints across 40+ relational tables",
+        "Stateless JWT + Blacklist Revocation: Combines SMS OTP verification with firebase/php-jwt access tokens and a server-side blacklist table for immediate logout invalidation",
+        "Unified Razorpay Verification Pipeline: Single cryptographic signature verification layer securing gym bookings, live sessions, FitTV courses, pool entries, and host transfers",
+        "Real-Time Agora Video & Cron Engine: Dynamic Agora subscriber token generation with UID mapping, join/leave attendance telemetry, and idempotent 15-minute cron push reminders",
+        "Geospatial Discovery Queries: Combines Google Maps Reverse Geocoding API with Haversine spherical distance SQL calculations for instant nearest-provider sorting"
+      ]
+    },
+    testimonial: {
+      quote: "Vision Technolabs architected the entire Fitcket platform—from nearby gym discovery and flexible pass bookings to Agora live workout classes, FitTV courses, and cricket prediction pools. The 55+ endpoint API handles payments, video tokens, and push reminders reliably.",
+      author: "Product & Engineering Team",
+      role: "Marketplace Operations",
+      company: "Fitcket"
+    }
+  },
+  {
+    id: "sitedesk",
+    slug: "sitedesk",
+    serviceSlug: "mobile-app-development",
+    category: "Mobile App Development",
+    title: "SiteDesk – Real Estate Plot Sales, EMI Tracking & Site Management Platform",
+    subtitle: "Multi-Site Plot Inventory, Buyer Cash/EMI Ledgers, Dastavej Registry, Selfie Attendance & Field Inquiry CRM",
+    client: "SiteDesk by Vision Technolabs",
+    industry: "Real Estate / Plotting & Layout Development / Sales Operations",
+    duration: "12 Weeks",
+    country: "India",
+    website: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.sitedesk",
+    domain: "com.visiontechnolabs.sitedesk",
+    description: "SiteDesk is a mobile-first operations platform for real estate developers who sell plots across multiple sites. Team members see their assigned sites and live plot availability, register buyers, set up cash or EMI payment plans, record monthly instalments, track sale-deed (dastavej) paperwork, log site expenses with receipts, mark selfie attendance, and manage customer inquiries with follow-ups.",
+    shortPitch: "Real estate plot developers juggle multiple layout sites, hundreds of plots, buyers paying via cash or multi-month EMIs, sale-deed (dastavej) registry paperwork, field expenses, staff attendance, and daily buyer inquiries. SiteDesk replaces scattered paper registers and spreadsheets with an Expo mobile app backed by a 40-endpoint CodeIgniter 3 MVC REST API (~4,600 lines of controller code) across 25+ MySQL tables—scoping data strictly to each staff member's assigned sites while automating EMI due reminders via Expo Push Notifications.",
+    tags: ["Expo Mobile App", "Plot & EMI Management", "Dastavej Registry Tracker", "Selfie Attendance & CRM", "40 REST API Endpoints"],
+    gradient: "linear-gradient(135deg, #0d9488, #0f172a)",
+    image: "/app_images/Sitedesk/01_app_SD.png",
+    images: [
+      "/app_images/Sitedesk/01_app_SD.png"
+    ],
+    gallery: [
+      {
+        url: "/app_images/Sitedesk/01_app_SD.png",
+        caption: "SiteDesk Real Estate App — Assigned Site & Plot Availability, Buyer EMI Ledger, Dastavej Records & Field CRM",
+        tag: "Real Estate Operations App",
+        badge: "Screen 01 · Production View"
+      }
+    ],
+    metrics: [
+      { value: "40", label: "REST API Endpoints" },
+      { value: "25+", label: "Relational DB Tables" },
+      { value: "3-Stage", label: "Auto EMI Push Alerts" },
+      { value: "100%", label: "Site-Scoped Access" }
+    ],
+    challenge: "Real estate plotting developers operating across multiple layout sites struggled to maintain accurate, real-time visibility of available versus sold plots when teams relied on paper registers and phone calls. Buyers purchasing plots through monthly EMI plans or part-cash payments required strict month-by-month balance tracking and timely payment reminders, while sale-deed (dastavej) registry numbers were frequently disconnected from plot records. Furthermore, management lacked verifiable proof of field staff daily attendance, receipt-backed site expenses, and structured follow-up tracking for prospective plot inquiries.",
+    solution: "Vision engineered SiteDesk, an Expo-powered mobile application supported by a 40-endpoint CodeIgniter 3 REST API (~4,600 lines of controller logic) and 25+ relational MySQL tables. Staff sign in via 30-minute time-limited mobile OTP with JWT blacklist security and see only their assigned sites, live available/sold plot counts, and layout maps. From the field, teams register buyers with Aadhaar details, configure Cash or monthly EMI plans, log instalments with duplicate protection, record dastavej registry numbers, upload receipt-backed site expenses, submit daily selfie attendance, and track buyer inquiries—while cron jobs automatically send EMI alerts 3 days before, on the due date, and when overdue.",
+    deliverables: [
+      "Cross-Platform Real Estate Operations Mobile App (Expo / React Native)",
+      "40-Endpoint JWT-Secured CodeIgniter 3 MVC REST JSON API (~4,600 Lines of Code)",
+      "Assigned-Site & Plot Inventory Engine with Live Available/Sold Filtering & Site Maps",
+      "Buyer Onboarding & Flexible Cash / Monthly EMI Payment Plan Ledger",
+      "Automated 3-Stage EMI Reminder Cron Engine (3 Days Prior, Due Date & Overdue Push Alerts)",
+      "Sale-Deed (Dastavej) Registry Tracker & 4 MB Multi-Format Document Vault (JPG/PNG/PDF)",
+      "Receipt-Backed Site Expense Workflow with Overall, Approved & Pending Summaries",
+      "Daily Selfie Attendance & Salary Tracker + 4-Stage Field Inquiry Mini-CRM"
+    ],
+    techStack: [
+      "Expo Mobile App (Android & iOS)",
+      "PHP & CodeIgniter 3 (MVC REST API)",
+      "MySQL / MariaDB (25+ Tables)",
+      "JWT (firebase/php-jwt) + Token Blacklist",
+      "Mobile SMS OTP Authentication",
+      "Expo Push Notifications",
+      "Cron Scheduler (EMI & Plan Expiry)",
+      "Multipart Image & PDF Vault (Up to 4 MB)"
+    ],
+    modules: [
+      {
+        title: "Assigned-Site & Live Plot Inventory Management",
+        icon: "i-layers",
+        description: "Role-scoped site and plot directory giving sales staff real-time availability, layout maps, and buyer histories.",
+        features: [
+          "Executive dashboard summarizing total sites, total plots, active buyer inquiries, and cumulative site expenses",
+          "Per-user data scoping ensuring field staff view and search only the real estate sites explicitly assigned to them",
+          "Site summary cards displaying total, available, and sold plot counters alongside location, area size, site map, and listed layout map",
+          "Interactive plot directory filterable by Available or Sold status, with plot detail views showing buyer info, payment plan, paid totals, and dastavej status"
+        ]
+      },
+      {
+        title: "Buyer Registration, Cash/EMI Plans & Auto-Reminders",
+        icon: "i-credit-card",
+        description: "End-to-end financial ledger tracking plot down payments, monthly EMI schedules, cash part-payments, and automated due alerts.",
+        features: [
+          "Buyer onboarding capturing full name, mobile number, email, residential address, and Aadhaar number linked directly to a specific plot and site",
+          "Flexible Cash or EMI payment plans recording total plot price, down payment, remaining balance, EMI duration, start date, and monthly instalment amount",
+          "Monthly instalment logging with payment mode, notes, running balance calculation, duplicate-entry prevention, and a separate cash part-payment log",
+          "Scheduled cron jobs dispatching automated push and in-app reminders 3 days before the EMI due date, on the due date, and when an instalment is overdue"
+        ]
+      },
+      {
+        title: "Sale-Deed (Dastavej) Registry & Document Vault",
+        icon: "i-file-text",
+        description: "Legal registry tracking and secure cloud document storage tied directly to plots, buyers, and site operations.",
+        features: [
+          "Dedicated Sale-Deed (Dastavej) recording flow capturing the official registry number and registry amount against the buyer and plot",
+          "Automatic completion badge on the plot detail screen once the dastavej record is logged",
+          "In-app Document Vault supporting upload, listing, and deletion of personal or site documents across JPG, PNG, and PDF formats (up to 4 MB)",
+          "Strict server-side MIME type and file size validation protecting storage integrity"
+        ]
+      },
+      {
+        title: "Site Expenses, Selfie Attendance & Monthly Salary",
+        icon: "i-camera",
+        description: "Field accountability suite combining receipt-verified site expenditure tracking with daily photo attendance and payroll visibility.",
+        features: [
+          "Site expense submission with description, amount, date, site selection, and mandatory receipt photo upload, filterable by site, month, and year",
+          "Split expense totals showing Overall, Approved, and Pending amounts to support administrative review and approval",
+          "Daily selfie attendance lock allowing one timestamped photo submission per day held in a pending review state",
+          "Attendance and salary breakdown displaying Present, Absent, Pending, and Rejected counts alongside calculated monthly salary"
+        ]
+      },
+      {
+        title: "Field Inquiry Mini-CRM & JWT Device Security",
+        icon: "i-users",
+        description: "Built-in lead follow-up pipeline paired with OTP authentication, device registration, and automated subscription management.",
+        features: [
+          "Customer inquiry capture recording prospect name, mobile, address, interested site, notes, and scheduled follow-up date, time, and remarks",
+          "4-stage lead pipeline tracking inquiries through Pending, Follow-Up, Converted, and Lost statuses with full search, edit, and delete controls",
+          "30-minute time-limited Mobile OTP login issuing firebase/php-jwt tokens, backed by a database token blacklist and per-device push token registration",
+          "Automated cron job for expiring lapsed subscription plans, plus CMS-served Privacy/Terms policies and self-service soft account deactivation"
+        ]
+      }
+    ],
+    featureHighlights: [
+      {
+        title: "Site-Scoped Plot Availability & Maps",
+        desc: "Staff access only their assigned plotting sites with live Available/Sold plot counters, layout maps, and one-tap plot status updates.",
+        icon: "i-layers"
+      },
+      {
+        title: "Cash & EMI Plans with 3-Stage Alerts",
+        desc: "Tracks down payments, monthly EMI instalments, and cash logs while cron jobs automatically alert accounts 3 days prior, on due date, and when overdue.",
+        icon: "i-credit-card"
+      },
+      {
+        title: "Dastavej Registry & 4 MB Document Vault",
+        desc: "Links sale-deed (dastavej) numbers and amounts directly to plots and buyers, alongside a validated JPG/PNG/PDF document vault.",
+        icon: "i-file-text"
+      },
+      {
+        title: "Selfie Attendance, Expenses & Inquiry CRM",
+        desc: "Combines daily timestamped selfie attendance, receipt-backed site expense approvals, and a 4-stage buyer inquiry follow-up CRM.",
+        icon: "i-shield"
+      }
+    ],
+    resultsComparison: [
+      { metric: "Plot Inventory Visibility", before: "Paper registers & phone calls across sites", after: "Live site-scoped Available/Sold counts & maps" },
+      { metric: "EMI & Balance Tracking", before: "Manual spreadsheets & missed due dates", after: "Duplicate-proof EMI ledger & 3-stage push alerts" },
+      { metric: "Legal & Field Accountability", before: "Unlinked dastavej files & unverified expenses", after: "Plot-linked dastavej records, receipt uploads & selfie attendance" },
+      { metric: "Buyer Lead Conversion", before: "Lost walk-in inquiries & forgotten follow-ups", after: "Scheduled follow-up CRM (Pending to Converted)" }
+    ],
+    architectureDetails: {
+      pattern: "CodeIgniter 3 MVC REST JSON API (40 Endpoints, 25+ MySQL Tables) with Site-Scoped Access & Cron Notification Engine",
+      highlights: [
+        "Per-User Site Scoping: Relational assignment middleware ensuring sales and field staff can query and mutate only their designated real estate sites",
+        "40-Endpoint Controller Architecture: ~4,600 lines of structured PHP CodeIgniter 3 logic managing plots, buyers, EMI schedules, dastavej records, expenses, attendance, and CRM leads",
+        "Stateless JWT + Blacklist Security: 30-minute SMS OTP authentication paired with firebase/php-jwt tokens, device push-token binding, and instant logout token blacklisting",
+        "Automated Cron Scheduling: Background jobs evaluating EMI due dates (T-3 days, T-0, and Overdue) for Expo Push dispatch and auto-expiring lapsed subscriptions",
+        "Idempotent Financial & Attendance Guards: Server-side constraints preventing duplicate monthly instalment entries and enforcing a strict one-selfie-per-day attendance lock"
+      ]
+    },
+    testimonial: {
+      quote: "SiteDesk brought all our plotting sites, buyer EMI schedules, dastavej registry records, site expenses, staff selfie attendance, and customer inquiry follow-ups into one mobile app. Each team member sees their assigned sites clearly and no EMI follow-up gets missed.",
+      author: "Product & Operations Team",
+      role: "Real Estate SaaS Division",
+      company: "SiteDesk by Vision Technolabs"
+    }
+  },
+  {
+    id: "ghanshyam-murti-app",
+    slug: "ghanshyam-murti-app",
+    serviceSlug: "mobile-app-development",
+    category: "Mobile App Development",
+    title: "Ghanshyam Murti Bhandar – Marble Murti E-Commerce Mobile App & REST API",
+    subtitle: "Guest Shopping, Weight & Pincode Shiprocket Logistics, Razorpay/COD Checkout, Damage Claims & B2B Partner Onboarding App",
+    client: "Ghanshyam Murti Bhandar, Rajkot, Gujarat",
+    industry: "Devotional Articles, Marble Idols & Sculptures / Retail & E-Commerce",
+    duration: "12 Weeks",
+    country: "India",
+    website: "https://ghanshyammurtibhandar.com/",
+    domain: "ghanshyammurtibhandar.com",
+    description: "The Ghanshyam Murti Bhandar mobile app brings a Rajkot handcrafted marble idol and devotional article store onto customers' phones. Shoppers browse categories and products, build a cart as a guest before signing in, calculate pincode-based Shiprocket delivery charges by weight, pay via Razorpay or Cash on Delivery, track shipments, raise photo/video damage claims, and apply as distributors, manufacturers, or investment partners.",
+    shortPitch: "Selling heavy, fragile, handcrafted marble idols on mobile requires more than a standard catalogue: shipping costs depend on exact cart weight and buyer pincode, one-of-a-kind stock cannot oversell, and transit damage claims need photo/video evidence. Vision engineered the Ghanshyam Murti Bhandar mobile app and its 75-endpoint CodeIgniter 3 REST API (~5,100 lines of controller code) sharing a unified 35+ table MySQL database with the web storefront and admin suite.",
+    tags: ["Mobile App & 75 REST APIs", "Guest Cart & OTP Login", "Shiprocket Weight Shipping", "Razorpay & COD Checkout", "B2B Partner Onboarding"],
+    gradient: "linear-gradient(135deg, #b45309, #78350f)",
+    image: "/app_images/Ghanshyam_Murti_Bhandar/01_app_GMB.png",
+    images: [
+      "/app_images/Ghanshyam_Murti_Bhandar/01_app_GMB.png"
+    ],
+    gallery: [
+      {
+        url: "/app_images/Ghanshyam_Murti_Bhandar/01_app_GMB.png",
+        caption: "Ghanshyam Murti Bhandar Mobile App — Guest Marble Idol Storefront, Shiprocket Pincode Rates, Razorpay Checkout & B2B Onboarding",
+        tag: "E-Commerce Mobile App & API",
+        badge: "Screen 01 · Production View"
+      }
+    ],
+    metrics: [
+      { value: "75", label: "REST API Endpoints" },
+      { value: "35+", label: "Shared MySQL Tables" },
+      { value: "Zero-Login", label: "Guest Cart & Shipping Calc" },
+      { value: "3-Channel", label: "App, Web & Admin Sync" }
+    ],
+    challenge: "Handcrafted marble idols and sculptures are heavy, fragile, high-value items where delivery charges vary significantly by total cart weight and destination pincode. Requiring mandatory sign-up before browsing or estimating shipping created friction for first-time mobile shoppers, while limited-stock idols risked overselling across web and app channels. Additionally, the business needed structured photo/video transit damage claim resolution and an in-app onboarding funnel for B2B distributors, manufacturers, and investment partners.",
+    solution: "Vision built the Ghanshyam Murti Bhandar mobile application powered by a 75-endpoint CodeIgniter 3 MVC REST API (~5,100 lines of controller code) synchronized with the website and admin panel across 35+ MySQL tables. Visitors browse categories, build a cart, and estimate weight-based Shiprocket delivery charges without logging in, then authenticate via 5-minute SMS OTP + JWT to complete checkout via server-verified Razorpay or Cash on Delivery. Webhook-driven Shiprocket tracking, automated cancellation stock restoration, photo/video damage claims, and document-backed B2B partner onboarding complete the mobile experience.",
+    deliverables: [
+      "Cross-Platform E-Commerce Mobile App Synchronized with Web & Admin Database",
+      "75-Endpoint JWT-Secured CodeIgniter 3 MVC REST API (~5,100 Lines of PHP)",
+      "Parallel Guest Shopping Endpoints (Zero-Login Catalogue, Cart & Shipping Estimator)",
+      "Dynamic Weight & Pincode Shipping Calculator via Shiprocket Serviceability API",
+      "Dual Checkout Engine (Server-Verified Razorpay Signature Auth & Cash on Delivery)",
+      "Secret-Token Authenticated Shiprocket Webhook for Real-Time AWB & Timeline Sync",
+      "Photo & Video Evidence Damage/Refund Claim Workflow with Full Audit Trail",
+      "In-App B2B Onboarding Portals for Distributors, Manufacturers & Investment Partners"
+    ],
+    techStack: [
+      "Cross-Platform Mobile App (Android & iOS)",
+      "PHP & CodeIgniter 3 (75 REST Endpoints)",
+      "MySQL / MariaDB (35+ Shared Tables)",
+      "JWT (firebase/php-jwt) + Token Blacklist",
+      "5-Minute SMS OTP Authentication",
+      "Razorpay Orders & Signature Verification",
+      "Shiprocket Rates & Webhook Integration",
+      "Multipart Photo, Video & PDF Upload Engine"
+    ],
+    modules: [
+      {
+        title: "Frictionless Guest Shopping & Rich Catalogue",
+        icon: "i-shopping-bag",
+        description: "Parallel guest and authenticated API routes letting mobile shoppers explore marble idols and build carts before registering.",
+        features: [
+          "Dedicated guest endpoints for home banners, category trees, best sellers, featured coupon offers, and full cart management without login",
+          "Advanced product discovery with category filtering, keyword search, price/popularity sorting, and paginated mobile feeds",
+          "Detailed product screens displaying multi-angle image galleries, SKU, HSN code, colour, MRP, selling price, discount %, stock count, and in-stock flags",
+          "Seamless 5-minute SMS OTP login and JWT session upgrade with database token blacklisting on logout and self-service account deletion"
+        ]
+      },
+      {
+        title: "Weight-Aware Smart Cart & Shiprocket Pincode Rates",
+        icon: "i-truck",
+        description: "Real-time cart calculation engine factoring item weights, line-item GST, and live courier serviceability.",
+        features: [
+          "Live cart computation tracking subtotal, MRP total, total savings, line-by-line and aggregate GST, cumulative weight, and item availability",
+          "Dynamic Shiprocket rate lookup combining total cart weight with the buyer's delivery pincode, rounding charges cleanly to whole rupees",
+          "Full customer address book supporting multiple saved delivery locations with quick selection at checkout",
+          "Automatic stock verification and deduction at order placement to prevent overselling one-of-a-kind marble sculptures"
+        ]
+      },
+      {
+        title: "Razorpay / COD Checkout & Webhook Order Tracking",
+        icon: "i-credit-card",
+        description: "High-trust payment processing paired with automated courier webhook updates and instant stock restoration on cancellation.",
+        features: [
+          "Choice of Cash on Delivery (COD) or online payment via Razorpay with server-side cryptographic signature verification before order confirmation",
+          "Paginated order history with status filtering, itemized invoice breakdown, and a chronological order status timeline",
+          "Secret-header-authenticated Shiprocket webhook automatically pushing AWB numbers and live courier milestones into the order database",
+          "One-tap customer cancellation on pending or confirmed orders that automatically restores deducted stock back into live inventory"
+        ]
+      },
+      {
+        title: "Photo/Video Transit Damage & Refund Resolution",
+        icon: "i-shield",
+        description: "Structured post-purchase protection allowing buyers to submit multimedia proof for damaged marble items.",
+        features: [
+          "Item-level claim submission where buyers select Refund or Replacement, specify a damage reason, and attach detailed remarks",
+          "Direct multipart upload of unboxing photos and video evidence attached to the claim record",
+          "5-stage claim lifecycle (Pending, Under Review, Approved, Rejected, Refunded) visible inside the customer's app",
+          "Complete resolution transparency showing admin remarks, processor identity, timestamps, refund method, amount, and transaction ID"
+        ]
+      },
+      {
+        title: "In-App B2B Network Onboarding (Distributors, Makers & Investors)",
+        icon: "i-users",
+        description: "Dedicated multi-step business application funnels built directly into the mobile app to expand the brand's supply and retail network.",
+        features: [
+          "Distributor onboarding capturing GST/PAN, expected monthly volume, territory, bank details, and uploaded GST certificate, PAN card, and shop photo",
+          "Manufacturer application recording production capacity, MOQ, dispatch lead time, factory/warehouse details, and PDF price list/catalogue uploads",
+          "Investment Partner portal capturing partnership type, capital commitment, source of funds, expected role, equity/profit share, and live application status tracking",
+          "Database-driven Privacy Policy, Terms, Refund Policy, and Help & Support screens editable without app store re-releases"
+        ]
+      }
+    ],
+    featureHighlights: [
+      {
+        title: "Browse & Cart Without Login",
+        desc: "Parallel guest API endpoints let first-time visitors explore categories, add marble idols to their cart, and check pincode shipping rates before signing in.",
+        icon: "i-shopping-bag"
+      },
+      {
+        title: "Weight & Pincode Shiprocket Pricing",
+        desc: "Calculates exact courier serviceability and delivery charges from the cart's cumulative weight and destination pincode, synced via live Shiprocket webhooks.",
+        icon: "i-truck"
+      },
+      {
+        title: "Photo & Video Damage Claim Engine",
+        desc: "Buyers submit photo and video evidence for transit damage and track claims from Pending to Refunded or Replaced with full transaction audit trails.",
+        icon: "i-shield"
+      },
+      {
+        title: "3-Tier B2B Partner Onboarding",
+        desc: "Onboards Distributors, Manufacturers, and Investment Partners directly inside the app with validated GST, PAN, shop photo, and PDF catalogue uploads.",
+        icon: "i-users"
+      }
+    ],
+    resultsComparison: [
+      { metric: "First-Time Visitor Conversion", before: "Mandatory sign-up wall before cart or shipping check", after: "Zero-login guest browsing, cart & pincode rate check" },
+      { metric: "Heavy Idol Shipping Math", before: "Flat or manual shipping estimates causing losses", after: "Live Shiprocket rates by exact cart weight & pincode" },
+      { metric: "Transit Damage Handling", before: "Unstructured WhatsApp photos & manual follow-ups", after: "In-app photo/video claim workflow with 5-stage tracking" },
+      { metric: "Omnichannel Inventory", before: "Separate stock counts across web & phone orders", after: "Shared 35+ table MySQL DB across App, Web & Admin" }
+    ],
+    architectureDetails: {
+      pattern: "75-Endpoint CodeIgniter 3 MVC REST JSON API Sharing a Unified 35+ Table MySQL Schema Across Mobile App, Web Storefront & Admin Suite",
+      highlights: [
+        "Unified Omnichannel Database: Shares 35+ relational tables with the web storefront and admin panel so inventory, orders, and pricing stay synchronized in real time",
+        "Dual Guest & JWT Session Pipeline: Supports unauthenticated guest carts alongside 5-minute SMS OTP login, firebase/php-jwt tokens, and logout token blacklisting",
+        "Automated Logistics & Stock Lifecycle: Combines Shiprocket rate calculation, secret-token webhook status ingestion, checkout stock deduction, and cancellation stock restoration",
+        "Cryptographic Payment & Ownership Guards: Enforces server-side Razorpay signature verification and strict user-ID ownership checks on every order and claim endpoint",
+        "Validated Multipart Document Engine: Processes high-resolution product galleries, buyer damage photos/videos, and B2B PDF catalogues and KYC certificates"
+      ]
+    },
+    testimonial: {
+      quote: "Our mobile app and 75-endpoint API share the exact same database as our website and admin panel. Customers can check Shiprocket delivery charges by pincode, pay via Razorpay or COD, track their marble murti shipment, and even apply as distributors right from their phone.",
+      author: "Management Team",
+      role: "Retail & E-Commerce Operations",
+      company: "Ghanshyam Murti Bhandar, Rajkot"
+    }
+  },
+  {
+    id: "kreditmitraa",
+    slug: "kreditmitraa",
+    serviceSlug: "mobile-app-development",
+    category: "Mobile App Development",
+    title: "Kreditmitraa – Short-Term Loan & Referral Rewards Mobile App Platform",
+    subtitle: "Instant 15/30-Day Loan Calculator, KYC Approval Gate, UPI Receipt Repayment & Milestone Referral Wallet",
+    client: "Kreditmitraa",
+    industry: "Fintech / Consumer Lending / Micro-Credit Operations",
+    duration: "10 Weeks",
+    country: "India",
+    website: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.kreditmitraa",
+    domain: "com.visiontechnolabs.kreditmitraa",
+    description: "Kreditmitraa is a mobile-first short-term loan platform. Users register with a mobile OTP, complete their KYC and bank profile, wait for admin approval, calculate the exact repayable amount for a 15 or 30-day loan, apply in a few taps, track the loan from application to disbursal, and repay by UPI with a receipt upload. A built-in referral programme lets users earn wallet rewards and request withdrawals.",
+    shortPitch: "Consumer lending demands absolute verification and pricing transparency: borrowers need to see every interest rupee, platform fee, and GST charge upfront, while lending teams must enforce strict one-active-loan limits and verify repayment receipts before closing loans. Vision engineered the Kreditmitraa mobile ecosystem and its 18-endpoint CodeIgniter 3 MVC REST API (~1,500 lines of controller code) across 10+ MySQL tables—featuring 30-day JWT sessions, KYC approval gates, scheme-based loan pricing, and a milestone referral wallet.",
+    tags: ["Fintech & Loan App", "18 REST API Endpoints", "KYC Approval Gate", "UPI Receipt Repayments", "Referral Rewards Wallet"],
+    gradient: "linear-gradient(135deg, #059669, #0284c7)",
+    image: "/app_images/Kreditmitraa/01_app_KM.png",
+    images: [
+      "/app_images/Kreditmitraa/01_app_KM.png"
+    ],
+    gallery: [
+      {
+        url: "/app_images/Kreditmitraa/01_app_KM.png",
+        caption: "Kreditmitraa Mobile App — Short-Term Loan Dashboard, KYC Approval Gate, Repayment Desk & Referral Wallet",
+        tag: "Fintech Mobile App & API",
+        badge: "Screen 01 · Production View"
+      }
+    ],
+    metrics: [
+      { value: "18", label: "REST API Endpoints" },
+      { value: "15/30", label: "Day Micro-Tenures" },
+      { value: "3-Stage", label: "KYC Approval States" },
+      { value: "1-Active", label: "Loan Protection Rule" }
+    ],
+    challenge: "Short-term consumer micro-lending requires strict borrower authentication, zero unverified loan applications, and 100% transparent fee breakdowns (interest, processing fees, platform charges, and GST) before borrowing. Traditional offline processes suffer from unreviewed KYC documents, borrowers taking multiple overlapping loans beyond their repayment capacity, manual payment reconciliation without audit receipts, and no viral growth mechanism to bring in creditworthy new borrowers.",
+    solution: "Vision engineered Kreditmitraa, an intuitive mobile lending app powered by an 18-endpoint CodeIgniter 3 REST API and 10+ relational MySQL tables. Borrowers register via time-limited SMS OTP and must pass an admin-reviewed 3-state KYC gate (Incomplete, Under Review, Active) before loan applications unlock. Borrowers select 15 or 30-day schemes with upfront fee itemization, apply in one tap under a strict one-active-loan rule, submit UPI repayments with up to 5 MB receipt uploads for review, and earn milestone referral cash credited to an in-app withdrawal wallet.",
+    deliverables: [
+      "Cross-Platform Fintech Mobile Application (Android & iOS)",
+      "18-Endpoint JWT-Secured CodeIgniter 3 MVC REST JSON API (~1,500 Lines of Code)",
+      "Guided 3-State KYC & Bank Account Approval Workflow (Incomplete, Under Review, Active)",
+      "Scheme-Based 15/30-Day Loan Pricing Calculator with Complete Upfront GST & Fee Itemization",
+      "One-Active-Loan Lifecycle Engine (Pending, Assigned, Funded, Disbursed, Paid, Completed)",
+      "UPI Repayment Module with Admin-Managed QR & 5 MB Multipart Receipt Verification",
+      "Milestone-Driven Referral Engine with Direct Wallet Crediting & Payout Requests",
+      "Admin Configurator for Dynamic Loan Schemes, Payment QR Settings & Referral Rewards"
+    ],
+    techStack: [
+      "Cross-Platform Mobile App (Android & iOS)",
+      "PHP & CodeIgniter 3 (18 REST Endpoints)",
+      "MySQL / MariaDB (10+ Relational Tables)",
+      "HS256 JWT Authentication + Token Blacklist",
+      "SMS OTP Verification Gateway",
+      "UPI & Dynamic QR Payment Integration",
+      "5 MB Document & Receipt Upload Vault",
+      "Configurable Admin Lending Schemes"
+    ],
+    modules: [
+      {
+        title: "SMS OTP Onboarding & Guided KYC Approval Gate",
+        icon: "i-shield",
+        description: "Strict borrower verification pipeline preventing fraudulent applications through a guided three-state profile workflow.",
+        features: [
+          "Passwordless mobile SMS OTP registration and login with 30-day JWT sessions and database token blacklist on logout",
+          "Comprehensive profile capture covering personal details, marital status, birth date, education, employment, and address",
+          "Identity verification (ID numbers, KYC document photos, selfie photo) and bank account credentials for direct disbursal",
+          "Guided 3-state profile tracker (Incomplete, Under Review within 24h, Active) that locks loan applications until an admin formally approves"
+        ]
+      },
+      {
+        title: "Transparent Loan Calculator & Single-Loan Engine",
+        icon: "i-calculator",
+        description: "Scheme-based lending calculation displaying every rupee of interest, fees, and GST upfront before application.",
+        features: [
+          "Interactive scheme pricing engine supporting 15 and 30-day tenures with interest rates, processing fees, platform charges, and GST",
+          "100% upfront fee transparency displaying the exact net disbursal and total repayable amount before the borrower taps Apply",
+          "Strict one-active-loan rule automatically blocking new requests if a pending or active loan already exists",
+          "Full 6-stage lifecycle tracking: Pending, Assigned, Funded, Approved, Disbursed, and Completed with days-left countdowns"
+        ]
+      },
+      {
+        title: "UPI Repayment Desk & Receipt Review Pipeline",
+        icon: "i-credit-card",
+        description: "Frictionless UPI repayments paired with mandatory transaction receipt verification for clean loan closure.",
+        features: [
+          "Admin-managed UPI VPA and dynamic QR code served directly to the borrower's app when repayment is due",
+          "Multipart receipt submission supporting JPG, PNG, WebP, and PDF uploads (up to 5 MB) linked directly to the disbursed loan",
+          "Automated review queue moving submitted repayments into the admin verification pipeline before closing the loan",
+          "Enforces lending integrity by allowing repayment submissions exclusively on disbursed loans"
+        ]
+      },
+      {
+        title: "Milestone Referral Rewards & Digital Wallet",
+        icon: "i-award",
+        description: "Viral peer-to-peer growth loop crediting real cash rewards into an in-app wallet upon loan disbursal milestones.",
+        features: [
+          "Unique referral code and shareable invite link generated for every registered borrower",
+          "4-milestone referral tracking (Invited, Applied, Approved, Disbursed) ensuring rewards unlock only when referred users successfully borrow",
+          "Digital wallet displaying available balance, cumulative earnings, and detailed milestone transaction history",
+          "In-app withdrawal requests to verified bank accounts with admin-configurable minimum thresholds (default ₹500)"
+        ]
+      }
+    ],
+    featureHighlights: [
+      {
+        title: "Admin-Gated 3-State KYC Flow",
+        desc: "Borrowers advance through Incomplete, Under Review, and Active states, unlocking loan applications only after formal profile verification.",
+        icon: "i-shield"
+      },
+      {
+        title: "15/30-Day Loan Pricing Calculator",
+        desc: "Displays the exact total payable with itemized interest, processing fees, platform charges, and GST before the borrower submits.",
+        icon: "i-calculator"
+      },
+      {
+        title: "UPI Repayment with Receipt Proof",
+        desc: "Enables instant UPI QR payments with up to 5 MB document uploads (JPG/PNG/WebP/PDF) for reviewable, dispute-free loan closures.",
+        icon: "i-credit-card"
+      },
+      {
+        title: "Milestone Referral Wallet & Payouts",
+        desc: "Rewards users with wallet cash when their referred friends get loans disbursed, with bank withdrawal requests above ₹500.",
+        icon: "i-award"
+      }
+    ],
+    resultsComparison: [
+      { metric: "Borrower Verification", before: "Unchecked applications prone to defaults", after: "3-state KYC review gate before application unlocks" },
+      { metric: "Pricing Transparency", before: "Hidden charges discovered at repayment", after: "100% upfront itemization of fees, interest & GST" },
+      { metric: "Over-Lending Risk", before: "Borrowers applying for multiple concurrent loans", after: "Strict one-active-loan constraint enforced by API" },
+      { metric: "Repayment Auditing", before: "Untracked manual transfers causing disputes", after: "UPI QR + 5 MB receipt upload in admin review queue" }
+    ],
+    architectureDetails: {
+      pattern: "CodeIgniter 3 MVC REST JSON API (18 Endpoints, 10+ Relational MySQL Tables) with 30-Day HS256 JWT Security",
+      highlights: [
+        "18-Endpoint REST Architecture: ~1,500 lines of structured PHP CodeIgniter 3 controller logic managing auth, KYC, loans, repayments, and wallet ledger",
+        "HS256 JWT + Blacklist Security: 30-day token sessions combined with SMS OTP verification and a database blacklist table for immediate logout invalidation",
+        "Dynamic Scheme Engine: Decouples interest rates, processing fees, platform charges, and referral amounts into admin-configurable database tables",
+        "Deterministic State Machine: Strict loan lifecycle transitions (Pending → Assigned → Funded → Disbursed → Paid/Completed) preventing invalid states",
+        "Audit-Proof Multipart Uploads: Server-side validation for KYC document photos, user selfies, and repayment transaction receipts up to 5 MB"
+      ]
+    },
+    testimonial: {
+      quote: "Kreditmitraa structured our short-term micro-lending operations from day one. Borrowers see exact loan interest and fees upfront, our team reviews KYC documents before unlocking applications, and UPI repayments are backed by uploaded receipts.",
+      author: "Operations & Risk Team",
+      role: "Micro-Credit Division",
+      company: "Kreditmitraa"
+    }
+  },
+  {
+    id: "aexongraphics-crm",
+    slug: "aexongraphics-crm",
+    serviceSlug: "custom-software-crm",
+    category: "Custom Software & CRM",
+    title: "Aexon Graphics CRM – Print & Packaging Production, Purchase Order and Invoicing System",
+    subtitle: "End-to-End Flexo Printing & Packaging Factory ERP, Station Workstation Tracking & WhatsApp Invoicing",
+    client: "Aexon Graphics",
+    industry: "Printing, Flexo Printing & Packaging Manufacturing",
+    duration: "8 Weeks",
+    country: "India",
+    website: "https://crm.aexongraphics.com",
+    domain: "crm.aexongraphics.com",
+    description: "An internal production ERP and shop-floor workflow management system running a print and packaging factory from raw material purchase orders to floor workstation dispatch, material waste control, and WhatsApp invoicing.",
+    shortPitch: "The Aexon Graphics CRM runs a print and packaging factory from order to dispatch. The office creates Purchase Orders for raw material, turns each approved order into a Job, and sends it through production stations such as plate making, printing, lamination, punching, pasting, cutting, and dispatch. Each worker sees only their own jobs, and the system tracks material stock, stage progress, and waste. GST-ready Purchase Orders and Proforma Invoices are created as PDFs and sent over WhatsApp.",
+    tags: ["Print & Packaging ERP", "PHP / CodeIgniter", "Production Workstations", "Dompdf & WhatsApp", "Live Platform"],
+    gradient: "linear-gradient(135deg, #0284c7, #0f172a)",
+    image: "/images/axon/01_axon.png",
+    images: [
+      "/images/axon/01_axon.png"
+    ],
+    gallery: [
+      {
+        url: "/images/axon/01_axon.png",
+        caption: "Aexon Graphics CRM — Print & Packaging Production, Station Workstation Queue & Invoicing Overview",
+        tag: "Production ERP & Factory Desk",
+        badge: "Screen 01 · Production Overview"
+      }
+    ],
+    metrics: [
+      { value: "8 Stations", label: "Production Floor Stages" },
+      { value: "0% Overuse", label: "Material Stock Protection" },
+      { value: "<3 Sec", label: "Dompdf & WhatsApp Dispatch" },
+      { value: "100%", label: "Floor Stage Traceability" }
+    ],
+    challenge: "A print and packaging manufacturing plant relies on a precise, multi-step chain: raw materials (sheets, rolls, laminates) must be ordered and inspected; each client order must be split into specialized manufacturing instructions across plate making, flexo printing, lamination, punching, pasting, and cutting machines; and finished units must be packed, dispatched, and invoiced. Prior to this CRM, the entire plant relied on handwritten job cards, loose paper PO slips, and chaotic phone calls between the front office and floor machine operators. This led to frequent scheduling bottlenecks, untracked paper waste and material shortages, lost jobs on the shop floor, workers skipping required quality checkpoints, and tedious manual accounting to calculate GST and email proforma invoices to clients.",
+    solution: "Vision architected and deployed a role-governed internal production ERP and shop-floor workflow platform powered by PHP CodeIgniter 3.1 and MySQL. The system bridges front-office procurement with factory operations: approved Purchase Orders dynamically convert into numbered Jobs with strict stock allocation limits; an intelligent stage sequencer routes jobs one active station at a time to dedicated worker dashboards; floor operators log material consumption and final sheet waste counts before closing a stage; and office administrators generate print-ready Dompdf purchase orders and GST proforma invoices, dispatching them directly to vendor and customer WhatsApp numbers via an integrated QR session service.",
+    deliverables: [
+      "Role-Secured Factory Management ERP (Office Admin & Station Worker Portals)",
+      "Purchase Order Management with Multi-Line Raw Material Specs & Automatic GST Split",
+      "Dynamic PO-to-Job Converter with Rigid Material Stock Protection & Allocation Caps",
+      "8-Station Sequential Job Stage Routing Engine (Plate, Print, Laminate, Punch, Paste, Cut, Dispatch, Complete)",
+      "Worker Workstation Floor Queues with Role-Locked Stage Ownership & Instruction Cards",
+      "Raw Material Consumption & Production Sheet Waste Tracking Console",
+      "GST Proforma Invoicing Engine with Company Profile & Multi-Bank Account Binding",
+      "Automated Dompdf PDF Engine with 1-Click WhatsApp Document Dispatch (QR Session Integration)",
+      "Built-in Production Text Spell-Check Integration with Industry Term Whitelisting"
+    ],
+    techStack: [
+      "PHP 7.4 / 8.x",
+      "CodeIgniter 3.1 MVC",
+      "MySQL / MariaDB (mysqli)",
+      "Dompdf 3.x (Vector PDF)",
+      "WhatsApp Messaging Service (QR Webhooks)",
+      "HTML5 & CSS3",
+      "Bootstrap Admin Layout",
+      "JavaScript (ES6) & jQuery",
+      "LanguageTool API",
+      "Apache Web Server (LAMP)"
+    ],
+    modules: [
+      {
+        title: "Purchase Order & Raw Material Stock Governance",
+        icon: "i-clipboard",
+        description: "Office procurement desk managing vendor purchases with granular specifications, automated tax splits, and sequential PO numbering.",
+        features: [
+          "Detailed material line entry: brand, quantity, size, GSM, micron, kilograms, rate, and line amount",
+          "Automated subtotal, discount (percentage or fixed), and CGST/SGST tax split calculation",
+          "Typeahead party lookup suggesting existing suppliers to eliminate duplicate data entry",
+          "Lifecycle states (Pending, Approved, Completed, Cancelled) with edit locks on approved orders"
+        ]
+      },
+      {
+        title: "PO-to-Job Conversion & Material Allocation Engine",
+        icon: "i-settings",
+        description: "Automated transition bridge converting approved vendor POs into production jobs with strict stock consumption boundaries.",
+        features: [
+          "Unique job numbering algorithm generating deterministic formats (e.g., JOB-<date>-<seq>)",
+          "Stock protection logic verifying allocated material against PO line quantities to prevent over-allocation",
+          "Per-job material tracking reflecting total PO volume, allocated stock, and unassigned balance in real time",
+          "Flexible station checklist allowing custom production routes tailored to specific packaging specifications"
+        ]
+      },
+      {
+        title: "8-Station Production Routing & Sequential Stage Engine",
+        icon: "i-repeat",
+        description: "Deterministically advances jobs through specialized floor stations, enforcing single-active-stage integrity.",
+        features: [
+          "Dedicated station specifications: Plate cutting dimensions, Printing colors/types, Lamination finishes, Punching methods & Pasting/Cutting counts",
+          "Single-active-stage rule: Stage 1 begins 'In Progress' while subsequent stages remain pending until predecessors complete",
+          "Automatic assignment linking each selected station to its currently active shop-floor worker",
+          "Admin job cockpit displaying real-time stage progress, material logs, and full station instructions"
+        ]
+      },
+      {
+        title: "Worker Workstation Floor Console & Station Ownership",
+        icon: "i-user-check",
+        description: "Distraction-free floor portal displaying only assigned jobs with strict ownership verification.",
+        features: [
+          "My Work Station queue filtering jobs by stage state (Total, In Progress, Completed, Pending)",
+          "Strict ownership enforcement preventing unauthorized workers from advancing external stages",
+          "Specialized material usage logging restricted to Printing and Dispatch stations with PO cap validation",
+          "Job Complete terminal capturing final output quantity and wasted sheets before closing the job"
+        ]
+      },
+      {
+        title: "GST Proforma Invoicing & Company Bank Profiles",
+        icon: "i-file-text",
+        description: "Commercial invoicing suite linked directly to approved POs with automated tax calculation and multi-bank selection.",
+        features: [
+          "1-click generation from approved purchase orders carrying customer address, mobile, and GSTIN",
+          "Granular line items (product name, quantity, unit, and unit rate) with automated CGST/SGST calculation",
+          "Company profile binding featuring company logo, contact data, and selectable primary bank account details",
+          "Admin invoice archive with status filters, instant print views, and downloadable files"
+        ]
+      },
+      {
+        title: "Automated Dompdf PDF Engine & WhatsApp QR Gateway",
+        icon: "i-share-2",
+        description: "Direct paperless document delivery sending production POs and invoices over WhatsApp.",
+        features: [
+          "Dompdf 3.x vector PDF compiler creating pixel-perfect, GST-compliant A4 documents",
+          "Integrated WhatsApp web service connecting via admin QR code scan with live status indicators",
+          "Instant 1-click dispatch delivering PO and invoice PDFs directly to vendor or client mobile numbers",
+          "Eliminates email attachments, manual downloads, and paper printing delays"
+        ]
+      },
+      {
+        title: "Factory Floor Spell-Check & Quality Guard",
+        icon: "i-check-circle",
+        description: "Inline text verification validating production instructions with industry-specific vocabulary.",
+        features: [
+          "Integrated spell-check API evaluating text fields as office staff enter critical job specifications",
+          "Smart whitelisting ignoring industry jargon and business acronyms such as 'AEXON', 'GST', and 'FLEXO'",
+          "Eliminates typographical errors in plate dimensions, color notes, and customer delivery remarks",
+          "Audited production logs preserving complete historical records for every finished job"
+        ]
+      }
+    ],
+    featureHighlights: [
+      {
+        title: "8-Stage Production Floor Routing",
+        desc: "Sequences jobs across Plate, Printing, Lamination, Punching, Pasting, Cutting, Dispatch, and Complete with single-active-stage integrity.",
+        icon: "i-layers"
+      },
+      {
+        title: "Strict PO Stock Protection",
+        desc: "Guarantees material allocated across production jobs never exceeds approved purchase order stock quantities.",
+        icon: "i-shield"
+      },
+      {
+        title: "Worker-Secured Workstations",
+        desc: "Shop-floor workers access only their assigned machine stages with role-locked status and waste reporting.",
+        icon: "i-users"
+      },
+      {
+        title: "Dompdf + WhatsApp Document Delivery",
+        desc: "Generates GST-ready vector PDFs and dispatches them directly to vendor/party WhatsApp chats via QR session.",
+        icon: "i-smartphone"
+      }
+    ],
+    resultsComparison: [
+      { metric: "Shop-Floor Visibility", before: "Lost paper job cards & constant phone queries", after: "Live digital workstation queues with sequential progress" },
+      { metric: "Raw Material Consumption", before: "Unchecked usage causing stock shortfalls", after: "Rigid allocation caps locked to approved PO line stock" },
+      { metric: "Document Dispatch Time", before: "Manual PDF printing, scanning & email sending", after: "<3-second automated Dompdf creation & WhatsApp delivery" },
+      { metric: "Station Quality & Handover", before: "Unrecorded waste & finger-pointing between shifts", after: "Stage ownership with sheet counts & waste recorded at closure" }
+    ],
+    architectureDetails: {
+      pattern: "CodeIgniter 3.1 MVC Production ERP with Role-Segregated Dashboards, Dompdf Vector Compiler & WhatsApp Gateway",
+      highlights: [
+        "MVC Architecture: Modular CodeIgniter 3.1 controller and model structure separating procurement, job scheduling, floor workstations, and invoicing",
+        "Relational Integrity: Linked MySQL schema enforcing foreign key relations across purchase_orders, jobs, job_stages, and machine-specific detail tables",
+        "Single-Active-Stage State Machine: Deterministic progression where stage N+1 unlocks only upon stage N completion, updating global job status in real time",
+        "Material Quota Enforcement: Algorithmic checks at database level preventing job allocations from exceeding available purchase order item volumes",
+        "Headless Document & Messaging Pipeline: Server-side Dompdf 3.x vector rendering paired with a persistent WebSocket/HTTP WhatsApp QR messaging daemon"
+      ]
+    },
+    testimonial: {
+      quote: "Aexon Graphics CRM transformed our packaging factory from chaotic paper job cards into a synchronized digital production floor. Every machine operator knows their exact job queue, our raw material stock is protected against overuse, and our office dispatches GST invoices over WhatsApp in seconds.",
+      author: "Plant Operations & Administration",
+      role: "Production Management",
+      company: "Aexon Graphics"
+    }
+  },
+  {
+    id: "loksangeet",
+    slug: "loksangeet",
+    serviceSlug: "mobile-app-development",
+    category: "Mobile App Development",
+    title: "Loksangeet – Traditional & Regional Songs Lyrics Mobile App Platform",
+    subtitle: "Nested Regional Song Library, Multi-Field Search, Community Moderation & Mobile Lyrics Reader",
+    client: "Loksangeet",
+    industry: "Media & Entertainment / Regional Music and Culture",
+    duration: "8 Weeks",
+    country: "India",
+    website: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.loksangeet",
+    domain: "com.visiontechnolabs.loksangeet",
+    description: "Loksangeet is a mobile lyrics library for traditional and regional songs. Listeners browse a nested category tree, open any song to read its lyrics, search by title, lyrics or category, and save favourites. Community members can suggest songs or submit lyrics as text or scanned files (images up to 2 MB or PDFs up to 10 MB), routed through an editorial moderation review.",
+    shortPitch: "Traditional and regional folk songs often live scattered across handwritten diaries, fragmented PDFs, and oral memory. Loksangeet unifies regional musical heritage into an elegant mobile platform powered by a 26-endpoint CodeIgniter 3 MVC REST API (~2,200 lines of controller code) and relational MySQL database. Featuring a multi-level category tree, full-text lyrics search, personal favourites, lightweight mobile authentication with token blacklisting, and a 3-state community moderation workflow, Loksangeet allows cultural song libraries to grow continuously under strict editorial quality control.",
+    tags: ["Lyrics Mobile App", "26 REST Endpoints", "CodeIgniter MVC", "Nested Categories", "Community Moderation", "JWT Security"],
+    gradient: "linear-gradient(135deg, #d97706, #9333ea)",
+    image: "/app_images/loksangeet/01_app_LSL.png",
+    images: [
+      "/app_images/loksangeet/01_app_LSL.png"
+    ],
+    gallery: [
+      {
+        url: "/app_images/loksangeet/01_app_LSL.png",
+        caption: "Loksangeet Mobile App — Traditional & Regional Lyrics Library, Nested Categories, Search & Community Moderation",
+        tag: "Lyrics Mobile App & API",
+        badge: "Screen 01 · Production View"
+      }
+    ],
+    metrics: [
+      { value: "26", label: "REST API Endpoints" },
+      { value: "3-Level", label: "Nested Category Tree" },
+      { value: "100%", label: "Moderation Gate" },
+      { value: "10 MB", label: "Max Scanned PDF Vault" }
+    ],
+    challenge: "Traditional and regional songs (folk music, bhajans, prarthanas, and cultural poetry) were dispersed across personal notebooks, unorganized PDFs, and social media photos with no unified searchable digital library. Finding a song from a single half-remembered line was nearly impossible; large repertoires required intuitive hierarchical categorization (genres, sub-genres, poets, and occasions); and welcoming community submissions risked inundating the app with spam, corrupt formatting, or copyrighted duplicates without an editorial review gate.",
+    solution: "Vision engineered the Loksangeet mobile ecosystem and its robust 26-endpoint CodeIgniter 3 REST JSON API. The platform features lightweight mobile registration and HS256 JWT sessions with instant database token blacklisting upon logout; a nested category and sub-category browsing tree displaying real-time song counters; high-speed multi-field search scanning titles, lyrics text, and categories; a mobile-optimized lyrics reader with normalized typography; and a community submission pipeline enabling users to contribute lyrics as text, photos, or scanned PDFs (up to 10 MB) governed by an admin moderation workflow (Pending, Approved, Rejected).",
+    deliverables: [
+      "Cross-Platform Mobile Application (Android & iOS) with Clean Lyrics Reader",
+      "26-Endpoint JWT-Secured CodeIgniter 3 MVC REST JSON API (~2,200 Lines of Code)",
+      "Multi-Tier Hierarchical Category & Sub-Category Browsing Tree with Song Counts",
+      "Unified Multi-Field Full-Text Search Engine (Song Titles, Lyrics Content & Categories)",
+      "Personal Favourites Manager with Duplicate Protection & Offline Sync",
+      "Community Contribution Pipeline for Text Lyrics & Scanned Document Attachments (Images up to 2 MB, PDFs up to 10 MB)",
+      "3-State Editorial Moderation Workflow (Pending, Approved, Rejected) with Contributor Status Tracking",
+      "Dynamic Certificates Showcase, User Profile Management & Remote In-App Policy Pages"
+    ],
+    techStack: [
+      "PHP 7.4 / 8.x",
+      "CodeIgniter 3 MVC",
+      "MySQL / MariaDB",
+      "RESTful JSON API",
+      "firebase/php-jwt (HS256)",
+      "Token Blacklist Security",
+      "Multi-Field Text Search",
+      "Multipart File & PDF Vault",
+      "Rich-Text Sanitization",
+      "Apache Web Server (LAMP)"
+    ],
+    modules: [
+      {
+        title: "Lightweight Onboarding & HS256 JWT Authentication",
+        icon: "i-shield",
+        description: "Frictionless mobile sign-up and security engine protecting user accounts and personal favourites.",
+        features: [
+          "Minimalist registration requiring only user name and mobile number, blocking duplicate registrations",
+          "Fast mobile-number login with real-time active status validation turning away deactivated accounts",
+          "Stateless HS256 JWT sessions backed by a server-side database token blacklist table for immediate invalidation upon logout",
+          "In-app account deletion workflow adhering strictly to Google Play and Apple App Store privacy mandates"
+        ]
+      },
+      {
+        title: "Multi-Tier Category & Sub-Category Browsing Tree",
+        icon: "i-layers",
+        description: "Hierarchical catalogue organizing extensive song repertoires into intuitive cultural taxonomies.",
+        features: [
+          "Multi-level category tree with category banner images, custom display ordering, sub-category counts, and active song totals",
+          "Dedicated sub-category listings queried by parent category ID with individual song tallies",
+          "Category-specific search and instant filtering enabling listeners to jump directly to target genres",
+          "Admin-configurable tree structure allowing new categories and sub-genres without publishing app updates"
+        ]
+      },
+      {
+        title: "Mobile-Optimized Song Catalogue & Lyrics Reader",
+        icon: "i-music",
+        description: "Distraction-free mobile reading experience rendering rich regional typography cleanly.",
+        features: [
+          "Category-filtered song lists displaying active, approved songs with optimized alphabetical and popularity ordering",
+          "Complete song detail view displaying title, verified author/genre details, full lyrics body, and instant favourite status",
+          "Rich-text sanitization and normalization pipeline ensuring fonts, stanzas, and regional scripts render seamlessly on all screen sizes",
+          "Active status guards preventing draft or unpublished songs from being accessed in the public library"
+        ]
+      },
+      {
+        title: "Multi-Field Smart Search Engine",
+        icon: "i-search",
+        description: "High-speed database search resolving queries across song metadata and lyrics text simultaneously.",
+        features: [
+          "Simultaneous query execution matching across song titles, lyrics body text, and parent/sub-category names",
+          "Surfaces the right song even when listeners remember only a single line or chorus phrase",
+          "Case-insensitive matching with regional text phonetic tolerance",
+          "Sub-second query response times optimized for high-concurrency mobile traffic"
+        ]
+      },
+      {
+        title: "Personal Favourites & User-Curated Collections",
+        icon: "i-heart",
+        description: "Bookmark engine allowing listeners to curate personal libraries for offline or quick access.",
+        features: [
+          "Instant one-tap bookmarking from any song detail view",
+          "Server-side duplicate protection preventing accidental double-entries in user collections",
+          "Automatic verification checking that favourited songs remain active and approved in the central catalogue",
+          "Dedicated 'My Favourites' screen with quick-remove swipe gestures and instant reload"
+        ]
+      },
+      {
+        title: "Community Submissions & 3-State Moderation Gate",
+        icon: "i-file-text",
+        description: "Crowdsourced contribution pipeline combining user submissions with editorial quality control.",
+        features: [
+          "Song suggestions module allowing users to propose unlisted songs with title and banner photo",
+          "Comprehensive lyrics contribution desk supporting text typing, image uploads (up to 2 MB), and scanned PDF documents (up to 10 MB)",
+          "3-state moderation lifecycle (Pending → Approved / Rejected) ensuring only editor-verified lyrics appear publicly",
+          "'My Submissions' tracking console allowing contributors to monitor the review status of their submissions in real time"
+        ]
+      },
+      {
+        title: "Certificates Gallery, Profile & Dynamic Policies",
+        icon: "i-award",
+        description: "Trust and compliance center serving dynamic recognitions, user profiles, and legal policies.",
+        features: [
+          "Comprehensive user profile editor capturing name, email, business, address, taluka, district, pincode, and profile photo",
+          "Certificates gallery displaying active institutional recognitions and awards, served chronologically with newest first",
+          "Remote policy delivery rendering Terms & Conditions and Privacy Policy directly from API endpoints without app resubmissions",
+          "Centralized media storage managing validated document uploads and image assets"
+        ]
+      }
+    ],
+    featureHighlights: [
+      {
+        title: "Nested Category & Sub-Category Tree",
+        desc: "Browse rich regional song collections hierarchically with real-time song counters and custom ordering.",
+        icon: "i-layers"
+      },
+      {
+        title: "Multi-Field Full-Text Search",
+        desc: "Instant search across song titles, lyrics text, and categories so users find songs from half-remembered lines.",
+        icon: "i-search"
+      },
+      {
+        title: "Community Submissions & Moderation",
+        desc: "Enables community members to submit lyrics as text or scanned PDFs/images with a 3-state editorial gate.",
+        icon: "i-file-text"
+      },
+      {
+        title: "Lightweight JWT & Token Blacklist",
+        desc: "Fast onboarding via name & mobile with secure HS256 JWT sessions and instantaneous server-side logout blacklisting.",
+        icon: "i-shield"
+      }
+    ],
+    resultsComparison: [
+      { metric: "Lyrics Organization", before: "Scattered in paper diaries, photos & PDFs", after: "Centralized nested category tree with instant lyrics reader" },
+      { metric: "Song Discovery", before: "Impossible to find songs without exact titles", after: "Full-text search querying titles, lyrics lines & categories" },
+      { metric: "Community Sourcing", before: "Unchecked submissions risking spam & duplicates", after: "Editorial moderation gate (Pending/Approved/Rejected)" },
+      { metric: "Content Freshness", before: "App update needed to add new songs or policies", after: "100% dynamic API updates without publishing app builds" }
+    ],
+    architectureDetails: {
+      pattern: "26-Endpoint CodeIgniter 3 MVC REST JSON API with HS256 JWT Token Blacklisting & Multi-Part Moderation Pipeline",
+      highlights: [
+        "26-Endpoint REST Architecture: ~2,200 lines of structured PHP CodeIgniter 3 controller logic handling auth, categories, songs, search, contributions, and certificates",
+        "HS256 JWT + Token Blacklist Security: Lightweight mobile authentication combined with a database blacklist table ensuring tokens are revoked immediately on logout",
+        "Multi-Field Query Indexing: Fast database queries searching across song titles, rich-text lyrics bodies, and parent/child category names",
+        "Moderation State Machine: Crowdsourced submissions flow through strict lifecycle states (Pending → Approved / Rejected), shielding the public catalogue from unverified content",
+        "Multi-Part Media & PDF Vault: Secure handling for user avatar photos and contributor submissions supporting images up to 2 MB and PDF manuscripts up to 10 MB"
+      ]
+    },
+    testimonial: {
+      quote: "Loksangeet gave our traditional and regional songs a modern digital home. Listeners can find lyrics simply by typing a half-remembered line, and our editorial moderation gate ensures our community keeps contributing songs without sacrificing library quality.",
+      author: "Editorial & Cultural Curation Team",
+      role: "Content & Community Operations",
+      company: "Loksangeet Mobile Platform"
+    }
   }
 ];
 
@@ -1496,7 +3288,16 @@ export function getCaseStudyBySlug(slug) {
   if (slug === "glow-skincare-commerce" || slug === "stayflow" || slug === "pg-crm" || slug === "pg") {
     return caseStudiesData.find((item) => item.slug === "stayflow-crm" || item.id === "stayflow-crm") || caseStudiesData[3];
   }
-  if (slug === "caresync-telehealth" || slug === "nandani" || slug === "nandani-appliances" || slug === "nandanikitchenware") {
+  if (slug === "caresync-telehealth" || slug === "carepulse-telehealth" || slug === "carepulse" || slug === "telehealth") {
+    return caseStudiesData.find((item) => item.slug === "carepulse-telehealth" || item.id === "carepulse-telehealth") || caseStudiesData.find((item) => item.slug === "medicheck") || caseStudiesData[4];
+  }
+  if (slug === "lodgeflow-hospitality" || slug === "lodgeflow" || slug === "hotel-pms" || slug === "hotel") {
+    return caseStudiesData.find((item) => item.slug === "lodgeflow-hospitality" || item.id === "lodgeflow-hospitality") || caseStudiesData[0];
+  }
+  if (slug === "edupulse-learning" || slug === "edupulse" || slug === "lms" || slug === "elearning") {
+    return caseStudiesData.find((item) => item.slug === "edupulse-learning" || item.id === "edupulse-learning") || caseStudiesData.find((item) => item.slug === "fitcket") || caseStudiesData[14];
+  }
+  if (slug === "nandani" || slug === "nandani-appliances" || slug === "nandanikitchenware") {
     return caseStudiesData.find((item) => item.slug === "nandani" || item.id === "nandani") || caseStudiesData[4];
   }
   if (slug === "fitpulse-workout-app" || slug === "medicheck" || slug === "ddi-checker" || slug === "medicheck-ddi") {
@@ -1510,6 +3311,39 @@ export function getCaseStudyBySlug(slug) {
   }
   if (slug === "automobile" || slug === "venus-automobile" || slug === "venusautomobile" || slug === "auto-crm" || slug === "auto") {
     return caseStudiesData.find((item) => item.slug === "automobile" || item.id === "automobile") || caseStudiesData[8];
+  }
+  if (slug === "ananyahomeservice" || slug === "anayahomeservice" || slug === "ananya-home-service" || slug === "anaya-home-service") {
+    return caseStudiesData.find((item) => item.slug === "ananyahomeservice" || item.id === "ananyahomeservice") || caseStudiesData[9];
+  }
+  if (slug === "filterbook" || slug === "filter-book" || slug === "ro-crm") {
+    return caseStudiesData.find((item) => item.slug === "filterbook" || item.id === "filterbook") || caseStudiesData[10];
+  }
+  if (slug === "divyshakti" || slug === "divy-shakti" || slug === "divya-shakti" || slug === "divyashakti") {
+    return caseStudiesData.find((item) => item.slug === "divyshakti" || item.id === "divyshakti") || caseStudiesData[11];
+  }
+  if (slug === "tripsbook" || slug === "tripbook" || slug === "trips-book" || slug === "trip-book") {
+    return caseStudiesData.find((item) => item.slug === "tripsbook" || item.id === "tripsbook") || caseStudiesData[12];
+  }
+  if (slug === "thakarmart" || slug === "thakar-mart" || slug === "thakar_mart" || slug === "jpthakarmart") {
+    return caseStudiesData.find((item) => item.slug === "thakarmart" || item.id === "thakarmart") || caseStudiesData[13];
+  }
+  if (slug === "fitcket" || slug === "fit-cket" || slug === "fitcket-app") {
+    return caseStudiesData.find((item) => item.slug === "fitcket" || item.id === "fitcket") || caseStudiesData[14];
+  }
+  if (slug === "sitedesk" || slug === "sidedesk" || slug === "site-desk" || slug === "side-desk") {
+    return caseStudiesData.find((item) => item.slug === "sitedesk" || item.id === "sitedesk") || caseStudiesData[15];
+  }
+  if (slug === "ghanshyam-murti-app" || slug === "ghanshyammurtibhandar-app" || slug === "gmb-app" || slug === "ghanshyam-app") {
+    return caseStudiesData.find((item) => item.slug === "ghanshyam-murti-app" || item.id === "ghanshyam-murti-app") || caseStudiesData[16];
+  }
+  if (slug === "kreditmitraa" || slug === "kredit-mitraa" || slug === "kreditmitra" || slug === "kredit-mitra") {
+    return caseStudiesData.find((item) => item.slug === "kreditmitraa" || item.id === "kreditmitraa") || caseStudiesData[17];
+  }
+  if (slug === "aexongraphics-crm" || slug === "aexon-graphics-crm" || slug === "aexon-crm" || slug === "aexongraphics" || slug === "axon" || slug === "axon-crm" || slug === "aexon") {
+    return caseStudiesData.find((item) => item.slug === "aexongraphics-crm" || item.id === "aexongraphics-crm") || caseStudiesData[18];
+  }
+  if (slug === "loksangeet" || slug === "lok-sangeet" || slug === "loksangeet-app" || slug === "lok-sangeet-app" || slug === "regional-lyrics" || slug === "loksangeetapp") {
+    return caseStudiesData.find((item) => item.slug === "loksangeet" || item.id === "loksangeet") || caseStudiesData[19];
   }
   return caseStudiesData.find((item) => item.slug === slug || item.id === slug) || null;
 }

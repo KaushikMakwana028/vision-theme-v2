@@ -6,11 +6,11 @@ import { industriesData } from "@/data/industries";
 import { caseStudiesData } from "@/data/caseStudies";
 
 /* =========================================================
-   Page styles (scoped under .svp) — matches servicePage.js
+   Page styles (scoped under .svp) — Modeled on Metizsoft
    ========================================================= */
 const styles = `
-.svp { overflow-x: clip; }
-.svp section[id] { scroll-margin-top: calc(var(--header-h) + 32px); }
+.svp { overflow-x: clip; position: relative; }
+.svp section[id] { scroll-margin-top: calc(var(--header-h, 72px) + 24px); }
 
 /* ---------- Scroll progress ---------- */
 .svp-progress {
@@ -25,20 +25,19 @@ const styles = `
 /* ---------- Reveal on scroll ---------- */
 .svp .rv { opacity: 0; }
 .svp .rv.rv-in { opacity: 1; animation: svp-in .8s var(--ease) var(--rv-delay, 0ms) backwards; }
-.svp .rv.rv-in.svp-cta { animation: svp-in .8s var(--ease) backwards, svp-bg 14s ease-in-out .8s infinite; }
 
-/* ---------- Redirection bar / Breadcrumbs ---------- */
+/* ---------- Breadcrumbs ---------- */
 .breadcrumbs-bar {
-  display: flex; width: 100%; margin-bottom: 0.85rem;
+  display: flex; width: 100%; margin-bottom: 1rem;
 }
 .svp .breadcrumbs {
   display: inline-flex; align-items: center; flex-wrap: wrap; gap: .45rem;
-  padding: .28rem .85rem; border-radius: 999px;
-  background: rgba(255, 255, 255, .6);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  padding: .32rem .95rem; border-radius: 999px;
+  background: rgba(255, 255, 255, .75);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
   border: 1px solid rgba(15, 23, 42, .08);
-  box-shadow: 0 1px 2px rgba(11, 16, 32, .03);
-  font-size: .81rem; line-height: 1.25; margin-bottom: .85rem;
+  box-shadow: 0 1px 3px rgba(11, 16, 32, .04);
+  font-size: .82rem; line-height: 1.25; margin-bottom: .85rem;
   width: fit-content;
 }
 .svp .breadcrumbs a {
@@ -46,14 +45,10 @@ const styles = `
   color: var(--muted); font-weight: 500; text-decoration: none;
   transition: color var(--t) var(--ease);
 }
-.svp .breadcrumbs a:hover {
-  color: var(--primary); transform: none;
-}
+.svp .breadcrumbs a:hover { color: var(--primary); transform: none; }
 .svp .breadcrumbs .bc-icon {
-  width: 13px; height: 13px; flex-shrink: 0; color: var(--muted);
-  transition: color var(--t) var(--ease);
+  width: 14px; height: 14px; flex-shrink: 0; color: var(--muted);
 }
-.svp .breadcrumbs a:hover .bc-icon { transform: none; color: var(--primary); }
 .svp .breadcrumbs .sep {
   color: #94a3b8; font-size: .8rem; font-weight: 500;
   padding: 0 .15rem; user-select: none;
@@ -62,7 +57,7 @@ const styles = `
   color: var(--ink); font-weight: 600; letter-spacing: .01em;
 }
 
-/* ---------- Shared bits ---------- */
+/* ---------- Eyebrows & Badges ---------- */
 .svp .eyebrow {
   display: inline-flex; align-items: center; gap: .55rem;
   padding: .4rem .95rem; border-radius: 999px;
@@ -75,135 +70,95 @@ const styles = `
   box-shadow: 0 0 0 0 rgba(251, 146, 60, .6);
   animation: svp-ping 2s infinite;
 }
-.svp .sec-head { text-align: center; max-width: 760px; margin: 0 auto 2.75rem; }
-.svp .sec-head h2 { margin: 1rem 0 .8rem; line-height: 1.15; color: var(--ink); }
-.svp .sec-head p { color: var(--muted); margin: 0; }
+.svp .eyebrow-hero {
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: .42rem 1.1rem; border-radius: 999px;
+  background: rgba(79, 70, 229, .08); color: var(--primary);
+  font-weight: 600; font-size: .86rem; letter-spacing: .01em;
+  border: 1px solid rgba(79, 70, 229, .15);
+}
+.svp .eyebrow-hero strong { color: var(--primary); font-weight: 700; }
+
+/* ---------- Typography & Section Headers ---------- */
+.svp .sec-head { text-align: center; max-width: 820px; margin: 0 auto 3rem; }
+.svp .sec-head h2 { margin: 1rem 0 .8rem; line-height: 1.18; color: var(--ink); font-size: clamp(1.8rem, 3.8vw, 2.6rem); }
+.svp .sec-head p { color: var(--muted); margin: 0; font-size: clamp(.98rem, 1.8vw, 1.08rem); line-height: 1.7; }
+.svp .hi {
+  background: var(--grad-warm); background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 .svp .sec.alt { background: var(--surface); }
 
-.svp .ico {
-  width: 54px; height: 54px; flex-shrink: 0; display: inline-grid; place-items: center;
-  border-radius: 16px; color: var(--primary);
-  background: linear-gradient(135deg, rgba(79, 70, 229, .12), rgba(6, 182, 212, .14));
-  transition: transform .45s var(--ease), background .3s, color .3s, box-shadow .3s;
+/* ---------- Hero (Metizsoft SubpageHero style) ---------- */
+.svp-hero {
+  position: relative; overflow: hidden; padding-top: clamp(2rem, 5vw, 4rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
 }
-.svp .ico .i { width: 26px; height: 26px; }
-
-.svp .btn { transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease); }
-.svp .btn:hover { transform: translateY(-2px); }
-.svp .btn-primary { position: relative; overflow: hidden; }
-.svp .btn-primary::after {
-  content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent);
-  transform: skewX(-20deg); animation: svp-shine 3.8s ease-in-out 1.5s infinite;
-}
-.svp a:focus-visible, .svp button:focus-visible {
-  outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 10px;
-}
-
-/* ---------- Hero layout (two-column) ---------- */
-.svp .svp-hero .container.hero-wrap {
-  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
-  gap: clamp(2rem, 4vw, 4rem); align-items: center;
-}
-.svp .svp-hero .container.hero-wrap > * { min-width: 0; }
-.svp-hero-wrap { width: 100%; }
-@media (max-width: 1000px) {
-  .svp .svp-hero .container.hero-wrap { grid-template-columns: minmax(0, 1fr); gap: 2.25rem; }
-}
-
-/* ---------- Hero ---------- */
-.svp-hero { position: relative; overflow: hidden; }
 .svp-hero .container { position: relative; z-index: 2; }
 .svp-dots {
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image: radial-gradient(rgba(79, 70, 229, .22) 1.2px, transparent 1.2px);
-  background-size: 26px 26px;
-  -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 10%, transparent 70%);
-  mask-image: radial-gradient(ellipse at 70% 40%, #000 10%, transparent 70%);
-  animation: svp-drift 24s linear infinite;
+  background-image: radial-gradient(rgba(79, 70, 229, .2) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
 }
-.svp-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
-.svp-orb-a { width: 380px; height: 380px; top: -110px; right: 6%; background: var(--primary); opacity: .28; animation: svp-float 12s ease-in-out infinite; }
-.svp-orb-b { width: 300px; height: 300px; bottom: -90px; left: 2%; background: var(--accent); opacity: .26; animation: svp-float 15s ease-in-out -5s infinite reverse; }
-.svp-orb-c { width: 220px; height: 220px; top: 38%; left: 46%; background: var(--accent2); opacity: .2; animation: svp-float 18s ease-in-out -9s infinite; }
+.svp-orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
+.svp-orb-a { width: 440px; height: 440px; top: -140px; right: 8%; background: var(--primary); opacity: .22; animation: svp-float 14s ease-in-out infinite; }
+.svp-orb-b { width: 360px; height: 360px; bottom: -100px; left: 4%; background: var(--accent); opacity: .2; animation: svp-float 16s ease-in-out -6s infinite reverse; }
 
-.svp-hero-copy > * { animation: svp-in .85s var(--ease) backwards; }
-.svp-hero-copy > :nth-child(1) { animation-delay: .05s; }
-.svp-hero-copy > :nth-child(2) { animation-delay: .15s; }
-.svp-hero-copy > :nth-child(3) { animation-delay: .28s; }
-.svp-hero-copy > :nth-child(4) { animation-delay: .42s; }
-.svp-hero-copy > :nth-child(5) { animation-delay: .56s; }
-
-.svp-hero h1 em {
-  font-family: var(--serif); font-style: italic;
+.svp-hero-center {
+  max-width: 900px; margin: 0 auto; text-align: center;
+}
+.svp-hero-center h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.15;
+  margin: 1.2rem 0 1.2rem; color: var(--ink); font-weight: 800; letter-spacing: -.02em;
+}
+.svp-hero-center h1 em {
+  font-family: var(--serif); font-style: italic; font-weight: 700;
   background: var(--grad-warm); background-size: 200% 100%;
   -webkit-background-clip: text; background-clip: text; color: transparent;
   animation: svp-grad 6s linear infinite;
 }
+.svp-hero-center p.lead {
+  font-size: clamp(1.02rem, 2vw, 1.18rem); line-height: 1.75;
+  color: var(--muted); max-width: 780px; margin: 0 auto 2.2rem;
+}
+.svp-hero .cta-row {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 1rem; margin-bottom: 3.5rem;
+}
+.svp-hero .cta-row .btn { padding: .85rem 1.85rem; font-size: .98rem; font-weight: 600; }
 
-/* Hero card: dark glass, 3D tilt */
-.svp-hero-wrap { position: relative; }
-.svp-hero-card {
-  position: relative; color: #fff; overflow: hidden;
-  background: linear-gradient(145deg, var(--dark) 0%, #1b1a4b 55%, var(--primary-600) 100%);
-  border: 1px solid rgba(255, 255, 255, .12);
-  border-radius: calc(var(--radius) + 6px);
-  padding: 2rem; box-shadow: var(--shadow-lg);
-  transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-  transition: transform .25s var(--ease);
-  animation: svp-in-scale 1s var(--ease) .35s backwards;
+/* 4-Stat Bar (Metizsoft style) */
+.svp-hero-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  background: #ffffff; border: 1px solid rgba(15, 23, 42, .09);
+  border-radius: 20px; box-shadow: var(--shadow-md);
+  padding: 1.5rem 1rem; margin: 0 auto; max-width: 1040px;
+  position: relative; z-index: 2;
 }
-.svp-hero-card h3 { color: #fff; margin: 1rem 0 .6rem; }
-.svp-hero-card p { color: rgba(255, 255, 255, .78); margin: 0; }
-.svp-hero-card .btag {
-  display: inline-block; padding: .3rem .75rem; border-radius: 999px; font-size: .8rem; font-weight: 600;
-  background: rgba(255, 255, 255, .12); color: #fff;
+.svp-stat-box {
+  text-align: center; padding: .5rem 1.2rem; position: relative;
 }
-.svp-hero-card .bcard-top { display: flex; align-items: center; justify-content: space-between; }
-.svp-hero-card .blink {
-  width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%;
-  background: var(--accent2); color: #fff; transition: transform .35s var(--ease);
+.svp-stat-box:not(:last-child)::after {
+  content: ""; position: absolute; right: 0; top: 20%; bottom: 20%; width: 1px;
+  background: rgba(15, 23, 42, .08);
 }
-.svp-hero-card:hover .blink { transform: rotate(-45deg) scale(1.1); }
-.svp-hero-card .agent-live {
-  display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.25rem;
-  font-size: .85rem; font-weight: 600; color: #a5f3fc;
+.svp-stat-num {
+  font-size: clamp(1.85rem, 3.6vw, 2.5rem); font-weight: 800; line-height: 1.1;
+  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-variant-numeric: tabular-nums;
 }
-.svp-hero-card .agent-live i {
-  width: 9px; height: 9px; border-radius: 50%; background: #34d399;
-  box-shadow: 0 0 0 0 rgba(52, 211, 153, .7); animation: svp-ping-g 1.8s infinite;
+.svp-stat-label {
+  font-size: .82rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .04em; color: var(--muted); margin-top: .4rem;
 }
-.svp-hero-card::before {
-  content: ""; position: absolute; width: 260px; height: 260px; inset: -90px -80px auto auto; border-radius: 50%;
-  background: radial-gradient(circle, rgba(6, 182, 212, .55), transparent 65%);
-  animation: svp-float 9s ease-in-out infinite; pointer-events: none;
-}
-.svp-hero-card::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
-  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .12) 50%, transparent 65%);
-  background-size: 250% 100%; animation: svp-sheen 6s ease-in-out 1.8s infinite;
-}
-.svp-hero-card > * { position: relative; z-index: 1; }
-.svp-stats {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.75rem;
-  padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, .14);
-}
-.svp-stats > div { min-width: 0; }
-.svp-stats strong { display: block; font-size: 1.6rem; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; }
-.svp-stats span { font-size: .8rem; color: rgba(255, 255, 255, .68); }
 
-.svp-chip {
-  position: absolute; z-index: 3; display: inline-flex; align-items: center; gap: .5rem;
-  padding: .55rem .95rem; border-radius: 999px; background: #fff; color: var(--ink);
-  font-size: .85rem; font-weight: 600; box-shadow: var(--shadow-lg); border: 1px solid var(--line);
+/* ---------- Marquee ribbon ---------- */
+.svp-marquee {
+  padding: 1.25rem 0; border-block: 1px solid var(--line);
+  background: var(--bg); overflow: hidden;
 }
-.svp-chip b { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-.svp-chip-a { top: -20px; right: 84px; animation: svp-bob 6s ease-in-out infinite; }
-.svp-chip-b { bottom: -20px; left: 44px; animation: svp-bob 7s ease-in-out -3s infinite; }
-.svp-chip-b b { background: var(--accent2); }
-
-/* ---------- Tech marquee ---------- */
-.svp-marquee { padding: 1.4rem 0; border-block: 1px solid var(--line); background: var(--bg); overflow: hidden; }
 .svp-marquee-track {
   display: flex; width: max-content; animation: svp-marq 38s linear infinite;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
@@ -212,152 +167,389 @@ const styles = `
 .svp-marquee:hover .svp-marquee-track { animation-play-state: paused; }
 .svp-marquee-group { display: flex; gap: .75rem; padding-right: .75rem; }
 .svp-marquee-group span {
-  white-space: nowrap; padding: .5rem 1.1rem; border-radius: 999px; font-weight: 600; font-size: .9rem;
+  white-space: nowrap; padding: .45rem 1.1rem; border-radius: 999px; font-weight: 600; font-size: .88rem;
   color: var(--primary); background: var(--surface); border: 1px solid var(--line);
   transition: background .25s, color .25s, transform .25s var(--ease);
 }
 .svp-marquee-group span:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
 
-/* ---------- Grids ---------- */
-.svp .cols { display: grid; gap: 1.5rem; }
+/* ---------- Split Overview Section (Metizsoft isol-r2 style) ---------- */
+.svp-isol-r2 {
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+  background: #ffffff; border-bottom: 1px solid var(--line);
+}
+.svp-isol-r2-grid {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: clamp(2rem, 5vw, 4rem); align-items: flex-start;
+}
+.svp-isol-r2-left { display: flex; flex-direction: column; }
+.svp-isol-r2-eyebrow {
+  font-size: .9rem; font-weight: 600; color: var(--primary); text-transform: uppercase;
+  letter-spacing: .06em; margin-bottom: .8rem;
+}
+.svp-isol-r2-left h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.18; color: var(--ink); margin: 0 0 1.25rem;
+}
+.svp-isol-r2-lead {
+  font-size: 1.05rem; line-height: 1.75; color: var(--muted); margin: 0 0 1.5rem;
+}
+.svp-isol-r2-sub {
+  background: var(--surface); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--line);
+  margin-bottom: 2rem;
+}
+.svp-isol-r2-sub h3 { font-size: 1.12rem; margin: 0 0 .5rem; color: var(--ink); }
+.svp-isol-r2-sub p { font-size: .93rem; line-height: 1.65; color: var(--muted); margin: 0; }
+
+.svp-isol-r2-right {
+  display: flex; flex-direction: column; gap: .75rem;
+}
+.svp-isol-r2-row {
+  display: flex; align-items: center; gap: 1.25rem; padding: 1.2rem 1.5rem;
+  background: #ffffff; border: 1px solid rgba(15, 23, 42, .09); border-radius: 16px;
+  box-shadow: 0 2px 10px -2px rgba(11, 16, 32, .03);
+  text-decoration: none; color: inherit;
+  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+}
+.svp-isol-r2-row:hover {
+  transform: translateX(6px); border-color: var(--primary);
+  box-shadow: 0 10px 24px -6px rgba(79, 70, 229, .14);
+}
+.svp-isol-r2-num {
+  font-family: var(--serif); font-style: italic; font-size: 1.4rem; font-weight: 700;
+  color: var(--primary); flex-shrink: 0; width: 32px;
+}
+.svp-isol-r2-content { flex: 1; }
+.svp-isol-r2-content h4 {
+  font-size: 1.02rem; font-weight: 600; margin: 0; color: var(--ink);
+  transition: color .25s;
+}
+.svp-isol-r2-row:hover .svp-isol-r2-content h4 { color: var(--primary); }
+.svp-isol-r2-arrow {
+  color: var(--muted); transition: color .25s, transform .25s var(--ease);
+}
+.svp-isol-r2-row:hover .svp-isol-r2-arrow {
+  color: var(--primary); transform: translate(3px, -3px);
+}
+
+/* ---------- Core Solutions Grid (Metizsoft fsol style) ---------- */
+.svp-fsol-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+.svp-fsol-card {
+  position: relative; display: flex; flex-direction: column;
+  background: #ffffff; border: 1px solid rgba(15, 23, 42, .09);
+  border-radius: 20px; padding: 2.25rem 2rem;
+  box-shadow: 0 4px 20px -3px rgba(11, 16, 32, .04);
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+  overflow: hidden;
+}
+.svp-fsol-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -15px rgba(79, 70, 229, .16);
+  border-color: rgba(79, 70, 229, .25);
+}
+.svp-fsol-card-top {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;
+}
+.svp-fsol-ico {
+  width: 48px; height: 48px; display: inline-grid; place-items: center; border-radius: 14px;
+  background: linear-gradient(135deg, rgba(79, 70, 229, .12), rgba(6, 182, 212, .14));
+  color: var(--primary);
+}
+.svp-fsol-ico svg { width: 24px; height: 24px; }
+.svp-fsol-tag {
+  font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--primary); background: rgba(79, 70, 229, .08); padding: .25rem .75rem; border-radius: 999px;
+}
+.svp-fsol-card h3 {
+  font-size: 1.35rem; font-weight: 700; margin: 0 0 .75rem; color: var(--ink);
+}
+.svp-fsol-card p {
+  color: var(--muted); font-size: .96rem; line-height: 1.7; margin: 0 0 1.25rem;
+}
+.svp-fsol-features {
+  list-style: none; margin: 0 0 1.25rem; padding: 0; display: grid; gap: .6rem;
+}
+.svp-fsol-features li {
+  display: flex; align-items: flex-start; gap: .55rem; font-size: .92rem; color: var(--ink); font-weight: 500;
+}
+.svp-fsol-features svg {
+  flex-shrink: 0; width: 17px; height: 17px; margin-top: .15rem; color: var(--accent);
+}
+
+/* ---------- Standout Projects Section (Metizsoft iproj slider style) ---------- */
+.svp-standout-sec {
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border-bottom: 1px solid var(--line);
+}
+.svp-standout-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2.25rem;
+}
+.svp-standout-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.svp-standout-title-wrap h2 {
+  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  line-height: 1.18;
+  color: var(--ink);
+  margin: 0.5rem 0 0;
+}
+.svp-standout-arrows {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.svp-slide-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: #ffffff;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  box-shadow: 0 2px 6px rgba(11, 16, 32, 0.04);
+}
+.svp-slide-btn:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px -2px rgba(79, 70, 229, 0.35);
+}
+.svp-slide-btn:active {
+  transform: scale(0.96);
+}
+.svp-slide-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Standout Showcase Card */
+.svp-standout-card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 10px 40px -10px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.03);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.svp-standout-content {
+  display: flex;
+  flex-direction: column;
+}
+.svp-standout-title {
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  font-weight: 850;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #0f172a;
+  text-transform: uppercase;
+  margin: 0 0 1.25rem;
+}
+.svp-standout-desc {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: #475569;
+  margin: 0 0 2rem;
+}
+.svp-standout-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+.svp-standout-metric {
+  display: flex;
+  flex-direction: column;
+}
+.svp-standout-metric-val {
+  font-size: clamp(1.85rem, 3vw, 2.4rem);
+  font-weight: 850;
+  line-height: 1.1;
+  color: #ea580c;
+  letter-spacing: -0.02em;
+}
+.svp-standout-metric-lbl {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-top: 0.35rem;
+}
+.svp-standout-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 750;
+  color: #0f172a;
+  text-decoration: none;
+  transition: color 0.25s, transform 0.25s;
+  width: fit-content;
+}
+.svp-standout-link:hover {
+  color: var(--primary);
+  transform: translateX(3px);
+}
+.svp-standout-link svg {
+  width: 18px;
+  height: 18px;
+  color: inherit;
+  transition: transform 0.25s var(--ease);
+}
+.svp-standout-link:hover svg {
+  transform: translate(3px, -3px);
+}
+
+/* Standout Visual */
+.svp-standout-visual {
+  position: relative;
+  width: 100%;
+}
+.svp-standout-img-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--g, linear-gradient(135deg, #f1f5f9, #e2e8f0));
+  box-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.12);
+  aspect-ratio: 16 / 10.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.svp-standout-img-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+.svp-standout-card:hover .svp-standout-img-card img {
+  transform: scale(1.03);
+}
+
+/* Slide indicators / dots */
+.svp-standout-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+.svp-standout-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.2);
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+}
+.svp-standout-dot.active {
+  width: 28px;
+  background: var(--primary);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4);
+}
+
+@media (max-width: 900px) {
+  .svp-standout-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+    border-radius: 22px;
+  }
+  .svp-standout-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .svp-standout-arrows {
+    align-self: flex-end;
+  }
+}
+
+/* ---------- Why Partner Section (Metizsoft wpart style) ---------- */
+.svp-wpart {
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0; background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+.svp-wpart-grid {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem); align-items: flex-start;
+}
+.svp-wpart-left h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.18; color: var(--ink); margin: .75rem 0 1.25rem;
+}
+.svp-wpart-left p.lead {
+  font-size: 1.05rem; line-height: 1.75; color: var(--muted); margin: 0 0 2rem;
+}
+.svp-wpart-list {
+  display: grid; gap: 1.1rem;
+}
+.svp-wpart-item {
+  display: flex; gap: 1.15rem; align-items: flex-start;
+  padding: 1.4rem; background: #ffffff; border: 1px solid rgba(15, 23, 42, .08);
+  border-radius: 16px; box-shadow: 0 2px 10px -2px rgba(11, 16, 32, .03);
+}
+.svp-wpart-ck {
+  flex-shrink: 0; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%;
+  background: rgba(79, 70, 229, .1); color: var(--primary);
+}
+.svp-wpart-ck svg { width: 16px; height: 16px; }
+.svp-wpart-item h4 { font-size: 1.08rem; font-weight: 700; margin: 0 0 .35rem; color: var(--ink); }
+.svp-wpart-item p { font-size: .92rem; line-height: 1.65; color: var(--muted); margin: 0; }
+
+/* ---------- Step / Process & Roadmap ---------- */
+.svp .cols { display: grid; gap: 1.65rem; }
 .svp .cols.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .svp .cols.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .svp .cols.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 .svp .card {
-  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 1.75rem; box-shadow: var(--shadow);
+  background: #ffffff; border: 1px solid rgba(15, 23, 42, .09);
+  border-radius: 20px; padding: 2rem; box-shadow: var(--shadow);
 }
-
-/* ---------- Spotlight cards ---------- */
-.svp-card {
-  position: relative; display: flex; flex-direction: column; overflow: hidden;
-  animation: svp-in .65s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 80ms);
-  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
-}
-.svp-card > * { position: relative; z-index: 1; }
-.svp-card::before {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(79, 70, 229, .12), transparent 45%);
-  transition: opacity .35s;
-}
-.svp-card::after {
-  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit;
-  padding: 1.5px; background: var(--grad-warm); background-size: 200% 100%;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-  opacity: 0; transition: opacity .4s; animation: svp-grad 4s linear infinite;
-}
-.svp-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-.svp-card:hover::before, .svp-card:hover::after { opacity: 1; }
-.svp-card:hover .ico { background: var(--grad); color: #fff; transform: rotate(-8deg) scale(1.08); box-shadow: 0 12px 24px -10px rgba(79, 70, 229, .7); }
-.svp-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; }
-.svp-card .svc-num {
-  position: static; font-family: var(--serif); font-style: italic; font-size: 1.9rem; font-weight: 700; line-height: 1;
-  color: transparent; -webkit-text-stroke: 1px rgba(79, 70, 229, .35);
-  transition: -webkit-text-stroke-color .3s, color .3s;
-}
-.svp-card:hover .svc-num { color: rgba(79, 70, 229, .12); -webkit-text-stroke-color: var(--primary); }
-.svp-card h3 { margin: 0 0 .5rem; color: var(--ink); }
-.svp-card p { margin: 0; color: var(--muted); line-height: 1.65; }
-.svp-card .ticks { list-style: none; margin: 1.2rem 0; padding: 0; display: grid; gap: .6rem; }
-.svp-card .ticks li { display: flex; align-items: flex-start; gap: .55rem; font-size: .94rem; color: var(--ink); }
-.svp-card .ticks .i { flex-shrink: 0; width: 18px; height: 18px; margin-top: .15rem; color: var(--accent); }
-.svp-card .svc-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; padding-top: 1.1rem; }
-.svp-card .svc-tags span {
-  font-size: .76rem; font-weight: 600; padding: .25rem .65rem; border-radius: 999px;
-  background: var(--surface); color: var(--primary); transition: background .3s, color .3s;
-}
-.svp-card:hover .svc-tags span { background: rgba(79, 70, 229, .1); }
-.svp-card .more {
-  margin-top: auto; display: inline-flex; align-items: center; gap: .45rem; font-weight: 700; color: var(--primary);
-}
-.svp-card .more .i { width: 18px; height: 18px; transition: transform .35s var(--ease); }
-.svp-card .more:hover .i { transform: translateX(6px); }
-
-/* ---------- Process ---------- */
 .svp-step { position: relative; overflow: hidden; transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
 .svp-step:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-.svp-step::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
-  background: var(--grad-warm); transform: scaleX(0); transform-origin: left;
-  transition: transform 1s var(--ease); transition-delay: calc(var(--rv-delay, 0ms) + .5s);
-}
-.svp-step.rv-in::after { transform: scaleX(1); }
 .svp-step-num {
-  display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
-  font-weight: 700; font-size: .85rem; color: #fff; background: var(--grad); margin-bottom: 1rem;
+  display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+  font-weight: 700; font-size: .85rem; color: #fff; background: var(--grad); margin-bottom: 1.1rem;
 }
-.svp-step .ico { display: grid; margin-bottom: 1rem; }
-.svp-step:hover .ico { background: var(--grad); color: #fff; transform: translateY(-3px) scale(1.06); }
-.svp-step h3 { margin: 0 0 .5rem; color: var(--ink); }
-.svp-step p { margin: 0; color: var(--muted); line-height: 1.65; }
-
-/* ---------- Why ---------- */
-.svp-why {
-  position: relative; display: flex; gap: 1.25rem; align-items: flex-start; overflow: hidden;
-  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
-}
-.svp-why::before {
-  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--grad);
-  transform: scaleY(0); transform-origin: top; transition: transform .5s var(--ease);
-}
-.svp-why:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-.svp-why:hover::before { transform: scaleY(1); }
-.svp-why:hover .ico { background: var(--grad); color: #fff; transform: rotate(-8deg) scale(1.08); }
-.svp-why h3 { margin: 0 0 .4rem; color: var(--ink); }
-.svp-why p { margin: 0; color: var(--muted); line-height: 1.65; }
-
-/* ---------- Projects / case studies ---------- */
-.svp .card.flush { padding: 0; }
-.svp-proj { height: 100%; }
-.svp-thumb { position: relative; overflow: hidden; aspect-ratio: 800 / 520; background: var(--g); }
-.svp-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
-.svp-thumb::before {
-  content: ""; position: absolute; top: 0; bottom: 0; left: -70%; width: 45%; z-index: 2; pointer-events: none;
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .35), transparent); transform: skewX(-20deg);
-  transition: left .9s var(--ease);
-}
-.svp-thumb::after {
-  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .4s;
-  background: linear-gradient(180deg, transparent 45%, rgba(11, 16, 32, .55));
-}
-.svp-proj:hover .svp-thumb img { transform: scale(1.08); }
-.svp-proj:hover .svp-thumb::before { left: 130%; }
-.svp-proj:hover .svp-thumb::after { opacity: 1; }
-.svp-wb { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
-.svp-wb h3 { margin: .9rem 0 .5rem; color: var(--ink); transition: color .3s; }
-.svp-proj:hover .svp-wb h3 { color: var(--primary); }
-.svp-wb p { margin: 0 0 1.25rem; color: var(--muted); line-height: 1.65; }
-.svp .svp-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-.svp .svp-tags span { font-size: .74rem; font-weight: 600; padding: .25rem .65rem; border-radius: 999px; background: var(--surface); color: var(--primary); }
-.svp .svp-met {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 1rem; margin-top: auto;
-  padding-top: 1.1rem; border-top: 1px dashed var(--line);
-}
-.svp .svp-met > div { min-width: 0; }
-.svp .svp-met strong {
-  display: block; font-size: 1.35rem; font-weight: 800; font-variant-numeric: tabular-nums;
-  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-.svp .svp-met span { display: block; font-size: .78rem; color: var(--muted); }
+.svp-step h3 { margin: 0 0 .5rem; color: var(--ink); font-size: 1.15rem; }
+.svp-step p { margin: 0; color: var(--muted); line-height: 1.65; font-size: .92rem; }
 
 /* ---------- FAQ ---------- */
-.svp .faq-wrap { max-width: 820px; margin: 0 auto; display: grid; gap: .9rem; }
+.svp .faq-wrap { max-width: 860px; margin: 0 auto; display: grid; gap: 1rem; }
 .svp .faq-card {
-  background: var(--bg); border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+  background: #ffffff; border: 1px solid rgba(15, 23, 42, .09); border-radius: 16px; overflow: hidden;
   transition: border-color .3s, box-shadow .3s, transform .3s var(--ease);
 }
 .svp .faq-card:hover { transform: translateX(4px); }
-.svp .faq-card.open { border-color: var(--primary); box-shadow: 0 18px 40px -26px var(--primary); }
+.svp .faq-card.open { border-color: var(--primary); box-shadow: 0 16px 36px -20px var(--primary); }
 .svp .faq-card-head {
   width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; text-align: left;
-  padding: 1.15rem 1.3rem; background: none; border: 0; cursor: pointer; font: inherit; font-weight: 600; color: var(--ink);
+  padding: 1.25rem 1.4rem; background: none; border: 0; cursor: pointer; font: inherit; font-weight: 600; color: var(--ink);
+  font-size: 1.02rem;
 }
 .svp .faq-icon {
   flex-shrink: 0; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%;
-  background: rgba(79, 70, 229, .1); color: var(--primary); font-size: 1.25rem; line-height: 1;
+  background: rgba(79, 70, 229, .1); color: var(--primary); font-size: 1.3rem; line-height: 1;
   transition: transform .4s var(--ease), background .3s, color .3s;
 }
 .svp .faq-card.open .faq-icon { transform: rotate(135deg); background: var(--grad); color: #fff; }
@@ -365,107 +557,90 @@ const styles = `
 .svp .faq-card.open .faq-card-body { grid-template-rows: 1fr; }
 .svp .faq-inner { overflow: hidden; min-height: 0; }
 .svp .faq-inner p {
-  margin: 0; padding: 0 1.3rem 1.3rem; color: var(--muted); line-height: 1.75;
+  margin: 0; padding: 0 1.4rem 1.4rem; color: var(--muted); line-height: 1.75; font-size: .95rem;
   opacity: 0; transform: translateY(-6px); transition: opacity .35s .08s, transform .4s .08s var(--ease);
 }
 .svp .faq-card.open .faq-inner p { opacity: 1; transform: none; }
 
-/* ---------- CTA ---------- */
-.svp-cta-sec { padding-top: 2rem; }
-.svp-cta {
-  position: relative; overflow: hidden; display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: center;
-  padding: clamp(1.75rem, 5vw, 3.5rem); border-radius: calc(var(--radius) + 10px); color: #fff;
-  background: linear-gradient(120deg, var(--dark), #1b1a4b, var(--primary), #6d4aff, var(--dark));
-  background-size: 300% 300%; animation: svp-bg 14s ease-in-out infinite;
+/* ---------- Final CTA Banner ---------- */
+.svp-cta-sec { padding: 4rem 0 2rem; }
+.svp-final-box {
+  position: relative; overflow: hidden; display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: center;
+  padding: clamp(2rem, 5vw, 4rem); border-radius: 28px; color: #fff;
+  background: linear-gradient(135deg, #0b1020 0%, #1b1a4b 55%, var(--primary-600) 100%);
   box-shadow: var(--shadow-lg);
 }
-.svp-cta > * { position: relative; z-index: 1; }
-.svp-cta::before, .svp-cta::after {
-  content: ""; position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
-  border: 1px solid rgba(255, 255, 255, .18);
+.svp-final-box > * { position: relative; z-index: 1; }
+.svp-final-box::before {
+  content: ""; position: absolute; width: 500px; height: 500px; right: -140px; top: -180px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, .45), transparent 70%); pointer-events: none;
 }
-.svp-cta::before { width: 420px; height: 420px; right: -120px; top: -160px; animation: svp-spin 40s linear infinite; border-style: dashed; }
-.svp-cta::after { width: 260px; height: 260px; left: -90px; bottom: -120px; background: radial-gradient(circle, rgba(251, 146, 60, .35), transparent 70%); border: 0; animation: svp-float 10s ease-in-out infinite; }
-.svp-cta .eyebrow { background: rgba(255, 255, 255, .12); color: #a5f3fc; }
-.svp-cta h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); margin: 1rem 0 .8rem; line-height: 1.15; color: #fff; }
-.svp-cta .sub { color: rgba(255, 255, 255, .8); margin: 0; max-width: 56ch; }
-.svp-cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.svp-final-box::after {
+  content: ""; position: absolute; width: 340px; height: 340px; left: -100px; bottom: -140px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 146, 60, .35), transparent 70%); pointer-events: none;
+}
+.svp-final-box .marker {
+  display: inline-block; padding: .35rem .95rem; border-radius: 999px; font-size: .84rem; font-weight: 600;
+  background: rgba(255, 255, 255, .12); color: #a5f3fc; margin-bottom: 1rem;
+}
+.svp-final-box h2 {
+  font-size: clamp(2rem, 4vw, 3rem); line-height: 1.18; color: #fff; margin: 0 0 1rem;
+}
+.svp-final-box h2 .accent {
+  background: linear-gradient(90deg, #fdba74, #f472b6); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.svp-final-box p.sub {
+  color: rgba(255, 255, 255, .82); font-size: 1.05rem; line-height: 1.7; margin: 0 0 2rem; max-width: 54ch;
+}
+.svp-final-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
 .svp-poc-card {
   text-align: center; padding: 2.2rem 2rem; border-radius: 22px;
-  background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .18);
   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-  animation: svp-bob 6s ease-in-out infinite;
 }
 .svp-poc-big {
-  font-size: clamp(2.1rem, 5vw, 2.7rem); font-weight: 800;
-  background: linear-gradient(90deg, #fff, #a5f3fc, #fdba74, #fff); background-size: 250% 100%;
-  -webkit-background-clip: text; background-clip: text; color: transparent; animation: svp-grad 5s linear infinite;
+  font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 800; line-height: 1.1;
+  background: linear-gradient(90deg, #fff, #a5f3fc, #fdba74); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.svp-poc-title { font-weight: 600; font-size: 1.1rem; margin-top: .3rem; color: #fff; }
-.svp-poc-card p { color: rgba(255, 255, 255, .82); font-size: .9rem; margin: .6rem 0 0; }
+.svp-poc-title { font-weight: 700; font-size: 1.15rem; margin-top: .4rem; color: #fff; }
+.svp-poc-card p { color: rgba(255, 255, 255, .8); font-size: .92rem; margin: .75rem 0 0; line-height: 1.6; }
 
-/* ---------- 404 ---------- */
+/* 404 */
 .svp-nf { text-align: center; padding: 6rem 0; }
 .svp-nf-code {
   font-family: var(--serif); font-style: italic; font-size: clamp(4rem, 14vw, 8rem); font-weight: 700; line-height: 1;
-  background: var(--grad-warm); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: svp-grad 5s linear infinite;
+  background: var(--grad-warm); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.svp-nf h2 { margin: .5rem 0; color: var(--ink); }
-.svp-nf p { margin: 1rem 0 2rem; color: var(--muted); }
 
-/* ---------- Keyframes ---------- */
+/* Keyframes */
 @keyframes svp-in { from { opacity: 0; transform: translateY(22px); } }
-@keyframes svp-in-scale { from { opacity: 0; transform: translateY(30px) scale(.96); } }
-@keyframes svp-float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-34px, 26px); } }
-@keyframes svp-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes svp-float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-30px, 24px); } }
 @keyframes svp-grad { to { background-position: 200% 0; } }
-@keyframes svp-sheen { 0%, 60% { background-position: 150% 0; } 100% { background-position: -100% 0; } }
-@keyframes svp-shine { 0%, 55% { left: -60%; } 100% { left: 130%; } }
-@keyframes svp-drift { to { background-position: 26px 26px; } }
 @keyframes svp-marq { to { transform: translateX(-50%); } }
-@keyframes svp-bg { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-@keyframes svp-spin { to { transform: rotate(360deg); } }
 @keyframes svp-ping { 70% { box-shadow: 0 0 0 9px rgba(251, 146, 60, 0); } 100% { box-shadow: 0 0 0 0 rgba(251, 146, 60, 0); } }
-@keyframes svp-ping-g { 70% { box-shadow: 0 0 0 9px rgba(52, 211, 153, 0); } 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); } }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 1100px) {
+/* Responsive */
+@media (max-width: 1024px) {
+  .svp-isol-r2-grid, .svp-wpart-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .svp-fsol-grid { grid-template-columns: 1fr; }
+  .svp-final-box { grid-template-columns: 1fr; gap: 2rem; }
   .svp .cols.c3, .svp .cols.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .svp-chip { display: none; }
 }
 @media (max-width: 860px) {
-  .svp-cta { grid-template-columns: 1fr; gap: 1.75rem; }
-  .svp-hero-card { transform: none !important; }
+  .svp-hero-stats { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 0; }
+  .svp-stat-box:nth-child(2)::after { display: none; }
 }
-@media (max-width: 640px) {
-  .svp .cols.c2, .svp .cols.c3, .svp .cols.c4 { grid-template-columns: 1fr; gap: 1rem; }
-  .svp .sec-head { margin-bottom: 2rem; }
-  .svp-hero .cta-row { display: flex; flex-direction: column; gap: .75rem; }
-  .svp-hero .cta-row .btn, .svp-cta-actions .btn { width: 100%; justify-content: center; text-align: center; }
-  .svp-hero-card { padding: 1.4rem; }
-  .svp-stats { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 1rem; }
-  .svp-orb-a { width: 240px; height: 240px; }
-  .svp-orb-b { width: 200px; height: 200px; }
-  .svp-orb-c { display: none; }
-  .svp .card { padding: 1.4rem; }
-  .svp-why { flex-direction: column; gap: .9rem; }
-  .svp .faq-card:hover { transform: none; }
-  .svp .faq-card-head { padding: 1rem; font-size: .96rem; }
-  .svp .faq-inner p { padding: 0 1rem 1rem; }
-  .svp-poc-card { padding: 1.6rem 1.25rem; }
-  .svp-marquee { padding: 1rem 0; }
-  .svp-wb { padding: 1.25rem; }
-  .svp-thumb { aspect-ratio: 16 / 10; }
+@media (max-width: 680px) {
+  .svp .cols.c2, .svp .cols.c3, .svp .cols.c4 { grid-template-columns: 1fr; gap: 1.25rem; }
+  .svp-hero .cta-row { flex-direction: column; width: 100%; }
+  .svp-hero .cta-row .btn, .svp-final-actions .btn { width: 100%; text-align: center; justify-content: center; }
+  .svp-iproj-grid { grid-template-columns: 1fr; }
+  .svp-fsol-card, .svp-wpart-item, .svp .card { padding: 1.5rem; }
+  .svp-iproj-body { padding: 1.5rem; }
 }
-@media (hover: none) {
-  .svp-card:hover, .svp-step:hover, .svp-why:hover, .svp-proj:hover .svp-thumb img { transform: none; }
-  .svp-card::before { display: none; }
-}
-
-/* ---------- Reduced motion ---------- */
-@media (prefers-reduced-motion: reduce) {
-  .svp *, .svp *::before, .svp *::after { animation: none !important; transition-duration: .01ms !important; }
-  .svp .rv { opacity: 1 !important; transform: none !important; }
+@media (max-width: 480px) {
+  .svp-hero-stats { grid-template-columns: 1fr; gap: 1.2rem 0; }
+  .svp-stat-box::after { display: none !important; }
 }
 `;
 
@@ -473,7 +648,7 @@ const styles = `
    Helpers
    ========================================================= */
 
-function useInView(threshold = 0.12) {
+function useInView(threshold = 0.1) {
   const ref = useRef(null);
   const [shown, setShown] = useState(false);
   useEffect(() => {
@@ -553,20 +728,19 @@ function CountUp({ value, duration = 1500 }) {
         };
         raf = requestAnimationFrame(tick);
       },
-      { threshold: 0.4 },
+      { threshold: 0.3 },
     );
     io.observe(el);
     return () => {
       io.disconnect();
       cancelAnimationFrame(raf);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [target, duration, countable]);
 
   return (
-    <strong ref={ref}>
+    <span ref={ref}>
       {countable ? `${prefix}${n.toFixed(decimals)}${suffix}` : text}
-    </strong>
+    </span>
   );
 }
 
@@ -600,111 +774,93 @@ function ScrollProgress() {
   );
 }
 
-// Mouse-follow spotlight for cards
-const onSpot = (e) => {
-  const r = e.currentTarget.getBoundingClientRect();
-  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-};
-
-// 3D tilt for the hero card (desktop pointers only)
-const onTilt = (e) => {
-  if (!window.matchMedia("(hover: hover) and (min-width: 861px)").matches)
-    return;
-  const el = e.currentTarget;
-  const r = el.getBoundingClientRect();
-  const x = (e.clientX - r.left) / r.width - 0.5;
-  const y = (e.clientY - r.top) / r.height - 0.5;
-  el.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
-  el.style.setProperty("--ry", `${(x * 9).toFixed(2)}deg`);
-};
-const onTiltEnd = (e) => {
-  e.currentTarget.style.setProperty("--rx", "0deg");
-  e.currentTarget.style.setProperty("--ry", "0deg");
-};
-
-function ProjectCard({ proj, delay = 0 }) {
-  return (
-    <Reveal
-      as="article"
-      delay={delay}
-      className="card flush svp-card svp-proj"
-      onMouseMove={onSpot}
-    >
-      <div
-        className="thumb svp-thumb"
-        style={{
-          "--g": proj.gradient || "linear-gradient(135deg,#4f46e5,#7c3aed)",
-        }}
-      >
-        <img
-          src={proj.image}
-          alt={proj.title}
-          width={800}
-          height={520}
-          loading="lazy"
-          onError={(e) => {
-            e.currentTarget.style.display = "none";
-          }}
-        />
-      </div>
-      <div className="wb svp-wb">
-        {proj.tags?.length > 0 && (
-          <div className="tags svp-tags">
-            {proj.tags.map((t, idx) => (
-              <span key={idx}>{t}</span>
-            ))}
-          </div>
-        )}
-        <h3>
-          <Link href={`/work/${proj.slug || proj.id}`}>
-            {proj.title}
-          </Link>
-        </h3>
-        <p>{proj.description}</p>
-        {proj.metrics?.length > 0 && (
-          <div className="met svp-met">
-            {proj.metrics.map((m, idx) => (
-              <div key={idx}>
-                <CountUp value={m.value} />
-                <span>{m.label}</span>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </Reveal>
-  );
-}
-
-const workflowIcons = ["i-shield", "i-cpu", "i-code", "i-badge"];
-const advantageIcons = ["i-lock", "i-speed", "i-briefcase", "i-headset"];
-
 /* =========================================================
    Page Component
    ========================================================= */
 
 export default function IndustryDetailPage({ industry: propIndustry }) {
-  // Fallback to first industry if loaded directly
   const industry = propIndustry || industriesData[0];
   const [openFaq, setOpenFaq] = useState(0);
 
   const marqueeTags = useMemo(() => {
     if (!industry) return [];
-    const combined = [...(industry.compliance || []), ...(industry.techStack || [])];
-    return combined.length > 0 ? combined : ["Next.js", "SOC-2", "HIPAA", "AWS", "Docker"];
+    const combined = [
+      ...(industry.compliance || []),
+      ...(industry.pillTags || []),
+      ...(industry.techStack || []),
+    ];
+    return combined.length > 0
+      ? combined
+      : ["Next.js", "SOC-2", "HIPAA", "AWS", "Docker"];
   }, [industry]);
 
+  // Dynamically matched case studies SPECIFIC to this industry
   const projects = useMemo(() => {
-    return caseStudiesData.slice(0, 3);
-  }, []);
+    if (!industry) return [];
+    if (industry.caseStudySlugs && industry.caseStudySlugs.length > 0) {
+      const matched = caseStudiesData.filter((cs) =>
+        industry.caseStudySlugs.includes(cs.slug) || industry.caseStudySlugs.includes(cs.id)
+      );
+      if (matched.length > 0) return matched;
+    }
+    // Keyword fallback
+    const indKeywords = [
+      industry.id,
+      industry.slug,
+      ...(industry.title || "").toLowerCase().split(/[\s&,-]+/),
+    ].filter(Boolean);
+
+    const scored = caseStudiesData.map((cs) => {
+      let score = 0;
+      const csText = `${cs.title} ${cs.industry} ${cs.category} ${cs.tags?.join(" ")}`.toLowerCase();
+      indKeywords.forEach((kw) => {
+        if (kw.length > 2 && csText.includes(kw)) score += 1;
+      });
+      return { cs, score };
+    });
+
+    const relevant = scored
+      .filter((s) => s.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .map((s) => s.cs);
+    return relevant.length > 0 ? relevant.slice(0, 3) : caseStudiesData.slice(0, 3);
+  }, [industry]);
+
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Reset slide index if industry changes
+  useEffect(() => {
+    setActiveSlide(0);
+  }, [industry?.slug]);
+
+  // Automatic scrolling / autoplay for standout projects slider
+  useEffect(() => {
+    if (projects.length <= 1 || isPaused) return;
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % projects.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [projects.length, isPaused]);
+
+  const prevSlide = () => {
+    if (!projects.length) return;
+    setActiveSlide((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  const nextSlide = () => {
+    if (!projects.length) return;
+    setActiveSlide((prev) => (prev + 1) % projects.length);
+  };
+
+  const currentProject = projects[activeSlide] || projects[0];
 
   const toggleFaq = (index) =>
     setOpenFaq((prev) => (prev === index ? null : index));
 
   if (!industry) {
     return (
-      <main id="main" className="svp">
+      <div className="svp">
         <style dangerouslySetInnerHTML={{ __html: styles }} />
         <div className="container svp-nf">
           <div className="svp-nf-code">404</div>
@@ -714,47 +870,33 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
             Back to All Industries
           </Link>
         </div>
-      </main>
+      </div>
     );
   }
 
   const otherIndustries = industriesData.filter((i) => i.slug !== industry.slug);
 
   return (
-    <main id="main" className="svp">
+    <div className="svp">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
       <ScrollProgress />
 
-      {/* ================= HERO ================= */}
-      <section className="hero svp-hero" aria-labelledby="industry-title">
-        <div className="hero-bg" aria-hidden="true" />
+      {/* ================= HERO (Metizsoft SubpageHero style) ================= */}
+      <section className="svp-hero" aria-labelledby="industry-title">
         <span className="svp-dots" aria-hidden="true" />
         <span className="svp-orb svp-orb-a" aria-hidden="true" />
         <span className="svp-orb svp-orb-b" aria-hidden="true" />
-        <span className="svp-orb svp-orb-c" aria-hidden="true" />
 
-        <div className="container hero-wrap">
-          <div className="copy svp-hero-copy">
-            <nav className="breadcrumbs" aria-label="Breadcrumb">
-              <Link href="/">
-                <svg className="i bc-icon" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                  <polyline points="9 22 9 12 15 12 15 22" />
-                </svg>
-                <span>Home</span>
-              </Link>
-              <span className="sep">/</span>
-              <Link href="/industries">Industries</Link>
-              <span className="sep">/</span>
-              <span className="current">{industry.title}</span>
-            </nav>
-
-            <span className="eyebrow-hero">
-              <strong>{industry.category}</strong> {industry.badge}
-            </span>
+        <div className="container">
+          <div className="svp-hero-center">
+            <div style={{ marginBottom: "1rem" }}>
+              <span className="eyebrow-hero">
+                <strong>{industry.category}</strong> Technology &amp; Engineering
+              </span>
+            </div>
 
             <h1 id="industry-title">
-              {industry.title} <em>Engineered for Regulated Scale</em>
+              Top <em>{industry.title} Software Development</em> &amp; Engineering
             </h1>
 
             <p className="lead">
@@ -763,8 +905,8 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
 
             <div className="cta-row">
               <Link className="btn btn-primary" href="/#contact">
-                Schedule Technical Consultation{" "}
-                <svg className="i" aria-hidden="true">
+                Consult With an Architect{" "}
+                <svg className="i" aria-hidden="true" width="18" height="18">
                   <use href="#i-arrow" />
                 </svg>
               </Link>
@@ -774,53 +916,23 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
             </div>
           </div>
 
-          <div className="svp-hero-wrap">
-            <span className="svp-chip svp-chip-a" aria-hidden="true">
-              <b /> {industry.category}
-            </span>
-            <span className="svp-chip svp-chip-b" aria-hidden="true">
-              <b /> 100% IP Ownership
-            </span>
-
-            <div
-              className="bcard big svp-hero-card"
-              onMouseMove={onTilt}
-              onMouseLeave={onTiltEnd}
-            >
-              <div className="bcard-top">
-                <span className="btag">Domain Benchmarks</span>
-                <span className="blink" aria-hidden="true">
-                  <svg className="i">
-                    <use href="#i-arrow" />
-                  </svg>
-                </span>
-              </div>
-              <span className="agent-live">
-                <i />
-                Live Compliance &amp; SLAs
-              </span>
-              <h3>Engineered for Zero-Trust Reliability</h3>
-              <p>
-                Every build meets strict regulatory standards, sub-second latency,
-                and high availability requirements.
-              </p>
-
-              {industry.metrics?.length > 0 && (
-                <div className="svp-stats">
-                  {industry.metrics.map((m, idx) => (
-                    <div key={idx}>
-                      <CountUp value={m.value} />
-                      <span>{m.label}</span>
-                    </div>
-                  ))}
+          {/* Industry Metrics 4-Stat Bar (Metizsoft style) */}
+          {industry.metrics?.length > 0 && (
+            <div className="svp-hero-stats">
+              {industry.metrics.map((stat, idx) => (
+                <div key={idx} className="svp-stat-box">
+                  <div className="svp-stat-num">
+                    <CountUp value={stat.value} />
+                  </div>
+                  <div className="svp-stat-label">{stat.label}</div>
                 </div>
-              )}
+              ))}
             </div>
-          </div>
+          )}
         </div>
       </section>
 
-      {/* ================= TECH & COMPLIANCE MARQUEE ================= */}
+      {/* ================= COMPLIANCE & TECH MARQUEE ================= */}
       <div className="svp-marquee" aria-label="Technologies and compliance frameworks">
         <div className="svp-marquee-track">
           {[0, 1].map((g) => (
@@ -833,44 +945,102 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
         </div>
       </div>
 
-      {/* ================= CORE SOLUTIONS ================= */}
+      {/* ================= SPLIT OVERVIEW (Metizsoft isol-r2 style) ================= */}
+      <section className="svp-isol-r2">
+        <div className="container">
+          <div className="svp-isol-r2-grid">
+            <div className="svp-isol-r2-left">
+              <div className="svp-isol-r2-eyebrow">— Domain Services</div>
+              <h2>
+                <span className="hi">{industry.title} Solutions</span> We Build
+              </h2>
+              <p className="svp-isol-r2-lead">
+                We engineer intelligent {industry.title.toLowerCase()} platforms built from the ground up
+                for clinical accuracy, data security, and regulatory compliance. Our team brings real domain
+                depth to every engagement—not just generic development skills.
+              </p>
+              <div className="svp-isol-r2-sub">
+                <h3>Building and Integrating Advanced {industry.title} Platforms</h3>
+                <p>
+                  We don&apos;t just build platforms; we engineer for scale, sub-second latency, and
+                  strict external audits. Every release includes comprehensive telemetry, zero-trust tokenization,
+                  and automated compliance reports.
+                </p>
+              </div>
+              <div>
+                <Link className="btn btn-primary" href="/#contact">
+                  Share Your Requirements →
+                </Link>
+              </div>
+            </div>
+
+            <div className="svp-isol-r2-right">
+              {(industry.capabilitiesList || industry.solutions?.map((s) => s.title))?.map((cap, idx) => (
+                <a
+                  key={idx}
+                  href="#solutions"
+                  className="svp-isol-r2-row"
+                  aria-label={cap}
+                >
+                  <div className="svp-isol-r2-num">
+                    {String(idx + 1).padStart(2, "0")}
+                  </div>
+                  <div className="svp-isol-r2-content">
+                    <h4>{cap}</h4>
+                  </div>
+                  <div className="svp-isol-r2-arrow">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CORE SOLUTIONS (Metizsoft fsol style) ================= */}
       <section className="sec" id="solutions">
         <div className="container">
           <Reveal className="sec-head">
-            <span className="eyebrow">Domain Solutions</span>
-            <h2>Tailored Capabilities We Ship into Production</h2>
+            <span className="eyebrow">What We Build</span>
+            <h2>
+              Enterprise-Grade <span className="hi">{industry.title} Software Platforms</span>
+            </h2>
             <p>
               Engineered specifically to solve complex domain workflows, regulatory
               hurdles, and operational bottlenecks across {industry.title}.
             </p>
           </Reveal>
 
-          <div className="cols c3">
+          <div className="svp-fsol-grid">
             {industry.solutions?.map((sol, idx) => (
-              <article
+              <Reveal
                 key={idx}
-                className="card svc-card svp-card"
-                style={{ "--i": idx }}
-                onMouseMove={onSpot}
+                delay={idx * 90}
+                className="svp-fsol-card"
               >
-                <div className="svp-card-top">
-                  <span className="ico">
-                    <svg className="i" aria-hidden="true">
+                <div className="svp-fsol-card-top">
+                  <div className="svp-fsol-ico">
+                    <svg aria-hidden="true">
                       <use href={`#${industry.icon || "i-code"}`} />
                     </svg>
-                  </span>
-                  <span className="svc-num">
-                    {String(idx + 1).padStart(2, "0")}
+                  </div>
+                  <span className="svp-fsol-tag">
+                    {String(idx + 1).padStart(2, "0")} — Domain
                   </span>
                 </div>
+
                 <h3>{sol.title}</h3>
                 <p>{sol.description}</p>
 
                 {sol.features?.length > 0 && (
-                  <ul className="ticks">
+                  <ul className="svp-fsol-features">
                     {sol.features.map((feat, fIdx) => (
                       <li key={fIdx}>
-                        <svg className="i" aria-hidden="true">
+                        <svg aria-hidden="true">
                           <use href="#i-check" />
                         </svg>
                         <span>{feat}</span>
@@ -878,15 +1048,7 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
                     ))}
                   </ul>
                 )}
-
-                {industry.compliance?.length > 0 && (
-                  <div className="svc-tags">
-                    {industry.compliance.slice(0, 3).map((c, cIdx) => (
-                      <span key={cIdx}>{c}</span>
-                    ))}
-                  </div>
-                )}
-              </article>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -909,22 +1071,16 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
               {industry.compliance.map((item, idx) => (
                 <Reveal
                   key={idx}
-                  delay={(idx % 3) * 110}
-                  className="card svp-card"
-                  onMouseMove={onSpot}
+                  delay={(idx % 3) * 100}
+                  className="card"
                 >
-                  <div className="svp-card-top">
-                    <span className="ico">
-                      <svg className="i" aria-hidden="true">
-                        <use href="#i-shield" />
-                      </svg>
-                    </span>
-                    <span className="svc-num">
+                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
+                    <span className="svp-step-num" style={{ margin: 0 }}>
                       {String(idx + 1).padStart(2, "0")}
                     </span>
+                    <h3 style={{ margin: 0, fontSize: "1.2rem", color: "var(--ink)" }}>{item}</h3>
                   </div>
-                  <h3>{item}</h3>
-                  <p>
+                  <p style={{ margin: 0, color: "var(--muted)", lineHeight: 1.65, fontSize: ".92rem" }}>
                     Full engineering compliance including encrypted data stores,
                     automated audit trails, continuous vulnerability scanning, and
                     least-privilege IAM controls.
@@ -936,35 +1092,156 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
         </section>
       )}
 
-      {/* ================= FEATURED WORK ================= */}
-      {projects.length > 0 && (
-        <section className="sec" id="work">
+      {/* ================= STANDOUT PROJECTS SLIDER & SHOWCASE (Metizsoft iproj slider style) ================= */}
+      {projects.length > 0 && currentProject && (
+        <section className="svp-standout-sec" id="work">
           <div className="container">
-            <Reveal className="sec-head">
-              <span className="eyebrow">Featured Work</span>
-              <h2>Enterprise Case Studies Delivered</h2>
-              <p>
-                Explore recent projects showcasing how we design, build, and scale
-                solutions for {industry.title}.
-              </p>
-            </Reveal>
+            <div className="svp-standout-head">
+              <div className="svp-standout-title-wrap">
+                <span className="eyebrow">Proven Case Studies</span>
+                <h2>
+                  Our Standout <span className="hi">{industry.title} Projects</span>
+                </h2>
+              </div>
 
-            <div className="cols c3">
-              {projects.map((proj, idx) => (
-                <ProjectCard
-                  key={proj.id}
-                  proj={proj}
-                  delay={(idx % 3) * 110}
-                />
-              ))}
+              {projects.length > 1 && (
+                <div className="svp-standout-arrows">
+                  <button
+                    type="button"
+                    onClick={prevSlide}
+                    aria-label="Previous Standout Project"
+                    className="svp-slide-btn"
+                  >
+                    <svg width="20" height="20" style={{ width: "20px", height: "20px", minWidth: "20px", maxWidth: "20px", flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={nextSlide}
+                    aria-label="Next Standout Project"
+                    className="svp-slide-btn"
+                  >
+                    <svg width="20" height="20" style={{ width: "20px", height: "20px", minWidth: "20px", maxWidth: "20px", flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div
+              className="svp-standout-showcase"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              onTouchStart={() => setIsPaused(true)}
+              onTouchEnd={() => setIsPaused(false)}
+            >
+              <div key={currentProject.id} className="svp-standout-card">
+                <div className="svp-standout-content">
+                  <h3 className="svp-standout-title">
+                    {(currentProject.subtitle || currentProject.title).toUpperCase()}
+                  </h3>
+
+                  <p className="svp-standout-desc">
+                    {currentProject.description || currentProject.shortPitch}
+                  </p>
+
+                  <Link
+                    className="svp-standout-link"
+                    href={`/work/${currentProject.slug || currentProject.id}`}
+                  >
+                    <span>Read the Case Study</span>
+                    <svg width="18" height="18" style={{ width: "18px", height: "18px", minWidth: "18px", maxWidth: "18px", flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                  </Link>
+                </div>
+
+                <div className="svp-standout-visual">
+                  <div
+                    className="svp-standout-img-card"
+                    style={{
+                      "--g": currentProject.gradient || "linear-gradient(135deg,#0d9488,#059669)",
+                    }}
+                  >
+                    <img
+                      src={currentProject.image}
+                      alt={currentProject.title}
+                      width={760}
+                      height={500}
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {projects.length > 1 && (
+                <div className="svp-standout-dots">
+                  {projects.map((p, idx) => (
+                    <button
+                      key={p.id || idx}
+                      type="button"
+                      onClick={() => setActiveSlide(idx)}
+                      aria-label={`Go to slide ${idx + 1}`}
+                      className={`svp-standout-dot ${idx === activeSlide ? "active" : ""}`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </section>
       )}
 
-      {/* ================= METHODOLOGY ================= */}
+      {/* ================= WHY PARTNER (Metizsoft wpart style) ================= */}
+      {industry.advantages?.length > 0 && (
+        <section className="svp-wpart" id="advantages">
+          <div className="container">
+            <div className="svp-wpart-grid">
+              <div className="svp-wpart-left">
+                <span className="eyebrow">Why Partner with Vision</span>
+                <h2>
+                  Why Partner with Us for{" "}
+                  <span className="hi">{industry.title}</span> Development?
+                </h2>
+                <p className="lead">
+                  We combine deep {industry.title.toLowerCase()} domain knowledge with
+                  proven full-lifecycle engineering. We understand clinical and financial workflows,
+                  regulatory frameworks, and the high stakes of enterprise deployments.
+                </p>
+                <Link className="btn btn-primary" href="/#contact">
+                  Book a Strategy Call →
+                </Link>
+              </div>
+
+              <div className="svp-wpart-list">
+                {industry.advantages.map((adv, idx) => (
+                  <div key={idx} className="svp-wpart-item">
+                    <div className="svp-wpart-ck">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4>{adv.title}</h4>
+                      <p>{adv.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ================= STRATEGIC ROADMAP / WORKFLOW ================= */}
       {industry.workflow?.length > 0 && (
-        <section className="sec alt" id="workflow">
+        <section className="sec" id="workflow">
           <div className="container">
             <Reveal className="sec-head">
               <span className="eyebrow">Our Methodology</span>
@@ -979,53 +1256,8 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
               {industry.workflow.map((flow, idx) => (
                 <Reveal key={idx} delay={idx * 120} className="card svp-step">
                   <span className="svp-step-num">{flow.step}</span>
-                  <span className="ico">
-                    <svg className="i" aria-hidden="true">
-                      <use
-                        href={`#${workflowIcons[idx % workflowIcons.length]}`}
-                      />
-                    </svg>
-                  </span>
                   <h3>{flow.title}</h3>
                   <p>{flow.desc}</p>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ================= ADVANTAGES ================= */}
-      {industry.advantages?.length > 0 && (
-        <section className="sec" id="advantages">
-          <div className="container">
-            <Reveal className="sec-head">
-              <span className="eyebrow">Why Vision</span>
-              <h2>Why Leading Enterprises Partner with Us for {industry.title}</h2>
-              <p>
-                Senior domain engineers, 100% intellectual property ownership, and
-                measurable business outcomes delivered on time.
-              </p>
-            </Reveal>
-
-            <div className="cols c2">
-              {industry.advantages.map((adv, idx) => (
-                <Reveal
-                  key={idx}
-                  delay={(idx % 2) * 110}
-                  className="card svp-why"
-                >
-                  <span className="ico">
-                    <svg className="i" aria-hidden="true">
-                      <use
-                        href={`#${advantageIcons[idx % advantageIcons.length]}`}
-                      />
-                    </svg>
-                  </span>
-                  <div>
-                    <h3>{adv.title}</h3>
-                    <p>{adv.desc}</p>
-                  </div>
                 </Reveal>
               ))}
             </div>
@@ -1100,36 +1332,30 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
 
             <div className="cols c3">
               {otherIndustries.slice(0, 3).map((other, idx) => (
-                <article
+                <Link
                   key={other.id}
-                  className="card svc-card svp-card"
-                  style={{ "--i": idx }}
-                  onMouseMove={onSpot}
+                  href={`/industries/${other.slug}`}
+                  className="card svp-step"
+                  style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  <div className="svp-card-top">
-                    <span className="ico">
-                      <svg className="i" aria-hidden="true">
-                        <use href={`#${other.icon}`} />
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
+                    <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(79,70,229,.1)", display: "grid", placeItems: "center", color: "var(--primary)" }}>
+                      <svg width="22" height="22" aria-hidden="true">
+                        <use href={`#${other.icon || "i-code"}`} />
                       </svg>
+                    </div>
+                    <span style={{ fontFamily: "var(--serif)", fontStyle: "italic", fontWeight: 700, fontSize: "1.3rem", color: "rgba(79,70,229,.4)" }}>
+                      {other.number}
                     </span>
-                    <span className="svc-num">{other.number}</span>
                   </div>
-                  <h3>{other.title}</h3>
-                  <p>{other.shortDescription}</p>
-
-                  <div className="svc-tags">
-                    {other.compliance?.slice(0, 3).map((c, cidx) => (
-                      <span key={cidx}>{c}</span>
-                    ))}
+                  <h3 style={{ margin: "0 0 .5rem", fontSize: "1.2rem", color: "var(--ink)" }}>{other.title}</h3>
+                  <p style={{ margin: "0 0 1rem", color: "var(--muted)", fontSize: ".9rem", lineHeight: 1.65 }}>
+                    {other.shortDescription}
+                  </p>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: ".4rem", fontWeight: 700, fontSize: ".9rem", color: "var(--primary)" }}>
+                    View Solutions →
                   </div>
-
-                  <Link className="more" href={`/industries/${other.slug}`}>
-                    View Industry Solutions{" "}
-                    <svg className="i" aria-hidden="true">
-                      <use href="#i-arrow" />
-                    </svg>
-                  </Link>
-                </article>
+                </Link>
               ))}
             </div>
           </div>
@@ -1139,17 +1365,19 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
       {/* ================= FINAL CTA ================= */}
       <section className="sec svp-cta-sec">
         <div className="container">
-          <Reveal className="cta-box svp-cta">
+          <Reveal className="svp-final-box">
             <div>
-              <span className="eyebrow">Ready to Engineer?</span>
-              <h2>Let&apos;s Build Your {industry.title} Platform</h2>
+              <span className="marker">Ready to Engineer?</span>
+              <h2>
+                Let&apos;s Build Your <span className="accent">{industry.title}</span> Platform
+              </h2>
               <p className="sub">
                 Connect directly with a lead solution architect. We&apos;ll evaluate
                 your compliance requirements, provide a feasibility blueprint, and
                 scope realistic delivery milestones.
               </p>
-              <div className="svp-cta-actions">
-                <Link className="btn btn-light" href="/#contact">
+              <div className="svp-final-actions">
+                <Link className="btn btn-primary" href="/#contact">
                   Schedule Free Discovery Call →
                 </Link>
                 <Link className="btn btn-ghost" href="/industries">
@@ -1171,6 +1399,6 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
           </Reveal>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

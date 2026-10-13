@@ -546,26 +546,6 @@ export default function BlogDetailPage({ blog: propBlog }) {
       <header className="bd-head">
         <div className="wrap">
           <div className="inner">
-            <nav className="crumbs" aria-label="Breadcrumb">
-              <Link href="/" title="Home">
-                <Ico>
-                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                  <polyline points="9 22 9 12 15 12 15 22" />
-                </Ico>
-                <span>Home</span>
-              </Link>
-              <span className="sep" aria-hidden="true">
-                /
-              </span>
-              <Link href="/blog">Blogs</Link>
-              <span className="sep" aria-hidden="true">
-                /
-              </span>
-              <span className="cur" aria-current="page" title={blog.title}>
-                {blog.title}
-              </span>
-            </nav>
-
             <div className="meta">
               {blog.category && <span className="cat">{blog.category}</span>}
               {blog.readTime && (

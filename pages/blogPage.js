@@ -409,22 +409,8 @@ function ScrollProgress() {
    ========================================================= */
 
 export default function BlogPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [subscribed, setSubscribed] = useState(false);
-
-  const categoriesList = useMemo(() => {
-    return blogCategories && blogCategories.length > 0
-      ? blogCategories
-      : [
-          "All",
-          "AI & Agents",
-          "Web Architecture",
-          "Mobile Engineering",
-          "Ecommerce & Headless",
-          "DevOps & Cloud"
-        ];
-  }, []);
 
   // Editor's pick / featured article
   const featuredArticle = useMemo(() => {
@@ -432,34 +418,20 @@ export default function BlogPage() {
     return list.find((b) => b.featured) || list[0];
   }, []);
 
-  // Filtered list
+  // Full articles list with search support
   const filteredArticles = useMemo(() => {
     const list = blogsData || [];
+    if (!searchQuery.trim()) return list;
+    const query = searchQuery.toLowerCase().trim();
     return list.filter((article) => {
-      const matchesCategory =
-        selectedCategory === "All" || article.category === selectedCategory;
       const tags = article.tags || [];
-      const matchesSearch =
-        searchQuery === "" ||
-        article.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        article.excerpt?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        tags.some((t) =>
-          t.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-      return matchesCategory && matchesSearch;
+      return (
+        article.title?.toLowerCase().includes(query) ||
+        article.excerpt?.toLowerCase().includes(query) ||
+        tags.some((t) => t.toLowerCase().includes(query))
+      );
     });
-  }, [selectedCategory, searchQuery]);
-
-  const counts = useMemo(() => {
-    const list = blogsData || [];
-    const map = { All: list.length };
-    list.forEach((b) => {
-      if (b.category) {
-        map[b.category] = (map[b.category] || 0) + 1;
-      }
-    });
-    return map;
-  }, []);
+  }, [searchQuery]);
 
   const marqueeTopics = useMemo(() => {
     return [
@@ -491,31 +463,6 @@ export default function BlogPage() {
 
         <div className="container">
           <div className="svp-hero-center">
-            <div className="breadcrumbs-bar">
-              <nav className="breadcrumbs" aria-label="Breadcrumb">
-                <Link href="/">
-                  <svg
-                    className="i bc-icon"
-                    aria-hidden="true"
-                    width="13"
-                    height="13"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                  </svg>
-                  <span>Home</span>
-                </Link>
-                <span className="sep">/</span>
-                <span className="current">Blog</span>
-              </nav>
-            </div>
-
             <div style={{ marginBottom: "1.1rem" }}>
               <span className="eyebrow">
                 Vision Engineering Dispatches &amp; Architecture Insights
@@ -651,26 +598,6 @@ export default function BlogPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 aria-label="Search articles"
               />
-            </div>
-
-            <div className="blog-tabs" role="tablist" aria-label="Article categories">
-              {categoriesList.map((cat) => {
-                const count = counts[cat] || 0;
-                const isActive = selectedCategory === cat;
-                return (
-                  <button
-                    key={cat}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    className={`blog-tab ${isActive ? "active" : ""}`}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    <span>{cat}</span>
-                    <em>{count}</em>
-                  </button>
-                );
-              })}
             </div>
           </div>
 

@@ -218,11 +218,11 @@ const styles = `
 .svp-marquee-group span:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
 
 /* ---------- Filter tabs ---------- */
-.svp .filter-wrap { position: relative; margin: 0 auto 2.25rem; }
+.svp .filter-wrap { position: relative; margin: 0 auto 2.25rem; width: 100%; }
 .svp .filter-tabs { display: flex; gap: .55rem; justify-content: center; flex-wrap: wrap; }
 .svp .filter-tab {
-  display: inline-flex; align-items: center; gap: .5rem; cursor: pointer;
-  padding: .6rem 1.1rem; border-radius: 999px; font: inherit; font-weight: 600; font-size: .92rem;
+  display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; flex-shrink: 0;
+  padding: .6rem 1.15rem; border-radius: 999px; font: inherit; font-weight: 600; font-size: .92rem;
   white-space: nowrap; color: var(--ink); background: var(--bg); border: 1px solid var(--line);
   transition: transform .3s var(--ease), background .3s, color .3s, border-color .3s, box-shadow .3s;
 }
@@ -414,15 +414,19 @@ const styles = `
 .svp .svp-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 .svp .svp-tags span { font-size: .74rem; font-weight: 600; padding: .25rem .65rem; border-radius: 999px; background: var(--surface); color: var(--primary); }
 .svp .svp-met {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 1rem; margin-top: auto;
-  padding-top: 1.1rem; border-top: 1px dashed var(--line);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: auto;
+  padding-top: 1.15rem; border-top: 1px dashed var(--line); min-height: 56px;
 }
 .svp .svp-met > div { min-width: 0; }
 .svp .svp-met strong {
   display: block; font-size: 1.35rem; font-weight: 800; font-variant-numeric: tabular-nums;
   background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+  line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.svp .svp-met span { display: block; font-size: .78rem; color: var(--muted); }
+.svp .svp-met span {
+  display: block; font-size: .76rem; color: var(--muted); margin-top: .2rem; line-height: 1.35;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 @media (max-width: 640px) {
   .svp-wb { padding: 1.25rem; }
   .svp-thumb { aspect-ratio: 16 / 10; }
@@ -449,6 +453,39 @@ const styles = `
   .svp .cols.c3, .svp .cols.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .svp-chip { display: none; }
 }
+@media (max-width: 900px) {
+  .svp .filter-wrap {
+    margin-left: calc(var(--gutter, 1.25rem) * -1) !important;
+    margin-right: calc(var(--gutter, 1.25rem) * -1) !important;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+  .svp .filter-wrap::after {
+    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 36px; pointer-events: none;
+    background: linear-gradient(90deg, transparent, var(--bg)); z-index: 2;
+  }
+  .svp .sec.alt .filter-wrap::after { background: linear-gradient(90deg, transparent, var(--surface)); }
+  .svp .filter-tabs {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x !important;
+    scroll-snap-type: none !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    padding: .35rem var(--gutter, 1.25rem) .75rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .svp .filter-tabs::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
+  .svp .filter-tab {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    scroll-snap-align: none !important;
+  }
+}
 @media (max-width: 860px) {
   .svp-cta { grid-template-columns: 1fr; gap: 1.75rem; }
   .svp-hero-card { transform: none !important; }
@@ -463,18 +500,6 @@ const styles = `
   .svp-orb-a { width: 240px; height: 240px; }
   .svp-orb-b { width: 200px; height: 200px; }
   .svp-orb-c { display: none; }
-  .svp .filter-wrap { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
-  .svp .filter-wrap::after {
-    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 30px; pointer-events: none;
-    background: linear-gradient(90deg, transparent, var(--bg));
-  }
-  .svp .sec.alt .filter-wrap::after { background: linear-gradient(90deg, transparent, var(--surface)); }
-  .svp .filter-tabs {
-    flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; padding: .35rem var(--gutter) .7rem;
-    scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch;
-  }
-  .svp .filter-tabs::-webkit-scrollbar { display: none; }
-  .svp .filter-tab { scroll-snap-align: start; }
   .svp .card { padding: 1.4rem; }
   .svp-why { flex-direction: column; gap: .9rem; }
   .svp .faq-card:hover { transform: none; }
@@ -690,9 +715,11 @@ function ProjectCard({ proj, delay = 0 }) {
         <p>{proj.description}</p>
         {proj.metrics?.length > 0 && (
           <div className="met svp-met">
-            {proj.metrics.map((m, idx) => (
+            {proj.metrics.slice(0, 2).map((m, idx) => (
               <div key={idx}>
-                <CountUp value={m.value} />
+                <strong>
+                  <CountUp value={m.value} />
+                </strong>
                 <span>{m.label}</span>
               </div>
             ))}
@@ -833,20 +860,6 @@ export default function ServicePage() {
 
         <div className="container hero-wrap">
           <div className="copy svp-hero-copy">
-            <div className="breadcrumbs-bar">
-              <nav className="breadcrumbs" aria-label="Breadcrumb">
-                <Link href="/">
-                  <svg className="i bc-icon" aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                  </svg>
-                  <span>Home</span>
-                </Link>
-                <span className="sep">/</span>
-                <span className="current">Services</span>
-              </nav>
-            </div>
-
             <div style={{ marginBottom: "1rem" }}>
               <span className="eyebrow-hero">
                 <strong>Vision</strong> Engineering &amp; AI Capabilities
@@ -960,7 +973,10 @@ export default function ServicePage() {
                   role="tab"
                   aria-selected={selectedCategory === cat}
                   className={`filter-tab ${selectedCategory === cat ? "active" : ""}`}
-                  onClick={() => setSelectedCategory(cat)}
+                  onClick={(e) => {
+                    setSelectedCategory(cat);
+                    e.currentTarget.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+                  }}
                 >
                   {cat}
                   {counts[cat] !== undefined && <em>{counts[cat]}</em>}

@@ -333,15 +333,19 @@ const styles = `
 .svp .svp-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 .svp .svp-tags span { font-size: .74rem; font-weight: 600; padding: .25rem .65rem; border-radius: 999px; background: var(--surface); color: var(--primary); }
 .svp .svp-met {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 1rem; margin-top: auto;
-  padding-top: 1.1rem; border-top: 1px dashed var(--line);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: auto;
+  padding-top: 1.15rem; border-top: 1px dashed var(--line); min-height: 56px;
 }
 .svp .svp-met > div { min-width: 0; }
 .svp .svp-met strong {
   display: block; font-size: 1.35rem; font-weight: 800; font-variant-numeric: tabular-nums;
   background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+  line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.svp .svp-met span { display: block; font-size: .78rem; color: var(--muted); }
+.svp .svp-met span {
+  display: block; font-size: .76rem; color: var(--muted); margin-top: .2rem; line-height: 1.35;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 
 /* ---------- FAQ ---------- */
 .svp .faq-wrap { max-width: 820px; margin: 0 auto; display: grid; gap: .9rem; }
@@ -666,9 +670,11 @@ function ProjectCard({ proj, delay = 0 }) {
         <p>{proj.description}</p>
         {proj.metrics?.length > 0 && (
           <div className="met svp-met">
-            {proj.metrics.map((m, idx) => (
+            {proj.metrics.slice(0, 2).map((m, idx) => (
               <div key={idx}>
-                <CountUp value={m.value} />
+                <strong>
+                  <CountUp value={m.value} />
+                </strong>
                 <span>{m.label}</span>
               </div>
             ))}
@@ -740,22 +746,6 @@ export default function ServiceDetailPage({ service: propService }) {
 
         <div className="container hero-wrap">
           <div className="copy svp-hero-copy">
-            <div className="breadcrumbs-bar">
-              <nav className="breadcrumbs" aria-label="Breadcrumb">
-                <Link href="/">
-                  <svg className="i bc-icon" aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                  </svg>
-                  <span>Home</span>
-                </Link>
-                <span className="sep">/</span>
-                <Link href="/services">Services</Link>
-                <span className="sep">/</span>
-                <span className="current">{service.title}</span>
-              </nav>
-            </div>
-
             <div style={{ marginBottom: "1rem" }}>
               <span className="eyebrow-hero">
                 <strong>{service.category}</strong> {service.badge}

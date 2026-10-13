@@ -7,6 +7,7 @@ import { brandInfo } from "@/data/company";
 import { servicesData } from "@/data/services";
 import { industriesData } from "@/data/industries";
 import { caseStudiesData } from "@/data/caseStudies";
+import { productsData } from "@/data/products";
 import { techStackData } from "@/data/techStack";
 import { guaranteesData } from "@/data/guarantees";
 import { testimonialsData } from "@/data/testimonials";
@@ -15,6 +16,21 @@ import { blogsData } from "@/data/blogs";
 import { processSteps, clientLogos, whyChooseUs } from "@/data/process";
 
 export default function HomePage() {
+  // Mobile Slider States
+  const [activeProjectSlide, setActiveProjectSlide] = useState(0);
+  const [activeProductSlide, setActiveProductSlide] = useState(0);
+
+  // Top 4 Standout Case Studies
+  const featuredProjects = [
+    caseStudiesData.find((c) => c.slug === "medicheck") || caseStudiesData[0],
+    caseStudiesData.find((c) => c.slug === "kreditmitraa") || caseStudiesData[1],
+    caseStudiesData.find((c) => c.slug === "stayflow-crm") || caseStudiesData[2],
+    caseStudiesData.find((c) => c.slug === "srlpixel") || caseStudiesData[3]
+  ];
+
+  // Top 4 Authentic Proprietary Products
+  const featuredProducts = productsData.slice(0, 4);
+
   // Video Modal State
   const [activeVideo, setActiveVideo] = useState(null);
 
@@ -670,7 +686,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ================= WORK ================= */}
+      {/* ================= WORK (4 Standout Projects + Mobile Slider) ================= */}
       <section id="work" aria-labelledby="wk-t">
         <div className="container">
           <div className="sec-head">
@@ -679,24 +695,26 @@ export default function HomePage() {
               Recent projects we&apos;ve successfully delivered
             </h2>
             <p className="rv">
-              A selection of recently completed projects across web, mobile and AI.
+              A selection of our top enterprise deliveries across healthcare, fintech, proptech, and industrial IoT.
             </p>
           </div>
-          <div className="cols c4">
-            {caseStudiesData.map((project) => (
-              <article className="card flush rv" key={project.id}>
-                <div className="thumb" style={{ "--g": project.gradient }}>
+
+          {/* Desktop & Tablet Grid (4 items) */}
+          <div className="home-work-grid rv">
+            {featuredProjects.map((project) => (
+              <article className="home-work-card" key={project.id}>
+                <div className="home-work-thumb" style={{ "--g": project.gradient }}>
                   <img
                     src={project.image}
                     alt={project.title}
-                    width={800}
-                    height={520}
+                    width={600}
+                    height={400}
                     loading="lazy"
                   />
                 </div>
-                <div className="wb">
-                  <div className="tags">
-                    {project.tags.map((t, idx) => (
+                <div className="home-work-body">
+                  <div className="home-work-tags">
+                    {project.tags.slice(0, 2).map((t, idx) => (
                       <span key={idx}>{t}</span>
                     ))}
                   </div>
@@ -705,23 +723,234 @@ export default function HomePage() {
                       {project.title}
                     </Link>
                   </h3>
-                  <p>{project.description}</p>
-                  <div className="met">
-                    {project.metrics.map((m, midx) => (
+                  <p>{project.shortPitch || project.description}</p>
+                  <div className="home-work-metrics">
+                    {project.metrics.slice(0, 2).map((m, midx) => (
                       <div key={midx}>
                         <strong>{m.value}</strong>
                         <span>{m.label}</span>
                       </div>
                     ))}
                   </div>
+                  <Link className="home-work-link" href={`/work/${project.slug || project.id}`}>
+                    Read Case Study{" "}
+                    <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
+                      <use href="#i-arrow" />
+                    </svg>
+                  </Link>
                 </div>
               </article>
             ))}
           </div>
+
+          {/* Mobile Slider (Shows 1 project at a time with other 3 in slider) */}
+          <div className="home-slider-mobile">
+            {featuredProjects[activeProjectSlide] && (() => {
+              const proj = featuredProjects[activeProjectSlide];
+              return (
+                <article className="home-work-card" key={proj.id}>
+                  <div className="home-work-thumb" style={{ "--g": proj.gradient }}>
+                    <img
+                      src={proj.image}
+                      alt={proj.title}
+                      width={600}
+                      height={400}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="home-work-body">
+                    <div className="home-work-tags">
+                      {proj.tags.slice(0, 2).map((t, idx) => (
+                        <span key={idx}>{t}</span>
+                      ))}
+                    </div>
+                    <h3>
+                      <Link href={`/work/${proj.slug || proj.id}`}>
+                        {proj.title}
+                      </Link>
+                    </h3>
+                    <p>{proj.shortPitch || proj.description}</p>
+                    <div className="home-work-metrics">
+                      {proj.metrics.slice(0, 2).map((m, midx) => (
+                        <div key={midx}>
+                          <strong>{m.value}</strong>
+                          <span>{m.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <Link className="home-work-link" href={`/work/${proj.slug || proj.id}`}>
+                      Read Case Study{" "}
+                      <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
+                        <use href="#i-arrow" />
+                      </svg>
+                    </Link>
+                  </div>
+                </article>
+              );
+            })()}
+
+            <div className="home-slider-nav">
+              <button
+                type="button"
+                className="home-slider-btn"
+                aria-label="Previous project"
+                onClick={() =>
+                  setActiveProjectSlide((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length)
+                }
+              >
+                <svg width="18" height="18" style={{ width: 18, height: 18, flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+              <div className="home-slider-dots">
+                {featuredProjects.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    className={`home-slider-dot ${idx === activeProjectSlide ? "active" : ""}`}
+                    aria-label={`Go to project ${idx + 1}`}
+                    onClick={() => setActiveProjectSlide(idx)}
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                className="home-slider-btn"
+                aria-label="Next project"
+                onClick={() =>
+                  setActiveProjectSlide((prev) => (prev + 1) % featuredProjects.length)
+                }
+              >
+                <svg width="18" height="18" style={{ width: 18, height: 18, flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
           <div className="center rv">
-            <Link className="btn btn-ghost" href="/work">
-              View All Case Studies{" "}
-              <svg className="i">
+            <Link className="btn btn-primary" href="/work">
+              View All Case Studies &amp; Projects{" "}
+              <svg className="i" width="15" height="15" style={{ width: 15, height: 15, flexShrink: 0 }}>
+                <use href="#i-arrow" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= PRODUCTS (4 Turnkey & Proprietary Platforms + Mobile Slider) ================= */}
+      <section className="alt" id="products" aria-labelledby="prod-t">
+        <div className="container">
+          <div className="sec-head">
+            <span className="eyebrow rv">Our Products</span>
+            <h2 id="prod-t" className="rv">
+              Market-Ready SaaS Platforms &amp; Apps
+            </h2>
+            <p className="rv">
+              Turnkey AI platforms and high-converting Shopify apps built and battle-tested by Vision Technolabs.
+            </p>
+          </div>
+
+          {/* Desktop & Tablet Grid (4 Products) */}
+          <div className="home-prod-grid rv">
+            {featuredProducts.map((prod) => (
+              <div className="home-prod-card" key={prod.id}>
+                <span className="home-prod-badge">{prod.badge}</span>
+                <h3>
+                  <Link href={`/products/${prod.slug || prod.id}`}>
+                    {prod.shortTitle}
+                  </Link>
+                </h3>
+                <p className="home-prod-desc">{prod.shortDescription || prod.description}</p>
+                {prod.metrics && prod.metrics[0] && (
+                  <div className="home-prod-stat">
+                    <strong>{prod.metrics[0].value}</strong>
+                    <span>{prod.metrics[0].label}</span>
+                  </div>
+                )}
+                <Link className="home-work-link" href={`/products/${prod.slug || prod.id}`}>
+                  Explore Product{" "}
+                  <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
+                    <use href="#i-arrow" />
+                  </svg>
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile Slider (Shows 1 product at a time with other 3 in slider) */}
+          <div className="home-slider-mobile">
+            {featuredProducts[activeProductSlide] && (() => {
+              const p = featuredProducts[activeProductSlide];
+              return (
+                <div className="home-prod-card" key={p.id}>
+                  <span className="home-prod-badge">{p.badge}</span>
+                  <h3>
+                    <Link href={`/products/${p.slug || p.id}`}>
+                      {p.shortTitle}
+                    </Link>
+                  </h3>
+                  <p className="home-prod-desc">{p.shortDescription || p.description}</p>
+                  {p.metrics && p.metrics[0] && (
+                    <div className="home-prod-stat">
+                      <strong>{p.metrics[0].value}</strong>
+                      <span>{p.metrics[0].label}</span>
+                    </div>
+                  )}
+                  <Link className="home-work-link" href={`/products/${p.slug || p.id}`}>
+                    Explore Product{" "}
+                    <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
+                      <use href="#i-arrow" />
+                    </svg>
+                  </Link>
+                </div>
+              );
+            })()}
+
+            <div className="home-slider-nav">
+              <button
+                type="button"
+                className="home-slider-btn"
+                aria-label="Previous product"
+                onClick={() =>
+                  setActiveProductSlide((prev) => (prev - 1 + featuredProducts.length) % featuredProducts.length)
+                }
+              >
+                <svg width="18" height="18" style={{ width: 18, height: 18, flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+              <div className="home-slider-dots">
+                {featuredProducts.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    className={`home-slider-dot ${idx === activeProductSlide ? "active" : ""}`}
+                    aria-label={`Go to product ${idx + 1}`}
+                    onClick={() => setActiveProductSlide(idx)}
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                className="home-slider-btn"
+                aria-label="Next product"
+                onClick={() =>
+                  setActiveProductSlide((prev) => (prev + 1) % featuredProducts.length)
+                }
+              >
+                <svg width="18" height="18" style={{ width: 18, height: 18, flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="center rv">
+            <Link className="btn btn-ghost" href="/products">
+              View All Products &amp; SaaS Platforms{" "}
+              <svg className="i" width="15" height="15" style={{ width: 15, height: 15, flexShrink: 0 }}>
                 <use href="#i-arrow" />
               </svg>
             </Link>

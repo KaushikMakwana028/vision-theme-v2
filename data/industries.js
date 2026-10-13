@@ -20,7 +20,9 @@ export const industriesData = [
     blobColor: "#4f46e5",
     icoGradient: "linear-gradient(135deg,#4f46e5,#818cf8)",
     href: "/industries/fintech-banking",
-    shortDescription: "Lending, payments, digital wallets & trading platforms built for ultra-low latency and regulatory compliance.",
+    caseStudySlugs: ["kreditmitraa", "billbook"],
+    pillTags: ["Fraud Detection", "Compliance Automation", "KYC & AML", "Risk Scoring"],
+    shortDescription: "Lending, payments, digital wallets & algorithmic trading platforms built for ultra-low latency and bank-grade regulatory compliance.",
     description: "We architect bank-grade fintech platforms, real-time settlement rails, digital banking applications, and automated fraud prevention engines engineered to handle billions in transaction volume.",
     heroSubtitle: "Zero-trust banking architectures, sub-second payment reconciliations, and automated regulatory reporting engineered for fintech disruptors and licensed financial institutions.",
     metrics: [
@@ -31,6 +33,14 @@ export const industriesData = [
     ],
     compliance: ["PCI-DSS Level 1", "SOC-2 Type II", "GDPR", "ISO 27001", "Open Banking / PSD2", "AML & KYC"],
     techStack: ["Next.js", "Node.js", "Python", "Kafka", "PostgreSQL", "Redis", "AWS FinTech", "Kubernetes"],
+    capabilitiesList: [
+      "Core Banking & Neo-Bank Mobile Apps",
+      "Real-Time Payment Gateways & FX Orchestration",
+      "Algorithmic Underwriting & Credit Scoring",
+      "Digital Wallet & Stored-Value Ledgers",
+      "Automated KYC, AML & Fraud Detection",
+      "PCI-DSS Level 1 & SOC-2 Vault Architecture"
+    ],
     solutions: [
       {
         title: "Digital Banking & Neo-Bank Apps",
@@ -83,6 +93,8 @@ export const industriesData = [
     blobColor: "#ec4899",
     icoGradient: "linear-gradient(135deg,#ec4899,#f9a8d4)",
     href: "/industries/healthcare-medtech",
+    caseStudySlugs: ["medicheck"],
+    pillTags: ["Patient Triage", "HIPAA Compliance", "EHR/FHIR Integration", "Clinical Data"],
     shortDescription: "Telehealth, EHR integrations, medical device dashboards & patient-first mobile experiences engineered for strict compliance.",
     description: "We develop secure telemedicine portals, HL7/FHIR-compliant health data exchanges, patient companion apps, and clinical workflow platforms that empower medical providers and improve patient outcomes.",
     heroSubtitle: "HIPAA-compliant telemedicine platforms, HL7/FHIR interoperability engines, and clinical software systems trusted by healthcare providers, diagnostic labs, and digital health startups.",
@@ -94,6 +106,14 @@ export const industriesData = [
     ],
     compliance: ["HIPAA", "HITECH", "FHIR v4", "HL7", "FDA Part 11", "SOC-2 Type II"],
     techStack: ["React Native", "Next.js", "Python FastAPI", "PostgreSQL", "AWS HealthLake", "WebRTC", "Docker"],
+    capabilitiesList: [
+      "Custom Telehealth & Virtual Consultation",
+      "EHR / EMR & HL7 FHIR Interoperability",
+      "Remote Patient Monitoring (RPM) & Wearables",
+      "Clinical Data Analytics & Diagnostic Decisioning",
+      "Medical Access Program (MAP) & Pharmacy Systems",
+      "HIPAA, HITECH & FDA 21 CFR Part 11 Architecture"
+    ],
     solutions: [
       {
         title: "Telehealth & Virtual Care Portals",
@@ -146,6 +166,8 @@ export const industriesData = [
     blobColor: "#16a34a",
     icoGradient: "linear-gradient(135deg,#16a34a,#4ade80)",
     href: "/industries/ecommerce-retail",
+    caseStudySlugs: ["recomm", "thakarmart", "ghanshyammurtibhandar"],
+    pillTags: ["Headless Commerce", "Omnichannel POS", "Inventory Sync", "Checkout Optimization"],
     shortDescription: "High-converting storefronts, headless commerce architectures, omnichannel inventory & custom marketplace platforms.",
     description: "We build blazing-fast headless commerce platforms, custom Shopify Plus setups, omnichannel inventory systems, and AI-powered product recommendation engines engineered for maximum conversion.",
     heroSubtitle: "Sub-second headless storefronts, high-throughput flash sale architectures, and unified inventory systems built for enterprise retailers, D2C disruptors, and multi-vendor marketplaces.",
@@ -157,6 +179,14 @@ export const industriesData = [
     ],
     compliance: ["PCI-DSS", "GDPR", "CCPA", "WCAG 2.1 AA", "Core Web Vitals 95+"],
     techStack: ["Shopify Plus", "Next.js", "Algolia", "Sanity CMS", "Stripe", "Klaviyo", "Redis"],
+    capabilitiesList: [
+      "Headless Commerce Architecture (Next.js & Shopify Plus)",
+      "Omnichannel POS & ERP Real-Time Inventory Sync",
+      "Multi-Vendor Marketplace Platforms & Payouts",
+      "AI Vector Search & Personalized Product Discovery",
+      "High-Throughput Flash Sale Checkout Architecture",
+      "Custom B2B Wholesale Portals & Tiered Pricing"
+    ],
     solutions: [
       {
         title: "Headless Commerce Architecture",
@@ -209,6 +239,8 @@ export const industriesData = [
     blobColor: "#f59e0b",
     icoGradient: "linear-gradient(135deg,#f59e0b,#fbbf24)",
     href: "/industries/real-estate-proptech",
+    caseStudySlugs: ["stayflow-crm", "sitedesk", "ananyahomeservice"],
+    pillTags: ["RESO Web API", "Interactive Map Search", "Brokerage CRM", "Lease Portals"],
     shortDescription: "Listings portals, brokerage CRM, lease management & interactive map search engineered for property enterprises.",
     description: "We build intuitive property discovery portals, RESO Web API and IDX/MLS data feeds, 3D virtual tour integrations, automated lead routing, and tenant management portals.",
     heroSubtitle: "Interactive map search portals, automated MLS/RESO data ingestion pipelines, and property management platforms engineered for top real estate brokerages, REITs, and PropTech innovators.",
@@ -220,6 +252,14 @@ export const industriesData = [
     ],
     compliance: ["RESO Web API", "RESO Data Dictionary", "Fair Housing Guidelines", "SOC-2 Type II"],
     techStack: ["Next.js", "Mapbox GL", "PostGIS", "Node.js", "Elasticsearch", "AWS S3", "GraphQL"],
+    capabilitiesList: [
+      "Interactive Map Search & Polygon Geo-Filtering",
+      "RESO Web API & Automated MLS Data Ingestion",
+      "Brokerage CRM & Multi-Agent Lead Dispatch",
+      "Digital Tenant Leases & Online Rent Collection",
+      "3D Virtual Walkthrough & Matterport Embedding",
+      "Property Valuation & Neighborhood Analytics Engines"
+    ],
     solutions: [
       {
         title: "Interactive Map Search & Geo-Filtering",
@@ -272,6 +312,8 @@ export const industriesData = [
     blobColor: "#0891b2",
     icoGradient: "linear-gradient(135deg,#0891b2,#22d3ee)",
     href: "/industries/logistics-supply-chain",
+    caseStudySlugs: ["tripsbook", "automobile"],
+    pillTags: ["Fleet Telematics", "Route Optimization", "WMS Warehousing", "EDI Integration"],
     shortDescription: "Fleet telematics, warehouse management (WMS), route optimization & end-to-end freight visibility platforms.",
     description: "We architect intelligent transportation management systems (TMS), warehouse inventory scanners, IoT sensor pipelines, dynamic route dispatchers, and automated electronic bill of lading (eBOL) software.",
     heroSubtitle: "Real-time fleet tracking portals, automated warehouse management systems (WMS), and route optimization algorithms engineered for 3PL providers, freight forwarders, and global distributors.",
@@ -283,6 +325,14 @@ export const industriesData = [
     ],
     compliance: ["FMCSA ELD Standards", "ISO 28000", "SOC-2 Type II", "EDI 204/210/214"],
     techStack: ["Next.js", "Go / Golang", "PostgreSQL", "Kafka", "Redis", "Google Maps Platform", "Docker"],
+    capabilitiesList: [
+      "Live Fleet Telematics & GPS Vehicle Tracking",
+      "Algorithmic Multi-Stop Route Optimization",
+      "Warehouse Management System (WMS) & Barcode Scanning",
+      "Paperless Electronic Bill of Lading (eBOL & ePOD)",
+      "Standardized EDI 204/210/214 Message Parsing",
+      "Cold Chain & IoT Sensor Temperature Monitoring"
+    ],
     solutions: [
       {
         title: "Fleet Telematics & Live Dispatch",
@@ -335,6 +385,8 @@ export const industriesData = [
     blobColor: "#64748b",
     icoGradient: "linear-gradient(135deg,#64748b,#94a3b8)",
     href: "/industries/manufacturing-iot",
+    caseStudySlugs: ["nandani", "aexongraphics-crm", "srlpixel"],
+    pillTags: ["Predictive Maintenance", "OEE Benchmarking", "Industrial IoT", "SCADA Bridges"],
     shortDescription: "Production line tracking, equipment predictive maintenance, smart-factory dashboards & Overall Equipment Effectiveness (OEE).",
     description: "We engineer Industry 4.0 industrial IoT platforms, SCADA integration bridges, computerized maintenance management systems (CMMS), and predictive machine health analytics.",
     heroSubtitle: "Industrial IoT telematics, Overall Equipment Effectiveness (OEE) dashboards, and automated production tracking engineered for precision manufacturers and plant operators.",
@@ -346,6 +398,14 @@ export const industriesData = [
     ],
     compliance: ["ISA-95", "ISO 9001", "IEC 62443", "SOC-2 Type II"],
     techStack: ["React", "Python", "MQTT / OPC-UA", "TimescaleDB", "InfluxDB", "Docker", "AWS IoT Core"],
+    capabilitiesList: [
+      "Real-Time OEE & Shop-Floor Line Dashboards",
+      "Predictive Equipment Maintenance & Anomaly Detection",
+      "Industrial IoT Edge Gateways (Modbus & OPC-UA)",
+      "Digital Assembly Instructions & Tablet Workstations",
+      "Computer Vision Automated Quality Inspection",
+      "Air-Gapped OT Network Security & ISA-95 Modeling"
+    ],
     solutions: [
       {
         title: "Real-Time OEE & Line Tracking",
@@ -398,6 +458,8 @@ export const industriesData = [
     blobColor: "#d946ef",
     icoGradient: "linear-gradient(135deg,#d946ef,#f472b6)",
     href: "/industries/saas-cloud-platforms",
+    caseStudySlugs: ["filterbook", "billbook", "stayflow-crm"],
+    pillTags: ["Multi-Tenant RLS", "Enterprise SSO", "Usage-Based Billing", "Developer APIs"],
     shortDescription: "Multi-tenant software, B2B workspaces, usage-based billing & scalable subscription platforms engineered for fast growth.",
     description: "We build modern B2B SaaS products, tenant-isolated data architectures, automated Stripe billing engines, role-based team management, and developer-facing API portals.",
     heroSubtitle: "High-velocity multi-tenant architectures, self-serve subscription billing, and enterprise security features engineered for B2B SaaS founders and product teams.",
@@ -409,6 +471,14 @@ export const industriesData = [
     ],
     compliance: ["SOC-2 Type II", "GDPR", "CCPA", "ISO 27001", "SAML 2.0 / SCIM"],
     techStack: ["Next.js", "Node.js", "TypeScript", "PostgreSQL", "Stripe Billing", "WorkOS", "Redis", "AWS"],
+    capabilitiesList: [
+      "Multi-Tenant Architecture with PostgreSQL RLS",
+      "Enterprise SSO (SAML 2.0 & OIDC) & SCIM Provisioning",
+      "Usage-Based Metered Billing & Stripe Tax Integration",
+      "Public Developer REST/GraphQL APIs & Webhook Engine",
+      "Fine-Grained Role-Based Access Control (RBAC)",
+      "SOC-2 Type II Audit Logging & Compliance Vaults"
+    ],
     solutions: [
       {
         title: "Multi-Tenant Foundation & Workspaces",
@@ -461,6 +531,8 @@ export const industriesData = [
     blobColor: "#7c3aed",
     icoGradient: "linear-gradient(135deg,#7c3aed,#a78bfa)",
     href: "/industries/travel-hospitality",
+    caseStudySlugs: ["suryadeepcarrent", "tripsbook"],
+    pillTags: ["GDS / Amadeus", "Booking Engines", "Overbooking Locks", "PMS Sync"],
     shortDescription: "Booking engines, Global Distribution System (GDS) integrations, dynamic itinerary planners & guest loyalty platforms.",
     description: "We build intuitive online travel booking engines, hotel reservation portals, airline and GDS API connectors, dynamic package builders, and mobile guest companion apps.",
     heroSubtitle: "High-speed reservation engines, multi-provider GDS integrations, and dynamic packaging platforms engineered for OTAs, hotel groups, and tour operators.",
@@ -472,6 +544,14 @@ export const industriesData = [
     ],
     compliance: ["PCI-DSS", "GDPR", "IATA NDC Standards", "SOC-2 Type II"],
     techStack: ["Next.js", "Node.js", "Redis", "Elasticsearch", "Amadeus / Sabre API", "Stripe", "AWS"],
+    capabilitiesList: [
+      "Sub-Second Global Flight & Hotel Booking Engine",
+      "Two-Way GDS Integration (Amadeus, Sabre & Travelport)",
+      "Property Management System (PMS) Channel Manager Sync",
+      "Dynamic Itinerary Builder & Packaging Engine",
+      "Contactless Guest Mobile Companion & Digital Room Key",
+      "Distributed Overbooking Prevention & Lock Engine"
+    ],
     solutions: [
       {
         title: "High-Speed Booking Engine",
@@ -524,6 +604,8 @@ export const industriesData = [
     blobColor: "#059669",
     icoGradient: "linear-gradient(135deg,#059669,#34d399)",
     href: "/industries/edtech-elearning",
+    caseStudySlugs: ["fitcket", "loksangeet"],
+    pillTags: ["Adaptive Learning", "Live Classroom", "AI Tutoring", "FERPA & COPPA"],
     shortDescription: "Learning Management Systems (LMS), live virtual classrooms, AI tutoring agents & gamified student evaluation portals.",
     description: "We develop comprehensive Learning Management Systems (LMS), video course delivery platforms, interactive quizzes, automated grading systems, and AI-powered personalized tutoring agents.",
     heroSubtitle: "Interactive learning management systems (LMS), video delivery platforms, and AI-powered tutoring workflows engineered for universities, bootcamps, and corporate training academies.",
@@ -535,6 +617,14 @@ export const industriesData = [
     ],
     compliance: ["FERPA", "COPPA", "SCORM / xAPI", "WCAG 2.1 AA", "GDPR"],
     techStack: ["Next.js", "Python", "PostgreSQL", "Mux Video", "Tailwind CSS", "Redis", "Docker"],
+    capabilitiesList: [
+      "Scalable Learning Management System (LMS) Portals",
+      "Low-Latency WebRTC Virtual Classrooms & Whiteboards",
+      "AI Adaptive Tutoring & Automated Essay Evaluation",
+      "Browser Sandbox Code Execution & Automated Grading",
+      "SCORM & xAPI Interactive Course Content Ingestion",
+      "FERPA & COPPA Student Privacy Compliance"
+    ],
     solutions: [
       {
         title: "Modern Learning Management System (LMS)",
@@ -579,10 +669,15 @@ export const industriesData = [
 
 export function getIndustryBySlug(slug) {
   if (!slug) return null;
-  const normalized = String(slug).toLowerCase().trim();
+  const decoded = decodeURIComponent(String(slug)).toLowerCase().trim();
+  const slugified = decoded.replace(/[\s_]+/g, "-");
   return (
     industriesData.find(
-      (ind) => ind.slug === normalized || ind.id === normalized
+      (ind) =>
+        ind.slug === decoded ||
+        ind.slug === slugified ||
+        ind.id === decoded ||
+        ind.id === slugified
     ) || null
   );
 }
