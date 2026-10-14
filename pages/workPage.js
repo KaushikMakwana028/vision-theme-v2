@@ -273,11 +273,11 @@ const styles = `
 .svp-proj:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
 .svp-proj:hover::before, .svp-proj:hover::after { opacity: 1; }
 
-/* Image container - FULL image display, edge-to-edge 16:9, no crop */
+/* Image container - FULL image display, edge-to-edge, flush border */
 .svp-thumb {
-  position: relative; overflow: hidden; width: 100%; aspect-ratio: 1672 / 941;
-  background: #090d16; border-bottom: 1px solid rgba(255, 255, 255, .08);
-  display: flex; align-items: center; justify-content: center; padding: 0;
+  position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 9;
+  background: #f8fafc; border-bottom: 1px solid var(--line);
+  display: block; padding: 0 !important; cursor: pointer; text-decoration: none;
 }
 .svp-thumb img {
   display: block; width: 100%; height: 100%;
@@ -337,7 +337,7 @@ const styles = `
 
 /* Explore Link - pinned bottom */
 .svp-proj .more {
-  margin-top: 1.15rem; display: inline-flex; align-items: center; gap: .45rem; font-weight: 700; color: var(--primary);
+  margin-top: auto; padding-top: 1.15rem; display: inline-flex; align-items: center; gap: .45rem; font-weight: 700; color: var(--primary);
   font-size: .92rem; text-decoration: none;
 }
 .svp-proj .more .i { width: 17px; height: 17px; transition: transform .35s var(--ease); }
@@ -509,11 +509,11 @@ const styles = `
   .svp-poc-card { padding: 1.6rem 1.25rem; }
   .svp-marquee { padding: 1rem 0; }
   .svp-wb { padding: 1.25rem; }
-  .svp-thumb { aspect-ratio: 1672 / 941; padding: 0; }
+  .svp-thumb { aspect-ratio: 16 / 10; padding: 0.4rem; }
   .svp .svp-tags { min-height: auto; }
   .svp-wb h3 { min-height: auto; -webkit-line-clamp: 3; font-size: 1.15rem; }
   .svp-wb p { min-height: auto; -webkit-line-clamp: 4; font-size: .9rem; }
-  .svp-hero h1 { font-size: clamp(1.55rem, 6.5vw, 2.2rem); line-height: 1.2; }
+  .svp-hero h1 { font-size: clamp(2rem, 7.2vw, 2.5rem); line-height: 1.16; }
   .svp-hero .lead { font-size: 0.95rem; line-height: 1.55; }
 }
 @media (hover: none) {
@@ -657,22 +657,33 @@ function ScrollProgress() {
 }
 
 const onSpot = (e) => {
-  const r = e.currentTarget.getBoundingClientRect();
-  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+  const el = e.currentTarget;
+  let r = el._cachedRect;
+  if (!r) {
+    r = el.getBoundingClientRect();
+    el._cachedRect = r;
+  }
+  el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  el.style.setProperty("--my", `${e.clientY - r.top}px`);
 };
 
 const onTilt = (e) => {
   if (!window.matchMedia("(hover: hover) and (min-width: 861px)").matches)
     return;
   const el = e.currentTarget;
-  const r = el.getBoundingClientRect();
+  let r = el._cachedRect;
+  if (!r) {
+    r = el.getBoundingClientRect();
+    el._cachedRect = r;
+  }
   const x = (e.clientX - r.left) / r.width - 0.5;
   const y = (e.clientY - r.top) / r.height - 0.5;
   el.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
   el.style.setProperty("--ry", `${(x * 9).toFixed(2)}deg`);
 };
+
 const onTiltEnd = (e) => {
+  e.currentTarget._cachedRect = null;
   e.currentTarget.style.setProperty("--rx", "0deg");
   e.currentTarget.style.setProperty("--ry", "0deg");
 };
@@ -804,7 +815,7 @@ export default function WorkPage() {
   };
 
   return (
-    <main id="main" className="svp">
+    <div className="svp">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
       <ScrollProgress />
 
@@ -954,7 +965,11 @@ export default function WorkPage() {
                 className="card flush svp-card svp-proj"
                 onMouseMove={onSpot}
               >
-                <div className="svp-thumb">
+                <Link
+                  href={`/work/${proj.slug || proj.id}`}
+                  className="svp-thumb"
+                  aria-label={`View ${proj.title} case study`}
+                >
                   <img
                     src={proj.image}
                     alt={proj.title}
@@ -965,7 +980,7 @@ export default function WorkPage() {
                       e.currentTarget.style.display = "none";
                     }}
                   />
-                </div>
+                </Link>
 
                 <div className="wb svp-wb">
                   {proj.tags?.length > 0 && (
@@ -983,17 +998,6 @@ export default function WorkPage() {
                   </h3>
 
                   <p>{proj.description}</p>
-
-                  {proj.metrics?.length > 0 && (
-                    <div className="met svp-met">
-                      {proj.metrics.slice(0, 2).map((m, mIdx) => (
-                        <div key={mIdx}>
-                          <CountUp value={m.value} />
-                          <span>{m.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
 
                   <Link href={`/work/${proj.slug || proj.id}`} className="more">
                     Explore Case Study
@@ -1191,6 +1195,6 @@ export default function WorkPage() {
           </Reveal>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

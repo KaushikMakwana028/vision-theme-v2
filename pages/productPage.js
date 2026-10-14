@@ -617,22 +617,33 @@ function ScrollProgress() {
 }
 
 const onSpot = (e) => {
-  const r = e.currentTarget.getBoundingClientRect();
-  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+  const el = e.currentTarget;
+  let r = el._cachedRect;
+  if (!r) {
+    r = el.getBoundingClientRect();
+    el._cachedRect = r;
+  }
+  el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  el.style.setProperty("--my", `${e.clientY - r.top}px`);
 };
 
 const onTilt = (e) => {
   if (!window.matchMedia("(hover: hover) and (min-width: 861px)").matches)
     return;
   const el = e.currentTarget;
-  const r = el.getBoundingClientRect();
+  let r = el._cachedRect;
+  if (!r) {
+    r = el.getBoundingClientRect();
+    el._cachedRect = r;
+  }
   const x = (e.clientX - r.left) / r.width - 0.5;
   const y = (e.clientY - r.top) / r.height - 0.5;
   el.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
   el.style.setProperty("--ry", `${(x * 9).toFixed(2)}deg`);
 };
+
 const onTiltEnd = (e) => {
+  e.currentTarget._cachedRect = null;
   e.currentTarget.style.setProperty("--rx", "0deg");
   e.currentTarget.style.setProperty("--ry", "0deg");
 };
@@ -762,7 +773,7 @@ export default function ProductPage() {
   };
 
   return (
-    <main id="main" className="svp">
+    <div className="svp">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
       <ScrollProgress />
 
@@ -1129,6 +1140,6 @@ export default function ProductPage() {
           </Reveal>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

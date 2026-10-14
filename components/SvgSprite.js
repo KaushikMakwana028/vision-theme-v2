@@ -116,6 +116,9 @@ export default function SvgSprite() {
         <rect x="2" y="2" width="20" height="20" rx="5" />
         <path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4zM17.5 6.5h.01" />
       </symbol>
+      <symbol id="i-wa" viewBox="0 0 24 24">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+      </symbol>
       <symbol id="i-factory" viewBox="0 0 24 24">
         <path d="M2 21V10l5 4v-4l5 4V7l5 4v10z" />
         <path d="M2 21h20M17 7V4h3v3" />

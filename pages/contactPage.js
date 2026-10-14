@@ -482,7 +482,7 @@ export default function ContactPage() {
   const showErr = (k) => touched[k] && errors[k];
 
   return (
-    <main id="main" className="ct">
+    <div className="ct">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
 
       {/* ================= HERO ================= */}
@@ -570,7 +570,7 @@ export default function ContactPage() {
                 →
               </span>
             </a>
-            <a href="tel:+919876543210" className="channel">
+            <a href={`tel:${brandInfo.phone.replace(/[^0-9+]/g, "")}`} className="channel">
               <div className="ico">
                 <Ico>
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -578,14 +578,14 @@ export default function ContactPage() {
               </div>
               <div className="txt">
                 <strong>Call Support</strong>
-                <span>+91 (079) 4890-0000</span>
+                <span>{brandInfo.phone}</span>
               </div>
               <span className="go" aria-hidden="true">
                 →
               </span>
             </a>
             <a
-              href="https://wa.me/919876543210?text=Hi%20Vision%20Team,%20I'd%20like%20to%20discuss%20a%20new%20project."
+              href={brandInfo.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="channel"
@@ -873,7 +873,13 @@ export default function ContactPage() {
                   <div className="map-card-meta">
                     <div className="meta-row">
                       <span className="meta-label">Address:</span>
-                      <span className="meta-val">Vision Technolabs, Ahmedabad, Gujarat, India</span>
+                      <span className="meta-val">{brandInfo.address}</span>
+                    </div>
+                    <div className="meta-row">
+                      <span className="meta-label">Phone:</span>
+                      <a href={`tel:${brandInfo.phone.replace(/[^0-9+]/g, "")}`} className="meta-link">
+                        {brandInfo.phone}
+                      </a>
                     </div>
                     <div className="meta-row">
                       <span className="meta-label">Email:</span>
@@ -883,7 +889,7 @@ export default function ContactPage() {
                     </div>
                   </div>
                   <a
-                    href="https://maps.google.com/?q=Vision+Technolabs"
+                    href={brandInfo.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="map-open-btn"
@@ -1033,6 +1039,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

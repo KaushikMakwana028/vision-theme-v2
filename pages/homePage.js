@@ -39,6 +39,91 @@ export default function HomePage() {
   const [currentTestimonialPage, setCurrentTestimonialPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
 
+  // Touch gesture & Auto-scroll states for mobile sliders
+  const [projectTouchStart, setProjectTouchStart] = useState(null);
+  const [projectTouchEnd, setProjectTouchEnd] = useState(null);
+  const [isProjectsPaused, setIsProjectsPaused] = useState(false);
+
+  const [productTouchStart, setProductTouchStart] = useState(null);
+  const [productTouchEnd, setProductTouchEnd] = useState(null);
+  const [isProductsPaused, setIsProductsPaused] = useState(false);
+
+  // Auto-scroll for Projects Slider
+  useEffect(() => {
+    if (isProjectsPaused) return;
+    const timer = setInterval(() => {
+      setActiveProjectSlide((prev) => (prev + 1) % featuredProjects.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isProjectsPaused, featuredProjects.length]);
+
+  // Auto-scroll for Products Slider
+  useEffect(() => {
+    if (isProductsPaused) return;
+    const timer = setInterval(() => {
+      setActiveProductSlide((prev) => (prev + 1) % featuredProducts.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isProductsPaused, featuredProducts.length]);
+
+  // Auto-scroll for Testimonials
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const timer = setInterval(() => {
+      if (!track) return;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll - 20) {
+        track.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        track.scrollBy({ left: 340, behavior: "smooth" });
+      }
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleProjectTouchStart = (e) => {
+    setProjectTouchStart(e.targetTouches[0].clientX);
+    setIsProjectsPaused(true);
+  };
+  const handleProjectTouchMove = (e) => {
+    setProjectTouchEnd(e.targetTouches[0].clientX);
+  };
+  const handleProjectTouchEnd = () => {
+    if (projectTouchStart !== null && projectTouchEnd !== null) {
+      const diff = projectTouchStart - projectTouchEnd;
+      if (diff > 40) {
+        setActiveProjectSlide((prev) => (prev + 1) % featuredProjects.length);
+      } else if (diff < -40) {
+        setActiveProjectSlide((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
+      }
+    }
+    setProjectTouchStart(null);
+    setProjectTouchEnd(null);
+    setTimeout(() => setIsProjectsPaused(false), 2000);
+  };
+
+  const handleProductTouchStart = (e) => {
+    setProductTouchStart(e.targetTouches[0].clientX);
+    setIsProductsPaused(true);
+  };
+  const handleProductTouchMove = (e) => {
+    setProductTouchEnd(e.targetTouches[0].clientX);
+  };
+  const handleProductTouchEnd = () => {
+    if (productTouchStart !== null && productTouchEnd !== null) {
+      const diff = productTouchStart - productTouchEnd;
+      if (diff > 40) {
+        setActiveProductSlide((prev) => (prev + 1) % featuredProducts.length);
+      } else if (diff < -40) {
+        setActiveProductSlide((prev) => (prev - 1 + featuredProducts.length) % featuredProducts.length);
+      }
+    }
+    setProductTouchStart(null);
+    setProductTouchEnd(null);
+    setTimeout(() => setIsProductsPaused(false), 2000);
+  };
+
   // Contact Form State
   const [formState, setFormState] = useState({
     name: "",
@@ -54,30 +139,48 @@ export default function HomePage() {
   const bentoRef = useRef(null);
   const heroRef = useRef(null);
 
-  // 3D tilt effect for hero bento on desktop
+  // 3D tilt effect for hero bento on desktop (throttled with RAF & cached rect to eliminate lag)
   useEffect(() => {
     const heroEl = heroRef.current;
     const bentoEl = bentoRef.current;
     if (!heroEl || !bentoEl) return;
 
+    let rafId = null;
+    let cachedRect = null;
+
+    const handleMouseEnter = () => {
+      cachedRect = bentoEl.getBoundingClientRect();
+    };
+
     const handleMouseMove = (e) => {
       if (window.innerWidth < 1024) return;
-      const rect = bentoEl.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
-      const y = -((e.clientY - rect.top) / rect.height - 0.5) * 6;
-      bentoEl.style.transform = `perspective(1100px) rotateX(${y}deg) rotateY(${x}deg)`;
+      if (!cachedRect) cachedRect = bentoEl.getBoundingClientRect();
+      if (rafId) return;
+
+      rafId = requestAnimationFrame(() => {
+        const x = ((e.clientX - cachedRect.left) / cachedRect.width - 0.5) * 6;
+        const y = -((e.clientY - cachedRect.top) / cachedRect.height - 0.5) * 6;
+        bentoEl.style.transform = `perspective(1100px) rotateX(${y.toFixed(2)}deg) rotateY(${x.toFixed(2)}deg)`;
+        rafId = null;
+      });
     };
 
     const handleMouseLeave = () => {
-      if (bentoEl) {
-        bentoEl.style.transform = "perspective(1100px) rotateX(0deg) rotateY(0deg)";
+      cachedRect = null;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
       }
+      bentoEl.style.transform = "perspective(1100px) rotateX(0deg) rotateY(0deg)";
     };
 
-    heroEl.addEventListener("mousemove", handleMouseMove);
-    heroEl.addEventListener("mouseleave", handleMouseLeave);
+    heroEl.addEventListener("mouseenter", handleMouseEnter, { passive: true });
+    heroEl.addEventListener("mousemove", handleMouseMove, { passive: true });
+    heroEl.addEventListener("mouseleave", handleMouseLeave, { passive: true });
 
     return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      heroEl.removeEventListener("mouseenter", handleMouseEnter);
       heroEl.removeEventListener("mousemove", handleMouseMove);
       heroEl.removeEventListener("mouseleave", handleMouseLeave);
     };
@@ -369,7 +472,7 @@ export default function HomePage() {
       <section className="logos" aria-label="Our clients">
         <div className="container">
           <p className="rv">
-            Trusted by growing startups and enterprises across the US, UK &amp; India
+            Trusted by growing startups and enterprises across the India
           </p>
         </div>
         <div className="marquee rv">
@@ -575,41 +678,81 @@ export default function HomePage() {
       </section>
 
       {/* ================= INDUSTRIES ================= */}
-      <section className="alt" id="industries" aria-labelledby="ind-t">
+      <section className="alt ind-section" id="industries" aria-labelledby="ind-t">
         <div className="container">
           <div className="sec-head">
-            <span className="eyebrow rv">Industries</span>
+            <span className="eyebrow rv">Industries We Empower</span>
             <h2 id="ind-t" className="rv">
               Deep domain expertise where it matters
             </h2>
             <p className="rv">
-              We understand your market, compliance needs and users, so we ship the right product faster.
+              We understand your market, compliance frameworks, and user psychology — so we architect and ship production-grade software faster.
             </p>
           </div>
-          <div className="cols c3 ind-grid">
-            {industriesData.map((ind) => (
-              <a key={ind.id} className="card ind-card rv" href={ind.href}>
-                <span
-                  className="ind-blob"
-                  style={{ background: ind.blobColor }}
-                />
-                <span
-                  className="ico"
-                  style={{ background: ind.icoGradient, color: "#fff" }}
-                >
-                  <svg className="i">
-                    <use href={`#${ind.icon}`} />
-                  </svg>
-                </span>
-                <h3>{ind.title}</h3>
-                <p>{ind.description}</p>
-                <span className="ind-tag">{ind.tag}</span>
-              </a>
+          <div className="ind-grid">
+            {industriesData.map((ind, idx) => (
+              <Link
+                key={ind.id}
+                className="ind-card rv"
+                href={ind.href}
+                style={{
+                  "--ind-accent": ind.blobColor,
+                  "--ind-grad": ind.icoGradient,
+                }}
+              >
+                {/* Subtle radiant ambient glow in top corner */}
+                <div className="ind-glow" aria-hidden="true" />
+
+                {/* Card Top: Icon & Category/Number Badge */}
+                <div className="ind-card-top">
+                  <div className="ind-ico-box">
+                    <svg className="i">
+                      <use href={`#${ind.icon}`} />
+                    </svg>
+                  </div>
+                  <div className="ind-badges">
+                    <span className="ind-num-tag">{ind.number || `0${idx + 1}`}</span>
+                    <span className="ind-category-tag">{ind.category?.split(" ")[0]}</span>
+                  </div>
+                </div>
+
+                {/* Card Body: Title, Short Description, & Capability Pills */}
+                <div className="ind-card-body">
+                  <h3 className="ind-card-title">{ind.title}</h3>
+                  <p className="ind-card-desc">
+                    {ind.shortDescription || ind.description}
+                  </p>
+
+                  {ind.pillTags && ind.pillTags.length > 0 && (
+                    <div className="ind-pill-list">
+                      {ind.pillTags.slice(0, 3).map((pill, pIdx) => (
+                        <span key={pIdx} className="ind-pill-chip">
+                          {pill}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Card Footer: Project Count / Metric Tag + Explore CTA */}
+                <div className="ind-card-footer">
+                  <span className="ind-proof-tag">
+                    <span className="ind-dot" />
+                    {ind.tag}
+                  </span>
+                  <span className="ind-link-cta">
+                    <span>Explore Solutions</span>
+                    <svg className="i">
+                      <use href="#i-arrow" />
+                    </svg>
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
-          <div className="center rv">
+          <div className="center rv ind-cta-wrap">
             <Link className="btn btn-primary" href="/industries">
-              Explore All Industry Solutions{" "}
+              Explore All 9 Industry Verticals{" "}
               <svg className="i">
                 <use href="#i-arrow" />
               </svg>
@@ -703,7 +846,12 @@ export default function HomePage() {
           <div className="home-work-grid rv">
             {featuredProjects.map((project) => (
               <article className="home-work-card" key={project.id}>
-                <div className="home-work-thumb" style={{ "--g": project.gradient }}>
+                <Link
+                  href={`/work/${project.slug || project.id}`}
+                  className="home-work-thumb"
+                  style={{ "--g": project.gradient }}
+                  aria-label={`View ${project.title} case study`}
+                >
                   <img
                     src={project.image}
                     alt={project.title}
@@ -711,7 +859,7 @@ export default function HomePage() {
                     height={400}
                     loading="lazy"
                   />
-                </div>
+                </Link>
                 <div className="home-work-body">
                   <div className="home-work-tags">
                     {project.tags.slice(0, 2).map((t, idx) => (
@@ -724,14 +872,6 @@ export default function HomePage() {
                     </Link>
                   </h3>
                   <p>{project.shortPitch || project.description}</p>
-                  <div className="home-work-metrics">
-                    {project.metrics.slice(0, 2).map((m, midx) => (
-                      <div key={midx}>
-                        <strong>{m.value}</strong>
-                        <span>{m.label}</span>
-                      </div>
-                    ))}
-                  </div>
                   <Link className="home-work-link" href={`/work/${project.slug || project.id}`}>
                     Read Case Study{" "}
                     <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
@@ -744,12 +884,24 @@ export default function HomePage() {
           </div>
 
           {/* Mobile Slider (Shows 1 project at a time with other 3 in slider) */}
-          <div className="home-slider-mobile">
+          <div
+            className="home-slider-mobile"
+            onTouchStart={handleProjectTouchStart}
+            onTouchMove={handleProjectTouchMove}
+            onTouchEnd={handleProjectTouchEnd}
+            onMouseEnter={() => setIsProjectsPaused(true)}
+            onMouseLeave={() => setIsProjectsPaused(false)}
+          >
             {featuredProjects[activeProjectSlide] && (() => {
               const proj = featuredProjects[activeProjectSlide];
               return (
                 <article className="home-work-card" key={proj.id}>
-                  <div className="home-work-thumb" style={{ "--g": proj.gradient }}>
+                  <Link
+                    href={`/work/${proj.slug || proj.id}`}
+                    className="home-work-thumb"
+                    style={{ "--g": proj.gradient }}
+                    aria-label={`View ${proj.title} case study`}
+                  >
                     <img
                       src={proj.image}
                       alt={proj.title}
@@ -757,7 +909,7 @@ export default function HomePage() {
                       height={400}
                       loading="lazy"
                     />
-                  </div>
+                  </Link>
                   <div className="home-work-body">
                     <div className="home-work-tags">
                       {proj.tags.slice(0, 2).map((t, idx) => (
@@ -770,14 +922,6 @@ export default function HomePage() {
                       </Link>
                     </h3>
                     <p>{proj.shortPitch || proj.description}</p>
-                    <div className="home-work-metrics">
-                      {proj.metrics.slice(0, 2).map((m, midx) => (
-                        <div key={midx}>
-                          <strong>{m.value}</strong>
-                          <span>{m.label}</span>
-                        </div>
-                      ))}
-                    </div>
                     <Link className="home-work-link" href={`/work/${proj.slug || proj.id}`}>
                       Read Case Study{" "}
                       <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
@@ -880,7 +1024,14 @@ export default function HomePage() {
           </div>
 
           {/* Mobile Slider (Shows 1 product at a time with other 3 in slider) */}
-          <div className="home-slider-mobile">
+          <div
+            className="home-slider-mobile"
+            onTouchStart={handleProductTouchStart}
+            onTouchMove={handleProductTouchMove}
+            onTouchEnd={handleProductTouchEnd}
+            onMouseEnter={() => setIsProductsPaused(true)}
+            onMouseLeave={() => setIsProductsPaused(false)}
+          >
             {featuredProducts[activeProductSlide] && (() => {
               const p = featuredProducts[activeProductSlide];
               return (
@@ -1231,7 +1382,7 @@ export default function HomePage() {
                       <use href="#i-mail" />
                     </svg>
                   </span>
-                  {brandInfo.email}
+                  <a href={`mailto:${brandInfo.email}`}>{brandInfo.email}</a>
                 </li>
                 <li>
                   <span className="ico">
@@ -1239,7 +1390,7 @@ export default function HomePage() {
                       <use href="#i-phone" />
                     </svg>
                   </span>
-                  {brandInfo.phone}
+                  <a href={`tel:${brandInfo.phone.replace(/[^0-9+]/g, "")}`}>{brandInfo.phone}</a>
                 </li>
                 <li>
                   <span className="ico">
@@ -1247,7 +1398,7 @@ export default function HomePage() {
                       <use href="#i-pin" />
                     </svg>
                   </span>
-                  {brandInfo.address}
+                  <a href={brandInfo.googleMapsUrl} target="_blank" rel="noopener noreferrer">{brandInfo.address}</a>
                 </li>
               </ul>
             </div>

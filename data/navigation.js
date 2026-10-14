@@ -64,7 +64,7 @@ export const navigationData = {
     },
     {
       id: "products",
-      title: "Products",
+      title: "Product",
       href: "/products",
       type: "mega",
       columns: [
@@ -109,7 +109,7 @@ export const navigationData = {
     },
     {
       id: "blogs",
-      title: "Blogs",
+      title: "Blog",
       type: "link",
       href: "/blog"
     },
@@ -130,7 +130,7 @@ export const navigationData = {
       { label: "Meta & Google Ads", href: "/services/meta-google-ads" }
     ],
     company: [
-      { label: "About Us", href: "/#services" },
+      { label: "About Us", href: "/#about" },
       { label: "All Services", href: "/services" },
       { label: "All Industries", href: "/industries" },
       { label: "Products", href: "/products" },

@@ -451,7 +451,7 @@ const styles = `
   transition: transform .4s var(--ease), box-shadow .4s var(--ease);
 }
 .svp-proj:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-.svp-thumb { position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 9; height: auto !important; background: #020617; padding: 0; }
+.svp-thumb { position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 10; height: auto !important; background: #020617; display: flex; align-items: center; justify-content: center; padding: 0.5rem; }
 .svp-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .5s var(--ease); }
 .svp-proj:hover .svp-thumb img { transform: scale(1.025); }
 .svp-wb { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
@@ -503,12 +503,14 @@ const styles = `
 
 /* ---------- Hero Preview Card ---------- */
 .cs-hero-preview-box {
-  position: relative; margin-bottom: 1.25rem; border-radius: 12px; overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, .18); background: #0b1020;
+  position: relative; margin-bottom: 1.25rem; border-radius: 14px; overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .25); background: #0f172a;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
 }
-.cs-hero-preview-link { display: block; position: relative; overflow: hidden; text-decoration: none; }
+.cs-hero-preview-link { display: block; position: relative; overflow: hidden; text-decoration: none; width: 100%; }
 .cs-hero-preview-img {
-  width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; display: block;
+  width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block;
+  background: #0f172a; padding: 0 !important;
   transition: transform .5s var(--ease);
 }
 .cs-hero-preview-link:hover .cs-hero-preview-img { transform: scale(1.05); }
@@ -720,211 +722,103 @@ const styles = `
   box-shadow: var(--shadow-sm);
 }
 
-/* ---------- Modern Asymmetric Bento Gallery Grid ---------- */
-.cs-bento-grid {
+/* ---------- Metizsoft-Style Uniform 3-Column Gallery Grid ---------- */
+.cs-gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
   align-items: stretch;
+  margin-top: 1.25rem;
 }
-.cs-bento-card {
+.cs-gallery-card {
   position: relative;
   border-radius: 18px;
   overflow: hidden;
-  background: #080c16;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.45);
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: transform .35s var(--ease), border-color .3s, box-shadow .35s;
+  transition: transform 0.35s var(--ease), border-color 0.3s, box-shadow 0.35s;
 }
-.cs-bento-card:hover {
+.cs-gallery-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(99, 102, 241, 0.7);
-  box-shadow: 0 20px 42px -12px rgba(79, 70, 229, 0.35);
+  border-color: rgba(79, 70, 229, 0.45);
+  box-shadow: 0 16px 36px -8px rgba(79, 70, 229, 0.22);
 }
-.cs-bento-card.selected {
+.cs-gallery-card.selected {
   border-color: #6366f1;
-  box-shadow: 0 0 0 2px #6366f1, 0 16px 36px -10px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 0 0 2px #6366f1, 0 16px 36px -10px rgba(99, 102, 241, 0.35);
 }
-
-/* Asymmetric Bento Spanning Rhythm */
-.cs-bento-item-1 { grid-column: span 2; }
-.cs-bento-item-2 { grid-column: span 1; }
-.cs-bento-item-3 { grid-column: span 1; }
-.cs-bento-item-4 { grid-column: span 1; }
-.cs-bento-item-5 { grid-column: span 1; }
-.cs-bento-item-6 { grid-column: span 3; }
-
-.cs-bento-inner {
+.cs-gallery-inner {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.6rem;
-  background: #080c16;
+  display: block;
+  background: #f8fafc;
 }
-.cs-bento-item-6 .cs-bento-inner {
-  aspect-ratio: 21 / 9;
-  max-height: 440px;
-}
-.cs-bento-img {
+.cs-gallery-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   display: block;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5));
-  transition: transform .45s var(--ease);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.cs-bento-card:hover .cs-bento-img {
-  transform: scale(1.035);
+.cs-gallery-card:hover .cs-gallery-img {
+  transform: scale(1.04);
 }
-
-/* Floating Glass Badges */
-.cs-bento-badges {
+.cs-gallery-overlay {
   position: absolute;
-  top: 0.85rem;
-  left: 0.85rem;
-  right: 0.85rem;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(11, 16, 32, 0.6) 100%);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  pointer-events: none;
-  z-index: 3;
-}
-.cs-bento-badge-num {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.32rem 0.8rem;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.88);
-  color: #f8fafc;
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-.cs-bento-badge-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #34d399;
-}
-.cs-bento-tag-pill {
-  padding: 0.28rem 0.7rem;
-  border-radius: 999px;
-  background: rgba(99, 102, 241, 0.25);
-  color: #c7d2fe;
-  font-size: 0.72rem;
-  font-weight: 600;
-  border: 1px solid rgba(99, 102, 241, 0.45);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-
-/* Frosted Action Bottom Bar */
-.cs-bento-hover-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0.85rem 1.15rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(8, 12, 22, 0.95) 55%, #080c16 100%);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1rem;
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity .3s var(--ease), transform .3s var(--ease);
-  z-index: 3;
-  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
-.cs-bento-card:hover .cs-bento-hover-bar {
+.cs-gallery-card:hover .cs-gallery-overlay {
   opacity: 1;
-  transform: translateY(0);
 }
-.cs-bento-hover-title {
-  color: #f1f5f9;
-  font-size: 0.85rem;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.cs-bento-hover-cta {
+.cs-gallery-zoom-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.7rem;
-  border-radius: 6px;
-  background: rgba(99, 102, 241, 0.9);
-  color: #fff;
-  font-size: 0.74rem;
-  font-weight: 600;
-  flex-shrink: 0;
-  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.35);
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  color: #0b1220;
+  font-size: 0.76rem;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transform: translateY(4px);
+  transition: transform 0.25s ease;
 }
-.cs-bento-hover-cta svg {
-  width: 12px;
-  height: 12px;
+.cs-gallery-card:hover .cs-gallery-zoom-pill {
+  transform: translateY(0);
 }
 
 /* Tablet & Mobile Responsiveness */
 @media (max-width: 992px) {
-  .cs-bento-grid {
+  .cs-gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.25rem;
   }
-  .cs-bento-item-1 { grid-column: span 2; }
-  .cs-bento-item-2 { grid-column: span 1; }
-  .cs-bento-item-3 { grid-column: span 1; }
-  .cs-bento-item-4 { grid-column: span 1; }
-  .cs-bento-item-5 { grid-column: span 1; }
-  .cs-bento-item-6 { grid-column: span 2; }
-  .cs-bento-item-6 .cs-bento-inner { aspect-ratio: 16 / 9; }
 }
 
 @media (max-width: 640px) {
-  .cs-bento-grid {
+  .cs-gallery-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
   }
-  .cs-bento-item-1,
-  .cs-bento-item-2,
-  .cs-bento-item-3,
-  .cs-bento-item-4,
-  .cs-bento-item-5,
-  .cs-bento-item-6 {
-    grid-column: span 1 !important;
-  }
-  .cs-bento-inner,
-  .cs-bento-item-6 .cs-bento-inner {
-    aspect-ratio: 16 / 9 !important;
-    padding: 0.35rem;
-  }
-  .cs-bento-card {
+  .cs-gallery-card {
     border-radius: 14px;
   }
-  .cs-bento-hover-bar {
-    opacity: 1;
-    transform: none;
-    padding: 0.6rem 0.85rem;
-    background: linear-gradient(180deg, transparent 0%, rgba(8, 12, 22, 0.92) 100%);
-  }
-  .cs-bento-hover-title {
-    font-size: 0.78rem;
+  .cs-gallery-inner {
+    aspect-ratio: 16 / 10;
   }
 }
 
@@ -1106,8 +1000,8 @@ const styles = `
   .svp .cols.c2, .svp .cols.c3, .svp .cols.c4 { grid-template-columns: 1fr; gap: 1rem; }
   .svp-hero { padding-top: 0.85rem !important; padding-bottom: 2rem !important; }
   .svp-hero h1 {
-    font-size: clamp(1.4rem, 6.2vw, 1.85rem);
-    line-height: 1.22;
+    font-size: clamp(2rem, 7.2vw, 2.5rem);
+    line-height: 1.16;
     margin: 0.5rem 0 0.75rem;
   }
   .svp-hero .lead {
@@ -1190,42 +1084,30 @@ const styles = `
   .svp .sec-head h2 { font-size: clamp(1.35rem, 5.5vw, 1.75rem); line-height: 1.25; margin: .6rem 0 .5rem; }
   .svp .sec-head p { font-size: 0.88rem; line-height: 1.55; }
 
-  /* Mobile Browser Frame & Caption Bar */
+  /* Mobile Browser Frame & Screen (Clean & Focused) */
   .cs-browser-frame { border-radius: 12px; margin-bottom: 2rem; }
   .cs-browser-header {
-    display: flex; flex-wrap: wrap; align-items: center; padding: 0.5rem 0.75rem; gap: 0.4rem;
+    display: flex; align-items: center; justify-content: flex-start; padding: 0.65rem 0.85rem; gap: 0.4rem;
   }
   .cs-browser-dots { order: 1; }
-  .cs-browser-meta { order: 2; margin-left: auto; display: flex; gap: 0.35rem; }
-  .cs-browser-address {
-    order: 3; width: 100%; max-width: 100%; margin-top: 0.25rem; font-size: 0.72rem; padding: 0.3rem 0.65rem;
-  }
-  .cs-live-pill { font-size: 0.68rem; padding: 0.18rem 0.45rem; }
-  .cs-browser-live-btn, .cs-zoom-btn { font-size: 0.68rem; padding: 0.2rem 0.45rem; }
-  .cs-browser-screen { padding: 0; width: 100%; aspect-ratio: 16 / 9; }
-  .cs-main-screen-img { width: 100%; height: 100%; object-fit: contain; }
+  .cs-browser-meta,
+  .cs-browser-address,
   .cs-screen-caption-bar {
-    flex-direction: column; align-items: flex-start; gap: 0.45rem; padding: 0.65rem 0.85rem;
+    display: none !important;
   }
-  .cs-caption-left { flex-wrap: wrap; gap: 0.4rem; }
-  .cs-caption-text { white-space: normal; font-size: 0.78rem; line-height: 1.35; }
-  .cs-caption-zoom-btn { font-size: 0.72rem; padding: 0.25rem 0.6rem; align-self: flex-start; }
+  .cs-browser-screen { padding: 0; width: 100%; aspect-ratio: 16 / 9; cursor: pointer; }
+  .cs-main-screen-img { width: 100%; height: 100%; object-fit: contain; }
 
   /* Mobile Visual Gallery */
   .cs-gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 0.85rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
   }
-  .cs-gallery-card { max-width: 100%; border-radius: 10px; }
-  .cs-gallery-thumb { max-height: 125px; }
-  .cs-gallery-header { margin-bottom: 0.85rem; }
-  .cs-gallery-title h3 { font-size: 1.05rem; }
-  .cs-gallery-title p { font-size: 0.8rem; }
-  .cs-gallery-meta { padding: 0.75rem; }
-  .cs-gallery-meta strong { font-size: 0.84rem; }
-  .cs-gallery-meta p { font-size: 0.76rem; }
-  .cs-gallery-add-card { min-height: 160px; max-width: 100%; }
-  .cs-gallery-add-inner { padding: 1rem 0.75rem; }
+  .cs-gallery-card { max-width: 100%; border-radius: 14px; }
+  .cs-gallery-inner { aspect-ratio: 16 / 10; }
+  .cs-gallery-header { margin-bottom: 1rem; }
+  .cs-gallery-title h3 { font-size: 1.15rem; }
+  .cs-gallery-title p { font-size: 0.82rem; }
 
   /* Mobile Modules */
   .cs-module-card { padding: 1.25rem; }
@@ -1390,22 +1272,33 @@ function ScrollProgress() {
 }
 
 const onSpot = (e) => {
-  const r = e.currentTarget.getBoundingClientRect();
-  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+  const el = e.currentTarget;
+  let r = el._cachedRect;
+  if (!r) {
+    r = el.getBoundingClientRect();
+    el._cachedRect = r;
+  }
+  el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  el.style.setProperty("--my", `${e.clientY - r.top}px`);
 };
 
 const onTilt = (e) => {
   if (!window.matchMedia("(hover: hover) and (min-width: 861px)").matches)
     return;
   const el = e.currentTarget;
-  const r = el.getBoundingClientRect();
+  let r = el._cachedRect;
+  if (!r) {
+    r = el.getBoundingClientRect();
+    el._cachedRect = r;
+  }
   const x = (e.clientX - r.left) / r.width - 0.5;
   const y = (e.clientY - r.top) / r.height - 0.5;
   el.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
   el.style.setProperty("--ry", `${(x * 9).toFixed(2)}deg`);
 };
+
 const onTiltEnd = (e) => {
+  e.currentTarget._cachedRect = null;
   e.currentTarget.style.setProperty("--rx", "0deg");
   e.currentTarget.style.setProperty("--ry", "0deg");
 };
@@ -1418,7 +1311,7 @@ export default function WorkDetailPage({ project }) {
   // Safe fallback if project is missing
   if (!project) {
     return (
-      <main id="main" className="svp">
+      <div className="svp">
         <style dangerouslySetInnerHTML={{ __html: styles }} />
         <section className="sec svp-nf">
           <div className="container">
@@ -1430,7 +1323,7 @@ export default function WorkDetailPage({ project }) {
             </Link>
           </div>
         </section>
-      </main>
+      </div>
     );
   }
 
@@ -1589,7 +1482,7 @@ export default function WorkDetailPage({ project }) {
   }, [lightboxOpen, activeIndex, allImages]);
 
   return (
-    <main id="main" className="svp">
+    <div className="svp">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
       <ScrollProgress />
 
@@ -1911,14 +1804,13 @@ export default function WorkDetailPage({ project }) {
                 </span>
               </div>
 
-              <div className="cs-bento-grid">
-                {allImages.map((imgItem, idx) => {
+              <div className="cs-gallery-grid">
+                {allImages.slice(0, 6).map((imgItem, idx) => {
                   const isSelected = (activeImage || project.image) === imgItem.url;
-                  const itemClass = `cs-bento-item-${(idx % 6) + 1}`;
                   return (
                     <div
                       key={idx}
-                      className={`cs-bento-card ${itemClass} ${isSelected ? "selected" : ""}`}
+                      className={`cs-gallery-card ${isSelected ? "selected" : ""}`}
                       onClick={() => {
                         setActiveImage(imgItem.url);
                         setActiveCaption(imgItem.caption || "");
@@ -1926,39 +1818,17 @@ export default function WorkDetailPage({ project }) {
                       }}
                       title="Click to view full-resolution preview"
                     >
-                      <div className="cs-bento-inner">
+                      <div className="cs-gallery-inner">
                         <img
                           src={imgItem.url}
                           alt={imgItem.caption || `Screen ${idx + 1}`}
                           loading="lazy"
-                          className="cs-bento-img"
+                          className="cs-gallery-img"
                         />
-                        
-                        {/* Floating Top Badges */}
-                        <div className="cs-bento-badges">
-                          <span className="cs-bento-badge-num">
-                            <span className="cs-bento-badge-dot" />
-                            {imgItem.badge ? imgItem.badge.split("·")[0].trim() : `Screen 0${idx + 1}`}
-                          </span>
-                          {idx === 0 && (
-                            <span className="cs-bento-tag-pill">Featured Screen</span>
-                          )}
-                          {idx === 5 && (
-                            <span className="cs-bento-tag-pill">Panoramic Showcase</span>
-                          )}
-                        </div>
-
-                        {/* Frosted Action Bottom Bar */}
-                        <div className="cs-bento-hover-bar">
-                          <span className="cs-bento-hover-title">
-                            {imgItem.caption ? imgItem.caption.split("—")[0].trim() : `Screen 0${idx + 1}`}
-                          </span>
-                          <span className="cs-bento-hover-cta">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3">
-                              <circle cx="11" cy="11" r="8" />
-                              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                              <line x1="11" y1="8" x2="11" y2="14" />
-                              <line x1="8" y1="11" x2="14" y2="11" />
+                        <div className="cs-gallery-overlay">
+                          <span className="cs-gallery-zoom-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
                             </svg>
                             <span>Preview</span>
                           </span>
@@ -2175,11 +2045,13 @@ export default function WorkDetailPage({ project }) {
                   className="card flush svp-card svp-proj"
                   onMouseMove={onSpot}
                 >
-                  <div
+                  <Link
+                    href={`/work/${rel.slug || rel.id}`}
                     className="svp-thumb"
                     style={{
                       "--g": rel.gradient || "linear-gradient(135deg,#4f46e5,#7c3aed)",
                     }}
+                    aria-label={`View ${rel.title} case study`}
                   >
                     <img
                       src={rel.image}
@@ -2191,7 +2063,7 @@ export default function WorkDetailPage({ project }) {
                         e.currentTarget.style.display = "none";
                       }}
                     />
-                  </div>
+                  </Link>
 
                   <div className="wb svp-wb">
                     {rel.tags?.length > 0 && (
@@ -2332,6 +2204,6 @@ export default function WorkDetailPage({ project }) {
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 }

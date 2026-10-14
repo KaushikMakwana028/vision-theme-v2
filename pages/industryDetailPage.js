@@ -356,16 +356,15 @@ const styles = `
   font-size: clamp(1.35rem, 2.2vw, 1.85rem);
   font-weight: 850;
   line-height: 1.25;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: #0f172a;
-  text-transform: uppercase;
-  margin: 0 0 1.25rem;
+  margin: 0 0 1rem;
 }
 .svp-standout-desc {
   font-size: 1.02rem;
-  line-height: 1.75;
+  line-height: 1.7;
   color: #475569;
-  margin: 0 0 2rem;
+  margin: 0 0 1.75rem;
 }
 .svp-standout-metrics {
   display: flex;
@@ -395,17 +394,23 @@ const styles = `
 .svp-standout-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  font-size: 1.05rem;
-  font-weight: 750;
-  color: #0f172a;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  background: var(--primary);
+  padding: 0.75rem 1.4rem;
+  border-radius: 12px;
   text-decoration: none;
-  transition: color 0.25s, transform 0.25s;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+  transition: all 0.25s var(--ease);
   width: fit-content;
 }
 .svp-standout-link:hover {
-  color: var(--primary);
-  transform: translateX(3px);
+  background: var(--primary-600);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
 }
 .svp-standout-link svg {
   width: 18px;
@@ -424,20 +429,25 @@ const styles = `
 }
 .svp-standout-img-card {
   position: relative;
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
-  background: var(--g, linear-gradient(135deg, #f1f5f9, #e2e8f0));
+  background: #090d16;
+  border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.12);
-  aspect-ratio: 16 / 10.5;
+  aspect-ratio: 16 / 10;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
 }
 .svp-standout-img-card img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain !important;
+  object-position: center !important;
   transition: transform 0.6s var(--ease);
 }
 .svp-standout-card:hover .svp-standout-img-card img {
@@ -828,6 +838,8 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
 
   const [activeSlide, setActiveSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchEndX, setTouchEndX] = useState(null);
 
   // Reset slide index if industry changes
   useEffect(() => {
@@ -851,6 +863,29 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
   const nextSlide = () => {
     if (!projects.length) return;
     setActiveSlide((prev) => (prev + 1) % projects.length);
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+    setIsPaused(true);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX !== null && touchEndX !== null) {
+      const distance = touchStartX - touchEndX;
+      if (distance > 40) {
+        nextSlide();
+      } else if (distance < -40) {
+        prevSlide();
+      }
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+    setTimeout(() => setIsPaused(false), 2500);
   };
 
   const currentProject = projects[activeSlide] || projects[0];
@@ -1134,13 +1169,24 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
               className="svp-standout-showcase"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
-              onTouchStart={() => setIsPaused(true)}
-              onTouchEnd={() => setIsPaused(false)}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               <div key={currentProject.id} className="svp-standout-card">
                 <div className="svp-standout-content">
+                  {currentProject.tags?.length > 0 && (
+                    <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>
+                      {currentProject.tags.slice(0, 2).map((t, idx) => (
+                        <span key={idx} style={{ fontSize: "0.74rem", fontWeight: 700, padding: "0.22rem 0.65rem", borderRadius: "999px", background: "rgba(79, 70, 229, 0.08)", color: "var(--primary)" }}>
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
                   <h3 className="svp-standout-title">
-                    {(currentProject.subtitle || currentProject.title).toUpperCase()}
+                    {currentProject.subtitle || currentProject.title}
                   </h3>
 
                   <p className="svp-standout-desc">
@@ -1160,11 +1206,13 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
                 </div>
 
                 <div className="svp-standout-visual">
-                  <div
+                  <Link
+                    href={`/work/${currentProject.slug || currentProject.id}`}
                     className="svp-standout-img-card"
                     style={{
                       "--g": currentProject.gradient || "linear-gradient(135deg,#0d9488,#059669)",
                     }}
+                    aria-label={`View ${currentProject.title} case study`}
                   >
                     <img
                       src={currentProject.image}
@@ -1176,7 +1224,7 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
                         e.currentTarget.style.display = "none";
                       }}
                     />
-                  </div>
+                  </Link>
                 </div>
               </div>
 

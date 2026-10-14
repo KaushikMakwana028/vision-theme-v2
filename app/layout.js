@@ -23,9 +23,9 @@ const playfairDisplay = Playfair_Display({
 export const metadata = {
   title: "Vision Technolabs | Web, Mobile App & AI Development Company",
   description:
-    "Vision Technolabs is an Ahmedabad-based web, mobile app and AI development company serving clients in the US, UK and India.",
+    "Vision Technolabs is an Ahmedabad-based web, mobile app and AI development company serving clients in the India.",
   icons: {
-    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%234f46e5'/%3E%3Cpath d='M7 20s5-8 13-8 13 8 13 8-5 8-13 8S7 20 7 20z' fill='none' stroke='white' stroke-width='2.4'/%3E%3Ccircle cx='20' cy='20' r='4.2' fill='white'/%3E%3C/svg%3E",
+    icon: "/logo/vision_logo.png",
   },
 };
 

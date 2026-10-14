@@ -367,12 +367,12 @@ const styles = `
 .svp .card.flush { padding: 0; }
 .svp-proj { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
 .svp-thumb {
-  position: relative; overflow: hidden; height: 220px; background: #0b1220;
-  display: block; padding: 0 !important; margin: 0;
+  position: relative; overflow: hidden; height: auto; aspect-ratio: 16 / 10; background: #0b1220;
+  display: flex; align-items: center; justify-content: center; padding: 0.5rem !important; margin: 0;
 }
 .svp-thumb img {
   display: block; width: 100% !important; height: 100% !important;
-  object-fit: cover !important; object-position: center top !important;
+  object-fit: contain !important; object-position: center !important;
   transition: transform .8s var(--ease);
 }
 .svp-proj:hover .svp-thumb img { transform: scale(1.07); }
@@ -725,11 +725,19 @@ function ScrollProgress() {
   );
 }
 
-// Mouse-follow spotlight
+// Mouse-follow spotlight (optimized: cached rect eliminates layout recalculation lag)
 const onSpot = (e) => {
-  const r = e.currentTarget.getBoundingClientRect();
-  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+  const el = e.currentTarget;
+  let r = el._cachedRect;
+  if (!r) {
+    r = el.getBoundingClientRect();
+    el._cachedRect = r;
+  }
+  el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  el.style.setProperty("--my", `${e.clientY - r.top}px`);
+};
+const onSpotLeave = (e) => {
+  e.currentTarget._cachedRect = null;
 };
 
 function ProjectCard({ proj, delay = 0 }) {
@@ -740,11 +748,13 @@ function ProjectCard({ proj, delay = 0 }) {
       className="card flush svp-proj"
       onMouseMove={onSpot}
     >
-      <div
+      <Link
+        href={`/work/${proj.slug || proj.id}`}
         className="thumb svp-thumb"
         style={{
           "--g": proj.gradient || "linear-gradient(135deg,#4f46e5,#7c3aed)",
         }}
+        aria-label={`View ${proj.title} case study`}
       >
         <img
           src={proj.image}
@@ -756,7 +766,7 @@ function ProjectCard({ proj, delay = 0 }) {
             e.currentTarget.style.display = "none";
           }}
         />
-      </div>
+      </Link>
       <div className="wb svp-wb">
         {proj.tags?.length > 0 && (
           <div className="tags svp-tags">
@@ -771,18 +781,6 @@ function ProjectCard({ proj, delay = 0 }) {
           </Link>
         </h3>
         <p>{proj.description || proj.shortPitch}</p>
-        {proj.metrics?.length > 0 && (
-          <div className="met svp-met">
-            {proj.metrics.slice(0, 2).map((m, idx) => (
-              <div key={idx}>
-                <strong>
-                  <CountUp value={m.value} />
-                </strong>
-                <span>{m.label}</span>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </Reveal>
   );

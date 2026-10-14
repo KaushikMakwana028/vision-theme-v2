@@ -303,32 +303,52 @@ const styles = `
 .bd .card .au span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bd .card .rd { color: var(--bd-primary); font-weight: 800; white-space: nowrap; }
 
-/* ---------- newsletter + CTA ---------- */
-.bd .closing { padding: 3.5rem 0 4.5rem; display: grid; gap: 1.5rem; }
-@media (min-width: 900px) { .bd .closing { grid-template-columns: 1fr 1.15fr; gap: 1.75rem; padding: 5rem 0 5.5rem; } }
-.bd .panel { border-radius: 24px; padding: clamp(1.6rem, 4vw, 2.5rem); color: #fff; position: relative; overflow: hidden; }
-.bd .panel.nl { background: linear-gradient(135deg, #0b1020, #172554); }
-.bd .panel.cta { background: linear-gradient(135deg, #1e1b4b, #312e81 60%, #4338ca); }
-.bd .panel h2 { font-size: clamp(1.45rem, 4vw, 2rem); line-height: 1.2; font-weight: 800; letter-spacing: -.02em; margin-bottom: .75rem; }
-.bd .panel p { color: #c3cbe6; line-height: 1.7; font-size: .98rem; margin-bottom: 1.5rem; }
-.bd .nl-form { display: grid; gap: .65rem; }
-@media (min-width: 520px) { .bd .nl-form { grid-template-columns: 1fr auto; } }
-.bd .nl-form input {
-  width: 100%; min-height: 48px; padding: .7rem 1.2rem; border-radius: 999px; font: inherit; font-size: 16px;
-  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.22);
+/* ---------- Closing CTA ---------- */
+.bd .closing-single { padding: 3rem 0 4.5rem; }
+.bd .closing-single .panel.cta {
+  background: linear-gradient(135deg, #0b1020 0%, #1e1b4b 55%, #312e81 100%);
+  border-radius: 24px; padding: clamp(2rem, 5vw, 3.25rem); color: #fff; text-align: center;
+  max-width: 820px; margin: 0 auto; border: 1px solid rgba(255,255,255,.14);
+  box-shadow: var(--bd-shadow-lg); position: relative; overflow: hidden;
 }
-.bd .nl-form input::placeholder { color: #93a0bd; }
-.bd .nl-form input:focus { outline: none; background: rgba(255,255,255,.14); border-color: #fdba74; }
-.bd .nl-err { color: #fda4af; font-size: .82rem; margin-top: .6rem; font-weight: 600; }
-.bd .nl-ok {
-  display: inline-flex; align-items: center; gap: .6rem; padding: .75rem 1.3rem; border-radius: 999px;
-  background: rgba(52,211,153,.18); border: 1px solid #34d399; color: #a7f3d0; font-weight: 700; font-size: .92rem;
+.bd .closing-single .poc {
+  display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 1.1rem;
+  padding: .5rem 1rem; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
 }
-.bd .poc { display: inline-block; margin-bottom: 1.1rem; padding: .9rem 1.2rem; border-radius: 16px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); }
-.bd .poc b { display: block; font-size: 1.9rem; line-height: 1; font-weight: 900; background: linear-gradient(120deg, #fdba74, #f9a8d4); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.bd .poc span { font-size: .82rem; color: #c3cbe6; font-weight: 600; }
-.bd .btn-row { display: flex; flex-direction: column; gap: .65rem; }
-@media (min-width: 520px) { .bd .btn-row { flex-direction: row; flex-wrap: wrap; } }
+.bd .closing-single .poc b {
+  font-size: 1.1rem; line-height: 1; font-weight: 800;
+  background: linear-gradient(120deg, #fdba74, #f9a8d4); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.bd .closing-single .poc span { font-size: .84rem; color: #c3cbe6; font-weight: 600; }
+.bd .closing-single h2 { font-size: clamp(1.6rem, 3.8vw, 2.3rem); line-height: 1.22; font-weight: 800; margin-bottom: .85rem; color: #fff; }
+.bd .closing-single p { color: #c3cbe6; line-height: 1.7; font-size: 1.02rem; max-width: 58ch; margin: 0 auto 1.75rem; }
+.bd .closing-single .btn-row { display: flex; gap: .85rem; justify-content: center; flex-wrap: wrap; }
+
+/* ---------- Mobile Responsive Overrides ---------- */
+@media (max-width: 640px) {
+  .bd-head { padding: 1rem 0 1.25rem; }
+  .bd h1.title { font-size: clamp(1.4rem, 5.5vw, 1.95rem) !important; line-height: 1.25 !important; margin-bottom: .75rem !important; }
+  .bd .excerpt { font-size: .95rem !important; line-height: 1.55 !important; margin-bottom: 1.2rem !important; }
+  .bd .byline { gap: .75rem; padding-top: 1rem; }
+  .bd .who strong { font-size: .9rem; }
+  .bd .who span { font-size: .78rem; }
+  .bd .intro::first-letter { float: none !important; font-size: inherit !important; line-height: inherit !important; padding: 0 !important; color: inherit !important; font-weight: inherit !important; }
+  .bd .article { font-size: .98rem !important; line-height: 1.75 !important; }
+  .bd .sect h2 { font-size: 1.28rem !important; line-height: 1.3 !important; }
+  .bd .takeaways { padding: 1.25rem 1rem !important; border-radius: 14px !important; margin-bottom: 1.75rem !important; }
+  .bd .takeaways h3 { font-size: 1.05rem !important; }
+  .bd .takeaways li { font-size: .92rem !important; gap: .6rem !important; }
+  .bd .callout { padding: 1rem 1.15rem !important; font-size: .95rem !important; margin: 1.25rem 0 !important; }
+  .bd .code { margin: 1.25rem 0 !important; border-radius: 12px !important; }
+  .bd .code pre { padding: .85rem !important; font-size: .78rem !important; }
+  .bd .conclusion { padding: 1.25rem 1.15rem !important; border-radius: 14px !important; }
+  .bd .closing-single { padding: 2rem 0 3rem; }
+  .bd .closing-single .panel.cta { padding: 1.5rem 1.25rem; border-radius: 18px; }
+  .bd .closing-single h2 { font-size: 1.35rem; }
+  .bd .closing-single p { font-size: .92rem; }
+  .bd .closing-single .btn-row { flex-direction: column; width: 100%; }
+  .bd .closing-single .btn-row .btn { width: 100%; justify-content: center; text-align: center; }
+}
 
 /* ---------- toast ---------- */
 .bd .toast {
@@ -391,9 +411,6 @@ export default function BlogDetailPage({ blog: propBlog }) {
   const [shareUrl, setShareUrl] = useState(
     `https://visiontechnolabs.com/blog/${blog.slug}`,
   );
-  const [email, setEmail] = useState("");
-  const [emailErr, setEmailErr] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
   const progressRef = useRef(null);
   const tocRef = useRef(null);
 
@@ -489,17 +506,6 @@ export default function BlogDetailPage({ blog: propBlog }) {
     }
   };
 
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) {
-      setEmailErr("Please enter a valid email address.");
-      return;
-    }
-    setEmailErr("");
-    // TODO: POST to your newsletter endpoint
-    setSubscribed(true);
-  };
-
   const related = useMemo(
     () =>
       blogsData
@@ -530,7 +536,7 @@ export default function BlogDetailPage({ blog: propBlog }) {
   );
 
   return (
-    <main className="bd">
+    <div className="bd">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
 
       <div className="bd-progress" aria-hidden="true">
@@ -546,6 +552,20 @@ export default function BlogDetailPage({ blog: propBlog }) {
       <header className="bd-head">
         <div className="wrap">
           <div className="inner">
+            <nav className="crumbs" aria-label="Breadcrumb">
+              <Link href="/">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span>Home</span>
+              </Link>
+              <span className="sep">/</span>
+              <Link href="/blog">Blog</Link>
+              <span className="sep">/</span>
+              <span className="cur">{blog.title}</span>
+            </nav>
+
             <div className="meta">
               {blog.category && <span className="cat">{blog.category}</span>}
               {blog.readTime && (
@@ -811,12 +831,16 @@ export default function BlogDetailPage({ blog: propBlog }) {
             <div className="grid">
               {related.map((rel) => (
                 <article key={rel.id} className="card">
-                  <div className="thumb">
+                  <Link
+                    href={`/blog/${rel.slug}`}
+                    className="thumb"
+                    aria-label={`Read ${rel.title}`}
+                  >
                     {rel.category && (
                       <span className="badge">{rel.category}</span>
                     )}
                     <img src={rel.image} alt="" loading="lazy" />
-                  </div>
+                  </Link>
                   <div className="body">
                     <div className="cm">
                       <span>{rel.date}</span>
@@ -845,45 +869,9 @@ export default function BlogDetailPage({ blog: propBlog }) {
         </section>
       )}
 
-      {/* ================= NEWSLETTER + CTA ================= */}
+      {/* ================= CLOSING CTA ================= */}
       <div className="wrap">
-        <div className="closing">
-          <section className="panel nl" aria-labelledby="nl-title">
-            <h2 id="nl-title">The Engineering Dispatch</h2>
-            <p>
-              Zero marketing spam. Architecture write-ups, performance
-              benchmarks and code, delivered fortnightly.
-            </p>
-            {subscribed ? (
-              <div className="nl-ok" role="status">
-                ✓ You&apos;re subscribed. Welcome aboard!
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} noValidate>
-                <div className="nl-form">
-                  <input
-                    type="email"
-                    inputMode="email"
-                    autoComplete="email"
-                    placeholder="you@company.com"
-                    aria-label="Email address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    aria-invalid={!!emailErr}
-                  />
-                  <button type="submit" className="btn">
-                    Subscribe →
-                  </button>
-                </div>
-                {emailErr && (
-                  <div className="nl-err" role="alert">
-                    {emailErr}
-                  </div>
-                )}
-              </form>
-            )}
-          </section>
-
+        <div className="closing-single">
           <section className="panel cta" aria-labelledby="cta-title">
             <div className="poc">
               <b>2–5 days</b>
@@ -908,6 +896,6 @@ export default function BlogDetailPage({ blog: propBlog }) {
           </section>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

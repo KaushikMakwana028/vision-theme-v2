@@ -312,8 +312,8 @@ const styles = `
 /* ---------- Projects / case studies ---------- */
 .svp .card.flush { padding: 0; }
 .svp-proj { height: 100%; }
-.svp-thumb { position: relative; overflow: hidden; aspect-ratio: 800 / 520; background: var(--g); }
-.svp-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
+.svp-thumb { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: var(--g); display: flex; align-items: center; justify-content: center; padding: 0.5rem; }
+.svp-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .9s var(--ease); }
 .svp-thumb::before {
   content: ""; position: absolute; top: 0; bottom: 0; left: -70%; width: 45%; z-index: 2; pointer-events: none;
   background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .35), transparent); transform: skewX(-20deg);
@@ -606,11 +606,16 @@ function ScrollProgress() {
   );
 }
 
-// Mouse-follow spotlight for cards
+// Mouse-follow spotlight for cards (optimized: cached rect eliminates layout recalculation lag)
 const onSpot = (e) => {
-  const r = e.currentTarget.getBoundingClientRect();
-  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+  const el = e.currentTarget;
+  let r = el._cachedRect;
+  if (!r) {
+    r = el.getBoundingClientRect();
+    el._cachedRect = r;
+  }
+  el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  el.style.setProperty("--my", `${e.clientY - r.top}px`);
 };
 
 // 3D tilt for the hero card (desktop pointers only)
@@ -618,13 +623,19 @@ const onTilt = (e) => {
   if (!window.matchMedia("(hover: hover) and (min-width: 861px)").matches)
     return;
   const el = e.currentTarget;
-  const r = el.getBoundingClientRect();
+  let r = el._cachedRect;
+  if (!r) {
+    r = el.getBoundingClientRect();
+    el._cachedRect = r;
+  }
   const x = (e.clientX - r.left) / r.width - 0.5;
   const y = (e.clientY - r.top) / r.height - 0.5;
   el.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
   el.style.setProperty("--ry", `${(x * 9).toFixed(2)}deg`);
 };
+
 const onTiltEnd = (e) => {
+  e.currentTarget._cachedRect = null;
   e.currentTarget.style.setProperty("--rx", "0deg");
   e.currentTarget.style.setProperty("--ry", "0deg");
 };
@@ -637,11 +648,13 @@ function ProjectCard({ proj, delay = 0 }) {
       className="card flush svp-card svp-proj"
       onMouseMove={onSpot}
     >
-      <div
+      <Link
+        href={`/work/${proj.slug || proj.id}`}
         className="thumb svp-thumb"
         style={{
           "--g": proj.gradient || "linear-gradient(135deg,#4f46e5,#7c3aed)",
         }}
+        aria-label={`View ${proj.title} case study`}
       >
         <img
           src={proj.image}
@@ -653,7 +666,7 @@ function ProjectCard({ proj, delay = 0 }) {
             e.currentTarget.style.display = "none";
           }}
         />
-      </div>
+      </Link>
       <div className="wb svp-wb">
         {proj.tags?.length > 0 && (
           <div className="tags svp-tags">
@@ -668,18 +681,6 @@ function ProjectCard({ proj, delay = 0 }) {
           </Link>
         </h3>
         <p>{proj.description}</p>
-        {proj.metrics?.length > 0 && (
-          <div className="met svp-met">
-            {proj.metrics.slice(0, 2).map((m, idx) => (
-              <div key={idx}>
-                <strong>
-                  <CountUp value={m.value} />
-                </strong>
-                <span>{m.label}</span>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </Reveal>
   );
@@ -715,7 +716,7 @@ export default function ServiceDetailPage({ service: propService }) {
 
   if (!service) {
     return (
-      <main id="main" className="svp">
+      <div className="svp">
         <style dangerouslySetInnerHTML={{ __html: styles }} />
         <div className="container svp-nf">
           <div className="svp-nf-code">404</div>
@@ -725,14 +726,14 @@ export default function ServiceDetailPage({ service: propService }) {
             Back to All Services
           </Link>
         </div>
-      </main>
+      </div>
     );
   }
 
   const otherServices = servicesData.filter((s) => s.slug !== service.slug);
 
   return (
-    <main id="main" className="svp">
+    <div className="svp">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
       <ScrollProgress />
 
@@ -1132,6 +1133,6 @@ export default function ServiceDetailPage({ service: propService }) {
           </Reveal>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

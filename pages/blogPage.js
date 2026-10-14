@@ -26,41 +26,6 @@ const styles = `
 .svp .rv.rv-in { opacity: 1; animation: svp-in .8s var(--ease) var(--rv-delay, 0ms) backwards; }
 .svp .rv.rv-in.svp-cta { animation: svp-in .8s var(--ease) backwards, svp-bg 14s ease-in-out .8s infinite; }
 
-/* ---------- Redirection bar / Breadcrumbs ---------- */
-.breadcrumbs-bar {
-  display: flex; justify-content: center; width: 100%; margin-bottom: 0.9rem;
-}
-.svp .breadcrumbs {
-  display: inline-flex; align-items: center; flex-wrap: wrap; gap: .45rem;
-  padding: .28rem .85rem; border-radius: 999px;
-  background: rgba(255, 255, 255, .6);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  border: 1px solid rgba(15, 23, 42, .08);
-  box-shadow: 0 1px 2px rgba(11, 16, 32, .03);
-  font-size: .81rem; line-height: 1.25; margin: 0 auto .9rem;
-  width: fit-content;
-}
-.svp .breadcrumbs a {
-  display: inline-flex; align-items: center; gap: .35rem;
-  color: var(--muted); font-weight: 500; text-decoration: none;
-  transition: color var(--t) var(--ease);
-}
-.svp .breadcrumbs a:hover {
-  color: var(--primary); transform: none;
-}
-.svp .breadcrumbs .bc-icon {
-  width: 13px; height: 13px; flex-shrink: 0; color: var(--muted);
-  transition: color var(--t) var(--ease);
-}
-.svp .breadcrumbs a:hover .bc-icon { color: var(--primary); transform: none; }
-.svp .breadcrumbs .sep {
-  color: #94a3b8; font-size: .8rem; font-weight: 500;
-  padding: 0 .15rem; user-select: none;
-}
-.svp .breadcrumbs .current {
-  color: var(--ink); font-weight: 600; letter-spacing: .01em;
-}
-
 /* ---------- Shared bits ---------- */
 .svp .eyebrow {
   display: inline-flex; align-items: center; gap: .55rem;
@@ -101,9 +66,10 @@ const styles = `
   background-size: 26px 26px; opacity: 0.6;
 }
 
-.svp-hero-center { text-align: center; max-width: 860px; margin: 0 auto 3.5rem; }
+.svp-hero-center { text-align: center; max-width: 860px; margin: 0 auto 2.5rem; }
 .svp-hero-center h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.8rem); line-height: 1.15; margin: 1.1rem 0 1rem; color: var(--ink);
+  font-size: clamp(1.85rem, 4.2vw, 3.2rem); line-height: 1.2; margin: .85rem 0 .75rem; color: var(--ink);
+  letter-spacing: -.02em;
 }
 .svp-hero-center h1 em {
   font-family: var(--serif); font-style: italic;
@@ -111,19 +77,8 @@ const styles = `
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .svp-hero-center p.lead {
-  font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--muted); line-height: 1.7; margin: 0 auto 1.75rem; max-width: 68ch;
+  font-size: clamp(1rem, 2vw, 1.18rem); color: var(--muted); line-height: 1.65; margin: 0 auto; max-width: 64ch;
 }
-
-/* Quick stats row */
-.blog-stats-bar {
-  display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2rem;
-  padding: 1rem 2rem; border-radius: 999px; background: rgba(255, 255, 255, .75);
-  backdrop-filter: blur(8px); border: 1px solid var(--line); width: fit-content; margin: 0 auto;
-  box-shadow: 0 2px 8px -2px rgba(11, 16, 32, .04);
-}
-.blog-stat-item { display: flex; align-items: center; gap: .55rem; font-size: .88rem; color: var(--muted); }
-.blog-stat-item strong { color: var(--ink); font-weight: 800; font-size: 1.1rem; }
-.blog-stat-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
 
 /* ---------- Featured Story Showcase (High Performance) ---------- */
 .featured-card {
@@ -163,7 +118,7 @@ const styles = `
 }
 .featured-read { color: var(--muted); }
 .featured-content h2 {
-  font-size: clamp(1.5rem, 2.5vw, 2.1rem); line-height: 1.25; margin: 0 0 .9rem; color: var(--ink);
+  font-size: clamp(1.4rem, 2.5vw, 2.1rem); line-height: 1.25; margin: 0 0 .9rem; color: var(--ink);
   transition: color .25s;
 }
 .featured-card:hover .featured-content h2 { color: var(--primary); }
@@ -179,21 +134,6 @@ const styles = `
 }
 .featured-author-name strong { display: block; font-size: .92rem; color: var(--ink); }
 .featured-author-name span { font-size: .8rem; color: var(--muted); }
-
-/* ---------- Tech marquee (Hardware Accelerated) ---------- */
-.svp-marquee { padding: 1.3rem 0; border-block: 1px solid var(--line); background: var(--bg); overflow: hidden; }
-.svp-marquee-track {
-  display: flex; width: max-content; animation: svp-marq 38s linear infinite;
-  will-change: transform; transform: translateZ(0);
-}
-.svp-marquee:hover .svp-marquee-track { animation-play-state: paused; }
-.svp-marquee-group { display: flex; gap: .75rem; padding-right: .75rem; }
-.svp-marquee-group span {
-  white-space: nowrap; padding: .5rem 1.1rem; border-radius: 999px; font-weight: 600; font-size: .9rem;
-  color: var(--primary); background: var(--surface); border: 1px solid var(--line);
-  transition: background .25s, color .25s, transform .25s var(--ease);
-}
-.svp-marquee-group span:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
 
 /* ---------- Search and Filter Bar ---------- */
 .blog-filter-bar {
@@ -285,28 +225,6 @@ const styles = `
 .mag-arrow { color: var(--primary); display: grid; place-items: center; transition: transform .3s var(--ease); }
 .mag-card:hover .mag-arrow { transform: translateX(5px); }
 
-/* ---------- Newsletter Box ---------- */
-.nl-box {
-  position: relative; overflow: hidden; padding: clamp(2rem, 5vw, 3.5rem);
-  border-radius: calc(var(--radius) + 10px); color: #fff;
-  background: linear-gradient(135deg, var(--dark) 0%, #1c1b4d 50%, var(--primary-600) 100%);
-  box-shadow: var(--shadow-lg); text-align: center; max-width: 860px; margin: 4rem auto 0;
-}
-.nl-box::before {
-  content: ""; position: absolute; width: 340px; height: 340px; left: -100px; top: -100px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(6, 182, 212, .35), transparent 70%); pointer-events: none;
-}
-.nl-box h2 { font-size: clamp(1.8rem, 3.2vw, 2.5rem); margin: 0 0 .8rem; color: #fff; }
-.nl-box p { color: rgba(255, 255, 255, .8); max-width: 58ch; margin: 0 auto 2rem; font-size: 1.05rem; line-height: 1.65; }
-.nl-form { display: flex; gap: .75rem; justify-content: center; max-width: 500px; margin: 0 auto; flex-wrap: wrap; }
-.nl-form input {
-  flex: 1; min-width: 240px; padding: .85rem 1.4rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .25);
-  background: rgba(255, 255, 255, .1); color: #fff; font: inherit; font-size: .95rem; backdrop-filter: blur(10px);
-}
-.nl-form input::placeholder { color: rgba(255, 255, 255, .6); }
-.nl-form input:focus { outline: none; border-color: #fff; }
-.nl-form button { border: 0; cursor: pointer; white-space: nowrap; }
-
 /* ---------- CTA ---------- */
 .svp-cta-sec { padding-top: 3rem; }
 .svp-cta {
@@ -344,7 +262,6 @@ const styles = `
 @keyframes svp-grad { to { background-position: 200% 0; } }
 @keyframes svp-shine { 0%, 55% { left: -60%; } 100% { left: 130%; } }
 @keyframes svp-drift { to { background-position: 26px 26px; } }
-@keyframes svp-marq { to { transform: translateX(-50%); } }
 @keyframes svp-bg { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 @keyframes svp-spin { to { transform: rotate(360deg); } }
 @keyframes svp-ping { 70% { box-shadow: 0 0 0 9px rgba(251, 146, 60, 0); } 100% { box-shadow: 0 0 0 0 rgba(251, 146, 60, 0); } }
@@ -358,8 +275,15 @@ const styles = `
   .svp-cta { grid-template-columns: 1fr; gap: 1.75rem; }
 }
 @media (max-width: 640px) {
-  .svp .cols.c3 { grid-template-columns: 1fr; gap: 1.25rem; }
-  .blog-stats-bar { gap: 1rem 1.5rem; padding: 1rem 1.4rem; border-radius: 20px; }
+  .svp-hero-center { margin-bottom: 1.5rem; }
+  .svp-hero-center h1 { font-size: clamp(1.45rem, 5.5vw, 1.95rem); line-height: 1.24; margin: .5rem 0 .55rem; }
+  .svp-hero-center p.lead { font-size: .92rem; line-height: 1.55; }
+  .featured-card { padding: 1.15rem !important; gap: 1.15rem; border-radius: 16px !important; margin-bottom: 2rem !important; }
+  .featured-content h2 { font-size: 1.25rem !important; line-height: 1.3 !important; margin-bottom: .5rem !important; }
+  .featured-content p { font-size: .88rem !important; line-height: 1.5 !important; margin-bottom: .9rem !important; }
+  .featured-author-row { padding-top: .85rem; }
+  .featured-author-row .btn { width: 100%; justify-content: center; }
+  .blog-filter-bar { gap: .9rem; margin-bottom: 1.75rem; }
   .blog-tabs {
     flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; padding: .35rem var(--gutter) .7rem;
     scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch;
@@ -367,9 +291,11 @@ const styles = `
   }
   .blog-tabs::-webkit-scrollbar { display: none; }
   .blog-tab { scroll-snap-align: start; }
-  .nl-form { flex-direction: column; }
-  .nl-form button { width: 100%; justify-content: center; }
-  .mag-body { padding: 1.25rem; }
+  .svp .cols.c3 { grid-template-columns: 1fr; gap: 1.15rem; }
+  .mag-body { padding: 1.15rem; }
+  .mag-body h3 { font-size: 1.15rem; line-height: 1.32; }
+  .mag-body p { font-size: .88rem; line-height: 1.55; margin-bottom: 1rem; }
+  .svp-cta-actions .btn { width: 100%; justify-content: center; text-align: center; }
 }
 `;
 
@@ -410,7 +336,7 @@ function ScrollProgress() {
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("All");
 
   // Editor's pick / featured article
   const featuredArticle = useMemo(() => {
@@ -418,9 +344,12 @@ export default function BlogPage() {
     return list.find((b) => b.featured) || list[0];
   }, []);
 
-  // Full articles list with search support
+  // Filter articles by category and search query
   const filteredArticles = useMemo(() => {
-    const list = blogsData || [];
+    let list = blogsData || [];
+    if (activeCategory && activeCategory !== "All") {
+      list = list.filter((b) => b.category === activeCategory);
+    }
     if (!searchQuery.trim()) return list;
     const query = searchQuery.toLowerCase().trim();
     return list.filter((article) => {
@@ -431,28 +360,10 @@ export default function BlogPage() {
         tags.some((t) => t.toLowerCase().includes(query))
       );
     });
-  }, [searchQuery]);
-
-  const marqueeTopics = useMemo(() => {
-    return [
-      "Next.js 15 Partial Prerendering",
-      "Cyclic State Graphs & LangGraph",
-      "Headless Shopify Hydrogen 2.0",
-      "Hybrid Vector Search (Qdrant & BM25)",
-      "React Native Fabric Architecture",
-      "Zero-Downtime Blue-Green Cloud",
-      "Engineering-Led CRO Playbooks",
-      "Strict Pydantic Tool Schemas"
-    ];
-  }, []);
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    setSubscribed(true);
-  };
+  }, [searchQuery, activeCategory]);
 
   return (
-    <main id="main" className="svp">
+    <div className="svp">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
       <ScrollProgress />
 
@@ -463,46 +374,31 @@ export default function BlogPage() {
 
         <div className="container">
           <div className="svp-hero-center">
-            <div style={{ marginBottom: "1.1rem" }}>
+            <div style={{ marginBottom: ".75rem" }}>
               <span className="eyebrow">
-                Vision Engineering Dispatches &amp; Architecture Insights
+                Engineering &amp; Architecture Insights
               </span>
             </div>
 
             <h1 id="blog-hero-title">
-              Deep-Dive Software Architecture &amp;{" "}
-              <em>Modern Engineering Craft</em>
+              Software Architecture &amp;{" "}
+              <em>Engineering Insights</em>
             </h1>
 
             <p className="lead">
-              Practical architectural breakdowns, benchmarks, and production lessons
-              written directly by the senior architects building high-concurrency systems.
+              Practical architectural breakdowns, performance benchmarks, and production lessons
+              from the senior engineering team at Vision Technolabs.
             </p>
-
-            <div className="blog-stats-bar">
-              <div className="blog-stat-item">
-                <span className="blog-stat-dot" />
-                <strong>8+</strong> In-Depth Guides
-              </div>
-              <div className="blog-stat-item">
-                <span className="blog-stat-dot" />
-                <strong>100%</strong> Production Tested
-              </div>
-              <div className="blog-stat-item">
-                <span className="blog-stat-dot" />
-                <strong>Zero</strong> AI Fluff
-              </div>
-              <div className="blog-stat-item">
-                <span className="blog-stat-dot" />
-                <strong>Weekly</strong> Releases
-              </div>
-            </div>
           </div>
 
           {/* ================= FEATURED STORY SHOWCASE ================= */}
           {featuredArticle && (
             <article className="featured-card">
-              <div className="featured-thumb">
+              <Link
+                href={`/blog/${featuredArticle.slug || featuredArticle.id}`}
+                className="featured-thumb"
+                aria-label={`Read ${featuredArticle.title}`}
+              >
                 <img
                   src={featuredArticle.image}
                   alt={featuredArticle.title}
@@ -513,7 +409,7 @@ export default function BlogPage() {
                 <span className="featured-thumb-badge">
                   <i /> Editor&apos;s Pick
                 </span>
-              </div>
+              </Link>
 
               <div className="featured-content">
                 <div className="featured-tag-row">
@@ -557,22 +453,6 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* ================= TRENDING TOPICS MARQUEE ================= */}
-      <div className="svp-marquee" aria-hidden="true">
-        <div className="svp-marquee-track">
-          <div className="svp-marquee-group">
-            {marqueeTopics.map((topic, idx) => (
-              <span key={`top1-${idx}`}>{topic}</span>
-            ))}
-          </div>
-          <div className="svp-marquee-group">
-            {marqueeTopics.map((topic, idx) => (
-              <span key={`top2-${idx}`}>{topic}</span>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* ================= ARTICLES FEED ================= */}
       <section className="sec alt" id="articles-catalog">
         <div className="container">
@@ -598,6 +478,27 @@ export default function BlogPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 aria-label="Search articles"
               />
+            </div>
+
+            <div className="blog-tabs" role="tablist" aria-label="Article categories">
+              {blogCategories.map((cat) => {
+                const count = cat === "All"
+                  ? blogsData.length
+                  : blogsData.filter((b) => b.category === cat).length;
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    role="tab"
+                    aria-selected={activeCategory === cat}
+                    className={`blog-tab ${activeCategory === cat ? "active" : ""}`}
+                    onClick={() => setActiveCategory(cat)}
+                  >
+                    <span>{cat}</span>
+                    <em>{count}</em>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -678,45 +579,6 @@ export default function BlogPage() {
               ))}
             </div>
           )}
-
-          {/* ================= NEWSLETTER SUBSCRIBE ================= */}
-          <div className="nl-box">
-            <h2>The Vision Engineering Dispatch</h2>
-            <p>
-              Join 15,000+ software architects, CTOs, and product engineers receiving our
-              fortnightly architectural deep dives, benchmarks, and code blueprints.
-            </p>
-
-            {subscribed ? (
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: ".6rem",
-                  padding: ".8rem 1.6rem",
-                  borderRadius: "999px",
-                  background: "rgba(52, 211, 153, .2)",
-                  border: "1px solid #34d399",
-                  color: "#a7f3d0",
-                  fontWeight: 600
-                }}
-              >
-                ✓ You&apos;re subscribed! Welcome to the dispatch.
-              </div>
-            ) : (
-              <form className="nl-form" onSubmit={handleSubscribe}>
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter your work email address..."
-                  aria-label="Email address"
-                />
-                <button type="submit" className="btn btn-primary">
-                  Subscribe Free →
-                </button>
-              </form>
-            )}
-          </div>
         </div>
       </section>
 
@@ -754,6 +616,6 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
