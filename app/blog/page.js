@@ -1,11 +1,24 @@
 import BlogPage from "@/pages/blogPage";
+import { buildMetadata } from "@/lib/seo";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
-export const metadata = {
-  title: "Engineering Blog & Technical Insights - Vision Technolabs",
+export const metadata = buildMetadata({
+  title: "Engineering Blog & Architecture Guides",
   description:
-    "In-depth technical essays, architecture blueprints, performance benchmarks, and code deep dives written by senior engineers at Vision Technolabs.",
-};
+    "Engineering blog with technical deep dives on Next.js, production AI agents, scalable cloud architectures, and full-stack development best practices.",
+  path: "/blog",
+});
 
 export default function Page() {
-  return <BlogPage />;
+  return (
+    <>
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+        ]}
+      />
+      <BlogPage />
+    </>
+  );
 }

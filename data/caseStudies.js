@@ -24,14 +24,14 @@ export const caseStudiesData = [
     shortPitch: "Surya Deep Car Rent is an end-to-end vehicle rental management system that transforms car hire operations. It provides customers with a seamless 3-step online booking and paperless KYC workflow, while equipping fleet owners with live vehicle scheduling, pre/post inspection photo logs, Razorpay payments, and per-vehicle profit-and-loss analytics.",
     tags: ["Fleet ERP", "PHP / CodeIgniter", "Razorpay", "Live Platform"],
     gradient: "linear-gradient(135deg,#0369a1,#1e3a8a)",
-    image: "/images/suryadeepcarrent/01_suryadeepcarrent.png",
+    image: "/images/suryadeepcarrent/01_suryadeepcarrent.webp",
     images: [
-      "/images/suryadeepcarrent/01_suryadeepcarrent.png"
+      "/images/suryadeepcarrent/01_suryadeepcarrent.webp"
       // Add extra images here when added in public/images/suryadeepcarrent/
     ],
     gallery: [
       {
-        url: "/images/suryadeepcarrent/01_suryadeepcarrent.png",
+        url: "/images/suryadeepcarrent/01_suryadeepcarrent.webp",
         caption: "Responsive Multi-Device Platform — Laptop, Tablet & Mobile Booking Interface",
         tag: "Multi-Device UI Showcase",
         badge: "Screen 01 · Primary Overview"
@@ -199,14 +199,14 @@ export const caseStudiesData = [
     shortPitch: "SRL Pixel LED’s Glowing Hub is a specialized LED hardware commerce platform uniting an online shopping experience with in-store walk-in POS billing, OTP verification, live inventory sync, and automated GST tax invoicing.",
     tags: ["E-Commerce & POS", "PHP / CodeIgniter", "Neon Glow UI", "Live Platform"],
     gradient: "linear-gradient(135deg,#db2777,#be185d,#1e1b4b)",
-    image: "/images/srlpixel/01_srlpixel.png",
+    image: "/images/srlpixel/01_srlpixel.webp",
     images: [
-      "/images/srlpixel/01_srlpixel.png"
+      "/images/srlpixel/01_srlpixel.webp"
       // Add extra screenshots here when placed in public/images/srlpixel/
     ],
     gallery: [
       {
-        url: "/images/srlpixel/01_srlpixel.png",
+        url: "/images/srlpixel/01_srlpixel.webp",
         caption: "Responsive Multi-Device Storefront — MacBook, iPad & iPhone Shopping Experience",
         tag: "Multi-Device Storefront UI",
         badge: "Screen 01 · Storefront Overview"
@@ -358,6 +358,7 @@ export const caseStudiesData = [
   {
     id: "recomm",
     slug: "recomm",
+    seoTitle: "ReComm: Marketplace Engine Case Study",
     serviceSlug: "ecommerce-solutions",
     category: "Ecommerce Solutions",
     title: "ReComm — Hyperlocal Marketplace Engine",
@@ -372,14 +373,14 @@ export const caseStudiesData = [
     shortPitch: "ReComm is a scalable on-demand hyperlocal marketplace ecosystem connecting local vendors, supermarkets, and specialty merchants with neighborhood consumers. Features sub-second GPS store discovery, hybrid geodesic road-routing, flexible multi-slot delivery, instant mobile OTP authentication, and automated GST tax invoicing.",
     tags: ["Hyperlocal Quick-Commerce", "PHP / CodeIgniter", "Multi-Vendor", "Live Platform"],
     gradient: "linear-gradient(135deg,#059669,#10b981,#022c22)",
-    image: "/images/recomm/01_recomm.png",
+    image: "/images/recomm/01_recomm.webp",
     images: [
-      "/images/recomm/01_recomm.png"
+      "/images/recomm/01_recomm.webp"
       // Add extra screenshots here when placed in public/images/recomm/
     ],
     gallery: [
       {
-        url: "/images/recomm/01_recomm.png",
+        url: "/images/recomm/01_recomm.webp",
         caption: "Responsive Multi-Device Platform — MacBook Pro, iPad & iPhone Hyperlocal Shopping Experience",
         tag: "Multi-Device Marketplace UI",
         badge: "Screen 01 · Primary Marketplace View"
@@ -531,6 +532,7 @@ export const caseStudiesData = [
   {
     id: "stayflow-crm",
     slug: "stayflow-crm",
+    seoTitle: "StayFlow CRM: PG & Hostel Case Study",
     serviceSlug: "custom-software-crm",
     category: "Custom Software & CRM",
     title: "StayFlow CRM — PG & Hostel ERP",
@@ -545,14 +547,14 @@ export const caseStudiesData = [
     shortPitch: "StayFlow CRM is a modern, high-performance property management software tailored for Paying Guest (PG) and student hostel businesses. Built with a scalable MVC architecture and an intuitive modern UI, it centralizes multi-branch property operations—from automated recurring rent invoices and digital KYC identity verification to dynamic bed-level occupancy tracking and real-time income-expense bookkeeping.",
     tags: ["PropTech / CRM", "PHP / CodeIgniter", "Multi-Property ERP", "Live Platform"],
     gradient: "linear-gradient(135deg,#4f46e5,#2563eb,#0f172a)",
-    image: "/images/pg/01_pg.png",
+    image: "/images/pg/01_pg.webp",
     images: [
-      "/images/pg/01_pg.png"
+      "/images/pg/01_pg.webp"
       // Add extra screenshots here when placed in public/images/pg/
     ],
     gallery: [
       {
-        url: "/images/pg/01_pg.png",
+        url: "/images/pg/01_pg.webp",
         caption: "Responsive Multi-Device Platform — MacBook Pro, iPad & iPhone Property Operations Dashboard",
         tag: "Multi-Device CRM Interface",
         badge: "Screen 01 · Executive Dashboard & Operations"
@@ -716,6 +718,7 @@ export const caseStudiesData = [
   {
     id: "nandani",
     slug: "nandani",
+    seoTitle: "Nandani: Appliance Portal Case Study",
     serviceSlug: "website-development",
     category: "Website Development",
     title: "Nandani — Kitchen Appliance Portal",
@@ -730,14 +733,14 @@ export const caseStudiesData = [
     shortPitch: "Nandani Kitchen Appliances is an enterprise-grade corporate portal and digital distribution platform developed for a leading kitchenware distributor with a 35+ year manufacturing legacy. The solution features an interactive, filterable multi-brand product catalog, a structured dealer onboarding and distributor application engine, a multimedia corporate facility showcase, and a role-secured Admin CMS with real-time lead tracking and inventory controls.",
     tags: ["B2B Distribution", "PHP / CodeIgniter", "Bootstrap 5", "Enterprise CMS"],
     gradient: "linear-gradient(135deg,#dc2626,#991b1b,#1e1b4b)",
-    image: "/images/nandani/01_nandani.png",
+    image: "/images/nandani/01_nandani.webp",
     images: [
-      "/images/nandani/01_nandani.png"
+      "/images/nandani/01_nandani.webp"
       // Add extra screenshots here when placed in public/images/nandani/
     ],
     gallery: [
       {
-        url: "/images/nandani/01_nandani.png",
+        url: "/images/nandani/01_nandani.webp",
         caption: "Responsive Multi-Device Platform — MacBook Pro, iPad & iPhone B2B Distribution Portal",
         tag: "Multi-Device Showcase",
         badge: "Screen 01 · Corporate Portal Overview"
@@ -890,6 +893,7 @@ export const caseStudiesData = [
   {
     id: "medicheck",
     slug: "medicheck",
+    seoTitle: "Medicheck: Clinical DDI Case Study",
     serviceSlug: "custom-software-crm",
     category: "Custom Software & CRM",
     title: "Medicheck — Clinical DDI Checker",
@@ -904,14 +908,14 @@ export const caseStudiesData = [
     shortPitch: "Medicheck is a clinical decision-support web platform that helps doctors prescribe more safely. Doctors register patients, build prescriptions from a searchable drug formulary, and get drug-drug interaction alerts graded by severity before an invoice is generated. A separate admin console manages doctors, the drug registry, the interaction-rule database (with bulk Excel/CSV import), and patient records.",
     tags: ["Health-Tech", "PHP / CodeIgniter", "Clinical DDI Engine", "Live Platform"],
     gradient: "linear-gradient(135deg,#0d9488,#059669,#042f2e)",
-    image: "/images/medicheck/01_medicheck.png",
+    image: "/images/medicheck/01_medicheck.webp",
     images: [
-      "/images/medicheck/01_medicheck.png"
+      "/images/medicheck/01_medicheck.webp"
       // Add extra screenshots here when placed in public/images/medicheck/
     ],
     gallery: [
       {
-        url: "/images/medicheck/01_medicheck.png",
+        url: "/images/medicheck/01_medicheck.webp",
         caption: "Responsive Multi-Device Platform — MacBook Pro, iPad & iPhone Clinical DDI Admin & Doctor Console",
         tag: "Clinical Decision Support UI",
         badge: "Screen 01 · Admin Management Console"
@@ -1063,6 +1067,7 @@ export const caseStudiesData = [
   {
     id: "billbook",
     slug: "billbook",
+    seoTitle: "BillsBook: Billing & ERP Case Study",
     serviceSlug: "custom-software-crm",
     category: "Custom Software & CRM",
     title: "BillsBook – Multi-Business Billing, Invoicing & Inventory SaaS",
@@ -1075,7 +1080,7 @@ export const caseStudiesData = [
     description: "High-performance web billing and inventory application for shopkeepers and retail businesses featuring 30-second counter invoicing, instant WhatsApp PDF delivery, and live stock tracking.",
     tags: ["Billing & Invoicing", "Inventory ERP", "WhatsApp Invoicing", "PHP / CodeIgniter", "Dompdf"],
     gradient: "linear-gradient(135deg,#2563eb,#1d4ed8,#0f172a)",
-    image: "/images/billbook/01_billbook.png",
+    image: "/images/billbook/01_billbook.webp",
     metrics: [
       { value: "<30s", label: "Counter Billing Speed" },
       { value: "<1%", label: "Stock Discrepancy" },
@@ -1161,6 +1166,7 @@ export const caseStudiesData = [
   {
     id: "ghanshyammurtibhandar",
     slug: "ghanshyammurtibhandar",
+    seoTitle: "Ghanshyam Murti: E-Commerce Case Study",
     serviceSlug: "ecommerce-solutions",
     category: "Ecommerce Solutions",
     title: "Ghanshyam Murti Bhandar – Marble Murti E-Commerce Platform",
@@ -1175,13 +1181,13 @@ export const caseStudiesData = [
     shortPitch: "Ghanshyam Murti Bhandar is an enterprise-grade devotional e-commerce platform engineered for a premier Rajkot-based artisan of handcrafted white marble idols and temple sculptures. It unifies a responsive customer storefront, a 50+ endpoint mobile REST API, Shiprocket shipping automation with live tracking webhooks, mobile OTP authentication, and multi-panel Admin and Retailer consoles for managing orders, low stock, distributors, and transit damage resolutions.",
     tags: ["Marble Murti E-Commerce", "CodeIgniter 3", "REST API", "Shiprocket", "Razorpay", "Live Platform"],
     gradient: "linear-gradient(135deg, #b45309, #78350f)",
-    image: "/images/ghanshyammurtibhandar/01_ghanshyammurtibhandar.png",
+    image: "/images/ghanshyammurtibhandar/01_ghanshyammurtibhandar.webp",
     images: [
-      "/images/ghanshyammurtibhandar/01_ghanshyammurtibhandar.png"
+      "/images/ghanshyammurtibhandar/01_ghanshyammurtibhandar.webp"
     ],
     gallery: [
       {
-        url: "/images/ghanshyammurtibhandar/01_ghanshyammurtibhandar.png",
+        url: "/images/ghanshyammurtibhandar/01_ghanshyammurtibhandar.webp",
         caption: "Responsive Devotional E-Commerce Ecosystem — Storefront, Multi-Panel Admin & Mobile REST API",
         tag: "Devotional Storefront & API",
         badge: "Screen 01 · Production View"
@@ -1336,6 +1342,7 @@ export const caseStudiesData = [
   {
     id: "automobile",
     slug: "automobile",
+    seoTitle: "Venus Automotive: Fleet ERP Case Study",
     serviceSlug: "custom-software-crm",
     category: "Custom Software & CRM",
     title: "Venus Automotive – Fleet Service & Parts ERP Portal",
@@ -1350,13 +1357,13 @@ export const caseStudiesData = [
     shortPitch: "Venus Automotive ERP streamlines multi-bay garage operations and auto spare parts warehousing. It equips mechanics with digital tablet job cards, parts managers with barcode inventory tracking, and vehicle owners with automated WhatsApp service milestones, itemized estimates, and online UPI payment reconciliation.",
     tags: ["Automotive ERP", "Job Card CRM", "Parts Inventory", "WhatsApp Updates", "Live Platform"],
     gradient: "linear-gradient(135deg, #0284c7, #0f172a)",
-    image: "/images/automobile/01_automobile.png",
+    image: "/images/automobile/01_automobile.webp",
     images: [
-      "/images/automobile/01_automobile.png"
+      "/images/automobile/01_automobile.webp"
     ],
     gallery: [
       {
-        url: "/images/automobile/01_automobile.png",
+        url: "/images/automobile/01_automobile.webp",
         caption: "Multi-Device Showcase — Workshop Job Card Console, Inventory Suite & Customer Portal",
         tag: "Workshop & Inventory Suite",
         badge: "Screen 01 · Production View"
@@ -1484,6 +1491,7 @@ export const caseStudiesData = [
   {
     id: "ananyahomeservice",
     slug: "ananyahomeservice",
+    seoTitle: "Anaya Home Service Case Study",
     serviceSlug: "website-development",
     category: "Website Development",
     title: "Anaya Home Service – Interior Design & Home Finishing Website",
@@ -1498,13 +1506,13 @@ export const caseStudiesData = [
     shortPitch: "Anaya Home Service is a responsive business website built for an interior design and home-finishing company in New Ranip, Ahmedabad. Engineered with WordPress and Elementor for effortless no-code content management, it presents ten service categories, a project gallery, a YouTube video testimonial section, an FAQ, and a blog—complete with a 'Book Appointment' funnel, contact forms, one-tap WhatsApp chat, click-to-call, and Google Maps location routing to turn local visitors into qualified enquiries.",
     tags: ["WordPress & Elementor", "Interior Design", "Lead Generation", "WhatsApp Integration", "Live Platform"],
     gradient: "linear-gradient(135deg, #d97706, #78350f)",
-    image: "/images/ananyahomeservice/01_ananyahomeservice.png",
+    image: "/images/ananyahomeservice/01_ananyahomeservice.webp",
     images: [
-      "/images/ananyahomeservice/01_ananyahomeservice.png"
+      "/images/ananyahomeservice/01_ananyahomeservice.webp"
     ],
     gallery: [
       {
-        url: "/images/ananyahomeservice/01_ananyahomeservice.png",
+        url: "/images/ananyahomeservice/01_ananyahomeservice.webp",
         caption: "Responsive Multi-Device Showcase — Hero Slider, 10-Service Catalogue & Instant Quote Booking",
         tag: "Corporate & Lead Gen Website",
         badge: "Screen 01 · Production View"
@@ -1634,6 +1642,7 @@ export const caseStudiesData = [
   {
     id: "filterbook",
     slug: "filterbook",
+    seoTitle: "FilterBook: RO Purifier CRM Case Study",
     serviceSlug: "mobile-app-development",
     category: "Mobile App Development",
     title: "FilterBook – CRM, Billing & Service Management Platform for RO Water Purifier Businesses",
@@ -1648,13 +1657,13 @@ export const caseStudiesData = [
     shortPitch: "Water purifier businesses depend on long-term relationships after the sale: filter changes, scheduled maintenance visits, Annual Maintenance Contract (AMC) renewals, and quick complaint handling. FilterBook brings all of this into one connected ecosystem—featuring a React Native (Expo) mobile app for daily field and counter operations, a Vendor Web Admin Panel, a Multi-Tenant Super Admin Console, and zero-login Public QR pages for customer complaints and product catalogue browsing.",
     tags: ["React Native (Expo)", "Field Service CRM", "WhatsApp PDF Billing", "QR Complaints", "Android & iOS"],
     gradient: "linear-gradient(135deg, #0284c7, #1d4ed8)",
-    image: "/app_images/Filterbook/01_app_FB.png",
+    image: "/app_images/Filterbook/01_app_FB.webp",
     images: [
-      "/app_images/Filterbook/01_app_FB.png"
+      "/app_images/Filterbook/01_app_FB.webp"
     ],
     gallery: [
       {
-        url: "/app_images/Filterbook/01_app_FB.png",
+        url: "/app_images/Filterbook/01_app_FB.webp",
         caption: "Omnichannel RO Service SaaS — Android & iOS Mobile App, Vendor Web Panel & Public QR Portals",
         tag: "Mobile App & SaaS Suite",
         badge: "Screen 01 · Production View"
@@ -1807,6 +1816,7 @@ export const caseStudiesData = [
   {
     id: "divyshakti",
     slug: "divyshakti",
+    seoTitle: "Divy Shakti: Wellness App Case Study",
     serviceSlug: "mobile-app-development",
     category: "Mobile App Development",
     title: "Divy Shakti – Wellness E-Commerce & Referral Network Mobile App",
@@ -1821,13 +1831,13 @@ export const caseStudiesData = [
     shortPitch: "Divy Shakti brings community-driven direct selling of wellness, herbal, and lifestyle products onto one unified cross-platform mobile application. Built with React Native 0.81, Expo SDK 54, and React 19 (New Architecture), it combines sponsor-validated member onboarding, a 15-field Aadhaar/PAN/Bank KYC workflow with live admin polling, a custom interactive 2D SVG genealogy tree, a UPI-integrated digital wallet with protected on-hold withdrawal accounting, and a full e-commerce order lifecycle.",
     tags: ["React Native 0.81 & Expo 54", "2D SVG Genealogy Tree", "Digital Wallet & UPI", "15-Field KYC Verification", "Android & iOS"],
     gradient: "linear-gradient(135deg, #E64A78, #C89738)",
-    image: "/app_images/Divy_Shakti/01_app_DS.png",
+    image: "/app_images/Divy_Shakti/01_app_DS.webp",
     images: [
-      "/app_images/Divy_Shakti/01_app_DS.png"
+      "/app_images/Divy_Shakti/01_app_DS.webp"
     ],
     gallery: [
       {
-        url: "/app_images/Divy_Shakti/01_app_DS.png",
+        url: "/app_images/Divy_Shakti/01_app_DS.webp",
         caption: "Divy Shakti Mobile App — Wellness Storefront, Interactive 2D Genealogy Network, KYC & Digital Wallet",
         tag: "Cross-Platform Mobile App",
         badge: "Screen 01 · Production View"
@@ -1966,6 +1976,7 @@ export const caseStudiesData = [
   {
     id: "tripsbook",
     slug: "tripsbook",
+    seoTitle: "TripsBook: Fleet Management Case Study",
     serviceSlug: "mobile-app-development",
     category: "Mobile App Development",
     title: "TripsBook – Fleet, Driver Trip & Fuel Management Mobile App",
@@ -1980,13 +1991,13 @@ export const caseStudiesData = [
     shortPitch: "Fleet operators have traditionally relied on paper duty slips, handwritten odometer logs, and loose fuel receipts—leading to billing delays, calculation mistakes, and zero real-time visibility for dispatchers. Vision Technolabs built TripsBook on React Native 0.81, Expo SDK 54, and React 19 (New Architecture) to replace that paperwork with a mobile-first digital workflow where drivers record Fix Cab and On Call duties, share live GPS coordinates, track multi-fuel expenses, and produce print-ready A4 Duty Slips and Monthly Vehicle Log Sheets straight from their phone.",
     tags: ["React Native 0.81 & Expo 54", "Live GPS Fleet Tracking", "PDF Duty Slips & Log Sheets", "Multi-Fuel Expense Audit", "Android & iOS"],
     gradient: "linear-gradient(135deg, #0f172a, #2563eb)",
-    image: "/app_images/Tripsbook/01_app_TB.png",
+    image: "/app_images/Tripsbook/01_app_TB.webp",
     images: [
-      "/app_images/Tripsbook/01_app_TB.png"
+      "/app_images/Tripsbook/01_app_TB.webp"
     ],
     gallery: [
       {
-        url: "/app_images/Tripsbook/01_app_TB.png",
+        url: "/app_images/Tripsbook/01_app_TB.webp",
         caption: "TripsBook Mobile App — Live Driver Dashboard, Fix Cab & On Call Trip Modes, GPS Tracking & A4 Duty Slip PDF",
         tag: "Fleet & Driver Mobile App",
         badge: "Screen 01 · Production View"
@@ -2125,6 +2136,7 @@ export const caseStudiesData = [
   {
     id: "thakarmart",
     slug: "thakarmart",
+    seoTitle: "Thakar Mart: Grocery App Case Study",
     serviceSlug: "mobile-app-development",
     category: "Mobile App Development",
     title: "Thakar Mart – Grocery & Dairy Shopping Mobile App",
@@ -2139,13 +2151,13 @@ export const caseStudiesData = [
     shortPitch: "Thakar Mart is a dedicated single-store grocery and dairy mobile shopping application engineered by Vision Technolabs to extend a neighbourhood retail store beyond walk-in counter sales. Built with a clean violet-accented mobile UI and connected admin backend, the app puts the store's complete everyday range—from fresh milk and curd to biscuits, snacks, cold drinks, and daily staples—into the customer's pocket with category tiles, strike-through discount pricing, cart checkout, and real-time doorstep delivery tracking.",
     tags: ["Grocery & Dairy App", "Single-Store E-Commerce", "Category & Offer Discovery", "Doorstep Order Tracking", "Android Mobile App"],
     gradient: "linear-gradient(135deg, #6d28d9, #4f46e5)",
-    image: "/app_images/Thakar_Mart/01_app_TM.png",
+    image: "/app_images/Thakar_Mart/01_app_TM.webp",
     images: [
-      "/app_images/Thakar_Mart/01_app_TM.png"
+      "/app_images/Thakar_Mart/01_app_TM.webp"
     ],
     gallery: [
       {
-        url: "/app_images/Thakar_Mart/01_app_TM.png",
+        url: "/app_images/Thakar_Mart/01_app_TM.webp",
         caption: "Thakar Mart Mobile App — Kirana & Dairy Category Storefront, Discount Product Cards & Doorstep Order Tracking",
         tag: "Grocery & Dairy Mobile App",
         badge: "Screen 01 · Google Play Live"
@@ -2271,6 +2283,7 @@ export const caseStudiesData = [
   {
     id: "fitcket",
     slug: "fitcket",
+    seoTitle: "Fitcket: Fitness Platform Case Study",
     serviceSlug: "mobile-app-development",
     category: "Mobile App Development",
     title: "Fitcket – Fitness Booking, Live Sessions, FitTV & Cricket Pools Platform",
@@ -2285,13 +2298,13 @@ export const caseStudiesData = [
     shortPitch: "Fitcket brings gyms, personal trainers, live classes, on-demand FitTV courses, and interactive cricket prediction pools into a single Android and iOS mobile platform. Powered by a 55+ endpoint CodeIgniter 3 MVC REST API (~7,500 lines of controller architecture) and 40+ relational MySQL tables, the platform orchestrates Haversine geo-distance discovery, flexible duration-based pass bookings with Buy-X-Get-Y offers, server-verified Razorpay checkouts, Agora live video token streaming with 15-minute cron reminders, and JWT + SMS OTP security.",
     tags: ["Expo Mobile App", "Agora Live Streaming", "Razorpay Checkout", "Haversine Geo-Search", "55+ REST API Endpoints"],
     gradient: "linear-gradient(135deg, #10b981, #047857)",
-    image: "/app_images/Fitcket/01_app_FK.png",
+    image: "/app_images/Fitcket/01_app_FK.webp",
     images: [
-      "/app_images/Fitcket/01_app_FK.png"
+      "/app_images/Fitcket/01_app_FK.webp"
     ],
     gallery: [
       {
-        url: "/app_images/Fitcket/01_app_FK.png",
+        url: "/app_images/Fitcket/01_app_FK.webp",
         caption: "Fitcket Mobile Marketplace — Nearby Gym & Trainer Booking, Agora Live Sessions, FitTV Courses & Cricket Pools",
         tag: "Fitness Marketplace & Live App",
         badge: "Screen 01 · Production View"
@@ -2442,6 +2455,7 @@ export const caseStudiesData = [
   {
     id: "sitedesk",
     slug: "sitedesk",
+    seoTitle: "SiteDesk: Real Estate ERP Case Study",
     serviceSlug: "mobile-app-development",
     category: "Mobile App Development",
     title: "SiteDesk – Real Estate Plot Sales, EMI Tracking & Site Management Platform",
@@ -2456,13 +2470,13 @@ export const caseStudiesData = [
     shortPitch: "Real estate plot developers juggle multiple layout sites, hundreds of plots, buyers paying via cash or multi-month EMIs, sale-deed (dastavej) registry paperwork, field expenses, staff attendance, and daily buyer inquiries. SiteDesk replaces scattered paper registers and spreadsheets with an Expo mobile app backed by a 40-endpoint CodeIgniter 3 MVC REST API (~4,600 lines of controller code) across 25+ MySQL tables—scoping data strictly to each staff member's assigned sites while automating EMI due reminders via Expo Push Notifications.",
     tags: ["Expo Mobile App", "Plot & EMI Management", "Dastavej Registry Tracker", "Selfie Attendance & CRM", "40 REST API Endpoints"],
     gradient: "linear-gradient(135deg, #0d9488, #0f172a)",
-    image: "/app_images/Sitedesk/01_app_SD.png",
+    image: "/app_images/Sitedesk/01_app_SD.webp",
     images: [
-      "/app_images/Sitedesk/01_app_SD.png"
+      "/app_images/Sitedesk/01_app_SD.webp"
     ],
     gallery: [
       {
-        url: "/app_images/Sitedesk/01_app_SD.png",
+        url: "/app_images/Sitedesk/01_app_SD.webp",
         caption: "SiteDesk Real Estate App — Assigned Site & Plot Availability, Buyer EMI Ledger, Dastavej Records & Field CRM",
         tag: "Real Estate Operations App",
         badge: "Screen 01 · Production View"
@@ -2601,6 +2615,7 @@ export const caseStudiesData = [
   {
     id: "ghanshyam-murti-app",
     slug: "ghanshyam-murti-app",
+    seoTitle: "Ghanshyam Murti: Mobile App Case Study",
     serviceSlug: "mobile-app-development",
     category: "Mobile App Development",
     title: "Ghanshyam Murti Bhandar – Marble Murti E-Commerce Mobile App & REST API",
@@ -2615,13 +2630,13 @@ export const caseStudiesData = [
     shortPitch: "Selling heavy, fragile, handcrafted marble idols on mobile requires more than a standard catalogue: shipping costs depend on exact cart weight and buyer pincode, one-of-a-kind stock cannot oversell, and transit damage claims need photo/video evidence. Vision engineered the Ghanshyam Murti Bhandar mobile app and its 75-endpoint CodeIgniter 3 REST API (~5,100 lines of controller code) sharing a unified 35+ table MySQL database with the web storefront and admin suite.",
     tags: ["Mobile App & 75 REST APIs", "Guest Cart & OTP Login", "Shiprocket Weight Shipping", "Razorpay & COD Checkout", "B2B Partner Onboarding"],
     gradient: "linear-gradient(135deg, #b45309, #78350f)",
-    image: "/app_images/Ghanshyam_Murti_Bhandar/01_app_GMB.png",
+    image: "/app_images/Ghanshyam_Murti_Bhandar/01_app_GMB.webp",
     images: [
-      "/app_images/Ghanshyam_Murti_Bhandar/01_app_GMB.png"
+      "/app_images/Ghanshyam_Murti_Bhandar/01_app_GMB.webp"
     ],
     gallery: [
       {
-        url: "/app_images/Ghanshyam_Murti_Bhandar/01_app_GMB.png",
+        url: "/app_images/Ghanshyam_Murti_Bhandar/01_app_GMB.webp",
         caption: "Ghanshyam Murti Bhandar Mobile App — Guest Marble Idol Storefront, Shiprocket Pincode Rates, Razorpay Checkout & B2B Onboarding",
         tag: "E-Commerce Mobile App & API",
         badge: "Screen 01 · Production View"
@@ -2760,6 +2775,7 @@ export const caseStudiesData = [
   {
     id: "kreditmitraa",
     slug: "kreditmitraa",
+    seoTitle: "Kreditmitraa: Loan App Case Study",
     serviceSlug: "mobile-app-development",
     category: "Mobile App Development",
     title: "Kreditmitraa – Short-Term Loan & Referral Rewards Mobile App Platform",
@@ -2774,13 +2790,13 @@ export const caseStudiesData = [
     shortPitch: "Consumer lending demands absolute verification and pricing transparency: borrowers need to see every interest rupee, platform fee, and GST charge upfront, while lending teams must enforce strict one-active-loan limits and verify repayment receipts before closing loans. Vision engineered the Kreditmitraa mobile ecosystem and its 18-endpoint CodeIgniter 3 MVC REST API (~1,500 lines of controller code) across 10+ MySQL tables—featuring 30-day JWT sessions, KYC approval gates, scheme-based loan pricing, and a milestone referral wallet.",
     tags: ["Fintech & Loan App", "18 REST API Endpoints", "KYC Approval Gate", "UPI Receipt Repayments", "Referral Rewards Wallet"],
     gradient: "linear-gradient(135deg, #059669, #0284c7)",
-    image: "/app_images/Kreditmitraa/01_app_KM.png",
+    image: "/app_images/Kreditmitraa/01_app_KM.webp",
     images: [
-      "/app_images/Kreditmitraa/01_app_KM.png"
+      "/app_images/Kreditmitraa/01_app_KM.webp"
     ],
     gallery: [
       {
-        url: "/app_images/Kreditmitraa/01_app_KM.png",
+        url: "/app_images/Kreditmitraa/01_app_KM.webp",
         caption: "Kreditmitraa Mobile App — Short-Term Loan Dashboard, KYC Approval Gate, Repayment Desk & Referral Wallet",
         tag: "Fintech Mobile App & API",
         badge: "Screen 01 · Production View"
@@ -2908,6 +2924,7 @@ export const caseStudiesData = [
   {
     id: "aexongraphics-crm",
     slug: "aexongraphics-crm",
+    seoTitle: "Aexon Graphics: Packaging CRM Case Study",
     serviceSlug: "custom-software-crm",
     category: "Custom Software & CRM",
     title: "Aexon Graphics CRM – Print & Packaging Production, Purchase Order and Invoicing System",
@@ -2922,13 +2939,13 @@ export const caseStudiesData = [
     shortPitch: "The Aexon Graphics CRM runs a print and packaging factory from order to dispatch. The office creates Purchase Orders for raw material, turns each approved order into a Job, and sends it through production stations such as plate making, printing, lamination, punching, pasting, cutting, and dispatch. Each worker sees only their own jobs, and the system tracks material stock, stage progress, and waste. GST-ready Purchase Orders and Proforma Invoices are created as PDFs and sent over WhatsApp.",
     tags: ["Print & Packaging ERP", "PHP / CodeIgniter", "Production Workstations", "Dompdf & WhatsApp", "Live Platform"],
     gradient: "linear-gradient(135deg, #0284c7, #0f172a)",
-    image: "/images/axon/01_axon.png",
+    image: "/images/axon/01_axon.webp",
     images: [
-      "/images/axon/01_axon.png"
+      "/images/axon/01_axon.webp"
     ],
     gallery: [
       {
-        url: "/images/axon/01_axon.png",
+        url: "/images/axon/01_axon.webp",
         caption: "Aexon Graphics CRM — Print & Packaging Production, Station Workstation Queue & Invoicing Overview",
         tag: "Production ERP & Factory Desk",
         badge: "Screen 01 · Production Overview"
@@ -3092,6 +3109,7 @@ export const caseStudiesData = [
   {
     id: "loksangeet",
     slug: "loksangeet",
+    seoTitle: "Loksangeet: Music App Case Study",
     serviceSlug: "mobile-app-development",
     category: "Mobile App Development",
     title: "Loksangeet – Traditional & Regional Songs Lyrics Mobile App Platform",
@@ -3106,13 +3124,13 @@ export const caseStudiesData = [
     shortPitch: "Traditional and regional folk songs often live scattered across handwritten diaries, fragmented PDFs, and oral memory. Loksangeet unifies regional musical heritage into an elegant mobile platform powered by a 26-endpoint CodeIgniter 3 MVC REST API (~2,200 lines of controller code) and relational MySQL database. Featuring a multi-level category tree, full-text lyrics search, personal favourites, lightweight mobile authentication with token blacklisting, and a 3-state community moderation workflow, Loksangeet allows cultural song libraries to grow continuously under strict editorial quality control.",
     tags: ["Lyrics Mobile App", "26 REST Endpoints", "CodeIgniter MVC", "Nested Categories", "Community Moderation", "JWT Security"],
     gradient: "linear-gradient(135deg, #d97706, #9333ea)",
-    image: "/app_images/loksangeet/01_app_LSL.png",
+    image: "/app_images/loksangeet/01_app_LSL.webp",
     images: [
-      "/app_images/loksangeet/01_app_LSL.png"
+      "/app_images/loksangeet/01_app_LSL.webp"
     ],
     gallery: [
       {
-        url: "/app_images/loksangeet/01_app_LSL.png",
+        url: "/app_images/loksangeet/01_app_LSL.webp",
         caption: "Loksangeet Mobile App — Traditional & Regional Lyrics Library, Nested Categories, Search & Community Moderation",
         tag: "Lyrics Mobile App & API",
         badge: "Screen 01 · Production View"
@@ -3349,7 +3367,42 @@ export function getCaseStudyBySlug(slug) {
 }
 
 export function getProjectsByService(serviceSlug) {
-  const matches = caseStudiesData.filter((item) => item.serviceSlug === serviceSlug);
-  if (matches.length > 0) return matches;
+  if (!serviceSlug) return caseStudiesData.slice(0, 3);
+
+  const serviceProjectMap = {
+    "website-development": ["suryadeepcarrent", "nandani", "ananyahomeservice"],
+    "ecommerce-solutions": ["srlpixel", "recomm", "ghanshyammurtibhandar"],
+    "mobile-app-development": [
+      "kreditmitraa",
+      "tripsbook",
+      "fitcket",
+      "divyshakti",
+      "thakarmart",
+      "filterbook",
+      "loksangeet",
+      "ghanshyam-murti-app"
+    ],
+    "ai-automation": ["medicheck", "sitedesk", "stayflow-crm"],
+    "ai-automation-agents": ["medicheck", "sitedesk", "stayflow-crm"],
+    "rag-knowledge-bases": ["medicheck", "recomm", "srlpixel"],
+    "enterprise-rag-search": ["medicheck", "recomm", "srlpixel"],
+    "custom-software-crm": ["stayflow-crm", "billbook", "automobile", "aexongraphics-crm"],
+    "meta-google-ads": ["srlpixel", "suryadeepcarrent", "divyshakti"],
+    "seo-site-optimizations": ["suryadeepcarrent", "nandani", "ananyahomeservice"],
+    "cro-conversion-optimization": ["suryadeepcarrent", "nandani", "srlpixel"],
+    "cloud-devops-engineering": ["recomm", "suryadeepcarrent", "stayflow-crm"]
+  };
+
+  const projectIds = serviceProjectMap[serviceSlug];
+  if (projectIds) {
+    const list = projectIds
+      .map((id) => caseStudiesData.find((p) => p.slug === id || p.id === id))
+      .filter(Boolean);
+    if (list.length > 0) return list;
+  }
+
+  const direct = caseStudiesData.filter((item) => item.serviceSlug === serviceSlug);
+  if (direct.length > 0) return direct;
+
   return caseStudiesData.slice(0, 3);
 }

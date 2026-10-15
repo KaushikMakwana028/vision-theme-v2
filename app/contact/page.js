@@ -1,11 +1,27 @@
 import ContactPage from "@/pages/contactPage";
+import { buildMetadata } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import { professionalServiceSchema } from "@/lib/schema";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
-export const metadata = {
-  title: "Contact Us & Schedule Technical Discovery - Vision Technolabs",
+export const metadata = buildMetadata({
+  title: "Contact Us & Technical Discovery",
   description:
-    "Get in touch with the solution architects and software engineers at Vision Technolabs. Request a technical audit, NDA, or custom development estimate within 24 hours.",
-};
+    "Contact our software engineering team in Ahmedabad to discuss your next project. Request technical audits, NDAs, and project estimates within 24 hours.",
+  path: "/contact",
+});
 
 export default function Page() {
-  return <ContactPage />;
+  return (
+    <>
+      <JsonLd data={professionalServiceSchema()} />
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ]}
+      />
+      <ContactPage />
+    </>
+  );
 }

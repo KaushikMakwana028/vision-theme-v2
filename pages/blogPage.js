@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { blogsData, blogCategories } from "@/data/blogs";
 
 /* =========================================================
@@ -399,12 +400,12 @@ export default function BlogPage() {
                 className="featured-thumb"
                 aria-label={`Read ${featuredArticle.title}`}
               >
-                <img
+                <Image
                   src={featuredArticle.image}
                   alt={featuredArticle.title}
                   width={1000}
                   height={600}
-                  priority="true"
+                  priority
                 />
                 <span className="featured-thumb-badge">
                   <i /> Editor&apos;s Pick
@@ -427,10 +428,10 @@ export default function BlogPage() {
 
                 <div className="featured-author-row">
                   <div className="featured-author-info">
-                    <img
+                    <Image
                       className="featured-author-avatar"
                       src={featuredArticle.author?.avatar}
-                      alt={featuredArticle.author?.name}
+                      alt={featuredArticle.author?.name || "Author avatar"}
                       width={44}
                       height={44}
                     />
@@ -516,12 +517,11 @@ export default function BlogPage() {
                     href={`/blog/${article.slug || article.id}`}
                     className="mag-thumb"
                   >
-                    <img
+                    <Image
                       src={article.image}
                       alt={article.title}
                       width={800}
                       height={500}
-                      loading="lazy"
                     />
                   </Link>
 
@@ -541,10 +541,10 @@ export default function BlogPage() {
 
                     <div className="mag-foot">
                       <div className="mag-auth">
-                        <img
+                        <Image
                           className="mag-auth-av"
                           src={article.author?.avatar}
-                          alt={article.author?.name}
+                          alt={article.author?.name || "Author avatar"}
                           width={32}
                           height={32}
                         />

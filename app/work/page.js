@@ -1,11 +1,24 @@
 import WorkPage from "@/pages/workPage";
+import { buildMetadata } from "@/lib/seo";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
-export const metadata = {
-  title: "Case Studies & Work Portfolio - Vision Technolabs",
+export const metadata = buildMetadata({
+  title: "Case Studies & Engineering Portfolio",
   description:
-    "Explore Vision's engineering portfolio: high-concurrency fintech platforms, headless Shopify Plus stores, telemedicine apps, autonomous AI agents, and enterprise ERPs.",
-};
+    "Client case studies and engineering portfolio. Discover how we build high-concurrency fintech platforms, AI agents, mobile apps, and headless Shopify stores.",
+  path: "/work",
+});
 
 export default function Page() {
-  return <WorkPage />;
+  return (
+    <>
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Case Studies", path: "/work" },
+        ]}
+      />
+      <WorkPage />
+    </>
+  );
 }

@@ -11,6 +11,7 @@ export const blogsData = [
   {
     id: "build-ai-agent",
     slug: "build-ai-agent",
+    seoTitle: "Building Production AI Agents Guide",
     title: "How to Build Production AI Agents That Actually Complete Real-World Tasks",
     excerpt: "Why simple prompt chains fail in production, and how multi-agent state machines with deterministic tool-calling eliminate hallucinations.",
     category: "AI & Agents",
@@ -88,6 +89,7 @@ const agentGraph = new StateGraph({
   {
     id: "nextjs-15-performance",
     slug: "nextjs-15-performance",
+    seoTitle: "Next.js 15 Performance Architecture",
     title: "Next.js 15 Deep Dive: Server Actions, Partial Prerendering & Sub-100ms TTFB",
     excerpt: "How modern React Server Components and Turbopack compiler pipelines allow enterprise web applications to eliminate client-side JavaScript bloat.",
     category: "Web Architecture",
@@ -143,6 +145,7 @@ const agentGraph = new StateGraph({
   {
     id: "headless-shopify-hydrogen",
     slug: "headless-shopify-hydrogen",
+    seoTitle: "Headless Shopify Hydrogen & Edge",
     title: "Scaling Headless Commerce with Shopify Hydrogen 2.0 and Oxygen Edge Hosting",
     excerpt: "Why high-growth D2C brands are leaving monolithic themes behind in favor of sub-second edge-rendered storefronts.",
     category: "Ecommerce & Headless",
@@ -192,6 +195,7 @@ const agentGraph = new StateGraph({
   {
     id: "react-native-vs-native",
     slug: "react-native-vs-native",
+    seoTitle: "React Native vs. Swift & Kotlin 2025",
     title: "React Native vs. Swift/Kotlin in 2025: An Architectural Benchmark",
     excerpt: "Analyzing memory footprint, frame rates, and maintenance velocity across cross-platform and purely native mobile architectures.",
     category: "Mobile Engineering",
@@ -240,6 +244,7 @@ const agentGraph = new StateGraph({
   {
     id: "vector-databases-rag-guide",
     slug: "vector-databases-rag-guide",
+    seoTitle: "Private RAG & Vector Databases",
     title: "Building Private RAG Systems with Vector Databases: Qdrant vs. Pinecone vs. pgvector",
     excerpt: "How to choose the optimal vector search engine for enterprise document retrieval, SOC-2 data isolation, and low-latency semantics.",
     category: "AI & Agents",
@@ -288,6 +293,7 @@ const agentGraph = new StateGraph({
   {
     id: "laravel-or-django",
     slug: "laravel-or-django",
+    seoTitle: "Laravel vs. Django for Enterprise APIs",
     title: "Laravel or Django? A Practical Engineering Guide for Your Next Enterprise API",
     excerpt: "Evaluating developer velocity, ORM capabilities, asynchronous task queues, and ecosystem maturity for modern web APIs.",
     category: "Web Architecture",
@@ -329,6 +335,7 @@ const agentGraph = new StateGraph({
   {
     id: "zero-downtime-deployments",
     slug: "zero-downtime-deployments",
+    seoTitle: "Zero-Downtime Cloud Blue-Green Deploys",
     title: "Zero-Downtime Blue-Green Cloud Deployments with Docker, ECS & GitHub Actions",
     excerpt: "How to ship continuous code releases to high-traffic production environments without interrupting active user sessions or database transactions.",
     category: "DevOps & Cloud",
@@ -370,6 +377,7 @@ const agentGraph = new StateGraph({
   {
     id: "cro-framework-ecommerce",
     slug: "cro-framework-ecommerce",
+    seoTitle: "Engineering-Led CRO Playbook Guide",
     title: "The Engineering-Led CRO Playbook: How We Increased Mobile Checkout by 44%",
     excerpt: "Moving beyond button color tests: utilizing sub-second edge rendering, sticky conversion bars, and reduced form friction to supercharge D2C sales.",
     category: "Ecommerce & Headless",

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { navigationData } from "@/data/navigation";
 
@@ -210,7 +211,7 @@ const headerCss = `
   display: flex;
   flex-direction: column;
   gap: 3px;
-  min-width: 250px;
+  min-width: 320px;
   padding: 10px;
   background: #ffffff;
   border: 1px solid var(--hd-border);
@@ -280,7 +281,7 @@ const headerCss = `
 .site-header .panel.mega {
   top: 100%;
   left: 50%;
-  width: min(1120px, calc(100vw - 48px));
+  width: min(1080px, calc(100vw - 48px));
   padding-top: 0;
 }
 
@@ -295,20 +296,24 @@ const headerCss = `
 
 .site-header .panel.mega .box {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 6px 28px;
-  padding: 26px 28px 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px 28px;
+  padding: 26px 32px 22px;
   min-width: 0;
 }
 
 .site-header .panel.mega .col h3 {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   padding: 0 14px;
-  font-size: 0.74rem;
+  font-size: 0.73rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--hd-muted);
+  white-space: nowrap;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .site-header .mega-bottom {
@@ -994,12 +999,13 @@ export default function Header() {
             aria-label="Vision Technolabs home"
             onClick={closeAll}
           >
-            <img
-              src="/logo/vision_logo.png"
+            <Image
+              src="/logo/vision-logo.png"
               alt="Vision Technolabs Logo"
               width={40}
               height={40}
               className="logo-img"
+              priority
             />
             <div className="logo-brand-text">
               <span className="logo-brand-vision">Vision</span>
@@ -1100,7 +1106,7 @@ export default function Header() {
                                   <span>
                                     {item.id === "services"
                                       ? "Production-ready engineering & fixed sprints"
-                                      : "Battle-tested Shopify apps & autonomous AI platforms"}
+                                      : "Proprietary SaaS & mobile field platforms built by Vision Technolabs"}
                                   </span>
                                 </div>
                                 <Link

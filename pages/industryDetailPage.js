@@ -1,7 +1,9 @@
-"use client";
-
-import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import ScrollProgress from "@/components/industries/ScrollProgress";
+import CountUp from "@/components/industries/CountUp";
+import IndustryFaqAccordion from "@/components/industries/IndustryFaqAccordion";
+import IndustryProjectsCarousel from "@/components/industries/IndustryProjectsCarousel";
 import { industriesData } from "@/data/industries";
 import { caseStudiesData } from "@/data/caseStudies";
 
@@ -23,8 +25,8 @@ const styles = `
 }
 
 /* ---------- Reveal on scroll ---------- */
-.svp .rv { opacity: 0; }
-.svp .rv.rv-in { opacity: 1; animation: svp-in .8s var(--ease) var(--rv-delay, 0ms) backwards; }
+.svp .rv { opacity: 1; transform: none; }
+.svp .rv.rv-in { opacity: 1; transform: none; }
 
 /* ---------- Breadcrumbs ---------- */
 .breadcrumbs-bar {
@@ -254,10 +256,25 @@ const styles = `
 }
 .svp-fsol-ico {
   width: 48px; height: 48px; display: inline-grid; place-items: center; border-radius: 14px;
-  background: linear-gradient(135deg, rgba(79, 70, 229, .12), rgba(6, 182, 212, .14));
-  color: var(--primary);
+  background: var(--grad, linear-gradient(135deg, #4f46e5, #7c3aed));
+  color: #ffffff;
+  box-shadow: 0 8px 18px -4px rgba(79, 70, 229, .45);
+  transition: transform .35s var(--ease), box-shadow .35s;
 }
-.svp-fsol-ico svg { width: 24px; height: 24px; }
+.svp-fsol-ico svg,
+.svp-fsol-ico .i {
+  width: 24px; height: 24px;
+  stroke: #ffffff;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: #ffffff;
+}
+.svp-fsol-card:hover .svp-fsol-ico {
+  transform: rotate(-6deg) scale(1.08);
+  box-shadow: 0 12px 24px -8px rgba(79, 70, 229, .65);
+}
 .svp-fsol-tag {
   font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
   color: var(--primary); background: rgba(79, 70, 229, .08); padding: .25rem .75rem; border-radius: 999px;
@@ -431,14 +448,12 @@ const styles = `
   position: relative;
   border-radius: 18px;
   overflow: hidden;
-  background: #090d16;
+  background: #f8fafc;
   border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.12);
-  aspect-ratio: 16 / 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
+  aspect-ratio: 16 / 9;
+  display: block;
+  padding: 0;
   cursor: pointer;
   text-decoration: none;
 }
@@ -446,7 +461,7 @@ const styles = `
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain !important;
+  object-fit: cover !important;
   object-position: center !important;
   transition: transform 0.6s var(--ease);
 }
@@ -658,31 +673,6 @@ const styles = `
    Helpers
    ========================================================= */
 
-function useInView(threshold = 0.1) {
-  const ref = useRef(null);
-  const [shown, setShown] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setShown(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          io.disconnect();
-        }
-      },
-      { threshold, rootMargin: "0px 0px -40px 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [threshold]);
-  return [ref, shown];
-}
-
 function Reveal({
   children,
   delay = 0,
@@ -690,97 +680,14 @@ function Reveal({
   as: Tag = "div",
   ...rest
 }) {
-  const [ref, shown] = useInView();
   return (
     <Tag
-      ref={ref}
-      className={`rv ${shown ? "rv-in" : ""} ${className}`}
+      className={`rv  ${className}`}
       style={{ "--rv-delay": `${delay}ms` }}
       {...rest}
     >
       {children}
     </Tag>
-  );
-}
-
-function CountUp({ value, duration = 1500 }) {
-  const text = String(value ?? "");
-  const match = text.match(/^(\D*?)(\d+(?:\.\d+)?)(\D*)$/);
-  const countable = Boolean(match);
-  const prefix = countable ? match[1] : "";
-  const target = countable ? parseFloat(match[2]) : 0;
-  const suffix = countable ? match[3] : "";
-  const decimals =
-    countable && match[2].includes(".") ? match[2].split(".")[1].length : 0;
-  const ref = useRef(null);
-  const [n, setN] = useState(countable ? 0 : target);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !countable) return;
-    const reduce = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (reduce || typeof IntersectionObserver === "undefined") {
-      setN(target);
-      return;
-    }
-    let raf;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        io.disconnect();
-        const start = performance.now();
-        const tick = (now) => {
-          const p = Math.min((now - start) / duration, 1);
-          setN(target * (1 - Math.pow(1 - p, 3)));
-          if (p < 1) raf = requestAnimationFrame(tick);
-        };
-        raf = requestAnimationFrame(tick);
-      },
-      { threshold: 0.3 },
-    );
-    io.observe(el);
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(raf);
-    };
-  }, [target, duration, countable]);
-
-  return (
-    <span ref={ref}>
-      {countable ? `${prefix}${n.toFixed(decimals)}${suffix}` : text}
-    </span>
-  );
-}
-
-function ScrollProgress() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    let raf;
-    const update = () => {
-      const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      if (el) el.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
-    };
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-  return (
-    <div className="svp-progress" aria-hidden="true">
-      <span ref={ref} />
-    </div>
   );
 }
 
@@ -790,30 +697,45 @@ function ScrollProgress() {
 
 export default function IndustryDetailPage({ industry: propIndustry }) {
   const industry = propIndustry || industriesData[0];
-  const [openFaq, setOpenFaq] = useState(0);
 
-  const marqueeTags = useMemo(() => {
-    if (!industry) return [];
-    const combined = [
-      ...(industry.compliance || []),
-      ...(industry.pillTags || []),
-      ...(industry.techStack || []),
-    ];
-    return combined.length > 0
+  if (!industry) {
+    return (
+      <div className="svp">
+        <style dangerouslySetInnerHTML={{ __html: styles }} />
+        <div className="container svp-nf">
+          <div className="svp-nf-code">404</div>
+          <h2>Industry Not Found</h2>
+          <p>
+            The requested industry profile could not be located in our catalog.
+          </p>
+          <Link href="/industries" className="btn btn-primary">
+            Back to All Industries
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const combined = [
+    ...(industry.compliance || []),
+    ...(industry.pillTags || []),
+    ...(industry.techStack || []),
+  ];
+  const marqueeTags =
+    combined.length > 0
       ? combined
       : ["Next.js", "SOC-2", "HIPAA", "AWS", "Docker"];
-  }, [industry]);
 
-  // Dynamically matched case studies SPECIFIC to this industry
-  const projects = useMemo(() => {
-    if (!industry) return [];
-    if (industry.caseStudySlugs && industry.caseStudySlugs.length > 0) {
-      const matched = caseStudiesData.filter((cs) =>
-        industry.caseStudySlugs.includes(cs.slug) || industry.caseStudySlugs.includes(cs.id)
-      );
-      if (matched.length > 0) return matched;
-    }
-    // Keyword fallback
+  let projects = [];
+  if (industry.caseStudySlugs && industry.caseStudySlugs.length > 0) {
+    const matched = caseStudiesData.filter(
+      (cs) =>
+        industry.caseStudySlugs.includes(cs.slug) ||
+        industry.caseStudySlugs.includes(cs.id),
+    );
+    if (matched.length > 0) projects = matched;
+  }
+  if (projects.length === 0) {
     const indKeywords = [
       industry.id,
       industry.slug,
@@ -822,7 +744,8 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
 
     const scored = caseStudiesData.map((cs) => {
       let score = 0;
-      const csText = `${cs.title} ${cs.industry} ${cs.category} ${cs.tags?.join(" ")}`.toLowerCase();
+      const csText =
+        `${cs.title} ${cs.industry} ${cs.category} ${cs.tags?.join(" ")}`.toLowerCase();
       indKeywords.forEach((kw) => {
         if (kw.length > 2 && csText.includes(kw)) score += 1;
       });
@@ -833,80 +756,8 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
       .filter((s) => s.score > 0)
       .sort((a, b) => b.score - a.score)
       .map((s) => s.cs);
-    return relevant.length > 0 ? relevant.slice(0, 3) : caseStudiesData.slice(0, 3);
-  }, [industry]);
-
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [touchStartX, setTouchStartX] = useState(null);
-  const [touchEndX, setTouchEndX] = useState(null);
-
-  // Reset slide index if industry changes
-  useEffect(() => {
-    setActiveSlide(0);
-  }, [industry?.slug]);
-
-  // Automatic scrolling / autoplay for standout projects slider
-  useEffect(() => {
-    if (projects.length <= 1 || isPaused) return;
-    const timer = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % projects.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, [projects.length, isPaused]);
-
-  const prevSlide = () => {
-    if (!projects.length) return;
-    setActiveSlide((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  const nextSlide = () => {
-    if (!projects.length) return;
-    setActiveSlide((prev) => (prev + 1) % projects.length);
-  };
-
-  const handleTouchStart = (e) => {
-    setTouchStartX(e.targetTouches[0].clientX);
-    setIsPaused(true);
-  };
-
-  const handleTouchMove = (e) => {
-    setTouchEndX(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (touchStartX !== null && touchEndX !== null) {
-      const distance = touchStartX - touchEndX;
-      if (distance > 40) {
-        nextSlide();
-      } else if (distance < -40) {
-        prevSlide();
-      }
-    }
-    setTouchStartX(null);
-    setTouchEndX(null);
-    setTimeout(() => setIsPaused(false), 2500);
-  };
-
-  const currentProject = projects[activeSlide] || projects[0];
-
-  const toggleFaq = (index) =>
-    setOpenFaq((prev) => (prev === index ? null : index));
-
-  if (!industry) {
-    return (
-      <div className="svp">
-        <style dangerouslySetInnerHTML={{ __html: styles }} />
-        <div className="container svp-nf">
-          <div className="svp-nf-code">404</div>
-          <h2>Industry Not Found</h2>
-          <p>The requested industry profile could not be located in our catalog.</p>
-          <Link href="/industries" className="btn btn-primary">
-            Back to All Industries
-          </Link>
-        </div>
-      </div>
-    );
+    projects =
+      relevant.length > 0 ? relevant.slice(0, 3) : caseStudiesData.slice(0, 3);
   }
 
   const otherIndustries = industriesData.filter((i) => i.slug !== industry.slug);
@@ -1059,7 +910,7 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
               >
                 <div className="svp-fsol-card-top">
                   <div className="svp-fsol-ico">
-                    <svg aria-hidden="true">
+                    <svg className="i" aria-hidden="true">
                       <use href={`#${industry.icon || "i-code"}`} />
                     </svg>
                   </div>
@@ -1128,122 +979,11 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
       )}
 
       {/* ================= STANDOUT PROJECTS SLIDER & SHOWCASE (Metizsoft iproj slider style) ================= */}
-      {projects.length > 0 && currentProject && (
-        <section className="svp-standout-sec" id="work">
-          <div className="container">
-            <div className="svp-standout-head">
-              <div className="svp-standout-title-wrap">
-                <span className="eyebrow">Proven Case Studies</span>
-                <h2>
-                  Our Standout <span className="hi">{industry.title} Projects</span>
-                </h2>
-              </div>
-
-              {projects.length > 1 && (
-                <div className="svp-standout-arrows">
-                  <button
-                    type="button"
-                    onClick={prevSlide}
-                    aria-label="Previous Standout Project"
-                    className="svp-slide-btn"
-                  >
-                    <svg width="20" height="20" style={{ width: "20px", height: "20px", minWidth: "20px", maxWidth: "20px", flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={nextSlide}
-                    aria-label="Next Standout Project"
-                    className="svp-slide-btn"
-                  >
-                    <svg width="20" height="20" style={{ width: "20px", height: "20px", minWidth: "20px", maxWidth: "20px", flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-                </div>
-              )}
-            </div>
-
-            <div
-              className="svp-standout-showcase"
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-            >
-              <div key={currentProject.id} className="svp-standout-card">
-                <div className="svp-standout-content">
-                  {currentProject.tags?.length > 0 && (
-                    <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>
-                      {currentProject.tags.slice(0, 2).map((t, idx) => (
-                        <span key={idx} style={{ fontSize: "0.74rem", fontWeight: 700, padding: "0.22rem 0.65rem", borderRadius: "999px", background: "rgba(79, 70, 229, 0.08)", color: "var(--primary)" }}>
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  <h3 className="svp-standout-title">
-                    {currentProject.subtitle || currentProject.title}
-                  </h3>
-
-                  <p className="svp-standout-desc">
-                    {currentProject.description || currentProject.shortPitch}
-                  </p>
-
-                  <Link
-                    className="svp-standout-link"
-                    href={`/work/${currentProject.slug || currentProject.id}`}
-                  >
-                    <span>Read the Case Study</span>
-                    <svg width="18" height="18" style={{ width: "18px", height: "18px", minWidth: "18px", maxWidth: "18px", flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="7" y1="17" x2="17" y2="7" />
-                      <polyline points="7 7 17 7 17 17" />
-                    </svg>
-                  </Link>
-                </div>
-
-                <div className="svp-standout-visual">
-                  <Link
-                    href={`/work/${currentProject.slug || currentProject.id}`}
-                    className="svp-standout-img-card"
-                    style={{
-                      "--g": currentProject.gradient || "linear-gradient(135deg,#0d9488,#059669)",
-                    }}
-                    aria-label={`View ${currentProject.title} case study`}
-                  >
-                    <img
-                      src={currentProject.image}
-                      alt={currentProject.title}
-                      width={760}
-                      height={500}
-                      loading="lazy"
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none";
-                      }}
-                    />
-                  </Link>
-                </div>
-              </div>
-
-              {projects.length > 1 && (
-                <div className="svp-standout-dots">
-                  {projects.map((p, idx) => (
-                    <button
-                      key={p.id || idx}
-                      type="button"
-                      onClick={() => setActiveSlide(idx)}
-                      aria-label={`Go to slide ${idx + 1}`}
-                      className={`svp-standout-dot ${idx === activeSlide ? "active" : ""}`}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
+      {projects.length > 0 && (
+        <IndustryProjectsCarousel
+          projects={projects}
+          industryTitle={industry.title}
+        />
       )}
 
       {/* ================= WHY PARTNER (Metizsoft wpart style) ================= */}
@@ -1326,42 +1066,7 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
               </p>
             </Reveal>
 
-            <div className="faq-wrap">
-              {industry.faqs.map((faq, idx) => {
-                const isOpen = openFaq === idx;
-                return (
-                  <Reveal
-                    key={idx}
-                    delay={idx * 70}
-                    className={`faq-card ${isOpen ? "open" : ""}`}
-                  >
-                    <button
-                      type="button"
-                      id={`faq-btn-${idx}`}
-                      className="faq-card-head"
-                      onClick={() => toggleFaq(idx)}
-                      aria-expanded={isOpen}
-                      aria-controls={`faq-panel-${idx}`}
-                    >
-                      <span>{faq.question}</span>
-                      <span className="faq-icon" aria-hidden="true">
-                        +
-                      </span>
-                    </button>
-                    <div
-                      id={`faq-panel-${idx}`}
-                      role="region"
-                      aria-labelledby={`faq-btn-${idx}`}
-                      className="faq-card-body"
-                    >
-                      <div className="faq-inner">
-                        <p>{faq.answer}</p>
-                      </div>
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
+            <IndustryFaqAccordion items={industry.faqs} />
           </div>
         </section>
       )}
@@ -1387,8 +1092,8 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
-                    <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(79,70,229,.1)", display: "grid", placeItems: "center", color: "var(--primary)" }}>
-                      <svg width="22" height="22" aria-hidden="true">
+                    <div style={{ width: 44, height: 44, borderRadius: 12, background: "var(--grad, linear-gradient(135deg, #4f46e5, #7c3aed))", display: "grid", placeItems: "center", color: "#ffffff", boxShadow: "0 6px 16px -4px rgba(79,70,229,.4)" }}>
+                      <svg className="i" width="22" height="22" style={{ stroke: "#ffffff", fill: "none", color: "#ffffff" }} aria-hidden="true">
                         <use href={`#${other.icon || "i-code"}`} />
                       </svg>
                     </div>

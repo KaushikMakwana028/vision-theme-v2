@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useRef, useState, useCallback } from "react";
+import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 
 /* ==========================================================================
@@ -528,12 +529,13 @@ export function LoaderOverlay({
 
           {/* Centered Floating Logo Core */}
           <div className="page-loader-logo-core">
-            <img
-              src="/logo/vision_logo.png"
+            <Image
+              src="/logo/vision-logo.png"
               alt="Vision Technolabs"
               width={40}
               height={40}
               className="page-loader-logo-img"
+              priority
             />
           </div>
         </div>
@@ -591,11 +593,13 @@ export default function Loader() {
   const [destination, setDestination] = useState("");
   const [progress, setProgress] = useState(0);
 
+  const pendingTimerRef = useRef(null);
   const timerRef = useRef(null);
   const hideTimerRef = useRef(null);
   const safetyTimerRef = useRef(null);
   const navStartTimeRef = useRef(0);
   const currentPathRef = useRef("");
+  const isNavigatingRef = useRef(false);
 
   const clearClickedLoadingIndicators = () => {
     if (typeof document === "undefined") return;
@@ -605,11 +609,10 @@ export default function Loader() {
   };
 
   const handleRouteSettled = useCallback(() => {
-    if (!currentPathRef.current) {
-      if (typeof window !== "undefined") {
-        currentPathRef.current = window.location.pathname;
-      }
-      return;
+    // If navigation completed before 300ms, cancel the pending overlay timer immediately
+    if (pendingTimerRef.current) {
+      clearTimeout(pendingTimerRef.current);
+      pendingTimerRef.current = null;
     }
 
     if (timerRef.current) {
@@ -617,23 +620,37 @@ export default function Loader() {
       timerRef.current = null;
     }
 
+    if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+    if (safetyTimerRef.current) clearTimeout(safetyTimerRef.current);
+
+    if (typeof window !== "undefined") {
+      currentPathRef.current = window.location.pathname;
+    }
+
+    clearClickedLoadingIndicators();
+
+    // If navigation finished before the 300ms threshold, the overlay was never shown
+    if (!isNavigatingRef.current) {
+      setProgress(0);
+      setDestination("");
+      return;
+    }
+
+    // Otherwise complete progress bar and fade out cleanly
     setProgress(100);
 
     const elapsed = Date.now() - navStartTimeRef.current;
-    const minDisplayTime = 320; // Ensure seamless visual transition without jarring flash
+    const minDisplayTime = 250;
     const remainingTime = Math.max(0, minDisplayTime - elapsed);
-
-    if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
-    if (safetyTimerRef.current) clearTimeout(safetyTimerRef.current);
 
     hideTimerRef.current = setTimeout(() => {
       setIsFadingOut(true);
       setTimeout(() => {
+        isNavigatingRef.current = false;
         setNavigating(false);
         setIsFadingOut(false);
         setProgress(0);
         setDestination("");
-        clearClickedLoadingIndicators();
       }, 260);
     }, remainingTime);
   }, []);
@@ -663,28 +680,35 @@ export default function Loader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
-    // Global Link Click Interceptor for Instant Redirection Loader
+    // Global Link Click Interceptor: ignore modified clicks, new tabs, downloads, protocols, hashes, external URLs
     const handleDocumentClick = (e) => {
       if (e.defaultPrevented) return;
+      // Ignore middle-click (button 1), right-click (button 2), and modifier keys (Cmd/Ctrl/Shift/Alt)
       if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
       const anchor = e.target.closest?.("a[href]");
       if (!anchor) return;
 
-      const rawHref = anchor.getAttribute("href") || "";
+      // Ignore target="_blank" or any target other than _self
+      const target = anchor.getAttribute("target");
+      if (target && target.toLowerCase() !== "_self") return;
+
+      // Ignore downloads
+      if (anchor.hasAttribute("download") || anchor.download) return;
+
+      // Ignore non-navigation protocols and internal hash anchors
+      const rawHref = (anchor.getAttribute("href") || "").trim();
       if (
         !rawHref ||
         rawHref.startsWith("#") ||
         rawHref.startsWith("mailto:") ||
         rawHref.startsWith("tel:") ||
         rawHref.startsWith("javascript:") ||
+        rawHref.startsWith("sms:") ||
         anchor.hasAttribute("data-no-loader")
       ) {
         return;
       }
-
-      if (anchor.target && anchor.target !== "_self") return;
-      if (anchor.hasAttribute("download")) return;
 
       let targetUrl;
       try {
@@ -693,8 +717,11 @@ export default function Loader() {
         return;
       }
 
+      // Ignore external links and non-http(s) links
       if (targetUrl.origin !== window.location.origin) return;
+      if (targetUrl.protocol !== "http:" && targetUrl.protocol !== "https:") return;
 
+      // Ignore same-page hash links or same-location clicks
       const currentPath = window.location.pathname.replace(/\/$/, "");
       const targetPath = targetUrl.pathname.replace(/\/$/, "");
 
@@ -702,7 +729,8 @@ export default function Loader() {
         return;
       }
 
-      // Start page redirection loader
+      // Clear any pending timers
+      if (pendingTimerRef.current) clearTimeout(pendingTimerRef.current);
       if (timerRef.current) clearInterval(timerRef.current);
       if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
       if (safetyTimerRef.current) clearTimeout(safetyTimerRef.current);
@@ -711,41 +739,57 @@ export default function Loader() {
       anchor.setAttribute("data-nav-loading", "true");
 
       const label = resolveDestinationLabel(targetUrl.pathname, anchor);
-      navStartTimeRef.current = Date.now();
       setDestination(label);
-      setIsFadingOut(false);
-      setNavigating(true);
-      setProgress(32);
 
-      timerRef.current = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= 85) return prev;
-          return prev + (prev < 60 ? 14 : 4);
-        });
-      }, 110);
+      // Only show overlay if client-side navigation is still pending after ~300ms
+      pendingTimerRef.current = setTimeout(() => {
+        navStartTimeRef.current = Date.now();
+        isNavigatingRef.current = true;
+        setIsFadingOut(false);
+        setNavigating(true);
+        setProgress(32);
 
-      // Safety fallback timeout
-      safetyTimerRef.current = setTimeout(() => {
-        setIsFadingOut(true);
-        setTimeout(() => {
-          setNavigating(false);
-          setIsFadingOut(false);
-          setProgress(0);
-          clearClickedLoadingIndicators();
-        }, 260);
-      }, 7000);
+        timerRef.current = setInterval(() => {
+          setProgress((prev) => {
+            if (prev >= 85) return prev;
+            return prev + (prev < 60 ? 14 : 4);
+          });
+        }, 110);
+
+        // Safety fallback timeout
+        safetyTimerRef.current = setTimeout(() => {
+          setIsFadingOut(true);
+          setTimeout(() => {
+            isNavigatingRef.current = false;
+            setNavigating(false);
+            setIsFadingOut(false);
+            setProgress(0);
+            clearClickedLoadingIndicators();
+          }, 260);
+        }, 6000);
+      }, 300);
     };
 
     // Popstate (Browser Back/Forward navigation)
     const handlePopState = () => {
       const currentPath = window.location.pathname.replace(/\/$/, "");
       if (currentPath !== currentPathRef.current.replace(/\/$/, "")) {
+        if (pendingTimerRef.current) clearTimeout(pendingTimerRef.current);
+        if (timerRef.current) clearInterval(timerRef.current);
+        if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+        if (safetyTimerRef.current) clearTimeout(safetyTimerRef.current);
+
         const label = resolveDestinationLabel(window.location.pathname, null);
-        navStartTimeRef.current = Date.now();
         setDestination(label);
-        setIsFadingOut(false);
-        setNavigating(true);
-        setProgress(35);
+
+        // Only show overlay if navigation is still pending after 300ms
+        pendingTimerRef.current = setTimeout(() => {
+          navStartTimeRef.current = Date.now();
+          isNavigatingRef.current = true;
+          setIsFadingOut(false);
+          setNavigating(true);
+          setProgress(35);
+        }, 300);
       }
     };
 
@@ -754,6 +798,7 @@ export default function Loader() {
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
+      if (pendingTimerRef.current) clearTimeout(pendingTimerRef.current);
       if (timerRef.current) clearInterval(timerRef.current);
       if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
       if (safetyTimerRef.current) clearTimeout(safetyTimerRef.current);

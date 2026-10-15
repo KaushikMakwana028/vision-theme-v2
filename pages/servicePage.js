@@ -1,7 +1,10 @@
-"use client";
-
-import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import ScrollProgress from "@/components/services/ScrollProgress";
+import CountUp from "@/components/services/CountUp";
+import ServiceHeroTilt from "@/components/services/ServiceHeroTilt";
+import ServicesFilter from "@/components/services/ServicesFilter";
+import FaqAccordion from "@/components/services/FaqAccordion";
 import { servicesData, serviceCategories } from "@/data/services";
 import { caseStudiesData } from "@/data/caseStudies";
 
@@ -22,9 +25,9 @@ const styles = `
 }
 
 /* ---------- Reveal on scroll ---------- */
-.svp .rv { opacity: 0; }
-.svp .rv.rv-in { opacity: 1; animation: svp-in .8s var(--ease) var(--rv-delay, 0ms) backwards; }
-.svp .rv.rv-in.svp-cta { animation: svp-in .8s var(--ease) backwards, svp-bg 14s ease-in-out .8s infinite; }
+.svp .rv { opacity: 1; transform: none; }
+.svp .rv.rv-in { opacity: 1; transform: none; }
+.svp .rv.svp-cta { animation: svp-bg 14s ease-in-out infinite; }
 
 /* ---------- Redirection bar / Breadcrumbs ---------- */
 .breadcrumbs-bar {
@@ -304,7 +307,7 @@ const styles = `
   background: var(--grad-warm); transform: scaleX(0); transform-origin: left;
   transition: transform 1s var(--ease); transition-delay: calc(var(--rv-delay, 0ms) + .5s);
 }
-.svp-step.rv-in::after { transform: scaleX(1); }
+.svp-step::after, .svp-step.rv-in::after { transform: scaleX(1); }
 .svp-step-num {
   display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
   font-weight: 700; font-size: .85rem; color: #fff; background: var(--grad); margin-bottom: 1rem;
@@ -393,18 +396,14 @@ const styles = `
 /* ---------- Projects / case studies ---------- */
 .svp .card.flush { padding: 0; }
 .svp-proj { height: 100%; }
-.svp-thumb { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: var(--g); display: flex; align-items: center; justify-content: center; padding: 0.5rem; }
-.svp-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .9s var(--ease); }
+.svp-thumb { position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 9; background: #0b1120; border-bottom: 1px solid var(--line); display: block; padding: 0 !important; }
+.svp-thumb img { display: block; width: 100%; height: 100%; object-fit: contain !important; object-position: center; transition: transform .5s var(--ease); }
 .svp-thumb::before {
   content: ""; position: absolute; top: 0; bottom: 0; left: -70%; width: 45%; z-index: 2; pointer-events: none;
   background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .35), transparent); transform: skewX(-20deg);
   transition: left .9s var(--ease);
 }
-.svp-thumb::after {
-  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .4s;
-  background: linear-gradient(180deg, transparent 45%, rgba(11, 16, 32, .55));
-}
-.svp-proj:hover .svp-thumb img { transform: scale(1.08); }
+.svp-proj:hover .svp-thumb img { transform: scale(1.025); }
 .svp-proj:hover .svp-thumb::before { left: 130%; }
 .svp-proj:hover .svp-thumb::after { opacity: 1; }
 .svp-wb { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
@@ -429,7 +428,7 @@ const styles = `
 }
 @media (max-width: 640px) {
   .svp-wb { padding: 1.25rem; }
-  .svp-thumb { aspect-ratio: 16 / 10; }
+  .svp-thumb { aspect-ratio: 16 / 9; }
 }
 @media (hover: none) { .svp-proj:hover .svp-thumb img { transform: none; } }
 
@@ -524,31 +523,6 @@ const styles = `
    Helpers
    ========================================================= */
 
-function useInView(threshold = 0.12) {
-  const ref = useRef(null);
-  const [shown, setShown] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setShown(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          io.disconnect();
-        }
-      },
-      { threshold, rootMargin: "0px 0px -40px 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [threshold]);
-  return [ref, shown];
-}
-
 function Reveal({
   children,
   delay = 0,
@@ -556,11 +530,9 @@ function Reveal({
   as: Tag = "div",
   ...rest
 }) {
-  const [ref, shown] = useInView();
   return (
     <Tag
-      ref={ref}
-      className={`rv ${shown ? "rv-in" : ""} ${className}`}
+      className={`rv  ${className}`}
       style={{ "--rv-delay": `${delay}ms` }}
       {...rest}
     >
@@ -569,129 +541,12 @@ function Reveal({
   );
 }
 
-function CountUp({ value, duration = 1500 }) {
-  const text = String(value ?? "");
-  const match = text.match(/^(\D*?)(\d+(?:\.\d+)?)(\D*)$/);
-  const countable = Boolean(match);
-  const prefix = countable ? match[1] : "";
-  const target = countable ? parseFloat(match[2]) : 0;
-  const suffix = countable ? match[3] : "";
-  const decimals =
-    countable && match[2].includes(".") ? match[2].split(".")[1].length : 0;
-  const ref = useRef(null);
-  const [n, setN] = useState(countable ? 0 : target);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !countable) return;
-    const reduce = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (reduce || typeof IntersectionObserver === "undefined") {
-      setN(target);
-      return;
-    }
-    let raf;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        io.disconnect();
-        const start = performance.now();
-        const tick = (now) => {
-          const p = Math.min((now - start) / duration, 1);
-          setN(target * (1 - Math.pow(1 - p, 3)));
-          if (p < 1) raf = requestAnimationFrame(tick);
-        };
-        raf = requestAnimationFrame(tick);
-      },
-      { threshold: 0.4 },
-    );
-    io.observe(el);
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(raf);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [target, duration, countable]);
-
-  return (
-    <strong ref={ref}>
-      {countable ? `${prefix}${n.toFixed(decimals)}${suffix}` : text}
-    </strong>
-  );
-}
-
-function ScrollProgress() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    let raf;
-    const update = () => {
-      const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      if (el) el.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
-    };
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-  return (
-    <div className="svp-progress" aria-hidden="true">
-      <span ref={ref} />
-    </div>
-  );
-}
-
-// Mouse-follow spotlight for cards (optimized: cached rect eliminates layout recalculation lag)
-const onSpot = (e) => {
-  const el = e.currentTarget;
-  let r = el._cachedRect;
-  if (!r) {
-    r = el.getBoundingClientRect();
-    el._cachedRect = r;
-  }
-  el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  el.style.setProperty("--my", `${e.clientY - r.top}px`);
-};
-
-// 3D tilt for the hero card (desktop pointers only)
-const onTilt = (e) => {
-  if (!window.matchMedia("(hover: hover) and (min-width: 861px)").matches)
-    return;
-  const el = e.currentTarget;
-  let r = el._cachedRect;
-  if (!r) {
-    r = el.getBoundingClientRect();
-    el._cachedRect = r;
-  }
-  const x = (e.clientX - r.left) / r.width - 0.5;
-  const y = (e.clientY - r.top) / r.height - 0.5;
-  el.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
-  el.style.setProperty("--ry", `${(x * 9).toFixed(2)}deg`);
-};
-
-const onTiltEnd = (e) => {
-  e.currentTarget._cachedRect = null;
-  e.currentTarget.style.setProperty("--rx", "0deg");
-  e.currentTarget.style.setProperty("--ry", "0deg");
-};
-
 function ProjectCard({ proj, delay = 0 }) {
   return (
     <Reveal
       as="article"
       delay={delay}
       className="card flush svp-card svp-proj"
-      onMouseMove={onSpot}
     >
       <Link
         href={`/work/${proj.slug || proj.id}`}
@@ -701,15 +556,11 @@ function ProjectCard({ proj, delay = 0 }) {
         }}
         aria-label={`View ${proj.title} case study`}
       >
-        <img
+        <Image
           src={proj.image}
           alt={proj.title}
           width={800}
           height={520}
-          loading="lazy"
-          onError={(e) => {
-            e.currentTarget.style.display = "none";
-          }}
         />
       </Link>
       <div className="wb svp-wb">
@@ -820,31 +671,15 @@ const whyItems = [
    ========================================================= */
 
 export default function ServicePage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [openFaq, setOpenFaq] = useState(0);
+  const counts = { All: servicesData.length };
+  servicesData.forEach((s) => {
+    counts[s.category] = (counts[s.category] || 0) + 1;
+  });
 
-  const filteredServices =
-    selectedCategory === "All"
-      ? servicesData
-      : servicesData.filter((svc) => svc.category === selectedCategory);
-
-  const counts = useMemo(() => {
-    const map = { All: servicesData.length };
-    servicesData.forEach((s) => {
-      map[s.category] = (map[s.category] || 0) + 1;
-    });
-    return map;
-  }, []);
-
-  const marqueeTags = useMemo(() => {
-    const all = [...new Set(servicesData.flatMap((s) => s.tags || []))];
-    return all.length
-      ? all
-      : ["Next.js", "React", "Flutter", "CodeIgniter", "AI Agents"];
-  }, []);
-
-  const toggleFaq = (index) =>
-    setOpenFaq((prev) => (prev === index ? null : index));
+  const allTags = [...new Set(servicesData.flatMap((s) => s.tags || []))];
+  const marqueeTags = allTags.length
+    ? allTags
+    : ["Next.js", "React", "Flutter", "CodeIgniter", "AI Agents"];
 
   return (
     <div className="svp">
@@ -900,11 +735,7 @@ export default function ServicePage() {
               <b /> Web &amp; Mobile
             </span>
 
-            <div
-              className="bcard big svp-hero-card"
-              onMouseMove={onTilt}
-              onMouseLeave={onTiltEnd}
-            >
+            <ServiceHeroTilt className="bcard big svp-hero-card">
               <div className="bcard-top">
                 <span className="btag">01 · Production Ready</span>
                 <span className="blink" aria-hidden="true">
@@ -930,7 +761,7 @@ export default function ServicePage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </ServiceHeroTilt>
           </div>
         </div>
       </section>
@@ -961,42 +792,13 @@ export default function ServicePage() {
             </p>
           </Reveal>
 
-          <div className="filter-wrap">
-            <div
-              className="filter-tabs"
-              role="tablist"
-              aria-label="Service Categories"
-            >
-              {serviceCategories.map((cat) => (
-                <button
-                  key={cat}
-                  type="button"
-                  role="tab"
-                  aria-selected={selectedCategory === cat}
-                  className={`filter-tab ${selectedCategory === cat ? "active" : ""}`}
-                  onClick={(e) => {
-                    setSelectedCategory(cat);
-                    e.currentTarget.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-                  }}
-                >
-                  {cat}
-                  {counts[cat] !== undefined && <em>{counts[cat]}</em>}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div
-            className="cols c3 svp-grid"
-            key={selectedCategory}
-            role="tabpanel"
-          >
-            {filteredServices.map((svc, i) => (
+          <ServicesFilter categories={serviceCategories} counts={counts}>
+            {servicesData.map((svc, i) => (
               <article
                 key={svc.id}
+                data-category={svc.category}
                 className="card svc-card svp-card"
                 style={{ "--i": i }}
-                onMouseMove={onSpot}
               >
                 <div className="svp-card-top">
                   <span className="ico">
@@ -1027,7 +829,11 @@ export default function ServicePage() {
                   ))}
                 </div>
 
-                <Link className="more" href={`/services/${svc.slug}`}>
+                <Link
+                  className="more"
+                  href={`/services/${svc.slug}`}
+                  aria-label={`View ${svc.title} specifications`}
+                >
                   View Specifications{" "}
                   <svg className="i" aria-hidden="true">
                     <use href="#i-arrow" />
@@ -1035,13 +841,7 @@ export default function ServicePage() {
                 </Link>
               </article>
             ))}
-          </div>
-
-          {filteredServices.length === 0 && (
-            <p className="svp-empty">
-              No services in this category yet. Try another filter.
-            </p>
-          )}
+          </ServicesFilter>
         </div>
       </section>
 
@@ -1140,42 +940,7 @@ export default function ServicePage() {
             </p>
           </Reveal>
 
-          <div className="faq-wrap">
-            {generalServiceFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <Reveal
-                  key={idx}
-                  delay={idx * 70}
-                  className={`faq-card ${isOpen ? "open" : ""}`}
-                >
-                  <button
-                    type="button"
-                    id={`faq-btn-${idx}`}
-                    className="faq-card-head"
-                    onClick={() => toggleFaq(idx)}
-                    aria-expanded={isOpen}
-                    aria-controls={`faq-panel-${idx}`}
-                  >
-                    <span>{faq.q}</span>
-                    <span className="faq-icon" aria-hidden="true">
-                      +
-                    </span>
-                  </button>
-                  <div
-                    id={`faq-panel-${idx}`}
-                    role="region"
-                    aria-labelledby={`faq-btn-${idx}`}
-                    className="faq-card-body"
-                  >
-                    <div className="faq-inner">
-                      <p>{faq.a}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
+          <FaqAccordion items={generalServiceFaqs} />
         </div>
       </section>
 

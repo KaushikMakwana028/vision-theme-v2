@@ -1,11 +1,24 @@
 import ProductPage from "@/pages/productPage";
+import { buildMetadata } from "@/lib/seo";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
-export const metadata = {
-  title: "Products & Turnkey SaaS Platforms - Vision Technolabs",
+export const metadata = buildMetadata({
+  title: "Proprietary SaaS & Mobile Products",
   description:
-    "Explore Vision's ready-to-deploy products: AI visual and copy engines, high-converting Shopify apps, and complete turnkey industry suites with 100% source code ownership.",
-};
+    "Explore proprietary software platforms engineered by Vision Technolabs: BillsBook (Invoicing & POS), FilterBook (RO Service CRM), TripsBook (Fleet Management), and SiteDesk (Real Estate ERP).",
+  path: "/products",
+});
 
 export default function Page() {
-  return <ProductPage />;
+  return (
+    <>
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Products", path: "/products" },
+        ]}
+      />
+      <ProductPage />
+    </>
+  );
 }

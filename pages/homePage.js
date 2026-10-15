@@ -1,8 +1,12 @@
-"use client";
-
-import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import VideoModal from "@/components/VideoModal";
+import Image from "next/image";
+import BentoTilt from "@/components/home/BentoTilt";
+import ProjectsSlider from "@/components/home/ProjectsSlider";
+import ProductsSlider from "@/components/home/ProductsSlider";
+import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
+import VideoTestimonials from "@/components/home/VideoTestimonials";
+import HomeContactForm from "@/components/home/HomeContactForm";
+
 import { brandInfo } from "@/data/company";
 import { servicesData } from "@/data/services";
 import { industriesData } from "@/data/industries";
@@ -16,239 +20,65 @@ import { blogsData } from "@/data/blogs";
 import { processSteps, clientLogos, whyChooseUs } from "@/data/process";
 
 export default function HomePage() {
-  // Mobile Slider States
-  const [activeProjectSlide, setActiveProjectSlide] = useState(0);
-  const [activeProductSlide, setActiveProductSlide] = useState(0);
-
   // Top 4 Standout Case Studies
   const featuredProjects = [
     caseStudiesData.find((c) => c.slug === "medicheck") || caseStudiesData[0],
     caseStudiesData.find((c) => c.slug === "kreditmitraa") || caseStudiesData[1],
     caseStudiesData.find((c) => c.slug === "stayflow-crm") || caseStudiesData[2],
-    caseStudiesData.find((c) => c.slug === "srlpixel") || caseStudiesData[3]
+    caseStudiesData.find((c) => c.slug === "srlpixel") || caseStudiesData[3],
   ];
+
+  // Trimmed project fields for mobile slider island
+  const sliderProjects = featuredProjects.map((proj) => ({
+    id: proj.id,
+    slug: proj.slug || proj.id,
+    title: proj.title,
+    image: proj.image,
+    gradient: proj.gradient,
+    tags: proj.tags.slice(0, 2),
+    pitch: proj.shortPitch || proj.description,
+  }));
 
   // Top 4 Authentic Proprietary Products
   const featuredProducts = productsData.slice(0, 4);
 
-  // Video Modal State
-  const [activeVideo, setActiveVideo] = useState(null);
+  // Trimmed product fields for mobile slider island
+  const sliderProducts = featuredProducts.map((prod) => ({
+    id: prod.id,
+    slug: prod.slug || prod.id,
+    badge: prod.badge,
+    shortTitle: prod.shortTitle,
+    description: prod.shortDescription || prod.description,
+    metric: prod.metrics && prod.metrics[0]
+      ? { value: prod.metrics[0].value, label: prod.metrics[0].label }
+      : null,
+  }));
 
-  // Testimonials Carousel State
-  const trackRef = useRef(null);
-  const [currentTestimonialPage, setCurrentTestimonialPage] = useState(0);
-  const [totalPages, setTotalPages] = useState(1);
+  // Trimmed testimonial fields for carousel island
+  const carouselTestimonials = testimonialsData.map((t) => ({
+    rating: t.rating,
+    quote: t.quote,
+    initials: t.initials,
+    author: t.author,
+    role: t.role,
+    country: t.country,
+  }));
 
-  // Touch gesture & Auto-scroll states for mobile sliders
-  const [projectTouchStart, setProjectTouchStart] = useState(null);
-  const [projectTouchEnd, setProjectTouchEnd] = useState(null);
-  const [isProjectsPaused, setIsProjectsPaused] = useState(false);
-
-  const [productTouchStart, setProductTouchStart] = useState(null);
-  const [productTouchEnd, setProductTouchEnd] = useState(null);
-  const [isProductsPaused, setIsProductsPaused] = useState(false);
-
-  // Auto-scroll for Projects Slider
-  useEffect(() => {
-    if (isProjectsPaused) return;
-    const timer = setInterval(() => {
-      setActiveProjectSlide((prev) => (prev + 1) % featuredProjects.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [isProjectsPaused, featuredProjects.length]);
-
-  // Auto-scroll for Products Slider
-  useEffect(() => {
-    if (isProductsPaused) return;
-    const timer = setInterval(() => {
-      setActiveProductSlide((prev) => (prev + 1) % featuredProducts.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [isProductsPaused, featuredProducts.length]);
-
-  // Auto-scroll for Testimonials
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const timer = setInterval(() => {
-      if (!track) return;
-      const maxScroll = track.scrollWidth - track.clientWidth;
-      if (track.scrollLeft >= maxScroll - 20) {
-        track.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        track.scrollBy({ left: 340, behavior: "smooth" });
-      }
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
-
-  const handleProjectTouchStart = (e) => {
-    setProjectTouchStart(e.targetTouches[0].clientX);
-    setIsProjectsPaused(true);
-  };
-  const handleProjectTouchMove = (e) => {
-    setProjectTouchEnd(e.targetTouches[0].clientX);
-  };
-  const handleProjectTouchEnd = () => {
-    if (projectTouchStart !== null && projectTouchEnd !== null) {
-      const diff = projectTouchStart - projectTouchEnd;
-      if (diff > 40) {
-        setActiveProjectSlide((prev) => (prev + 1) % featuredProjects.length);
-      } else if (diff < -40) {
-        setActiveProjectSlide((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
-      }
-    }
-    setProjectTouchStart(null);
-    setProjectTouchEnd(null);
-    setTimeout(() => setIsProjectsPaused(false), 2000);
-  };
-
-  const handleProductTouchStart = (e) => {
-    setProductTouchStart(e.targetTouches[0].clientX);
-    setIsProductsPaused(true);
-  };
-  const handleProductTouchMove = (e) => {
-    setProductTouchEnd(e.targetTouches[0].clientX);
-  };
-  const handleProductTouchEnd = () => {
-    if (productTouchStart !== null && productTouchEnd !== null) {
-      const diff = productTouchStart - productTouchEnd;
-      if (diff > 40) {
-        setActiveProductSlide((prev) => (prev + 1) % featuredProducts.length);
-      } else if (diff < -40) {
-        setActiveProductSlide((prev) => (prev - 1 + featuredProducts.length) % featuredProducts.length);
-      }
-    }
-    setProductTouchStart(null);
-    setProductTouchEnd(null);
-    setTimeout(() => setIsProductsPaused(false), 2000);
-  };
-
-  // Contact Form State
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    service: "Website Development",
-    message: "",
-    company: "" // honeypot
-  });
-  const [formLoading, setFormLoading] = useState(false);
-  const [formSuccess, setFormSuccess] = useState(false);
-
-  // Bento 3D Tilt Ref
-  const bentoRef = useRef(null);
-  const heroRef = useRef(null);
-
-  // 3D tilt effect for hero bento on desktop (throttled with RAF & cached rect to eliminate lag)
-  useEffect(() => {
-    const heroEl = heroRef.current;
-    const bentoEl = bentoRef.current;
-    if (!heroEl || !bentoEl) return;
-
-    let rafId = null;
-    let cachedRect = null;
-
-    const handleMouseEnter = () => {
-      cachedRect = bentoEl.getBoundingClientRect();
-    };
-
-    const handleMouseMove = (e) => {
-      if (window.innerWidth < 1024) return;
-      if (!cachedRect) cachedRect = bentoEl.getBoundingClientRect();
-      if (rafId) return;
-
-      rafId = requestAnimationFrame(() => {
-        const x = ((e.clientX - cachedRect.left) / cachedRect.width - 0.5) * 6;
-        const y = -((e.clientY - cachedRect.top) / cachedRect.height - 0.5) * 6;
-        bentoEl.style.transform = `perspective(1100px) rotateX(${y.toFixed(2)}deg) rotateY(${x.toFixed(2)}deg)`;
-        rafId = null;
-      });
-    };
-
-    const handleMouseLeave = () => {
-      cachedRect = null;
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = null;
-      }
-      bentoEl.style.transform = "perspective(1100px) rotateX(0deg) rotateY(0deg)";
-    };
-
-    heroEl.addEventListener("mouseenter", handleMouseEnter, { passive: true });
-    heroEl.addEventListener("mousemove", handleMouseMove, { passive: true });
-    heroEl.addEventListener("mouseleave", handleMouseLeave, { passive: true });
-
-    return () => {
-      if (rafId) cancelAnimationFrame(rafId);
-      heroEl.removeEventListener("mouseenter", handleMouseEnter);
-      heroEl.removeEventListener("mousemove", handleMouseMove);
-      heroEl.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
-
-  // Update testimonial pages calculation
-  useEffect(() => {
-    const updatePagination = () => {
-      if (!trackRef.current) return;
-      const width = window.innerWidth;
-      const perView = width >= 1100 ? 3 : width >= 768 ? 2 : 1;
-      const pages = Math.max(1, Math.ceil(testimonialsData.length / perView));
-      setTotalPages(pages);
-    };
-
-    updatePagination();
-    window.addEventListener("resize", updatePagination);
-    return () => window.removeEventListener("resize", updatePagination);
-  }, []);
-
-  const handleTestimonialScroll = () => {
-    if (!trackRef.current) return;
-    const scrollLeft = trackRef.current.scrollLeft;
-    const clientWidth = trackRef.current.clientWidth;
-    const pageIndex = Math.round(scrollLeft / clientWidth) || 0;
-    setCurrentTestimonialPage(pageIndex);
-  };
-
-  const scrollTestimonialTo = (pageIndex) => {
-    if (!trackRef.current) return;
-    const target = pageIndex * trackRef.current.clientWidth;
-    trackRef.current.scrollTo({ left: target, behavior: "smooth" });
-    setCurrentTestimonialPage(pageIndex);
-  };
-
-  // Contact form submission
-  const handleContactSubmit = (e) => {
-    e.preventDefault();
-    // Honeypot check
-    if (formState.company) {
-      setFormState({
-        name: "",
-        email: "",
-        service: "Website Development",
-        message: "",
-        company: ""
-      });
-      return;
-    }
-
-    setFormLoading(true);
-    setTimeout(() => {
-      setFormLoading(false);
-      setFormSuccess(true);
-      setFormState({
-        name: "",
-        email: "",
-        service: "Website Development",
-        message: "",
-        company: ""
-      });
-    }, 850);
-  };
+  // Trimmed video fields for video island
+  const videoItems = videosData.map((v) => ({
+    id: v.id,
+    title: v.title,
+    description: v.description,
+    thumbnail: v.thumbnail,
+    gradient: v.gradient,
+    client: v.client,
+    ytId: v.ytId,
+  }));
 
   return (
     <>
       {/* ================= HERO (bento) ================= */}
-      <section className="hero" id="hero" aria-labelledby="hero-title" ref={heroRef}>
+      <section className="hero" id="hero" aria-labelledby="hero-title">
         <div className="hero-bg" aria-hidden="true" />
         <div className="container hero-wrap">
           <div className="copy">
@@ -273,7 +103,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="bento" ref={bentoRef} aria-hidden="true">
+          <BentoTilt>
             {/* Bento Card 1: AI (Big Card) */}
             <div className="bcard big">
               <div className="bcard-top">
@@ -464,7 +294,7 @@ export default function HomePage() {
                 <span>Laravel</span>
               </div>
             </div>
-          </div>
+          </BentoTilt>
         </div>
       </section>
 
@@ -508,7 +338,12 @@ export default function HomePage() {
           </div>
           <div className="cols c3">
             {servicesData.map((svc) => (
-              <Link key={svc.id} className="card svc-card rv" href={`/services/${svc.slug}`}>
+              <Link
+                key={svc.id}
+                className="card svc-card rv"
+                href={`/services/${svc.slug}`}
+                aria-label={`Learn more about ${svc.title}`}
+              >
                 <span className="svc-num">{svc.number}</span>
                 <span className="ico">
                   <svg className="i">
@@ -523,8 +358,8 @@ export default function HomePage() {
                   ))}
                 </div>
                 <span className="more">
-                  Learn more{" "}
-                  <svg className="i">
+                  Explore {svc.title}{" "}
+                  <svg className="i" aria-hidden="true">
                     <use href="#i-arrow" />
                   </svg>
                 </span>
@@ -852,12 +687,11 @@ export default function HomePage() {
                   style={{ "--g": project.gradient }}
                   aria-label={`View ${project.title} case study`}
                 >
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    width={600}
-                    height={400}
-                    loading="lazy"
+                    width={640}
+                    height={360}
                   />
                 </Link>
                 <div className="home-work-body">
@@ -872,7 +706,11 @@ export default function HomePage() {
                     </Link>
                   </h3>
                   <p>{project.shortPitch || project.description}</p>
-                  <Link className="home-work-link" href={`/work/${project.slug || project.id}`}>
+                  <Link
+                    className="home-work-link"
+                    href={`/work/${project.slug || project.id}`}
+                    aria-label={`Read ${project.title} case study`}
+                  >
                     Read Case Study{" "}
                     <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
                       <use href="#i-arrow" />
@@ -884,93 +722,7 @@ export default function HomePage() {
           </div>
 
           {/* Mobile Slider (Shows 1 project at a time with other 3 in slider) */}
-          <div
-            className="home-slider-mobile"
-            onTouchStart={handleProjectTouchStart}
-            onTouchMove={handleProjectTouchMove}
-            onTouchEnd={handleProjectTouchEnd}
-            onMouseEnter={() => setIsProjectsPaused(true)}
-            onMouseLeave={() => setIsProjectsPaused(false)}
-          >
-            {featuredProjects[activeProjectSlide] && (() => {
-              const proj = featuredProjects[activeProjectSlide];
-              return (
-                <article className="home-work-card" key={proj.id}>
-                  <Link
-                    href={`/work/${proj.slug || proj.id}`}
-                    className="home-work-thumb"
-                    style={{ "--g": proj.gradient }}
-                    aria-label={`View ${proj.title} case study`}
-                  >
-                    <img
-                      src={proj.image}
-                      alt={proj.title}
-                      width={600}
-                      height={400}
-                      loading="lazy"
-                    />
-                  </Link>
-                  <div className="home-work-body">
-                    <div className="home-work-tags">
-                      {proj.tags.slice(0, 2).map((t, idx) => (
-                        <span key={idx}>{t}</span>
-                      ))}
-                    </div>
-                    <h3>
-                      <Link href={`/work/${proj.slug || proj.id}`}>
-                        {proj.title}
-                      </Link>
-                    </h3>
-                    <p>{proj.shortPitch || proj.description}</p>
-                    <Link className="home-work-link" href={`/work/${proj.slug || proj.id}`}>
-                      Read Case Study{" "}
-                      <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
-                        <use href="#i-arrow" />
-                      </svg>
-                    </Link>
-                  </div>
-                </article>
-              );
-            })()}
-
-            <div className="home-slider-nav">
-              <button
-                type="button"
-                className="home-slider-btn"
-                aria-label="Previous project"
-                onClick={() =>
-                  setActiveProjectSlide((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length)
-                }
-              >
-                <svg width="18" height="18" style={{ width: 18, height: 18, flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="15 18 9 12 15 6" />
-                </svg>
-              </button>
-              <div className="home-slider-dots">
-                {featuredProjects.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    className={`home-slider-dot ${idx === activeProjectSlide ? "active" : ""}`}
-                    aria-label={`Go to project ${idx + 1}`}
-                    onClick={() => setActiveProjectSlide(idx)}
-                  />
-                ))}
-              </div>
-              <button
-                type="button"
-                className="home-slider-btn"
-                aria-label="Next project"
-                onClick={() =>
-                  setActiveProjectSlide((prev) => (prev + 1) % featuredProjects.length)
-                }
-              >
-                <svg width="18" height="18" style={{ width: 18, height: 18, flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </button>
-            </div>
-          </div>
+          <ProjectsSlider items={sliderProjects} />
 
           <div className="center rv">
             <Link className="btn btn-primary" href="/work">
@@ -1013,7 +765,11 @@ export default function HomePage() {
                     <span>{prod.metrics[0].label}</span>
                   </div>
                 )}
-                <Link className="home-work-link" href={`/products/${prod.slug || prod.id}`}>
+                <Link
+                  className="home-work-link"
+                  href={`/products/${prod.slug || prod.id}`}
+                  aria-label={`Explore ${prod.shortTitle || prod.title} product details`}
+                >
                   Explore Product{" "}
                   <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
                     <use href="#i-arrow" />
@@ -1024,79 +780,7 @@ export default function HomePage() {
           </div>
 
           {/* Mobile Slider (Shows 1 product at a time with other 3 in slider) */}
-          <div
-            className="home-slider-mobile"
-            onTouchStart={handleProductTouchStart}
-            onTouchMove={handleProductTouchMove}
-            onTouchEnd={handleProductTouchEnd}
-            onMouseEnter={() => setIsProductsPaused(true)}
-            onMouseLeave={() => setIsProductsPaused(false)}
-          >
-            {featuredProducts[activeProductSlide] && (() => {
-              const p = featuredProducts[activeProductSlide];
-              return (
-                <div className="home-prod-card" key={p.id}>
-                  <span className="home-prod-badge">{p.badge}</span>
-                  <h3>
-                    <Link href={`/products/${p.slug || p.id}`}>
-                      {p.shortTitle}
-                    </Link>
-                  </h3>
-                  <p className="home-prod-desc">{p.shortDescription || p.description}</p>
-                  {p.metrics && p.metrics[0] && (
-                    <div className="home-prod-stat">
-                      <strong>{p.metrics[0].value}</strong>
-                      <span>{p.metrics[0].label}</span>
-                    </div>
-                  )}
-                  <Link className="home-work-link" href={`/products/${p.slug || p.id}`}>
-                    Explore Product{" "}
-                    <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
-                      <use href="#i-arrow" />
-                    </svg>
-                  </Link>
-                </div>
-              );
-            })()}
-
-            <div className="home-slider-nav">
-              <button
-                type="button"
-                className="home-slider-btn"
-                aria-label="Previous product"
-                onClick={() =>
-                  setActiveProductSlide((prev) => (prev - 1 + featuredProducts.length) % featuredProducts.length)
-                }
-              >
-                <svg width="18" height="18" style={{ width: 18, height: 18, flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="15 18 9 12 15 6" />
-                </svg>
-              </button>
-              <div className="home-slider-dots">
-                {featuredProducts.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    className={`home-slider-dot ${idx === activeProductSlide ? "active" : ""}`}
-                    aria-label={`Go to product ${idx + 1}`}
-                    onClick={() => setActiveProductSlide(idx)}
-                  />
-                ))}
-              </div>
-              <button
-                type="button"
-                className="home-slider-btn"
-                aria-label="Next product"
-                onClick={() =>
-                  setActiveProductSlide((prev) => (prev + 1) % featuredProducts.length)
-                }
-              >
-                <svg width="18" height="18" style={{ width: 18, height: 18, flexShrink: 0 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </button>
-            </div>
-          </div>
+          <ProductsSlider items={sliderProducts} />
 
           <div className="center rv">
             <Link className="btn btn-ghost" href="/products">
@@ -1196,73 +880,7 @@ export default function HomePage() {
             </h2>
             <p className="rv">Real feedback from clients we&apos;ve partnered with.</p>
           </div>
-          <div className="test-wrap rv">
-            <div
-              className="test-track"
-              id="testTrack"
-              ref={trackRef}
-              onScroll={handleTestimonialScroll}
-            >
-              {testimonialsData.map((item, idx) => (
-                <figure className="card quote t-item" key={idx}>
-                  <div className="stars" aria-label="5 out of 5 stars">
-                    {[...Array(item.rating)].map((_, sIdx) => (
-                      <svg className="i fill" key={sIdx}>
-                        <use href="#i-star" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p>{item.quote}</p>
-                  <figcaption className="who">
-                    <span className="av">{item.initials}</span>
-                    <div>
-                      <strong>{item.author}</strong>
-                      <small>
-                        {item.role} · {item.country}
-                      </small>
-                    </div>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-
-            <div className="test-controls">
-              <button
-                className="test-btn prev"
-                aria-label="Previous testimonials"
-                onClick={() =>
-                  scrollTestimonialTo(Math.max(0, currentTestimonialPage - 1))
-                }
-              >
-                <svg className="i">
-                  <use href="#i-arrow" />
-                </svg>
-              </button>
-              <div className="test-dots" id="testDots">
-                {[...Array(totalPages)].map((_, dotIdx) => (
-                  <button
-                    key={dotIdx}
-                    className={dotIdx === currentTestimonialPage ? "active" : ""}
-                    aria-label={`Go to testimonial group ${dotIdx + 1}`}
-                    onClick={() => scrollTestimonialTo(dotIdx)}
-                  />
-                ))}
-              </div>
-              <button
-                className="test-btn next"
-                aria-label="Next testimonials"
-                onClick={() =>
-                  scrollTestimonialTo(
-                    Math.min(totalPages - 1, currentTestimonialPage + 1)
-                  )
-                }
-              >
-                <svg className="i">
-                  <use href="#i-arrow" />
-                </svg>
-              </button>
-            </div>
-          </div>
+          <TestimonialsCarousel items={carouselTestimonials} />
         </div>
       </section>
 
@@ -1278,39 +896,7 @@ export default function HomePage() {
               Real project reviews from founders and teams we&apos;ve partnered with, on camera.
             </p>
           </div>
-          <div className="cols c3">
-            {videosData.map((vid) => (
-              <div
-                className="card flush video-card rv"
-                key={vid.id}
-                onClick={() => setActiveVideo(vid)}
-                style={{ cursor: "pointer" }}
-              >
-                <div className="vthumb" style={{ "--g": vid.gradient }}>
-                  <img
-                    src={vid.thumbnail}
-                    alt={vid.title}
-                    width={480}
-                    height={360}
-                    loading="lazy"
-                  />
-                  <button
-                    className="play-btn"
-                    aria-label={`Play video testimonial: ${vid.title}`}
-                  >
-                    <svg className="i fill">
-                      <use href="#i-play" />
-                    </svg>
-                  </button>
-                  <span className="vclient">{vid.client}</span>
-                </div>
-                <div className="wb">
-                  <h3>{vid.title}</h3>
-                  <p>{vid.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <VideoTestimonials items={videoItems} />
         </div>
       </section>
 
@@ -1330,12 +916,11 @@ export default function HomePage() {
             {blogsData.slice(0, 3).map((blog) => (
               <Link className="card flush rv" href={`/blog/${blog.slug || blog.id}`} key={blog.id}>
                 <div className="bthumb" style={{ "--g": blog.gradient }}>
-                  <img
+                  <Image
                     src={blog.image}
                     alt={blog.title}
                     width={800}
                     height={500}
-                    loading="lazy"
                   />
                   <svg className="i">
                     <use href={`#${blog.icon}`} />
@@ -1403,116 +988,10 @@ export default function HomePage() {
               </ul>
             </div>
 
-            <form className="form" id="form" onSubmit={handleContactSubmit}>
-              {/* Anti-spam honeypot */}
-              <div className="hp-field" aria-hidden="true">
-                <label htmlFor="f-company">Company</label>
-                <input
-                  id="f-company"
-                  name="company"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={formState.company}
-                  onChange={(e) =>
-                    setFormState({ ...formState, company: e.target.value })
-                  }
-                />
-              </div>
-
-              <div>
-                <label htmlFor="f-name">Full name</label>
-                <input
-                  id="f-name"
-                  name="name"
-                  required
-                  autoComplete="name"
-                  placeholder="Jane Doe"
-                  value={formState.name}
-                  onChange={(e) =>
-                    setFormState({ ...formState, name: e.target.value })
-                  }
-                />
-              </div>
-
-              <div>
-                <label htmlFor="f-mail">Work email</label>
-                <input
-                  id="f-mail"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  placeholder="jane@company.com"
-                  value={formState.email}
-                  onChange={(e) =>
-                    setFormState({ ...formState, email: e.target.value })
-                  }
-                />
-              </div>
-
-              <div className="full">
-                <label htmlFor="f-svc">I&apos;m interested in</label>
-                <select
-                  id="f-svc"
-                  name="service"
-                  value={formState.service}
-                  onChange={(e) =>
-                    setFormState({ ...formState, service: e.target.value })
-                  }
-                >
-                  <option>Website Development</option>
-                  <option>Ecommerce Solutions</option>
-                  <option>Mobile App Development</option>
-                  <option>AI &amp; Automation</option>
-                  <option>Custom Software / CRM</option>
-                  <option>Meta &amp; Google Ads</option>
-                  <option>Hire Developers</option>
-                </select>
-              </div>
-
-              <div className="full">
-                <label htmlFor="f-msg">Project details</label>
-                <textarea
-                  id="f-msg"
-                  name="message"
-                  placeholder="Tell us a little about your idea…"
-                  value={formState.message}
-                  onChange={(e) =>
-                    setFormState({ ...formState, message: e.target.value })
-                  }
-                />
-              </div>
-
-              <button
-                className={`btn btn-primary full ${
-                  formLoading ? "loading" : ""
-                }`}
-                type="submit"
-                id="submitBtn"
-                disabled={formLoading}
-              >
-                <span className="btn-label">Send Message</span>
-                <svg className="i arrow-ic">
-                  <use href="#i-arrow" />
-                </svg>
-                <span className="spinner" aria-hidden="true" />
-              </button>
-
-              {formSuccess && (
-                <p className="ok" id="ok" role="status" aria-live="polite">
-                  Thanks! We&apos;ll get back to you within 24 hours.
-                </p>
-              )}
-            </form>
+            <HomeContactForm />
           </div>
         </div>
       </section>
-
-      {/* Video Modal */}
-      <VideoModal
-        video={activeVideo}
-        onClose={() => setActiveVideo(null)}
-      />
     </>
   );
 }

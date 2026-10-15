@@ -7,10 +7,10 @@ export const navigationData = {
       leadIcon: "i-ai",
       type: "dropdown",
       items: [
-        { label: "AI & Automation", href: "/services/ai-automation" },
-        { label: "Custom AI Agents", href: "/services/ai-automation" },
-        { label: "Enterprise RAG Systems", href: "/services/ai-automation" },
-        { label: "Case Studies", href: "/#work" }
+        { label: "AI & Automation Agents", href: "/services/ai-automation" },
+        { label: "Enterprise RAG & Search Engines", href: "/services/rag-knowledge-bases" },
+        { label: "Custom Software & CRM", href: "/services/custom-software-crm" },
+        { label: "Case Studies", href: "/work" }
       ],
       bottomAction: {
         label: "Explore AI Solutions",
@@ -24,35 +24,32 @@ export const navigationData = {
       type: "mega",
       columns: [
         {
-          title: "Web & Mobile Engineering",
+          title: "Web & Mobile Development",
           links: [
             { label: "Website Development", href: "/services/website-development" },
-            { label: "Full-Stack Web Apps & SaaS", href: "/services/custom-web-apps" },
-            { label: "Mobile App Development", href: "/services/mobile-app-development" },
-            { label: "Flutter Cross-Platform Apps", href: "/services/flutter-app-development" }
+            { label: "Ecommerce Solutions", href: "/services/ecommerce-solutions" },
+            { label: "Mobile Application Development", href: "/services/mobile-app-development" }
           ]
         },
         {
-          title: "AI, Cloud & Enterprise",
+          title: "AI & Enterprise Software",
           links: [
-            { label: "AI & Autonomous Agents", href: "/services/ai-automation" },
+            { label: "AI & Automation Agents", href: "/services/ai-automation" },
             { label: "Enterprise RAG & Search Engines", href: "/services/rag-knowledge-bases" },
-            { label: "Cloud & DevOps Engineering", href: "/services/cloud-devops-engineering" },
             { label: "Custom Software & CRM", href: "/services/custom-software-crm" }
           ]
         },
         {
-          title: "Ecommerce & Growth",
+          title: "Growth & Cloud Infrastructure",
           links: [
-            { label: "Ecommerce Solutions", href: "/services/ecommerce-solutions" },
-            { label: "Shopify Plus & App Engineering", href: "/services/shopify-plus-development" },
             { label: "Meta & Google Ads", href: "/services/meta-google-ads" },
-            { label: "Conversion Rate CRO", href: "/services/cro-conversion-optimization" }
+            { label: "SEO & Site Optimizations", href: "/services/seo-site-optimizations" },
+            { label: "Cloud & DevOps Engineering", href: "/services/cloud-devops-engineering" }
           ]
         }
       ],
       bottomAction: {
-        label: "Explore All 12 Services",
+        label: "Explore All 9 Services",
         href: "/services"
       }
     },
@@ -66,38 +63,15 @@ export const navigationData = {
       id: "products",
       title: "Product",
       href: "/products",
-      type: "mega",
-      columns: [
-        {
-          title: "Shopify Apps & Plugins",
-          links: [
-            { label: "Store Locator Pro (Shopify)", href: "/products/mspl-store-locator" },
-            { label: "Cookie Shield (GDPR & CCPA)", href: "/products/cookie-shield" },
-            { label: "MMY Parts Finder (Auto)", href: "/products/make-model-year-search" },
-            { label: "Explore Shopify Solutions →", href: "/products" }
-          ]
-        },
-        {
-          title: "AI & Autonomous SaaS",
-          links: [
-            { label: "Lumez AI — Visual & Copy", href: "/products/lumez-ai" },
-            { label: "Reach O — Autonomous Outreach", href: "/products/reach-o" },
-            { label: "Generative Commerce Studio", href: "/products/lumez-ai" },
-            { label: "Explore All AI Platforms →", href: "/products" }
-          ]
-        },
-        {
-          title: "Deployment & Licensing",
-          links: [
-            { label: "Managed Cloud SaaS (AWS/GCP)", href: "/products#deployment-models" },
-            { label: "White-Label Reseller Licensing", href: "/products#deployment-models" },
-            { label: "100% Source Code Buyout", href: "/products#deployment-models" },
-            { label: "Schedule Live Sandbox Demo →", href: "/#contact" }
-          ]
-        }
+      type: "dropdown",
+      items: [
+        { label: "BillsBook — Multi-Business Billing & POS", href: "/products/billsbook" },
+        { label: "FilterBook — RO Service & AMC CRM", href: "/products/filterbook" },
+        { label: "TripsBook — Fleet & Cab Management App", href: "/products/tripsbook" },
+        { label: "SiteDesk — Real Estate Plotting ERP", href: "/products/sitedesk" }
       ],
       bottomAction: {
-        label: "Explore Complete Products & Apps Catalog",
+        label: "Explore All 4 Products →",
         href: "/products"
       }
     },
@@ -124,25 +98,30 @@ export const navigationData = {
     services: [
       { label: "Website Development", href: "/services/website-development" },
       { label: "Ecommerce Solutions", href: "/services/ecommerce-solutions" },
-      { label: "Mobile App Development", href: "/services/mobile-app-development" },
-      { label: "AI & Automation", href: "/services/ai-automation" },
+      { label: "Mobile Application Development", href: "/services/mobile-app-development" },
+      { label: "AI & Automation Agents", href: "/services/ai-automation" },
+      { label: "Enterprise RAG & Search Engines", href: "/services/rag-knowledge-bases" },
       { label: "Custom Software & CRM", href: "/services/custom-software-crm" },
-      { label: "Meta & Google Ads", href: "/services/meta-google-ads" }
+      { label: "Meta & Google Ads", href: "/services/meta-google-ads" },
+      { label: "SEO & Site Optimizations", href: "/services/seo-site-optimizations" },
+      { label: "Cloud & DevOps Engineering", href: "/services/cloud-devops-engineering" }
     ],
     company: [
-      { label: "About Us", href: "/#about" },
+      { label: "About Us", href: "/about" },
       { label: "All Services", href: "/services" },
       { label: "All Industries", href: "/industries" },
       { label: "Products", href: "/products" },
       { label: "Case Studies", href: "/work" },
       { label: "Engineering Blog", href: "/blog" },
       { label: "Contact Us", href: "/contact" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Service", href: "/terms" },
       { label: "Testimonials", href: "/#testimonials" },
       { label: "Delivery Guarantees", href: "/#guarantees" }
     ],
     legal: [
-      { label: "Privacy Policy", href: "#privacy" },
-      { label: "Terms of Service", href: "#terms" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Service", href: "/terms" },
       { label: "Security & Compliance", href: "#security" }
     ]
   }

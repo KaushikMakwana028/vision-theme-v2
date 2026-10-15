@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { blogsData } from "@/data/blogs";
 
 /* =========================================================
@@ -388,9 +389,11 @@ const initials = (name = "V") =>
 function Avatar({ author, className = "" }) {
   if (author?.avatar)
     return (
-      <img
+      <Image
         src={author.avatar}
         alt={author.name || "Author"}
+        width={88}
+        height={88}
         className={`avatar ${className}`}
       />
     );
@@ -656,7 +659,13 @@ export default function BlogDetailPage({ blog: propBlog }) {
         {/* ================= COVER ================= */}
         {blog.image && (
           <figure className="cover" style={{ margin: "0 auto 2rem" }}>
-            <img src={blog.image} alt={blog.title} fetchPriority="high" />
+            <Image
+              src={blog.image}
+              alt={blog.title}
+              width={1200}
+              height={675}
+              priority
+            />
           </figure>
         )}
 
@@ -839,7 +848,7 @@ export default function BlogDetailPage({ blog: propBlog }) {
                     {rel.category && (
                       <span className="badge">{rel.category}</span>
                     )}
-                    <img src={rel.image} alt="" loading="lazy" />
+                    <Image src={rel.image} alt={rel.title} width={800} height={450} />
                   </Link>
                   <div className="body">
                     <div className="cm">
@@ -853,7 +862,7 @@ export default function BlogDetailPage({ blog: propBlog }) {
                     <div className="foot">
                       <div className="au">
                         {rel.author?.avatar && (
-                          <img src={rel.author.avatar} alt="" />
+                          <Image src={rel.author.avatar} alt="" width={26} height={26} />
                         )}
                         <span>{rel.author?.name || "Vision Team"}</span>
                       </div>

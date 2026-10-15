@@ -1,11 +1,24 @@
 import IndustriesPage from "@/pages/industriesPage";
+import { buildMetadata } from "@/lib/seo";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
-export const metadata = {
-  title: "Industry Solutions - Vision Technolabs",
+export const metadata = buildMetadata({
+  title: "Industry-Specific Software Solutions",
   description:
-    "Explore our specialized domain engineering capabilities across Fintech, Healthcare, Ecommerce, PropTech, Logistics, Manufacturing, SaaS, and EdTech.",
-};
+    "Industry software solutions engineered for fintech, healthcare, ecommerce, logistics, and SaaS. Scalable architectures tailored to strict domain standards.",
+  path: "/industries",
+});
 
 export default function Page() {
-  return <IndustriesPage />;
+  return (
+    <>
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Industries", path: "/industries" },
+        ]}
+      />
+      <IndustriesPage />
+    </>
+  );
 }

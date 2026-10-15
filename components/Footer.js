@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { brandInfo } from "@/data/company";
 import { navigationData } from "@/data/navigation";
 
@@ -10,41 +11,8 @@ export default function Footer() {
   const [currentYear, setCurrentYear] = useState(2026);
   const [activeModal, setActiveModal] = useState(null); // "privacy" | "terms" | null
 
-  // Real-time IST Clock & Office Status
-  const [istTime, setIstTime] = useState("");
-  const [isOfficeOpen, setIsOfficeOpen] = useState(true);
-
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
-
-    const updateClock = () => {
-      const now = new Date();
-      // Format time in Asia/Kolkata
-      const timeStr = now.toLocaleTimeString("en-US", {
-        timeZone: "Asia/Kolkata",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true,
-      });
-      setIstTime(timeStr);
-
-      // Check if office is open: Mon-Sat, 9:30 AM to 7:30 PM IST
-      const kolkataDateStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
-      const kolkataDate = new Date(kolkataDateStr);
-      const day = kolkataDate.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
-      const hour = kolkataDate.getHours();
-      const min = kolkataDate.getMinutes();
-      const currentMin = hour * 60 + min;
-
-      const openMin = 9 * 60 + 30; // 09:30 AM
-      const closeMin = 19 * 60 + 30; // 07:30 PM
-      const isOpen = day !== 0 && currentMin >= openMin && currentMin < closeMin;
-      setIsOfficeOpen(isOpen);
-    };
-
-    updateClock();
-    const timer = setInterval(updateClock, 1000);
 
     let ticking = false;
     const handleScroll = () => {
@@ -60,7 +28,6 @@ export default function Footer() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
-      clearInterval(timer);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -81,8 +48,8 @@ export default function Footer() {
             {/* Column 1: Info, Live Status & Socials */}
             <div className="foot-col foot-brand-col">
               <Link href="/" className="logo" aria-label="Vision Technolabs home">
-                <img
-                  src="/logo/vision_logo.png"
+                <Image
+                  src="/logo/vision-logo.png"
                   alt="Vision Technolabs Logo"
                   width={36}
                   height={36}
@@ -94,28 +61,6 @@ export default function Footer() {
                 </div>
               </Link>
               <p className="foot-desc">{brandInfo.description}</p>
-
-              {/* Real-time Ahmedabad HQ Status Widget */}
-              <div className="foot-live-card">
-                <div className="foot-live-header">
-                  <span className={`live-pulse-dot ${isOfficeOpen ? "open" : "night"}`} />
-                  <span className="live-status-txt">
-                    {isOfficeOpen ? "Ahmedabad HQ · Open Now" : "Ahmedabad HQ · Shifts Resume 9:30 AM"}
-                  </span>
-                </div>
-                <div className="foot-live-time">
-                  <svg className="i" width="14" height="14" aria-hidden="true">
-                    <use href="#i-clock" />
-                  </svg>
-                  <span>
-                    {istTime ? `${istTime} IST` : "Live IST Clock"}
-                  </span>
-                  <span className="live-tz">UTC+5:30</span>
-                </div>
-                <div className="foot-sla-badge">
-                  <span>⚡ 24h Response SLA Guarantee</span>
-                </div>
-              </div>
 
               {/* Social Channels */}
               <div className="soc" aria-label="Social media profiles">
@@ -199,12 +144,6 @@ export default function Footer() {
                   </svg>
                   <div className="phone-group">
                     <a href={`tel:${brandInfo.phone.replace(/[^0-9+]/g, "")}`}>{brandInfo.phone}</a>
-                    {brandInfo.altPhone && (
-                      <>
-                        <span className="phone-sep">·</span>
-                        <a href={`tel:${brandInfo.altPhone.replace(/[^0-9+]/g, "")}`}>{brandInfo.altPhone}</a>
-                      </>
-                    )}
                   </div>
                 </li>
               </ul>
@@ -239,21 +178,19 @@ export default function Footer() {
               </span>
             </div>
             <div className="foot-bottom-right">
-              <button
-                type="button"
+              <Link
+                href="/privacy-policy"
                 className="foot-legal-btn"
-                onClick={() => setActiveModal("privacy")}
               >
                 Privacy Policy
-              </button>
+              </Link>
               <span className="foot-legal-sep">·</span>
-              <button
-                type="button"
+              <Link
+                href="/terms"
                 className="foot-legal-btn"
-                onClick={() => setActiveModal("terms")}
               >
                 Terms of Service
-              </button>
+              </Link>
               <span className="foot-legal-sep">·</span>
               <button
                 type="button"

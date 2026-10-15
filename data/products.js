@@ -1,413 +1,344 @@
 export const productCategories = [
   "All",
-  "AI & SaaS Platforms",
-  "Shopify & Commerce Apps"
+  "Business & Billing SaaS",
+  "Field Operations & Mobility"
 ];
 
 export const productsData = [
   {
-    id: "lumez-ai",
-    slug: "lumez-ai",
+    id: "billsbook",
+    slug: "billsbook",
     number: "01",
-    title: "Lumez AI — Autonomous Visual & Copy Generator",
-    shortTitle: "Lumez AI",
-    badge: "AI SaaS Platform",
-    tag: "Generative Commerce AI",
-    category: "AI & SaaS Platforms",
+    title: "BillsBook — Multi-Business Invoicing, POS & Inventory SaaS",
+    shortTitle: "BillsBook",
+    badge: "Billing & POS SaaS",
+    tag: "Invoicing & Inventory ERP",
+    category: "Business & Billing SaaS",
     rating: "4.9★",
-    reviewsCount: "140+ Reviews",
-    icon: "i-ai",
-    gradient: "linear-gradient(135deg,#6366f1,#8b5cf6)",
-    tagline: "Generate studio-grade product photoshoots and high-converting marketing copy in seconds.",
-    shortDescription: "An AI-powered creative engine that turns raw smartphone product photos into studio-grade commercial scenes and generates high-converting SEO copy.",
-    description: "Lumez AI revolutionizes digital catalog production for brands and agencies. Upload raw product shots, choose background environments or describe custom scenes in natural language, and generate ultra-high-resolution marketing assets instantly. Features built-in AI copy generation tuned for ecommerce conversions across Google, Meta, and Amazon.",
-    heroSubtitle: "Autonomous product photography studio, visual enhancement engine, and multi-channel SEO copy generator engineered for ecommerce brands, D2C merchants, and creative agencies.",
-    pricing: "Starts at $49/mo · White-Label Available",
-    liveDemoUrl: "/#contact",
+    reviewsCount: "180+ Active Retailers",
+    icon: "i-chart",
+    gradient: "linear-gradient(135deg,#2563eb,#1d4ed8)",
+    tagline: "Sub-30-second counter billing, automated barcode inventory, and instant WhatsApp vector PDF delivery.",
+    shortDescription: "High-performance counter-billing and multi-tenant inventory SaaS designed for retail shops, wholesalers, and multi-branch businesses with sub-30-second checkout and live stock synchronization.",
+    description: "BillsBook is a lightweight, lightning-fast counter-billing and multi-tenant inventory platform engineered by Vision Technolabs. It empowers retail shopkeepers, distributors, and multi-branch merchants to look up items in milliseconds, calculate GST taxes automatically, dispatch branded vector PDF invoices directly to customer WhatsApp numbers, and reconcile stock in real time across Cash, UPI, Card, and Bank Transfer payments.",
+    heroSubtitle: "Sub-30-second counter billing, automated barcode inventory, 4 branded PDF templates, and instant WhatsApp delivery engineered for modern retail businesses.",
+    pricing: "Turnkey SaaS · Full Source Code Buyout Available",
+    liveDemoUrl: "https://billbook.visiontechnolabs.com/",
+    image: "/images/billbook/01_billbook.webp",
     metrics: [
-      { value: "10x", label: "Faster Catalog Creation" },
-      { value: "85%", label: "Photography Cost Reduction" },
-      { value: "4.9★", label: "Customer Rating" },
-      { value: "2.4M+", label: "Images Generated" }
+      { value: "<30s", label: "Counter Billing Speed" },
+      { value: "<1%", label: "Stock Discrepancy" },
+      { value: "-78%", label: "Paper & Print Overhead" },
+      { value: "Instant", label: "WhatsApp Delivery" }
     ],
     features: [
       {
-        title: "AI Studio Relighting & Background Swap",
-        description: "Intelligent subject segmentation that isolates products with sub-pixel precision and generates realistic lighting reflections, contact shadows, and photorealistic 3D environments.",
-        points: ["Sub-pixel edge matting", "Automated shadow and reflection physics", "1,000+ pre-built lifestyle studio presets"]
+        title: "Smart Counter POS Invoicing Desk",
+        description: "Ultra-fast counter checkout interface enabling cashiers to search items via name or barcode, apply item-level discounts, compute GST/non-GST taxes, and finalize sales in under 30 seconds.",
+        points: ["Barcode scanner & Select2 instant lookup", "Split & multi-mode tender: Cash, UPI, Card, Credit", "Zero lag during peak rush hours"]
       },
       {
-        title: "High-Resolution 4K Upscaling",
-        description: "Deep learning super-resolution models that upscale product images up to 4x while restoring fine textures, sharp edges, and label typography without blur.",
-        points: ["4K print-ready export resolution", "Lossless packaging label preservation", "Automated noise and artifact reduction"]
+        title: "Automated Stock & Inventory Engine",
+        description: "Bidirectional inventory synchronization that decrements stock in real time upon invoice generation and safely replenishes stock upon invoice edit or cancellation.",
+        points: ["Color-coded low-stock threshold warnings", "Safety stock reorder point automation", "Multi-branch inventory tracking"]
       },
       {
-        title: "Multi-Channel Copy & Caption Generator",
-        description: "Fine-tuned LLM agents generate persuasive product descriptions, feature bullets, Instagram captions, and Amazon A+ copy tailored to your brand voice.",
-        points: ["Brand tone fine-tuning", "SEO keyword density balancing", "Instant multi-lingual translation in 30+ languages"]
+        title: "4 Branded PDF Invoice Templates & WhatsApp Delivery",
+        description: "Renders crisp, print-ready vector PDF invoices using Dompdf across Modern, Classic, Minimalist, and 80mm/58mm Thermal POS formats with instant WhatsApp delivery.",
+        points: ["Modern, Classic, Minimalist & Thermal layouts", "Automated one-click WhatsApp PDF sharing", "Custom company logo and terms embedding"]
       },
       {
-        title: "Shopify & ERP One-Click Sync",
-        description: "Direct bidirectional sync with Shopify, WooCommerce, and BigCommerce to publish generated visuals and copy directly to live product listings.",
-        points: ["Batch catalog processing", "Automatic alt-text and SEO slug creation", "Variant-level image assignment"]
+        title: "Customer Ledger & Financial Analytics",
+        description: "Executive dashboards displaying daily sales trends, payment mode breakdowns, gross profit margins, and detailed customer credit balance aging.",
+        points: ["ApexCharts visual revenue trends", "Customer purchase history & outstanding ledger", "Automated GSTR-1 tax export in Excel"]
       }
     ],
     deploymentOptions: [
       {
         title: "Managed Cloud SaaS",
-        description: "Hosted on high-availability GPU cloud infrastructure with automatic scaling, API access, and monthly subscription tiers.",
+        description: "Fully hosted on high-availability cloud infrastructure with automated database backups, SSL certificates, and 99.9% uptime SLA.",
         badge: "Most Popular"
       },
       {
         title: "White-Label Reseller Edition",
-        description: "Deploy under your own agency brand, custom domain, and customized pricing tiers to offer AI creative services directly to your clients.",
-        badge: "Agency Favorite"
+        description: "Deploy under your own agency brand, custom domain, and corporate color scheme to offer retail billing software directly to your clients.",
+        badge: "Agency Ready"
       },
       {
-        title: "Dedicated Private Cloud / Source License",
-        description: "Full containerized deployment within your AWS/GCP VPC with dedicated GPU clusters and full source code IP buyout.",
-        badge: "Enterprise"
+        title: "100% Source Code Buyout",
+        description: "Complete PHP CodeIgniter MVC codebase, MySQL database schemas, and documentation with zero recurring licensing fees.",
+        badge: "Full IP Ownership"
       }
     ],
-    techStack: ["Next.js", "Python FastAPI", "PyTorch", "Stable Diffusion SDXL", "PostgreSQL", "Redis", "AWS EC2 GPU", "Docker"],
+    techStack: ["PHP 8.x", "CodeIgniter 3.1 MVC", "MySQL / MariaDB", "Bootstrap 5", "JavaScript ES6+", "Dompdf", "WhatsApp Cloud API", "ApexCharts", "Apache / Linux"],
     workflow: [
-      { step: "01", title: "Asset Ingestion & Masking", desc: "Upload batch product shots; automated neural segmentation isolates subjects and extracts product contours." },
-      { step: "02", title: "Scene Prompting & Composition", desc: "Select curated templates or type natural-language scene prompts to place products into custom lighting environments." },
-      { step: "03", title: "4K Neural Enhancement", desc: "Super-resolution models upscale textures, adjust perspective matching, and render ray-traced ambient reflections." },
-      { step: "04", title: "Direct Catalog Export", desc: "Push final 4K imagery and generated SEO descriptions directly to Shopify or download print-ready assets." }
+      { step: "01", title: "Item & Stock Onboarding", desc: "Bulk import your product catalog, HSN codes, GST tax rates, and opening stock levels via CSV." },
+      { step: "02", title: "Counter POS Setup", desc: "Connect barcode scanners and thermal printers, and customize your branded vector PDF invoice template." },
+      { step: "03", title: "Instant Invoicing & WhatsApp", desc: "Generate invoices in under 30 seconds with automatic WhatsApp PDF delivery to customer phones." },
+      { step: "04", title: "Real-Time Ledger & Analytics", desc: "Monitor live gross margins, cash/UPI splits, low-stock alerts, and export GST compliance summaries." }
     ],
     advantages: [
-      { title: "No Costly Photoshoots Required", desc: "Eliminate expensive studio rentals, physical staging props, and weeks of photographer scheduling." },
-      { title: "Sub-5 Second Generation Times", desc: "Optimized TensorRT GPU inferencing pipelines deliver photorealistic images in under five seconds." },
-      { title: "100% Brand Consistency", desc: "Save custom brand color palettes, lighting presets, and model aesthetics to maintain unified visuals across all SKUs." },
-      { title: "Commercial Copyright Protection", desc: "All outputs are fully cleared for global commercial use with zero recurring artist royalties." }
+      { title: "Eliminates Paper Register Errors", desc: "Replaces messy paper bills and Excel sheets with validated line items and automated tax computations." },
+      { title: "78% Lower Printing & Paper Costs", desc: "Digital WhatsApp delivery reduces thermal paper roll consumption while providing customers with searchable digital bills." },
+      { title: "Zero Inventory Shrinkage", desc: "Live stock decrementing and threshold alerts prevent unrecorded product disappearance and over-selling." },
+      { title: "Offline & Thermal Printer Ready", desc: "Optimized for continuous counter operation with instant keyboard shortcuts and standard ESC/POS thermal printers." }
     ],
     faqs: [
-      { question: "How does Lumez AI handle reflective or transparent products?", answer: "Our models utilize specialized specular reflection masks that preserve transparent glass, shiny metals, and liquid bottles while seamlessly blending environmental lighting reflections." },
-      { question: "Can we integrate Lumez AI into our existing ecommerce platform via API?", answer: "Yes. Lumez AI provides a comprehensive REST and Webhook API enabling automated image ingestion, batch processing, and live catalog publishing." },
-      { question: "Is white-labeling supported for digital agencies?", answer: "Yes! Our agency license allows you to connect your custom domain, custom logo, and stripe billing to monetize Lumez AI under your brand." }
+      { question: "Can BillsBook connect to physical barcode scanners and thermal printers?", answer: "Yes. BillsBook supports standard USB and Bluetooth barcode scanners for instant item lookup, as well as 80mm and 58mm ESC/POS thermal receipt printers." },
+      { question: "How does the WhatsApp invoice delivery work?", answer: "BillsBook generates a clean vector PDF invoice using Dompdf and automatically triggers a WhatsApp message containing invoice details and a secure download link directly to the customer's phone." },
+      { question: "Does BillsBook support GST and non-GST businesses?", answer: "Yes. You can configure CGST, SGST, IGST tax slabs with HSN/SAC codes, or run in composite/non-GST mode for small retail operations." }
     ]
   },
   {
-    id: "reach-o",
-    slug: "reach-o",
+    id: "filterbook",
+    slug: "filterbook",
     number: "02",
-    title: "Reach O — Autonomous Omnichannel Outreach Agent",
-    shortTitle: "Reach O",
-    badge: "AI Marketing SaaS",
-    tag: "Autonomous Lead Engagement",
-    category: "AI & SaaS Platforms",
-    rating: "4.8★",
-    reviewsCount: "95+ Reviews",
-    icon: "i-chat",
-    gradient: "linear-gradient(135deg,#06b6d4,#3b82f6)",
-    tagline: "Autonomous multi-agent outreach across Email, WhatsApp, and LinkedIn that books qualified meetings.",
-    shortDescription: "An AI-powered B2B prospecting and nurture engine that researches leads, writes personalized multi-touch sequences, and books calendar meetings autonomously.",
-    description: "Reach O replaces manual sales outreach with intelligent autonomous agents. It enriches target accounts from LinkedIn, analyzes prospect tech stacks, writes hyper-relevant 1-to-1 conversation openers, and handles prospect objections over email and WhatsApp until a meeting is booked.",
-    heroSubtitle: "Autonomous B2B prospecting engine, dynamic multi-channel sequencing platform, and calendar booking agent engineered for sales teams and growth agencies.",
-    pricing: "Starts at $79/mo · White-Label Available",
-    liveDemoUrl: "/#contact",
-    metrics: [
-      { value: "3.8x", label: "Reply Rate Increase" },
-      { value: "40 hrs", label: "SDR Hours Saved / Wk" },
-      { value: "99.2%", label: "Inbox Deliverability" },
-      { value: "1.8M+", label: "Prospects Engaged" }
-    ],
-    features: [
-      {
-        title: "Autonomous Deep Lead Research",
-        description: "Scrapes company news, recent funding rounds, job hiring boards, and executive podcast appearances to ground outreach in real relevance.",
-        points: ["Live company hiring triggers", "Executive bio & interview ingestion", "Automated email verification & waterfall enrichment"]
-      },
-      {
-        title: "Multi-Channel Sequencing (Email, WhatsApp, LinkedIn)",
-        description: "Executes coordinated outreach across email inboxes, automated LinkedIn profile views & connection requests, and WhatsApp voice note follow-ups.",
-        points: ["Smart inbox rotation & automated warm-up", "Native LinkedIn API safe automation", "WhatsApp Business Cloud API integration"]
-      },
-      {
-        title: "Autonomous Objection Handling & Booking",
-        description: "When prospects reply with pricing questions or timing objections, Reach O analyzes context and replies intelligently with meeting booking links.",
-        points: ["Zero-hallucination RAG product answers", "Integrated Google & Outlook calendar booking", "Automated CRM deal pipeline status updates"]
-      },
-      {
-        title: "Deliverability Shield & Warm-Up",
-        description: "Automated DKIM, SPF, DMARC validation, custom tracking domains, and peer-to-peer AI inbox warm-up to ensure 99%+ primary inbox placement.",
-        points: ["Automated DNS record health audits", "Spam word linting before dispatch", "Dynamic ESP IP pool rotation"]
-      }
-    ],
-    deploymentOptions: [
-      {
-        title: "Cloud SaaS Subscription",
-        description: "Connect your email domains and start launching AI prospecting campaigns in under 15 minutes.",
-        badge: "Instant Setup"
-      },
-      {
-        title: "Agency Multi-Tenant Edition",
-        description: "Manage dozens of client workspaces from a unified agency console with segregated inboxes and consolidated billing.",
-        badge: "For Agencies"
-      },
-      {
-        title: "Full Source Code License",
-        description: "Acquire the complete Next.js frontend, Python orchestrator, and Kafka event streaming backend for proprietary enterprise deployment.",
-        badge: "IP Buyout"
-      }
-    ],
-    techStack: ["Next.js", "Python FastAPI", "LangChain", "OpenAI / Claude API", "PostgreSQL", "Redis", "Kafka", "Docker"],
-    workflow: [
-      { step: "01", title: "Target Audience Definition", desc: "Upload a CSV list or connect Apollo/LinkedIn Sales Navigator to define your Ideal Customer Profile (ICP)." },
-      { step: "02", title: "Agentic Account Research", desc: "Agents enrich leads with live company signals, identify pain points, and write custom tailored message drafts." },
-      { step: "03", title: "Multi-Touch Dispatch", desc: "Coordinated sequences dispatch across rotated warm inboxes, LinkedIn, and WhatsApp based on engagement rules." },
-      { step: "04", title: "Meeting Scheduled on Calendar", desc: "Replies are classified instantly; meetings are booked directly onto your sales reps' Calendly or Google Calendar." }
-    ],
-    advantages: [
-      { title: "No Robotic Mass-Blast Spam", desc: "Every single email reads like a senior SDR spent 20 minutes researching the prospect individually." },
-      { title: "Never Hits the Spam Folder", desc: "Peer-to-peer automated warmup and real-time deliverability safeguards keep domains healthy." },
-      { title: "Handles Complex Objections", desc: "Trained on enterprise sales negotiation frameworks to steer 'not interested now' into future follow-ups." },
-      { title: "Seamless CRM Sync", desc: "Two-way integration with HubSpot, Salesforce, Pipedrive, and Close with automatic contact creation." }
-    ],
-    faqs: [
-      { question: "Will using Reach O risk our primary domain reputation?", answer: "No. Reach O enforces domain isolation: we set up secondary mirror domains (e.g. getcompany.com) with dedicated SPF/DKIM/DMARC records and gradual warmup ramps." },
-      { question: "How does the AI ensure it doesn't give incorrect product information in replies?", answer: "Reach O uses strict Retrieval-Augmented Generation (RAG) grounded exclusively in your verified knowledge base. If unsure, it automatically flags the thread for human review." },
-      { question: "Can we whitelabel Reach O for our lead generation agency?", answer: "Yes! The multi-tenant agency edition includes custom domain white-labeling, client sub-accounts, and Stripe billing integration." }
-    ]
-  },
-  {
-    id: "mspl-store-locator",
-    slug: "mspl-store-locator",
-    number: "03",
-    title: "Store Locator & Dealer Map — Shopify App",
-    shortTitle: "Store Locator Pro",
-    badge: "Shopify Certified App",
-    tag: "High-Performance Mapping",
-    category: "Shopify & Commerce Apps",
+    title: "FilterBook — RO Purifier CRM & Service Management Platform",
+    shortTitle: "FilterBook",
+    badge: "Field Service CRM",
+    tag: "RO Water Purifier SaaS",
+    category: "Field Operations & Mobility",
     rating: "4.9★",
-    reviewsCount: "350+ Reviews",
-    icon: "i-pin",
-    gradient: "linear-gradient(135deg,#059669,#10b981)",
-    tagline: "Drive foot traffic from your Shopify store into physical retail stores and authorized dealers.",
-    shortDescription: "A Google Maps & Mapbox powered store locator app with instant geo-detection, real-time dealer inventory, driving directions, and custom pin styling.",
-    description: "Store Locator Pro bridges the gap between online commerce and brick-and-mortar retail. Merchants easily import thousands of store locations via CSV or Google Sheets sync, customize branded map themes, and offer shoppers instant GPS geo-location with driving directions and opening hours.",
-    heroSubtitle: "Interactive Google Maps & Mapbox dealer locator, instant geolocation finder, and foot-traffic analytics engine engineered for Shopify & Shopify Plus merchants.",
-    pricing: "Free Plan Available · Premium from $19/mo",
-    liveDemoUrl: "/#contact",
+    reviewsCount: "120+ Service Providers",
+    icon: "i-refresh",
+    gradient: "linear-gradient(135deg,#0284c7,#1d4ed8)",
+    tagline: "Automated maintenance schedules, QR complaint resolution, AMC renewal tracking, and WhatsApp billing.",
+    shortDescription: "Connected 4-in-1 service ecosystem built for RO water purifier businesses: React Native mobile app, vendor web admin panel, super admin console, and zero-login customer QR portals.",
+    description: "FilterBook is an end-to-end CRM and field service management platform built specifically for water purifier sales, installation, and AMC service providers. When an order is registered, FilterBook automatically computes recurring filter change dates, renders itemized A4 invoices via TCPDF, delivers them via Meta WhatsApp Cloud API, and lets customers lodge complaints in under 60 seconds via purifier QR stickers.",
+    heroSubtitle: "Complete mobile app, web admin console, and QR customer portal suite: automated AMC renewals, technician dispatch, and instant WhatsApp billing.",
+    pricing: "Turnkey Platform · Mobile App + Web Admin",
+    liveDemoUrl: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.filterbook",
+    image: "/app_images/Filterbook/01_app_FB.webp",
     metrics: [
-      { value: "450k+", label: "Locations Mapped" },
-      { value: "Sub-100ms", label: "Pin Cluster Rendering" },
-      { value: "4.9★", label: "Shopify App Store" },
-      { value: "1,200+", label: "Active Stores" }
+      { value: "4-in-1", label: "App, Web, Admin & QR" },
+      { value: "100%", label: "Auto Service Schedules" },
+      { value: "<1 min", label: "QR Complaint Logging" },
+      { value: "Instant", label: "WhatsApp PDF Invoices" }
     ],
     features: [
       {
-        title: "Instant GPS Geolocation & Radius Search",
-        description: "Shoppers can find nearby stores with one click using browser GPS geolocation or by typing zip codes, cities, or street names.",
-        points: ["Sub-second radius calculation (5km, 25km, 100km)", "Automatic country/city pre-selection", "Turn-by-turn Google Maps & Apple Maps routing"]
+        title: "Automated Recurring Maintenance Engine",
+        description: "Calculates upcoming sediment, pre-carbon, RO membrane, and post-carbon filter replacement dates automatically from the installation date with cron push reminders.",
+        points: ["30, 90, 180 & 365-day service scheduling", "Automated customer SMS/WhatsApp reminders", "Technician assignment and status tracking"]
       },
       {
-        title: "Bulk CSV & Live Google Sheets Sync",
-        description: "Merchants can import 10,000+ store locations in seconds via CSV, or maintain locations live inside a synced Google Sheet without opening Shopify.",
-        points: ["Live two-way Google Sheets sync", "Automated address geocoding into lat/long", "Custom metadata fields (e.g. Wheelchair access, Curbside)"]
+        title: "Zero-Login QR Complaint Portal",
+        description: "Custom QR code stickers placed on purifiers allow customers to scan, upload fault photos, and submit service complaints in under 60 seconds without installing an app.",
+        points: ["Instant push notification to shop owner", "Unique QR identifier linked to customer record", "Live ticket status tracking for buyers"]
       },
       {
-        title: "Custom Brand Styling & Vector Pins",
-        description: "Full visual customizer supporting dark mode maps, custom SVG brand pins, layout presets (sidebar, modal, full-width), and font matches.",
-        points: ["Custom SVG marker upload", "Google Maps and Mapbox Vector GL support", "Snazzy Maps custom color palette importing"]
+        title: "AMC Contract Lifecycle Management",
+        description: "Comprehensive Annual Maintenance Contract management with contract validity monitoring, covered parts checklists, duplicate prevention, and renewal alerts.",
+        points: ["Comprehensive vs Service-only contract options", "Audit trail of every service visit performed", "Automated renewal alerts before contract expiry"]
       },
       {
-        title: "Foot Traffic Analytics & Search Heatmaps",
-        description: "Discover where customers are searching for your products physically, uncovering underserved cities and retail expansion opportunities.",
-        points: ["Search zip code frequency analytics", "Zero-results search query logging", "Exportable CSV foot traffic reports"]
+        title: "TCPDF WhatsApp Invoicing & Digital Catalogue",
+        description: "Generates itemized A4 PDF invoices with upcoming service schedules embedded, delivered instantly to customer WhatsApp numbers alongside a digital product catalogue.",
+        points: ["Meta WhatsApp Cloud API integration", "Shareable digital product catalogue with QR", "Payment receipt and GST invoice records"]
       }
     ],
     deploymentOptions: [
       {
-        title: "Shopify App Store Install",
-        description: "Install directly from the Shopify App Store with one-click theme app extension embedding (compatible with Online Store 2.0).",
-        badge: "1-Click Install"
+        title: "Vendor SaaS Subscription",
+        description: "Ready-to-use mobile app (Android & iOS) and web vendor console with cloud hosting, push notifications, and automatic WhatsApp messaging.",
+        badge: "Plug & Play"
       },
       {
-        title: "Custom Standalone Web Embed",
-        description: "Embed on custom WordPress, Webflow, Magento, or React headless storefronts using our lightweight JavaScript SDK.",
-        badge: "Headless Ready"
-      },
-      {
-        title: "Enterprise White-Label License",
-        description: "Deploy as your own private dealer portal with custom ERP inventory sync and single sign-on for corporate franchisees.",
+        title: "Multi-Tenant Franchise / Dealer Edition",
+        description: "Super admin governance allowing master distributors or manufacturers to manage hundreds of independent RO service franchise locations.",
         badge: "Enterprise"
+      },
+      {
+        title: "Source Code & Custom Brand Deployment",
+        description: "Full intellectual property buyout including React Native Expo source code, CodeIgniter backend, MySQL database, and store deployment.",
+        badge: "Full IP"
       }
     ],
-    techStack: ["Shopify Polaris", "Next.js", "Mapbox GL", "PostgreSQL", "Google Maps Platform", "Node.js", "Docker"],
+    techStack: ["React Native (Expo)", "PHP 8.x", "CodeIgniter 3 MVC", "MySQL / MariaDB", "Meta WhatsApp Cloud API", "TCPDF", "Firebase Cloud Messaging", "Bootstrap 5.3"],
     workflow: [
-      { step: "01", title: "Install Theme App Extension", desc: "Add the app block to your Shopify theme editor with zero code editing required." },
-      { step: "02", title: "Import Store Locations", desc: "Upload your store addresses via CSV or connect a live Google Sheet for automated updates." },
-      { step: "03", title: "Customize Visual Brand Style", desc: "Pick custom map color schemes, upload branded SVG map pins, and configure store card details." },
-      { step: "04", title: "Track In-Store Conversions", desc: "Review real-time dashboard analytics tracking directions clicked, calls placed, and top search areas." }
+      { step: "01", title: "Customer & Machine Registration", desc: "Log purifier sales, model details, membrane types, and warranty or AMC dates." },
+      { step: "02", title: "Auto-Generate Service Cycles", desc: "FilterBook computes 3-month, 6-month, and annual filter service milestones automatically." },
+      { step: "03", title: "QR Sticker Deployment", desc: "Affix a unique QR code to the purifier for zero-login customer complaint lodging." },
+      { step: "04", title: "WhatsApp Billing & AMC Renewals", desc: "Send branded PDF bills to WhatsApp and receive automated renewal alerts before contracts expire." }
     ],
     advantages: [
-      { title: "Zero Shopify Theme Speed Impact", desc: "Loads asynchronously via modern Theme App Extensions with zero render-blocking JavaScript." },
-      { title: "Handles 10,000+ Store Pins", desc: "High-performance vector tile clustering ensures silky smooth 60fps pan and zoom on all mobile devices." },
-      { title: "Mobile-First Touch UX", desc: "Tested across iOS Safari and Android Chrome for effortless one-thumb search and instant call links." },
-      { title: "Multi-Language & Global Ready", desc: "Full localization support for French, German, Spanish, Japanese, Arabic (RTL), and 15+ more." }
+      { title: "Recovers Lost AMC Revenue", desc: "Stops customers from forgetting renewals or switching to competitors when contracts expire." },
+      { title: "Zero Paperwork for Field Technicians", desc: "Technicians view daily assigned service calls and update job statuses directly from their smartphones." },
+      { title: "Sub-Minute Complaint Logging", desc: "Customers avoid phone hold times by scanning their purifier QR code to register immediate service tickets." },
+      { title: "Builds High Customer Trust", desc: "Automated WhatsApp invoices and scheduled service visits establish a professional, brand-name experience." }
     ],
     faqs: [
-      { question: "Does this app work with Shopify Online Store 2.0 themes?", answer: "Yes, 100%. Store Locator Pro is built as a native Shopify Theme App Extension, meaning zero dirty code injection into your theme files." },
-      { question: "Can we link each store pin to specific product stock levels?", answer: "Yes! Our Plus tier supports displaying local product inventory availability badges directly on individual store cards." },
-      { question: "What map providers are supported?", answer: "You can choose between Google Maps, Mapbox, or OpenStreetMap depending on your preferred styling and API budget." }
+      { question: "Do customers need to download an app to register a service complaint?", answer: "No! Customers simply scan the QR sticker on their water purifier with any smartphone camera, opening a fast web page where they can submit complaints and photos in under a minute." },
+      { question: "Is FilterBook available on both Android and iOS?", answer: "Yes. The FilterBook technician and vendor app is built with React Native (Expo) and runs smoothly on both Android and iOS devices." },
+      { question: "Can we track Annual Maintenance Contracts (AMCs) with different service terms?", answer: "Yes. FilterBook supports both Comprehensive AMCs (including filter and motor replacements) and Service-Only AMCs, complete with automatic visit quotas and expiry alerts." }
     ]
   },
   {
-    id: "cookie-shield",
-    slug: "cookie-shield",
-    number: "04",
-    title: "Cookie Shield — GDPR & CCPA Compliance Banner",
-    shortTitle: "Cookie Shield",
-    badge: "Privacy & Legal SaaS",
-    tag: "GDPR, CCPA & ePrivacy",
-    category: "Shopify & Commerce Apps",
+    id: "tripsbook",
+    slug: "tripsbook",
+    number: "03",
+    title: "TripsBook — Fleet, Driver Trip & Fuel Management Mobile App",
+    shortTitle: "TripsBook",
+    badge: "Fleet & Mobility App",
+    tag: "Driver Trip & Fuel ERP",
+    category: "Field Operations & Mobility",
     rating: "4.9★",
-    reviewsCount: "210+ Reviews",
-    icon: "i-lock",
-    gradient: "linear-gradient(135deg,#0284c7,#0ea5e9)",
-    tagline: "Automated cookie consent banner, script blocking & privacy policy generator.",
-    shortDescription: "Automated GDPR, CCPA, and ePrivacy compliance banner with prior consent script blocking, customizable preferences center, and audit logging.",
-    description: "Cookie Shield keeps ecommerce storefronts fully compliant with international privacy regulations including GDPR (EU), CCPA (California), LGPD (Brazil), and PIPEDA (Canada). Features automated cookie scanning, intelligent pre-consent script blocking (Google Analytics, Meta Pixel, TikTok Pixel), and tamper-evident consent logging.",
-    heroSubtitle: "Zero-latency cookie consent management platform, automated tracking script blocker, and privacy audit logging engine engineered for global Shopify brands.",
-    pricing: "Free Tier · Pro from $9/mo",
-    liveDemoUrl: "/#contact",
+    reviewsCount: "95+ Fleet Operators",
+    icon: "i-truck",
+    gradient: "linear-gradient(135deg,#0f172a,#2563eb)",
+    tagline: "Dual Fix Cab & On-Call trip modes, 10-second GPS telemetry, multi-fuel expense audits, and instant A4 PDF duty slips.",
+    shortDescription: "Mobile-first fleet and driver operations platform for commercial cab operators, corporate fleets, and rental agencies: live GPS trip logging, fuel expense tracking, and on-device PDF duty slips.",
+    description: "TripsBook is a modern mobile application engineered by Vision Technolabs using React Native 0.81 and Expo SDK 54. It replaces handwritten paper duty slips and loose fuel receipts with a streamlined digital workflow: drivers log Fix Cab and On Call duties, dispatchers track active trips with 10-second GPS pings, multi-fuel receipts are audited against odometer logs, and print-ready A4 Duty Slips are generated straight from the phone.",
+    heroSubtitle: "Cross-platform mobile app and fleet dashboard: automatic reverse-geocoded pickup detection, live GPS tracking, fuel expense management, and instant PDF duty slips.",
+    pricing: "Turnkey Mobile App · White-Label Ready",
+    liveDemoUrl: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.tripsbook",
+    image: "/app_images/Tripsbook/01_app_TB.webp",
     metrics: [
-      { value: "100%", label: "GDPR & CCPA Compliant" },
-      { value: "0ms", label: "Core Web Vitals Impact" },
-      { value: "94%", label: "Average Consent Rate" },
-      { value: "50M+", label: "Consent Events Logged" }
+      { value: "2 Modes", label: "Fix Cab & On Call Trips" },
+      { value: "10 sec", label: "Live GPS Telemetry" },
+      { value: "5 Fuels", label: "Multi-Fuel Audit" },
+      { value: "Instant", label: "A4 PDF Duty Slips" }
     ],
     features: [
       {
-        title: "Intelligent Pre-Consent Script Blocker",
-        description: "Automatically prevents marketing and analytics tracking pixels from firing until the visitor grants explicit opt-in consent as mandated by GDPR.",
-        points: ["Zero-configuration Meta Pixel & GA4 blocking", "Custom script tag categorization", "Dynamic unblocking upon consent acceptance"]
+        title: "Dual Fix Cab & On-Call Trip Logging",
+        description: "Supports fixed corporate daily commute routes (Fix Cab) as well as charter and on-demand duties (On Call) with automatic night-halt and toll calculations.",
+        points: ["Point-to-point Fix Cab routes", "Charter & outstation On-Call duties", "Automatic overnight duration and allowance computation"]
       },
       {
-        title: "Automated Storefront Cookie Scanner",
-        description: "Crawls your store weekly to identify newly installed apps and third-party tracking cookies, categorizing them into Necessary, Analytics, and Marketing.",
-        points: ["Weekly automated background crawl", "Comprehensive database of 100,000+ known cookies", "One-click cookie policy description generator"]
+        title: "GPS Telemetry & Auto Pickup Detection",
+        description: "Utilizes expo-location and Google Maps Reverse Geocoding API to detect driver pickup and drop locations automatically with 10-second foreground coordinate pings.",
+        points: ["Sub-meter GPS pickup reverse-geocoding", "10-second live location dispatch telemetry", "Strict odometer validation preventing entry errors"]
       },
       {
-        title: "Interactive Visitor Preference Center",
-        description: "Gives visitors granular control to toggle individual cookie categories on or off at any time, respecting legal privacy mandates.",
-        points: ["Granular category consent toggles", "Persistent privacy badge widget", "Mobile-optimized bottom sheet layout"]
+        title: "On-Device A4 Duty Slip & Log Sheet PDFs",
+        description: "Generates branded A4 Duty Slips and Monthly Vehicle Log Sheets instantly on the device via expo-print with digital driver signatures and sharing via WhatsApp.",
+        points: ["Print-ready vector A4 Duty Slip PDFs", "Monthly vehicle log sheets with total km and hours", "One-tap PDF sharing via WhatsApp or email"]
       },
       {
-        title: "Tamper-Evident Consent Audit Trail",
-        description: "Cryptographically logs every consent acceptance event with timestamp, anonymized IP, and policy version for legal audit readiness.",
-        points: ["Immutable consent log export", "DSAR (Data Subject Access Request) portal", "Certified compliance documentation for legal inquiries"]
+        title: "5-Type Fuel & Expense Auditor",
+        description: "Track and verify fuel expenses across Petrol, Diesel, CNG, Electric, and LPG with attached receipt photos linked directly to odometer readings for mileage audit.",
+        points: ["Odometer-linked mileage calculation (Km/L, Km/Kg, Km/kWh)", "Receipt photo capture with camera integration", "Toll, parking, and driver DA expense categorization"]
       }
     ],
     deploymentOptions: [
       {
-        title: "Shopify 1-Click App",
-        description: "Native app embed compatible with all Shopify themes, Google Consent Mode v2, and Shopify Customer Privacy API.",
-        badge: "Recommended"
+        title: "Turnkey Mobile App (Android & iOS)",
+        description: "Deploy TripsBook on Google Play Store and Apple App Store with your company branding, custom splash screen, and fleet admin credentials.",
+        badge: "Ready to Launch"
       },
       {
-        title: "Universal JavaScript Snippet",
-        description: "Deploy on any custom web app, WordPress, WooCommerce, or headless storefront with a single async script tag.",
-        badge: "Universal"
+        title: "Fleet Operator Cloud License",
+        description: "Cloud dispatch web panel paired with mobile apps, supporting real-time fleet map monitoring, driver settlements, and billing exports.",
+        badge: "Fleet Ops"
+      },
+      {
+        title: "Full Source Code Buyout",
+        description: "100% intellectual property ownership: React Native (Expo) frontend codebase, Node/PHP REST API backend, and database scripts.",
+        badge: "Source Code"
       }
     ],
-    techStack: ["Next.js", "TypeScript", "Google Consent Mode v2", "PostgreSQL", "Redis", "Cloudflare Workers"],
+    techStack: ["React Native 0.81", "Expo SDK 54 & React 19", "React Navigation 7", "expo-location", "expo-print & expo-sharing", "Google Maps Geocoding API", "RESTful Backend"],
     workflow: [
-      { step: "01", title: "Automated Store Scan", desc: "Cookie Shield crawls your storefront to detect all active tracking pixels, cookies, and local storage keys." },
-      { step: "02", title: "Banner Customization", desc: "Select from modern floating bar, corner box, or modal layouts, matching your store colors and fonts." },
-      { step: "03", title: "Google Consent Mode v2", desc: "Automatically synchronizes consent state with Google Analytics 4, Google Ads, and Meta Conversions API." },
-      { step: "04", title: "Continuous Legal Protection", desc: "Every consent change is recorded in an encrypted audit trail for complete regulatory defense." }
+      { step: "01", title: "Driver & Fleet Setup", desc: "Onboard commercial vehicles, fuel types, and register drivers with fleet admin codes." },
+      { step: "02", title: "Trip Initiation & GPS Lock", desc: "Driver starts Fix Cab or On Call trip; GPS reverse-geocodes pickup location and initial odometer." },
+      { step: "03", title: "Live Tracking & Fuel Receipts", desc: "Active GPS coordinates stream to dispatch; drivers log fuel and toll expenses with photo receipts." },
+      { step: "04", title: "Instant A4 Duty Slip Generation", desc: "Upon trip completion, total km and duration are calculated and shared as a print-ready A4 PDF." }
     ],
     advantages: [
-      { title: "Google Consent Mode v2 Native", desc: "Prevents loss of conversion tracking in Google Ads through compliant behavioral modeling." },
-      { title: "Geo-Targeted Banner Display", desc: "Only show strict opt-in banners to visitors in the EU/UK while displaying notice banners in the US." },
-      { title: "Ultra-Lightweight <12KB Payload", desc: "Zero performance penalties, zero Cumulative Layout Shift (CLS), and sub-20ms execution." },
-      { title: "Multi-Language Translations", desc: "Pre-translated into 28 official EU languages with automatic visitor browser language detection." }
+      { title: "Zero Billing Disputes with Corporate Clients", desc: "Clear GPS timestamps, start/end odometer entries, and automated distance calculations prevent disputes." },
+      { title: "Eliminates Lost Fuel Receipts", desc: "Drivers take photos of fuel bills at the pump, immediately linking liters/kg and costs to vehicle odometers." },
+      { title: "Saves Days on Monthly Log Sheets", desc: "Replaces painful manual spreadsheet tallying with instant monthly vehicle log sheet PDF exports." },
+      { title: "Real-Time Fleet Dispatch Visibility", desc: "Dispatchers know exactly which vehicles are active, their current location, and driver status." }
     ],
     faqs: [
-      { question: "Does Cookie Shield support Google Consent Mode v2?", answer: "Yes, fully! Cookie Shield is certified to pass Google Consent Mode v2 signals (`ad_storage`, `analytics_storage`, `ad_user_data`, `ad_personalization`) to prevent Google Ads conversion loss." },
-      { question: "Will this banner slow down my store's Google PageSpeed score?", answer: "Not at all. Cookie Shield's client script is under 12KB gzip and runs asynchronously from the edge, causing zero Core Web Vitals degradation." },
-      { question: "Can we only show the banner in countries that legally require it?", answer: "Yes. Our geo-location engine automatically applies strict opt-in rules in the EU/UK, opt-out banners in California, and hides the banner elsewhere if desired." }
+      { question: "Can drivers generate duty slips without internet access?", answer: "Yes. TripsBook stores trip and odometer records locally on the device using SQLite/AsyncStorage and generates print-ready A4 PDF duty slips even when offline, syncing data once connection is restored." },
+      { question: "Does TripsBook support electric (EV) and CNG vehicles?", answer: "Yes. TripsBook features full auditing across Petrol, Diesel, CNG, Electric (kWh), and LPG vehicles, computing mileage metrics tailored to each fuel type." },
+      { question: "How does TripsBook handle corporate client billing?", answer: "TripsBook compiles all trips into Monthly Vehicle Log Sheets with total kilometers, driving hours, toll charges, and driver allowances, formatted for instant corporate invoicing." }
     ]
   },
   {
-    id: "mmy-search",
-    slug: "make-model-year-search",
-    number: "05",
-    title: "Make Model Year (MMY) Parts Finder — Shopify App",
-    shortTitle: "MMY Parts Finder",
-    badge: "Automotive Commerce SaaS",
-    tag: "Fitment & Part Matching",
-    category: "Shopify & Commerce Apps",
-    rating: "4.8★",
-    reviewsCount: "180+ Reviews",
-    icon: "i-truck",
-    gradient: "linear-gradient(135deg,#d97706,#f59e0b)",
-    tagline: "High-performance Year/Make/Model automotive parts filter for Shopify stores.",
-    shortDescription: "A specialized automotive fitment filter that lets customers find exact-matching auto parts and accessories by Year, Make, Model, and Trim.",
-    description: "Built for automotive aftermarket retailers, motorcycle part distributors, and wheel/tire specialists. MMY Parts Finder provides dropdown search selectors, fitment compatibility badges on product detail pages ('✓ Fits your 2024 Ford F-150'), and ACES/PIES automotive industry data feed support.",
-    heroSubtitle: "Year Make Model automotive parts fitment finder, compatibility checker, and ACES/PIES catalog database engine engineered for automotive Shopify retailers.",
-    pricing: "Starts from $39/mo · Custom Enterprise Tiers",
-    liveDemoUrl: "/#contact",
+    id: "sitedesk",
+    slug: "sitedesk",
+    number: "04",
+    title: "SiteDesk — Real Estate Plot Sales, EMI Tracking & Site Management ERP",
+    shortTitle: "SiteDesk",
+    badge: "Real Estate ERP",
+    tag: "Plot Sales & EMI Platform",
+    category: "Business & Billing SaaS",
+    rating: "4.9★",
+    reviewsCount: "110+ Land Developers",
+    icon: "i-home",
+    gradient: "linear-gradient(135deg,#0d9488,#0f172a)",
+    tagline: "Assigned site plot availability maps, buyer cash/EMI installment ledgers, dastavej registry tracking, and selfie attendance.",
+    shortDescription: "Mobile-first operations platform for real estate layout developers and plot sales teams: live plot availability filtering, flexible installment ledgers, automated push reminders, and site expense logging.",
+    description: "SiteDesk is an all-in-one mobile operations ERP built specifically for real estate developers who sell plotting schemes across multiple layout sites. Field sales teams see their assigned sites with real-time available and sold plots, onboard buyers with Aadhaar documentation, configure cash or monthly EMI plans, log installments with duplicate protection, record dastavej registry numbers, log site expenses, and mark selfie attendance.",
+    heroSubtitle: "Mobile ERP app and 40-endpoint REST API: multi-site plot inventory, 3-stage automated EMI alert engine, dastavej registry vault, and field CRM.",
+    pricing: "Turnkey Mobile App + Cloud REST Backend",
+    liveDemoUrl: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.sitedesk",
+    image: "/app_images/Sitedesk/01_app_SD.webp",
     metrics: [
-      { value: "62%", label: "Return Rate Reduction" },
-      { value: "4.8★", label: "App Store Rating" },
-      { value: "Sub-50ms", label: "Fitment Query Latency" },
-      { value: "10M+", label: "Fitment Pairs Indexed" }
+      { value: "40", label: "REST API Endpoints" },
+      { value: "25+", label: "Relational DB Tables" },
+      { value: "3-Stage", label: "Auto EMI Push Alerts" },
+      { value: "100%", label: "Site-Scoped Access" }
     ],
     features: [
       {
-        title: "Dynamic YMM Dropdown Search Selector",
-        description: "Cascading dropdown filters (Year -> Make -> Model -> Submodel / Engine) that update options dynamically without page reloads.",
-        points: ["Cascading non-blocking AJAX dropdowns", "Universal part vs vehicle-specific part handling", "Persistent 'My Garage' vehicle switcher for returning buyers"]
+        title: "Assigned-Site & Live Plot Inventory Engine",
+        description: "Real-time filtering of layout plots by status (Available, Booked, Sold) with interactive layout maps, scoping access strictly to each staff member's assigned sites.",
+        points: ["Interactive layout map with color-coded plot statuses", "Strict staff site-scoping permissions", "Instant plot reservation preventing double-selling"]
       },
       {
-        title: "Exact Fitment Verification Badges",
-        description: "Displays dynamic green '✓ Confirmed Fit' or red '✗ Does Not Fit' warning banners directly on product pages based on the customer's selected vehicle.",
-        points: ["Reduces costly wrong-part return shipping", "Variant-level vehicle fitment specificity", "One-click vehicle change directly on the product page"]
+        title: "Buyer Cash & Multi-Month EMI Ledger",
+        description: "Flexible payment plan configuration supporting upfront Cash, Part-Cash, and monthly EMI installments with duplicate payment protection and digital receipts.",
+        points: ["Custom down payment & installment tenure (12 to 60 months)", "Automated interest and balance recalculation", "Printable installment receipts with buyer transaction history"]
       },
       {
-        title: "ACES & PIES Standard Data Ingestion",
-        description: "Seamlessly import industry standard Auto Care Association ACES XML and PIES product fitment catalogs containing millions of vehicle combinations.",
-        points: ["Bulk ACES XML file parser", "Custom CSV mapping wizard for non-standard catalogs", "Support for motorcycle, ATV, marine, and commercial truck databases"]
+        title: "3-Stage Automated EMI Reminder Engine",
+        description: "Server cron engine that dispatches automated push notifications and WhatsApp reminders 3 days before payment due date, on the due date, and when overdue.",
+        points: ["3 days prior warning notification", "Due-date reminder with payment link", "Overdue alerts with outstanding interest calculation"]
       },
       {
-        title: "Saved Garage Profile for Shoppers",
-        description: "Customers can save multiple vehicles to 'My Garage' in their account, effortlessly toggling between their truck, sedan, or motorcycle while shopping.",
-        points: ["Local storage & customer account garage syncing", "Filtered collections displaying only garage-matched parts", "Cart fitment warning validation before checkout"]
+        title: "Dastavej Registry Tracker & Document Vault",
+        description: "Secure multi-format vault (up to 4 MB) for storing sale-deed (dastavej) registry numbers, sub-registrar dates, buyer Aadhaar cards, and layout blue-prints.",
+        points: ["Sale-deed (dastavej) registration tracking", "Encrypted storage for buyer KYC and registry files", "Field site expense logging with receipt verification"]
       }
     ],
     deploymentOptions: [
       {
-        title: "Shopify Theme App Extension",
-        description: "Embed dropdown selectors anywhere in your header, hero banner, or collection page with zero theme code edits.",
-        badge: "Shopify Plus Ready"
+        title: "Developer Organization License",
+        description: "Turnkey mobile app for Android and iOS paired with cloud REST backend, configured for your real estate development firm.",
+        badge: "Developer Choice"
       },
       {
-        title: "Custom Headless Automotive API",
-        description: "High-speed GraphQL and REST endpoints designed for custom headless automotive stores handling 1,000,000+ SKUs.",
-        badge: "Enterprise API"
+        title: "Multi-Company Real Estate Portal",
+        description: "Super admin architecture enabling land development groups and property brokerages to manage multiple independent real estate firms.",
+        badge: "Enterprise"
+      },
+      {
+        title: "Full Source Code & Database Ownership",
+        description: "Complete Expo React Native frontend and 40-endpoint CodeIgniter 3 REST backend (~4,600 lines) with 25+ MySQL relational tables.",
+        badge: "100% IP Buyout"
       }
     ],
-    techStack: ["Shopify Polaris", "Next.js", "Elasticsearch", "PostgreSQL", "Go / Golang", "Redis", "Docker"],
+    techStack: ["React Native (Expo)", "PHP & CodeIgniter 3", "MySQL / MariaDB", "JWT Token Blacklist Security", "Expo Push Notifications", "SMS OTP Gateway", "Multipart Document Vault"],
     workflow: [
-      { step: "01", title: "Catalog Fitment Import", desc: "Upload vehicle fitment tables via CSV or connect ACES XML data feeds to index vehicle combinations." },
-      { step: "02", title: "Theme Widget Placement", desc: "Drag and drop the MMY search selector into your header or home banner inside the Shopify theme customizer." },
-      { step: "03", title: "Fitment Badge Activation", desc: "Enable the PDP fitment status widget that confirms exact compatibility for shoppers before they add to cart." },
-      { step: "04", title: "Monitor Return Reductions", desc: "Track conversions, popular vehicle searches, and fitment queries in your real-time analytics dashboard." }
+      { step: "01", title: "Layout & Plot Master Setup", desc: "Upload site layouts, plot numbers, dimensions in sq. yards/feet, and base pricing." },
+      { step: "02", title: "Assign Sites to Sales Agents", desc: "Sales staff log in via mobile OTP and access strictly their assigned project sites." },
+      { step: "03", title: "Register Buyer & Configure Plan", desc: "Book plots, record down payments, and generate monthly Cash/EMI installment schedules." },
+      { step: "04", title: "Automate Reminders & Dastavej", desc: "Cron jobs trigger automated EMI alerts; log sale-deed registry documents upon final settlement." }
     ],
     advantages: [
-      { title: "Drastically Cuts Return Shipping Costs", desc: "Prevents customers from ordering incorrect parts by validating vehicle compatibility before checkout." },
-      { title: "Sub-50ms Query Performance", desc: "Engineered with Elasticsearch and Redis caching to query through millions of vehicle records in milliseconds." },
-      { title: "ACES & PIES Standard Compliant", desc: "Full alignment with global Auto Care Association standards simplifies supplier data ingestion." },
-      { title: "Conversion Rate Boost", desc: "Buyers shop with supreme confidence when they see a bright green 'Guaranteed to Fit' badge on the product." }
+      { title: "Zero Double-Booking of Plots", desc: "Live plot inventory synchronization ensures that once a plot is reserved, it cannot be booked by another agent." },
+      { title: "Drastic Reduction in Overdue EMIs", desc: "Automated 3-stage push notifications and WhatsApp reminders keep buyers punctual with monthly installments." },
+      { title: "Dastavej Paperwork Always at Hand", desc: "Sale deed numbers and registration dates are linked directly to plot records, eliminating misplaced registry files." },
+      { title: "Verified Field Staff Attendance & Expenses", desc: "Selfie attendance with GPS location and receipt-backed expense logging keep management in total control." }
     ],
     faqs: [
-      { question: "How large of a catalog can this app handle?", answer: "Our backend has been benchmarked with catalogs exceeding 500,000 SKUs and over 15 million fitment pairings with sub-50ms query response times." },
-      { question: "Does it support custom fields like Engine Size, Transmission, or Bed Length?", answer: "Yes! You can configure up to 6 custom cascading filter levels (e.g. Year -> Make -> Model -> Submodel -> Engine -> Drive Type)." },
-      { question: "Can shoppers save their vehicle for future visits?", answer: "Yes. The 'My Garage' feature stores selected vehicles in the customer's browser and account, persisting their vehicle selection across sessions." }
+      { question: "Can sales agents see other sites or unauthorized buyer financials?", answer: "No. SiteDesk implements strict role-based and site-scoped access control. Sales staff can only view plots, buyers, and inquiries for the specific development sites assigned to them by management." },
+      { question: "How does SiteDesk handle buyers who want to pay in monthly installments?", answer: "When creating a booking, you select the EMI payment plan, enter the down payment, and specify the number of months. SiteDesk generates a monthly installment ledger, tracks payments, and sends automatic reminder notifications." },
+      { question: "Can we attach photos and PDF copies of sale deeds (dastavej)?", answer: "Yes. SiteDesk includes a secure document vault that supports JPG, PNG, and PDF files up to 4 MB for storing buyer KYC, payment receipts, and registered dastavej documents." }
     ]
   }
 ];
@@ -420,16 +351,29 @@ export function getProductBySlug(slug) {
   );
   if (directMatch) return directMatch;
 
-  // Legacy fallback alias mapping for deprecated demo URLs to ensure zero 404s
-  const legacyAliases = {
-    "hotel-management-system": "mspl-store-locator",
-    "solar-epc-platform": "reach-o",
-    "on-demand-taxi-suite": "reach-o",
-    "telemedicine-suite": "lumez-ai"
+  // Aliases and legacy mappings to ensure zero 404s
+  const slugAliases = {
+    "billbook": "billsbook",
+    "bill-book": "billsbook",
+    "filter-book": "filterbook",
+    "tripbook": "tripsbook",
+    "trips-book": "tripsbook",
+    "site-desk": "sitedesk",
+    "sidedesk": "sitedesk",
+    "lumez-ai": "billsbook",
+    "reach-o": "filterbook",
+    "mspl-store-locator": "billsbook",
+    "cookie-shield": "sitedesk",
+    "make-model-year-search": "tripsbook",
+    "hotel-management-system": "billsbook",
+    "solar-epc-platform": "filterbook",
+    "on-demand-taxi-suite": "tripsbook",
+    "telemedicine-suite": "filterbook"
   };
-  if (legacyAliases[normalized]) {
+
+  if (slugAliases[normalized]) {
     return (
-      productsData.find((p) => p.slug === legacyAliases[normalized]) ||
+      productsData.find((p) => p.slug === slugAliases[normalized]) ||
       productsData[0]
     );
   }

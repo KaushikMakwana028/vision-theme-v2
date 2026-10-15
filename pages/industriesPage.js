@@ -1,7 +1,9 @@
-"use client";
-
-import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import ScrollProgress from "@/components/industries/ScrollProgress";
+import CountUp from "@/components/industries/CountUp";
+import IndustriesFilter from "@/components/industries/IndustriesFilter";
+import IndustryFaqAccordion from "@/components/industries/IndustryFaqAccordion";
 import { industriesData, industryCategories } from "@/data/industries";
 import { caseStudiesData } from "@/data/caseStudies";
 
@@ -23,8 +25,8 @@ const styles = `
 }
 
 /* ---------- Reveal on scroll ---------- */
-.svp .rv { opacity: 0; }
-.svp .rv.rv-in { opacity: 1; animation: svp-in .8s var(--ease) var(--rv-delay, 0ms) backwards; }
+.svp .rv { opacity: 1; transform: none; }
+.svp .rv.rv-in { opacity: 1; transform: none; }
 
 /* ---------- Breadcrumbs ---------- */
 .breadcrumbs-bar {
@@ -238,14 +240,26 @@ const styles = `
 }
 .ind-ucard-ico {
   width: 52px; height: 52px; flex-shrink: 0; display: inline-grid; place-items: center;
-  border-radius: 16px; color: var(--primary);
-  background: linear-gradient(135deg, rgba(79, 70, 229, .12), rgba(6, 182, 212, .14));
+  border-radius: 16px; color: #ffffff;
+  background: var(--grad, linear-gradient(135deg, #4f46e5, #7c3aed));
+  box-shadow: 0 8px 18px -4px rgba(79, 70, 229, .45);
   transition: transform .45s var(--ease), background .3s, color .3s, box-shadow .3s;
 }
-.ind-ucard-ico svg { width: 26px; height: 26px; }
+.ind-ucard-ico svg,
+.ind-ucard-ico .i {
+  width: 26px; height: 26px;
+  stroke: #ffffff;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: #ffffff;
+}
 .ind-ucard:hover .ind-ucard-ico {
-  background: var(--grad); color: #fff; transform: rotate(-8deg) scale(1.08);
-  box-shadow: 0 12px 24px -10px rgba(79, 70, 229, .7);
+  background: var(--grad, linear-gradient(135deg, #4f46e5, #7c3aed));
+  color: #ffffff;
+  transform: rotate(-8deg) scale(1.08);
+  box-shadow: 0 12px 24px -10px rgba(79, 70, 229, .75);
 }
 .ind-ucard-badge {
   font-family: var(--serif); font-style: italic; font-size: 1.8rem; font-weight: 700;
@@ -367,15 +381,15 @@ const styles = `
 .svp .card.flush { padding: 0; }
 .svp-proj { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
 .svp-thumb {
-  position: relative; overflow: hidden; height: auto; aspect-ratio: 16 / 10; background: #0b1220;
-  display: flex; align-items: center; justify-content: center; padding: 0.5rem !important; margin: 0;
+  position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 9; background: #f8fafc;
+  border-bottom: 1px solid var(--line); display: block; padding: 0 !important; margin: 0;
 }
 .svp-thumb img {
   display: block; width: 100% !important; height: 100% !important;
-  object-fit: contain !important; object-position: center !important;
-  transition: transform .8s var(--ease);
+  object-fit: cover !important; object-position: center !important;
+  transition: transform .5s var(--ease);
 }
-.svp-proj:hover .svp-thumb img { transform: scale(1.07); }
+.svp-proj:hover .svp-thumb img { transform: scale(1.025); }
 .svp-wb { display: flex; flex-direction: column; flex: 1; padding: 1.75rem; }
 .svp-tags {
   display: flex; flex-wrap: wrap; gap: .4rem; min-height: 28px;
@@ -437,14 +451,23 @@ const styles = `
   transform: scaleY(0); transform-origin: top; transition: transform .5s var(--ease);
 }
 .svp-why:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-.svp-why:hover::before { transform: scaleY(1); }
 .svp-why .ico {
   width: 52px; height: 52px; flex-shrink: 0; display: inline-grid; place-items: center;
-  border-radius: 16px; color: var(--primary);
-  background: linear-gradient(135deg, rgba(79, 70, 229, .12), rgba(6, 182, 212, .14));
+  border-radius: 16px; color: #ffffff;
+  background: var(--grad, linear-gradient(135deg, #4f46e5, #7c3aed));
+  box-shadow: 0 8px 18px -4px rgba(79, 70, 229, .45);
   transition: transform .45s var(--ease), background .3s, color .3s;
 }
-.svp-why .ico svg { width: 25px; height: 25px; }
+.svp-why .ico svg,
+.svp-why .ico .i {
+  width: 25px; height: 25px;
+  stroke: #ffffff;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: #ffffff;
+}
 .svp-why:hover .ico { background: var(--grad); color: #fff; transform: rotate(-8deg) scale(1.08); }
 .svp-why h3 { margin: 0 0 .4rem; color: var(--ink); font-size: 1.18rem; }
 .svp-why p { margin: 0; color: var(--muted); line-height: 1.65; font-size: .93rem; }
@@ -599,31 +622,6 @@ const styles = `
    Helpers
    ========================================================= */
 
-function useInView(threshold = 0.1) {
-  const ref = useRef(null);
-  const [shown, setShown] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setShown(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          io.disconnect();
-        }
-      },
-      { threshold, rootMargin: "0px 0px -40px 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [threshold]);
-  return [ref, shown];
-}
-
 function Reveal({
   children,
   delay = 0,
@@ -631,11 +629,9 @@ function Reveal({
   as: Tag = "div",
   ...rest
 }) {
-  const [ref, shown] = useInView();
   return (
     <Tag
-      ref={ref}
-      className={`rv ${shown ? "rv-in" : ""} ${className}`}
+      className={`rv  ${className}`}
       style={{ "--rv-delay": `${delay}ms` }}
       {...rest}
     >
@@ -644,109 +640,12 @@ function Reveal({
   );
 }
 
-function CountUp({ value, duration = 1500 }) {
-  const text = String(value ?? "");
-  const match = text.match(/^(\D*?)(\d+(?:\.\d+)?)(\D*)$/);
-  const countable = Boolean(match);
-  const prefix = countable ? match[1] : "";
-  const target = countable ? parseFloat(match[2]) : 0;
-  const suffix = countable ? match[3] : "";
-  const decimals =
-    countable && match[2].includes(".") ? match[2].split(".")[1].length : 0;
-  const ref = useRef(null);
-  const [n, setN] = useState(countable ? 0 : target);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !countable) return;
-    const reduce = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (reduce || typeof IntersectionObserver === "undefined") {
-      setN(target);
-      return;
-    }
-    let raf;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        io.disconnect();
-        const start = performance.now();
-        const tick = (now) => {
-          const p = Math.min((now - start) / duration, 1);
-          setN(target * (1 - Math.pow(1 - p, 3)));
-          if (p < 1) raf = requestAnimationFrame(tick);
-        };
-        raf = requestAnimationFrame(tick);
-      },
-      { threshold: 0.3 },
-    );
-    io.observe(el);
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(raf);
-    };
-  }, [target, duration, countable]);
-
-  return (
-    <span ref={ref}>
-      {countable ? `${prefix}${n.toFixed(decimals)}${suffix}` : text}
-    </span>
-  );
-}
-
-function ScrollProgress() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    let raf;
-    const update = () => {
-      const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      if (el) el.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
-    };
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-  return (
-    <div className="svp-progress" aria-hidden="true">
-      <span ref={ref} />
-    </div>
-  );
-}
-
-// Mouse-follow spotlight (optimized: cached rect eliminates layout recalculation lag)
-const onSpot = (e) => {
-  const el = e.currentTarget;
-  let r = el._cachedRect;
-  if (!r) {
-    r = el.getBoundingClientRect();
-    el._cachedRect = r;
-  }
-  el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  el.style.setProperty("--my", `${e.clientY - r.top}px`);
-};
-const onSpotLeave = (e) => {
-  e.currentTarget._cachedRect = null;
-};
-
 function ProjectCard({ proj, delay = 0 }) {
   return (
     <Reveal
       as="article"
       delay={delay}
       className="card flush svp-proj"
-      onMouseMove={onSpot}
     >
       <Link
         href={`/work/${proj.slug || proj.id}`}
@@ -756,15 +655,11 @@ function ProjectCard({ proj, delay = 0 }) {
         }}
         aria-label={`View ${proj.title} case study`}
       >
-        <img
+        <Image
           src={proj.image}
           alt={proj.title}
           width={800}
           height={520}
-          loading="lazy"
-          onError={(e) => {
-            e.currentTarget.style.display = "none";
-          }}
         />
       </Link>
       <div className="wb svp-wb">
@@ -871,40 +766,23 @@ const whyIndustryItems = [
    ========================================================= */
 
 export default function IndustriesPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [openFaq, setOpenFaq] = useState(0);
+  const counts = { All: industriesData.length };
+  industriesData.forEach((ind) => {
+    counts[ind.category] = (counts[ind.category] || 0) + 1;
+  });
 
-  const filteredIndustries =
-    selectedCategory === "All"
-      ? industriesData
-      : industriesData.filter((ind) => ind.category === selectedCategory);
-
-  const counts = useMemo(() => {
-    const map = { All: industriesData.length };
-    industriesData.forEach((ind) => {
-      map[ind.category] = (map[ind.category] || 0) + 1;
-    });
-    return map;
-  }, []);
-
-  const marqueeTags = useMemo(
-    () => [
-      "PCI-DSS Level 1",
-      "HIPAA Certified",
-      "SOC-2 Type II",
-      "RESO Web API",
-      "FDA 21 CFR Part 11",
-      "ISA-95 Industrial IoT",
-      "GDPR & CCPA",
-      "FERPA & COPPA",
-      "Open Banking PSD2",
-      "Core Web Vitals 95+",
-    ],
-    [],
-  );
-
-  const toggleFaq = (index) =>
-    setOpenFaq((prev) => (prev === index ? null : index));
+  const marqueeTags = [
+    "PCI-DSS Level 1",
+    "HIPAA Certified",
+    "SOC-2 Type II",
+    "RESO Web API",
+    "FDA 21 CFR Part 11",
+    "ISA-95 Industrial IoT",
+    "GDPR & CCPA",
+    "FERPA & COPPA",
+    "Open Banking PSD2",
+    "Core Web Vitals 95+",
+  ];
 
   return (
     <div className="svp">
@@ -992,49 +870,18 @@ export default function IndustriesPage() {
             </p>
           </Reveal>
 
-          {/* Category Filter Tabs */}
-          <div className="filter-wrap">
-            <div
-              className="filter-tabs"
-              role="tablist"
-              aria-label="Industry Categories"
-            >
-              {industryCategories.map((cat) => (
-                <button
-                  key={cat}
-                  type="button"
-                  role="tab"
-                  aria-selected={selectedCategory === cat}
-                  className={`filter-tab ${selectedCategory === cat ? "active" : ""}`}
-                  onClick={(e) => {
-                    setSelectedCategory(cat);
-                    e.currentTarget.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-                  }}
-                >
-                  {cat}
-                  {counts[cat] !== undefined && <em>{counts[cat]}</em>}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Grid of Cards (Modeled on Metizsoft ind-ucard) */}
-          <div
-            className="ind-cards-grid"
-            key={selectedCategory}
-            role="tabpanel"
-          >
-            {filteredIndustries.map((ind, i) => (
+          <IndustriesFilter categories={industryCategories} counts={counts}>
+            {industriesData.map((ind, i) => (
               <Link
                 key={ind.id}
                 href={`/industries/${ind.slug}`}
+                data-category={ind.category}
                 className="ind-ucard"
                 style={{ "--i": i }}
-                onMouseMove={onSpot}
               >
                 <div className="ind-ucard-top">
                   <div className="ind-ucard-ico">
-                    <svg aria-hidden="true">
+                    <svg className="i" aria-hidden="true">
                       <use href={`#${ind.icon || "i-code"}`} />
                     </svg>
                   </div>
@@ -1075,13 +922,7 @@ export default function IndustriesPage() {
                 </div>
               </Link>
             ))}
-          </div>
-
-          {filteredIndustries.length === 0 && (
-            <p className="svp-empty" style={{ textAlign: "center", padding: "3rem 0", color: "var(--muted)" }}>
-              No industries found in this category. Try another filter.
-            </p>
-          )}
+          </IndustriesFilter>
         </div>
       </section>
 
@@ -1198,7 +1039,7 @@ export default function IndustriesPage() {
                 className="card svp-why"
               >
                 <span className="ico">
-                  <svg aria-hidden="true">
+                  <svg className="i" aria-hidden="true">
                     <use href={`#${item.icon}`} />
                   </svg>
                 </span>
@@ -1224,42 +1065,7 @@ export default function IndustriesPage() {
             </p>
           </Reveal>
 
-          <div className="faq-wrap">
-            {generalIndustryFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <Reveal
-                  key={idx}
-                  delay={idx * 70}
-                  className={`faq-card ${isOpen ? "open" : ""}`}
-                >
-                  <button
-                    type="button"
-                    id={`faq-btn-${idx}`}
-                    className="faq-card-head"
-                    onClick={() => toggleFaq(idx)}
-                    aria-expanded={isOpen}
-                    aria-controls={`faq-panel-${idx}`}
-                  >
-                    <span>{faq.q}</span>
-                    <span className="faq-icon" aria-hidden="true">
-                      +
-                    </span>
-                  </button>
-                  <div
-                    id={`faq-panel-${idx}`}
-                    role="region"
-                    aria-labelledby={`faq-btn-${idx}`}
-                    className="faq-card-body"
-                  >
-                    <div className="faq-inner">
-                      <p>{faq.a}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
+          <IndustryFaqAccordion items={generalIndustryFaqs} />
         </div>
       </section>
 

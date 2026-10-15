@@ -13,6 +13,7 @@ export const industriesData = [
     slug: "fintech-banking",
     number: "01",
     title: "Fintech & Banking",
+    seoTitle: "Fintech & Banking Solutions",
     badge: "SOC-2 & PCI-DSS Level 1",
     tag: "30+ projects delivered",
     category: "Financial Services",
@@ -86,6 +87,7 @@ export const industriesData = [
     slug: "healthcare-medtech",
     number: "02",
     title: "Healthcare & MedTech",
+    seoTitle: "Healthcare & MedTech Solutions",
     badge: "HIPAA & HITECH Certified",
     tag: "HIPAA-aware builds",
     category: "Healthcare & Life Sciences",
@@ -159,6 +161,7 @@ export const industriesData = [
     slug: "ecommerce-retail",
     number: "03",
     title: "Ecommerce & Retail",
+    seoTitle: "Ecommerce & Retail Solutions",
     badge: "High-Volume Checkout Scale",
     tag: "45+ stores launched",
     category: "Retail & Commerce",
@@ -232,6 +235,7 @@ export const industriesData = [
     slug: "real-estate-proptech",
     number: "04",
     title: "Real Estate & PropTech",
+    seoTitle: "Real Estate & PropTech Solutions",
     badge: "IDX/MLS & Map-Based Search",
     tag: "Map-based discovery",
     category: "Retail & Commerce",
@@ -305,6 +309,7 @@ export const industriesData = [
     slug: "logistics-supply-chain",
     number: "05",
     title: "Logistics & Supply Chain",
+    seoTitle: "Logistics & Supply Chain Solutions",
     badge: "Fleet Tracking & WMS",
     tag: "Omnichannel ready",
     category: "Enterprise Operations",
@@ -378,6 +383,7 @@ export const industriesData = [
     slug: "manufacturing-iot",
     number: "06",
     title: "Manufacturing & Industrial IoT",
+    seoTitle: "Manufacturing & IoT Solutions",
     badge: "Industry 4.0 & OEE Analytics",
     tag: "Smart factory tools",
     category: "Enterprise Operations",
@@ -451,6 +457,7 @@ export const industriesData = [
     slug: "saas-cloud-platforms",
     number: "07",
     title: "SaaS & Cloud Platforms",
+    seoTitle: "SaaS & Cloud Platform Solutions",
     badge: "Multi-Tenant Architecture",
     tag: "From idea to scale",
     category: "Emerging Tech",
@@ -524,6 +531,7 @@ export const industriesData = [
     slug: "travel-hospitality",
     number: "08",
     title: "Travel & Hospitality",
+    seoTitle: "Travel & Hospitality Solutions",
     badge: "Booking Engines & GDS",
     tag: "Seamless booking flows",
     category: "Retail & Commerce",
@@ -593,76 +601,77 @@ export const industriesData = [
     ]
   },
   {
-    id: "edtech",
-    slug: "edtech-elearning",
+    id: "fitness",
+    slug: "fitness-wellness",
     number: "09",
-    title: "EdTech & E-Learning",
-    badge: "LMS & Interactive Learning",
-    tag: "Interactive learning",
+    title: "Fitness & Wellness",
+    seoTitle: "Fitness & Wellness Software Solutions",
+    badge: "Wearables & Gym SaaS",
+    tag: "FitTech platforms",
     category: "Emerging Tech",
-    icon: "i-pen",
+    icon: "i-activity",
     blobColor: "#059669",
     icoGradient: "linear-gradient(135deg,#059669,#34d399)",
-    href: "/industries/edtech-elearning",
-    caseStudySlugs: ["fitcket", "loksangeet"],
-    pillTags: ["Adaptive Learning", "Live Classroom", "AI Tutoring", "FERPA & COPPA"],
-    shortDescription: "Learning Management Systems (LMS), live virtual classrooms, AI tutoring agents & gamified student evaluation portals.",
-    description: "We develop comprehensive Learning Management Systems (LMS), video course delivery platforms, interactive quizzes, automated grading systems, and AI-powered personalized tutoring agents.",
-    heroSubtitle: "Interactive learning management systems (LMS), video delivery platforms, and AI-powered tutoring workflows engineered for universities, bootcamps, and corporate training academies.",
+    href: "/industries/fitness-wellness",
+    caseStudySlugs: ["fitcket", "medicheck"],
+    pillTags: ["Wearables & BLE Sync", "Workout & Diet AI", "Gym Management ERP", "Video Streaming"],
+    shortDescription: "Gym management CRMs, workout tracking apps, IoT wearable integrations & AI-driven nutrition platforms built for engagement and retention.",
+    description: "We engineer high-engagement fitness mobile apps, gym management ERPs, on-demand workout streaming platforms, and Bluetooth Low Energy (BLE) IoT wearable integrations that keep members motivated and businesses profitable.",
+    heroSubtitle: "Custom mobile fitness applications, IoT wearable integrations (Apple HealthKit & Google Health Connect), subscription membership billing, and AI-powered personal training workflows engineered for gyms, fitness creators, and wellness brands.",
     metrics: [
-      { value: "98.5%", label: "Course Completion" },
-      { value: "500k+", label: "Active Students" },
-      { value: "Sub-1s", label: "Video Start Time" },
-      { value: "FERPA", label: "Compliant Security" }
+      { value: "4.8★", label: "App Store Rating" },
+      { value: "250k+", label: "Active Athletes" },
+      { value: "60Hz", label: "Sensor Telemetry Sync" },
+      { value: "99.9%", label: "Live Stream SLA" }
     ],
-    compliance: ["FERPA", "COPPA", "SCORM / xAPI", "WCAG 2.1 AA", "GDPR"],
-    techStack: ["Next.js", "Python", "PostgreSQL", "Mux Video", "Tailwind CSS", "Redis", "Docker"],
+    compliance: ["HIPAA (Health Data)", "GDPR", "Apple HealthKit Certified", "Google Health Connect", "PCI-DSS Level 1 (Recurring Billing)"],
+    techStack: ["Flutter", "React Native", "Next.js", "Node.js", "PostgreSQL", "Bluetooth Low Energy (BLE)", "HealthKit", "Stripe Billing"],
     capabilitiesList: [
-      "Scalable Learning Management System (LMS) Portals",
-      "Low-Latency WebRTC Virtual Classrooms & Whiteboards",
-      "AI Adaptive Tutoring & Automated Essay Evaluation",
-      "Browser Sandbox Code Execution & Automated Grading",
-      "SCORM & xAPI Interactive Course Content Ingestion",
-      "FERPA & COPPA Student Privacy Compliance"
+      "Cross-Platform Workout & Diet Tracking Apps (iOS & Android)",
+      "Apple HealthKit, Google Health Connect & Wearable BLE Integrations",
+      "Gym Management SaaS, Turnstile Access Control & Member Scheduling",
+      "Low-Latency Live & On-Demand Video Workout Streaming (HLS/WebRTC)",
+      "AI-Powered Personalized Workout & Macro Nutrition Coaching",
+      "Automated Recurring Membership Subscriptions & Point-of-Sale (POS)"
     ],
     solutions: [
       {
-        title: "Modern Learning Management System (LMS)",
-        description: "Course syllabus builders, modular video lessons, downloadable resources, discussion boards, and verified completion certificates.",
-        features: ["Structured multi-module curriculums", "Interactive progress and streak tracking", "Automated PDF certificate generation with verification links"]
+        title: "Member & Athlete Mobile Applications",
+        description: "Workout logger, exercise library with 4K video demos, set/rep counters, custom timers, and milestone achievements that gamify daily consistency.",
+        features: ["Offline workout logging & automatic cloud sync", "Interactive exercise library with 4K demonstrations", "Rest timer with haptic & audio coaching cues"]
       },
       {
-        title: "Live Virtual Classrooms & Tutoring",
-        description: "Interactive real-time video classrooms with digital whiteboard collaboration, breakout rooms, screen sharing, and live attendance tracking.",
-        features: ["Low-latency WebRTC group video", "Shared collaborative code/math whiteboard", "Automated student participation analytics"]
+        title: "IoT Wearables & Sensor Telemetry",
+        description: "Direct Bluetooth Low Energy (BLE) pairing with heart rate monitors, smart dumbbells, cadence sensors, and biometric tracking via Apple HealthKit and Google Health Connect.",
+        features: ["Real-time heart rate zone telemetry & calorie burning", "Continuous biometric sync (resting heart rate, HRV, sleep)", "BLE smart fitness equipment protocol integration"]
       },
       {
-        title: "AI-Powered Adaptive Tutoring",
-        description: "Conversational AI agents trained on course materials that answer student questions 24/7, explain difficult concepts, and recommend targeted practice.",
-        features: ["RAG knowledge base grounded in textbook materials", "Adaptive difficulty quiz generation", "Plagiarism and originality detection"]
+        title: "Gym Management ERP & Booking System",
+        description: "Multi-location gym operations, class scheduling, trainer booking, RFID/QR turnstile access control, and retail inventory management.",
+        features: ["Class roster & trainer capacity booking", "QR-code & Apple Wallet digital gym pass entry", "Automated waitlist management & SMS reminders"]
       },
       {
-        title: "Interactive Assessment & Grading",
-        description: "Automated coding sandboxes, multiple-choice quizzes, timed exams with proctoring safeguards, and detailed teacher feedback consoles.",
-        features: ["In-browser code execution sandbox", "Automated rubric-based grading", "Timed test window with focus-loss detection"]
+        title: "AI Personal Training & Nutrition Intelligence",
+        description: "Computer vision form-check feedback, dynamic workout progression algorithms, and computer-vision barcode & meal photo macro analysis.",
+        features: ["AI computer-vision repetition & posture detection", "Personalized caloric & macronutrient adjustment engine", "Automated trainer check-in messaging agent"]
       }
     ],
     workflow: [
-      { step: "01", title: "Curriculum & Compliance Scoping", desc: "Structuring pedagogical workflows, FERPA/COPPA compliance requirements, and content ingestion formats." },
-      { step: "02", title: "Accessible UX Design", desc: "Creating WCAG 2.1 AA certified student and teacher dashboards with intuitive navigation and high-contrast typography." },
-      { step: "03", title: "Media & Streaming Sprints", desc: "Integrating Mux adaptive bitrate video streaming, offline course downloading, and interactive quiz engines." },
-      { step: "04", title: "Scale & Semester Launch", desc: "Stress testing concurrent quiz submissions under heavy load and deploying 99.9% uptime SLA monitoring." }
+      { step: "01", title: "Scoping & Member Journey", desc: "Mapping member onboardings, biometric data privacy guidelines, class booking workflows, and subscription churn reduction strategies." },
+      { step: "02", title: "Ergonomic UX & Design System", desc: "Designing high-contrast dark mode interfaces optimized for sweat-prone gym environments, quick one-thumb logging, and haptic cues." },
+      { step: "03", title: "Wearable & Stream Engineering", desc: "Integrating HealthKit/Health Connect SDKs, WebRTC/HLS video streaming pipes, and Bluetooth Low Energy peripheral discovery protocols." },
+      { step: "04", title: "Scale & App Store Launch", desc: "Conducting multi-device field testing across iOS and Android flagships, stress testing booking queues, and publishing to the App Store and Google Play." }
     ],
     advantages: [
-      { title: "Adaptive Bitrate Video Streaming", desc: "Smooth, buffer-free video playback on any connection speed using Mux and HLS streaming protocols." },
-      { title: "Strict FERPA & COPPA Student Privacy", desc: "Zero tracking cookies, encrypted student grade records, and privacy safeguards for underage learners." },
-      { title: "SCORM & xAPI Integration", desc: "Easily export and import standardized course content packages to integrate with legacy corporate learning suites." },
-      { title: "Gamified Student Retention UX", desc: "Badges, daily streaks, level progressions, and leaderboard incentives proven to elevate course completion rates by 40%." }
+      { title: "Deep Wearable Ecosystem Integration", desc: "Native SDK integration with Apple Watch, Wear OS, Garmin, Whoop, and Oura Ring via HealthKit and Health Connect." },
+      { title: "High-Engagement Gamification UX", desc: "Daily streaks, personal best PR badges, community challenge leaderboards, and celebratory haptic feedback proven to boost 90-day retention by 62%." },
+      { title: "Automated Churn Defense & Recurring Billing", desc: "Intelligent payment retries (dunning), tiered subscription tiers, family packages, and automatic cancellation survey win-back offers." },
+      { title: "100% IP & Source Code Ownership", desc: "Complete ownership of your mobile app codebase, member data, and cloud infrastructure with zero third-party platform cuts." }
     ],
     faqs: [
-      { question: "Is the platform compliant with student data privacy laws (FERPA / COPPA)?", answer: "Yes. Our architecture enforces strict data isolation, zero commercial data mining, and role-based access controls meeting all FERPA and COPPA requirements." },
-      { question: "Can we integrate with SCORM and xAPI existing course content?", answer: "Yes. We support SCORM 1.2, SCORM 2004, and modern Tin Can (xAPI) packages for seamless content compatibility." },
-      { question: "How do you protect course video content from piracy and screen recording?", answer: "We implement dynamic forensic watermarking displaying the student's email on video frames, paired with encrypted HLS streaming keys that prevent direct downloads." }
+      { question: "Can your fitness apps integrate with Apple HealthKit and Google Health Connect?", answer: "Yes. We build native bridge connectors that seamlessly read and write workouts, active energy burned, resting heart rate, sleep analysis, and step counts with full user privacy consent." },
+      { question: "How do you handle live streaming and on-demand workout video playback?", answer: "We use adaptive bitrate HLS and low-latency WebRTC streaming (via Mux or AWS Interactive Video Service) to ensure smooth HD playback across mobile and casted screens (AirPlay/Chromecast) even on gym Wi-Fi." },
+      { question: "Can the software control physical gym turnstiles or door locks for 24/7 unstaffed facilities?", answer: "Yes. Our gym management backend integrates with leading cloud access hardware (such as Kisi, Brivo, and Paxton) via secure webhooks, enabling members to unlock turnstiles instantly using their phone's digital NFC key or dynamic QR code." }
     ]
   }
 ];
@@ -671,13 +680,25 @@ export function getIndustryBySlug(slug) {
   if (!slug) return null;
   const decoded = decodeURIComponent(String(slug)).toLowerCase().trim();
   const slugified = decoded.replace(/[\s_]+/g, "-");
-  return (
-    industriesData.find(
-      (ind) =>
-        ind.slug === decoded ||
-        ind.slug === slugified ||
-        ind.id === decoded ||
-        ind.id === slugified
-    ) || null
+
+  const direct = industriesData.find(
+    (ind) =>
+      ind.slug === decoded ||
+      ind.slug === slugified ||
+      ind.id === decoded ||
+      ind.id === slugified
   );
+  if (direct) return direct;
+
+  // Aliases for legacy URLs
+  if (
+    slugified === "edtech" ||
+    slugified === "edtech-elearning" ||
+    slugified === "fitness" ||
+    slugified === "fitness-sports"
+  ) {
+    return industriesData.find((ind) => ind.id === "fitness") || null;
+  }
+
+  return null;
 }

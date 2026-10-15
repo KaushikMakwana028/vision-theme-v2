@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { caseStudiesData } from "@/data/caseStudies";
 
 /* =========================================================
@@ -10,6 +11,17 @@ import { caseStudiesData } from "@/data/caseStudies";
 const styles = `
 .svp { overflow-x: clip; }
 .svp section[id] { scroll-margin-top: calc(var(--header-h) + 32px); }
+.cs-showcase-sec,
+#project-overview,
+#system-modules,
+#deliverables,
+#business-impact,
+#client-review,
+#related-work,
+.svp-cta-sec {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 650px;
+}
 
 /* ---------- Scroll progress ---------- */
 .svp-progress {
@@ -24,7 +36,7 @@ const styles = `
 /* ---------- Reveal on scroll ---------- */
 .svp .rv { opacity: 0; }
 .svp .rv.rv-in { opacity: 1; animation: svp-in .8s var(--ease) var(--rv-delay, 0ms) backwards; }
-.svp .rv.rv-in.svp-cta { animation: svp-in .8s var(--ease) backwards, svp-bg 14s ease-in-out .8s infinite; }
+.svp .rv.rv-in.svp-cta { animation: svp-in .8s var(--ease) backwards; }
 
 /* ---------- Redirection bar / Breadcrumbs ---------- */
 .breadcrumbs-bar {
@@ -124,12 +136,11 @@ const styles = `
   background-size: 26px 26px;
   -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 10%, transparent 70%);
   mask-image: radial-gradient(ellipse at 70% 40%, #000 10%, transparent 70%);
-  animation: svp-drift 24s linear infinite;
 }
-.svp-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
-.svp-orb-a { width: 380px; height: 380px; top: -110px; right: 6%; background: var(--primary); opacity: .28; animation: svp-float 12s ease-in-out infinite; }
-.svp-orb-b { width: 300px; height: 300px; bottom: -90px; left: 2%; background: var(--accent); opacity: .26; animation: svp-float 15s ease-in-out -5s infinite reverse; }
-.svp-orb-c { width: 220px; height: 220px; top: 38%; left: 46%; background: var(--accent2); opacity: .2; animation: svp-float 18s ease-in-out -9s infinite; }
+.svp-orb { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; z-index: 0; transform: translateZ(0); }
+.svp-orb-a { width: 380px; height: 380px; top: -110px; right: 6%; background: var(--primary); opacity: .22; }
+.svp-orb-b { width: 300px; height: 300px; bottom: -90px; left: 2%; background: var(--accent); opacity: .2; }
+.svp-orb-c { width: 220px; height: 220px; top: 38%; left: 46%; background: var(--accent2); opacity: .16; }
 
 .svp-hero-copy > * { animation: svp-in .85s var(--ease) backwards; }
 .svp-hero-copy > :nth-child(1) { animation-delay: .05s; }
@@ -337,13 +348,12 @@ const styles = `
 }
 .svp-hero-card::before {
   content: ""; position: absolute; width: 260px; height: 260px; inset: -90px -80px auto auto; border-radius: 50%;
-  background: radial-gradient(circle, rgba(6, 182, 212, .55), transparent 65%);
-  animation: svp-float 9s ease-in-out infinite; pointer-events: none;
+  background: radial-gradient(circle, rgba(6, 182, 212, .45), transparent 65%);
+  pointer-events: none;
 }
 .svp-hero-card::after {
   content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
-  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .12) 50%, transparent 65%);
-  background-size: 250% 100%; animation: svp-sheen 6s ease-in-out 1.8s infinite;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .08) 50%, transparent 65%);
 }
 .svp-hero-card > * { position: relative; z-index: 1; }
 .svp-stats {
@@ -360,8 +370,8 @@ const styles = `
   font-size: .85rem; font-weight: 600; box-shadow: var(--shadow-lg); border: 1px solid var(--line);
 }
 .svp-chip b { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-.svp-chip-a { top: -20px; right: 84px; animation: svp-bob 6s ease-in-out infinite; }
-.svp-chip-b { bottom: -20px; left: 44px; animation: svp-bob 7s ease-in-out -3s infinite; }
+.svp-chip-a { top: -20px; right: 84px; }
+.svp-chip-b { bottom: -20px; left: 44px; }
 .svp-chip-b b { background: var(--accent2); }
 
 /* ---------- Tech marquee ---------- */
@@ -450,9 +460,8 @@ const styles = `
   position: relative; display: flex; flex-direction: column; overflow: hidden; height: 100%;
   transition: transform .4s var(--ease), box-shadow .4s var(--ease);
 }
-.svp-proj:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-.svp-thumb { position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 10; height: auto !important; background: #020617; display: flex; align-items: center; justify-content: center; padding: 0.5rem; }
-.svp-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .5s var(--ease); }
+.svp-thumb { position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 9; height: auto !important; background: #0b1120; border-bottom: 1px solid var(--line); display: block; padding: 0 !important; cursor: pointer; text-decoration: none; }
+.svp-thumb img { display: block; width: 100%; height: 100%; object-fit: contain !important; object-position: center; transition: transform .5s var(--ease); }
 .svp-proj:hover .svp-thumb img { transform: scale(1.025); }
 .svp-wb { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
 .svp-wb h3 { margin: .85rem 0 .5rem; color: var(--ink); font-size: 1.2rem; }
@@ -464,42 +473,32 @@ const styles = `
 .svp-cta {
   position: relative; overflow: hidden; display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: center;
   padding: clamp(1.75rem, 5vw, 3.5rem); border-radius: calc(var(--radius) + 10px); color: #fff;
-  background: linear-gradient(120deg, var(--dark), #1b1a4b, var(--primary), #6d4aff, var(--dark));
-  background-size: 300% 300%; animation: svp-bg 14s ease-in-out infinite;
+  background: linear-gradient(135deg, #090d16 0%, #1e1b4b 55%, #312e81 100%);
   box-shadow: var(--shadow-lg);
 }
 .svp-cta > * { position: relative; z-index: 1; }
 .svp-cta::before, .svp-cta::after {
   content: ""; position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
-  border: 1px solid rgba(255, 255, 255, .18);
+  border: 1px solid rgba(255, 255, 255, .15);
 }
-.svp-cta::before { width: 420px; height: 420px; right: -120px; top: -160px; animation: svp-spin 40s linear infinite; border-style: dashed; }
-.svp-cta::after { width: 260px; height: 260px; left: -90px; bottom: -120px; background: radial-gradient(circle, rgba(251, 146, 60, .35), transparent 70%); border: 0; animation: svp-float 10s ease-in-out infinite; }
+.svp-cta::before { width: 420px; height: 420px; right: -120px; top: -160px; border-style: dashed; opacity: .4; }
+.svp-cta::after { width: 260px; height: 260px; left: -90px; bottom: -120px; background: radial-gradient(circle, rgba(251, 146, 60, .25), transparent 70%); border: 0; }
 .svp-cta .eyebrow { background: rgba(255, 255, 255, .12); color: #a5f3fc; }
 .svp-cta h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); margin: 1rem 0 .8rem; line-height: 1.15; color: #fff; }
 .svp-cta .sub { color: rgba(255, 255, 255, .8); margin: 0; max-width: 56ch; }
 .svp-cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
 .svp-poc-card {
   text-align: center; padding: 2.2rem 2rem; border-radius: 22px;
-  background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .22);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-  animation: svp-bob 6s ease-in-out infinite;
+  background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .18);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
 }
 .svp-poc-big {
   font-size: clamp(2.1rem, 5vw, 2.7rem); font-weight: 800;
-  background: linear-gradient(90deg, #fff, #a5f3fc, #fdba74, #fff); background-size: 250% 100%;
-  -webkit-background-clip: text; background-clip: text; color: transparent; animation: svp-grad 5s linear infinite;
+  background: linear-gradient(90deg, #fff, #a5f3fc, #fdba74);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .svp-poc-title { font-weight: 600; font-size: 1.1rem; margin-top: .3rem; color: #fff; }
 .svp-poc-card p { color: rgba(255, 255, 255, .82); font-size: .9rem; margin: .6rem 0 0; }
-
-/* ---------- Meta Link ---------- */
-.cs-meta-link {
-  text-decoration: none; transition: border-color .2s, color .2s, background .2s;
-}
-.cs-meta-link:hover {
-  border-color: var(--primary); color: var(--primary); background: rgba(79, 70, 229, .06);
-}
 
 /* ---------- Hero Preview Card ---------- */
 .cs-hero-preview-box {
@@ -510,7 +509,7 @@ const styles = `
 .cs-hero-preview-link { display: block; position: relative; overflow: hidden; text-decoration: none; width: 100%; }
 .cs-hero-preview-img {
   width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block;
-  background: #0f172a; padding: 0 !important;
+  background: #f8fafc; padding: 0 !important;
   transition: transform .5s var(--ease);
 }
 .cs-hero-preview-link:hover .cs-hero-preview-img { transform: scale(1.05); }
@@ -610,12 +609,12 @@ const styles = `
   transform: translate(2px, -2px);
 }
 .cs-browser-screen {
-  position: relative; background: #020617; overflow: hidden;
+  position: relative; background: #0b1120; overflow: hidden;
   display: flex; align-items: center; justify-content: center; cursor: zoom-in;
   width: 100%; aspect-ratio: 16 / 9;
 }
 .cs-main-screen-img {
-  width: 100%; height: 100%; display: block; object-fit: contain; object-position: center;
+  width: 100%; height: 100%; display: block; object-fit: cover; object-position: center;
   transition: transform .5s var(--ease);
 }
 .cs-browser-screen:hover .cs-main-screen-img { transform: scale(1.02); }
@@ -646,43 +645,7 @@ const styles = `
   background: rgba(56, 189, 248, .2); color: #ffffff;
 }
 
-/* ---------- Gallery Container & Multi-Image Grid ---------- */
-.cs-gallery-container {
-  max-width: 1100px;
-  margin: 2.5rem auto 0;
-  padding-top: 2rem;
-  border-top: 1px solid var(--line);
-}
-.cs-gallery-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 1.25rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.cs-gallery-title h3 {
-  margin: 0 0 .25rem;
-  color: var(--ink);
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-.cs-gallery-title p {
-  margin: 0;
-  color: var(--muted);
-  font-size: .88rem;
-}
-.cs-gallery-count {
-  padding: .28rem .75rem;
-  border-radius: 999px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  font-size: .78rem;
-  font-weight: 600;
-  color: var(--primary);
-}
-  color: var(--primary);
-}
+
 .cs-gallery-container {
   max-width: 1100px;
   margin: 2.5rem auto 0;
@@ -752,7 +715,7 @@ const styles = `
 .cs-gallery-inner {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   display: block;
   background: #f8fafc;
@@ -818,7 +781,7 @@ const styles = `
     border-radius: 14px;
   }
   .cs-gallery-inner {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
   }
 }
 
@@ -1104,7 +1067,7 @@ const styles = `
     gap: 1rem;
   }
   .cs-gallery-card { max-width: 100%; border-radius: 14px; }
-  .cs-gallery-inner { aspect-ratio: 16 / 10; }
+  .cs-gallery-inner { aspect-ratio: 16 / 9; }
   .cs-gallery-header { margin-bottom: 1rem; }
   .cs-gallery-title h3 { font-size: 1.15rem; }
   .cs-gallery-title p { font-size: 0.82rem; }
@@ -1271,36 +1234,50 @@ function ScrollProgress() {
   );
 }
 
+let spotRaf = null;
 const onSpot = (e) => {
   const el = e.currentTarget;
-  let r = el._cachedRect;
-  if (!r) {
-    r = el.getBoundingClientRect();
-    el._cachedRect = r;
-  }
-  el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  el.style.setProperty("--my", `${e.clientY - r.top}px`);
+  const clientX = e.clientX;
+  const clientY = e.clientY;
+  if (spotRaf) cancelAnimationFrame(spotRaf);
+  spotRaf = requestAnimationFrame(() => {
+    let r = el._cachedRect;
+    if (!r) {
+      r = el.getBoundingClientRect();
+      el._cachedRect = r;
+    }
+    el.style.setProperty("--mx", `${clientX - r.left}px`);
+    el.style.setProperty("--my", `${clientY - r.top}px`);
+  });
 };
 
+let tiltRaf = null;
 const onTilt = (e) => {
   if (!window.matchMedia("(hover: hover) and (min-width: 861px)").matches)
     return;
   const el = e.currentTarget;
-  let r = el._cachedRect;
-  if (!r) {
-    r = el.getBoundingClientRect();
-    el._cachedRect = r;
-  }
-  const x = (e.clientX - r.left) / r.width - 0.5;
-  const y = (e.clientY - r.top) / r.height - 0.5;
-  el.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
-  el.style.setProperty("--ry", `${(x * 9).toFixed(2)}deg`);
+  const clientX = e.clientX;
+  const clientY = e.clientY;
+  if (tiltRaf) cancelAnimationFrame(tiltRaf);
+  tiltRaf = requestAnimationFrame(() => {
+    let r = el._cachedRect;
+    if (!r) {
+      r = el.getBoundingClientRect();
+      el._cachedRect = r;
+    }
+    const x = (clientX - r.left) / r.width - 0.5;
+    const y = (clientY - r.top) / r.height - 0.5;
+    el.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
+    el.style.setProperty("--ry", `${(x * 9).toFixed(2)}deg`);
+  });
 };
 
 const onTiltEnd = (e) => {
-  e.currentTarget._cachedRect = null;
-  e.currentTarget.style.setProperty("--rx", "0deg");
-  e.currentTarget.style.setProperty("--ry", "0deg");
+  if (tiltRaf) cancelAnimationFrame(tiltRaf);
+  const el = e.currentTarget;
+  el._cachedRect = null;
+  el.style.setProperty("--rx", "0deg");
+  el.style.setProperty("--ry", "0deg");
 };
 
 /* =========================================================
@@ -1627,11 +1604,13 @@ export default function WorkDetailPage({ project }) {
                     className="cs-hero-preview-link"
                     title="Click to view full interface showcase"
                   >
-                    <img
+                    <Image
                       src={project.image}
                       alt={`${project.title} Preview`}
+                      width={800}
+                      height={450}
                       className="cs-hero-preview-img"
-                      loading="eager"
+                      priority
                     />
                     <div className="cs-hero-preview-badge">
                       <span>Click to View Full Showcase ↓</span>
@@ -1763,11 +1742,12 @@ export default function WorkDetailPage({ project }) {
                 onClick={() => setLightboxOpen(true)}
                 title="Click to expand fullscreen"
               >
-                <img
+                <Image
                   src={activeImage || project.image}
                   alt={project.title}
+                  width={1200}
+                  height={675}
                   className="cs-main-screen-img"
-                  loading="lazy"
                 />
               </div>
 
@@ -1819,11 +1799,14 @@ export default function WorkDetailPage({ project }) {
                       title="Click to view full-resolution preview"
                     >
                       <div className="cs-gallery-inner">
-                        <img
+                        <Image
                           src={imgItem.url}
                           alt={imgItem.caption || `Screen ${idx + 1}`}
-                          loading="lazy"
+                          width={600}
+                          height={338}
                           className="cs-gallery-img"
+                          loading="lazy"
+                          sizes="(max-width: 640px) 100vw, (max-width: 992px) 50vw, 33vw"
                         />
                         <div className="cs-gallery-overlay">
                           <span className="cs-gallery-zoom-pill">
@@ -2053,12 +2036,13 @@ export default function WorkDetailPage({ project }) {
                     }}
                     aria-label={`View ${rel.title} case study`}
                   >
-                    <img
+                    <Image
                       src={rel.image}
                       alt={rel.title}
                       width={800}
                       height={520}
                       loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
                       onError={(e) => {
                         e.currentTarget.style.display = "none";
                       }}
@@ -2188,9 +2172,12 @@ export default function WorkDetailPage({ project }) {
             )}
 
             <div className="cs-lightbox-content">
-              <img
+              <Image
                 src={allImages[activeIndex]?.url || activeImage || project.image}
                 alt={allImages[activeIndex]?.caption || project.title}
+                width={1200}
+                height={800}
+                style={{ width: "auto", height: "auto" }}
               />
               <div className="cs-lightbox-bottom">
                 <p className="cs-lightbox-caption">

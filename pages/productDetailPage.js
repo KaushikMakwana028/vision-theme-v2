@@ -689,6 +689,16 @@ export default function ProductDetailPage({ product }) {
                   <use href="#i-arrow" />
                 </svg>
               </Link>
+              {product.liveDemoUrl && (
+                <a
+                  className="btn btn-ghost"
+                  href={product.liveDemoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {product.liveDemoUrl.includes("play.google") ? "View on Google Play ↗" : "Live Demo Portal ↗"}
+                </a>
+              )}
               <a className="btn btn-ghost" href="#product-features">
                 Explore Architecture ↓
               </a>
@@ -719,6 +729,34 @@ export default function ProductDetailPage({ product }) {
 
               <h3>{product.shortTitle} Engine</h3>
               <p>{product.tagline}</p>
+
+              {product.image && (
+                <div
+                  style={{
+                    width: "100%",
+                    aspectRatio: "16 / 9",
+                    borderRadius: "12px",
+                    overflow: "hidden",
+                    background: "#0b1120",
+                    margin: "1rem 0",
+                    border: "1px solid rgba(255, 255, 255, 0.12)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
+                >
+                  <img
+                    src={product.image}
+                    alt={`${product.shortTitle} Preview`}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                      display: "block"
+                    }}
+                  />
+                </div>
+              )}
 
               <div className="agent-live">
                 <i /> Live Demo Sandbox Available
@@ -995,10 +1033,44 @@ export default function ProductDetailPage({ product }) {
                   </span>
 
                   <h3>{rel.shortTitle}</h3>
+
+                  {rel.image && (
+                    <div
+                      style={{
+                        width: "100%",
+                        aspectRatio: "16 / 9",
+                        borderRadius: "12px",
+                        overflow: "hidden",
+                        background: "#0b1120",
+                        margin: "0.85rem 0 1.1rem",
+                        border: "1px solid rgba(255, 255, 255, 0.08)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                      }}
+                    >
+                      <img
+                        src={rel.image}
+                        alt={rel.title}
+                        loading="lazy"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "contain",
+                          display: "block"
+                        }}
+                      />
+                    </div>
+                  )}
+
                   <p>{rel.shortDescription}</p>
 
                   <div style={{ marginTop: "auto", paddingTop: "1.2rem" }}>
-                    <Link href={`/products/${rel.slug}`} className="more">
+                    <Link
+                      href={`/products/${rel.slug}`}
+                      className="more"
+                      aria-label={`Explore ${rel.shortTitle} platform`}
+                    >
                       Explore Platform
                       <svg className="i" aria-hidden="true">
                         <use href="#i-arrow" />

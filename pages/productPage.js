@@ -653,7 +653,7 @@ const onTiltEnd = (e) => {
    ========================================================= */
 
 const heroStats = [
-  { value: "5+", label: "Proprietary Products" },
+  { value: "4", label: "Proprietary Products" },
   { value: "10x", label: "Faster Launch" },
   { value: "99.9%", label: "Uptime SLA" },
   { value: "100%", label: "Source Code IP" },
@@ -662,19 +662,19 @@ const heroStats = [
 const generalProductFaqs = [
   {
     q: "What is the difference between Managed SaaS and Source Code Buyout?",
-    a: "Managed Cloud SaaS includes hosting, automatic GPU/server infrastructure maintenance, security patches, and ongoing software updates on a monthly subscription. The Source Code Buyout gives you 100% intellectual property ownership, complete Git repositories, and Docker/Kubernetes scripts to run on your own AWS/GCP/Azure infrastructure with zero recurring licensing fees."
+    a: "Managed Cloud SaaS includes hosting, automatic server infrastructure maintenance, security patches, and ongoing software updates on a monthly subscription. The Source Code Buyout gives you 100% intellectual property ownership, complete Git repositories, and deployment scripts to run on your own AWS/GCP/DigitalOcean infrastructure with zero recurring licensing fees."
   },
   {
-    q: "Can we rebrand and white-label these products under our own agency name?",
-    a: "Yes. All our products support full white-labeling. You can configure custom domains, brand logos, primary color schemes, transactional email templates, and connect your own Stripe or PayPal merchant accounts to bill your clients directly."
+    q: "Can we rebrand and white-label these products under our own company name?",
+    a: "Yes. All 4 products support full white-labeling. You can configure custom domains, brand logos, primary color schemes, transactional email templates, and connect your own payment gateways to bill your clients directly."
   },
   {
     q: "Can Vision customize features or add bespoke integrations before deployment?",
-    a: "Absolutely. Since all platforms are engineered in-house by our senior architects, our squad can rapidly tailor workflows, connect proprietary ERP/CRM systems, adjust AI models, or integrate custom payment gateways within 5 to 14 days."
+    a: "Absolutely. Since all platforms are engineered in-house by our senior architects, our squad can rapidly tailor workflows, connect proprietary ERP/CRM systems, adjust database models, or integrate custom payment gateways within 5 to 14 days."
   },
   {
-    q: "Are the Shopify applications approved for the Shopify App Store?",
-    a: "Yes. Our Shopify apps strictly adhere to Shopify's App Store Review guidelines, Polaris design standards, App Bridge 3.0, and OAuth2 security protocols. We handle the complete app listing review and developer approval process."
+    q: "Are the mobile applications available on Google Play and Apple App Store?",
+    a: "Yes. FilterBook, TripsBook, and SiteDesk are live on the Google Play Store and can be installed immediately or compiled for custom deployment under your own organization developer accounts."
   },
   {
     q: "How fast can we launch a sandbox proof-of-concept (POC)?",
@@ -755,16 +755,16 @@ export default function ProductPage() {
 
   const marqueeKeywords = useMemo(() => {
     return [
-      "Autonomous AI Copywriting",
-      "Shopify App Bridge 3.0",
-      "GDPR / CCPA Consent Shield",
-      "Automotive MMY Search Engine",
-      "Multichannel AI Outreach",
-      "Custom Store Locator & MapBox",
-      "White-Label SaaS",
-      "100% Source Code Ownership",
-      "REST & GraphQL APIs",
-      "Cloud Native Docker Stacks"
+      "BillsBook Invoicing & POS",
+      "FilterBook RO Service CRM",
+      "TripsBook Fleet Management",
+      "SiteDesk Real Estate ERP",
+      "Sub-30s Counter POS Billing",
+      "Automated WhatsApp PDF Invoices",
+      "Live GPS Fleet Telemetry",
+      "Plot EMI & Dastavej Records",
+      "White-Label SaaS Platforms",
+      "100% Source Code Ownership"
     ];
   }, []);
 
@@ -789,19 +789,19 @@ export default function ProductPage() {
           <div className="copy svp-hero-copy">
             <div style={{ marginBottom: "1rem" }}>
               <span className="eyebrow-hero">
-                <strong>Vision</strong> Turnkey SaaS &amp; Commerce Platforms
+                <strong>Vision</strong> Proprietary SaaS &amp; Mobile Platforms
               </span>
             </div>
 
             <h1 id="products-hero-title">
               Market-Ready SaaS Platforms &amp;{" "}
-              <em>Turnkey Software Engineered for Scale</em>
+              <em>Turnkey Mobile Software Engineered for Scale</em>
             </h1>
 
             <p className="lead">
-              Launch enterprise-grade AI engines, high-converting Shopify apps, and complete
-              turnkey industry suites in days rather than quarters. Battle-tested, white-label
-              ready, and built for rapid revenue generation.
+              Launch enterprise-grade counter POS billing, water purifier CRM, fleet tracking,
+              and real estate plotting ERP platforms in days. Battle-tested, white-label ready,
+              and engineered for rapid business growth.
             </p>
 
             <div className="cta-row">
@@ -816,10 +816,10 @@ export default function ProductPage() {
 
           <div className="svp-hero-wrap">
             <span className="svp-chip svp-chip-a" aria-hidden="true">
-              <b /> AI Platforms
+              <b /> Business SaaS
             </span>
             <span className="svp-chip svp-chip-b" aria-hidden="true">
-              <b /> Shopify Apps
+              <b /> Mobile Apps
             </span>
 
             <div
@@ -843,7 +843,7 @@ export default function ProductPage() {
               </p>
 
               <div className="agent-live">
-                <i /> 9 Active Turnkey Products
+                <i /> 4 Active Proprietary Products
               </div>
 
               <div className="svp-stats">
@@ -880,10 +880,10 @@ export default function ProductPage() {
         <div className="container">
           <Reveal className="sec-head">
             <span className="eyebrow">Product Catalog</span>
-            <h2>Proven Platforms Engineered to Accelerate Your Business</h2>
+            <h2>Proven Platforms Engineered to Accelerate Your Operations</h2>
             <p>
-              Choose from our curated lineup of AI SaaS tools, certified Shopify ecommerce
-              extensions, and industry-specific enterprise platforms.
+              Choose from our lineup of proprietary SaaS tools, field service mobility suites,
+              and industry-specific ERP applications.
             </p>
           </Reveal>
 
@@ -952,6 +952,35 @@ export default function ProductPage() {
                     <span className="prod-rating">★ {prod.rating}</span>
                     <span className="prod-reviews">({prod.reviewsCount})</span>
                   </div>
+
+                  {prod.image && (
+                    <div
+                      style={{
+                        width: "100%",
+                        aspectRatio: "16 / 9",
+                        borderRadius: "12px",
+                        overflow: "hidden",
+                        background: "#0b1120",
+                        margin: "0.85rem 0 1.1rem",
+                        border: "1px solid rgba(255, 255, 255, 0.08)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                      }}
+                    >
+                      <img
+                        src={prod.image}
+                        alt={prod.title}
+                        loading="lazy"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "contain",
+                          display: "block"
+                        }}
+                      />
+                    </div>
+                  )}
 
                   <p>{prod.shortDescription}</p>
 

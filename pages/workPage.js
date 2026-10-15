@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { caseStudiesData, workCategories } from "@/data/caseStudies";
 
 /* =========================================================
@@ -276,12 +277,12 @@ const styles = `
 /* Image container - FULL image display, edge-to-edge, flush border */
 .svp-thumb {
   position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 9;
-  background: #f8fafc; border-bottom: 1px solid var(--line);
+  background: #0b1120; border-bottom: 1px solid var(--line);
   display: block; padding: 0 !important; cursor: pointer; text-decoration: none;
 }
 .svp-thumb img {
   display: block; width: 100%; height: 100%;
-  object-fit: cover !important; object-position: center;
+  object-fit: contain !important; object-position: center;
   transition: transform .5s var(--ease);
 }
 .svp-thumb::before {
@@ -509,7 +510,8 @@ const styles = `
   .svp-poc-card { padding: 1.6rem 1.25rem; }
   .svp-marquee { padding: 1rem 0; }
   .svp-wb { padding: 1.25rem; }
-  .svp-thumb { aspect-ratio: 16 / 10; padding: 0.4rem; }
+  .svp-thumb { aspect-ratio: 16 / 9 !important; padding: 0 !important; background: #0b1120 !important; }
+  .svp-thumb img { object-fit: contain !important; width: 100% !important; height: 100% !important; object-position: center !important; }
   .svp .svp-tags { min-height: auto; }
   .svp-wb h3 { min-height: auto; -webkit-line-clamp: 3; font-size: 1.15rem; }
   .svp-wb p { min-height: auto; -webkit-line-clamp: 4; font-size: .9rem; }
@@ -970,12 +972,11 @@ export default function WorkPage() {
                   className="svp-thumb"
                   aria-label={`View ${proj.title} case study`}
                 >
-                  <img
+                  <Image
                     src={proj.image}
                     alt={proj.title}
                     width={800}
-                    height={520}
-                    loading="lazy"
+                    height={450}
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                     }}
@@ -999,7 +1000,11 @@ export default function WorkPage() {
 
                   <p>{proj.description}</p>
 
-                  <Link href={`/work/${proj.slug || proj.id}`} className="more">
+                  <Link
+                    href={`/work/${proj.slug || proj.id}`}
+                    className="more"
+                    aria-label={`Explore ${proj.title} case study`}
+                  >
                     Explore Case Study
                     <svg className="i" aria-hidden="true">
                       <use href="#i-arrow" />
