@@ -21,7 +21,7 @@ export default function CountUp({ value, duration = 1500 }) {
       "(prefers-reduced-motion: reduce)",
     ).matches;
     if (reduce || typeof IntersectionObserver === "undefined") {
-      setN(target);
+      requestAnimationFrame(() => setN(target));
       return;
     }
     let raf;

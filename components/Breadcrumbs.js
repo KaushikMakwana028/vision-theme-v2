@@ -122,7 +122,11 @@ export default function Breadcrumbs({ items }) {
               return (
                 <li key={item.path || index} className="breadcrumbs-item">
                   {isLast ? (
-                    <span aria-current="page" className="breadcrumbs-current" title={item.name}>
+                    <span
+                      aria-current="page"
+                      className="breadcrumbs-current"
+                      title={item.name}
+                    >
                       {item.name}
                     </span>
                   ) : (

@@ -108,16 +108,11 @@ export const navigationData = {
     ],
     company: [
       { label: "About Us", href: "/about" },
-      { label: "All Services", href: "/services" },
-      { label: "All Industries", href: "/industries" },
-      { label: "Products", href: "/products" },
       { label: "Case Studies", href: "/work" },
+      { label: "Industries", href: "/industries" },
+      { label: "Products", href: "/products" },
       { label: "Engineering Blog", href: "/blog" },
-      { label: "Contact Us", href: "/contact" },
-      { label: "Privacy Policy", href: "/privacy-policy" },
-      { label: "Terms of Service", href: "/terms" },
-      { label: "Testimonials", href: "/#testimonials" },
-      { label: "Delivery Guarantees", href: "/#guarantees" }
+      { label: "Contact Us", href: "/contact" }
     ],
     legal: [
       { label: "Privacy Policy", href: "/privacy-policy" },

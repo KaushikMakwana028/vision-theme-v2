@@ -1,8 +1,10 @@
-"use client";
-
-import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { productsData, productCategories } from "@/data/products";
+import ScrollProgress from "@/components/motion/ScrollProgress";
+import CountUp from "@/components/motion/CountUp";
+import Reveal from "@/components/motion/Reveal";
+import ProductFilterGrid from "@/components/products/ProductFilterGrid";
+import FaqAccordion from "@/components/common/FaqAccordion";
 
 /* =========================================================
    Page styles (scoped under .svp) — matches servicePage.js & theme
@@ -22,9 +24,9 @@ const styles = `
 }
 
 /* ---------- Reveal on scroll ---------- */
-.svp .rv { opacity: 0; }
-.svp .rv.rv-in { opacity: 1; animation: svp-in .8s var(--ease) var(--rv-delay, 0ms) backwards; }
-.svp .rv.rv-in.svp-cta { animation: svp-in .8s var(--ease) backwards, svp-bg 14s ease-in-out .8s infinite; }
+.svp .rv { opacity: 1; transform: none; }
+.svp .rv.rv-in { opacity: 1; transform: none; }
+.svp .rv.svp-cta { animation: svp-bg 14s ease-in-out infinite; }
 
 /* ---------- Redirection bar / Breadcrumbs ---------- */
 .breadcrumbs-bar {
@@ -384,9 +386,11 @@ const styles = `
 .svp-cta::before { width: 420px; height: 420px; right: -120px; top: -160px; animation: svp-spin 40s linear infinite; border-style: dashed; }
 .svp-cta::after { width: 260px; height: 260px; left: -90px; bottom: -120px; background: radial-gradient(circle, rgba(251, 146, 60, .35), transparent 70%); border: 0; animation: svp-float 10s ease-in-out infinite; }
 .svp-cta .eyebrow { background: rgba(255, 255, 255, .12); color: #a5f3fc; }
-.svp-cta h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); margin: 1rem 0 .8rem; line-height: 1.15; color: #fff; }
+.svp-cta h2, .cta-box.svp-cta h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); margin: 1rem 0 .8rem; line-height: 1.15; color: #ffffff !important; }
 .svp-cta .sub { color: rgba(255, 255, 255, .8); margin: 0; max-width: 56ch; }
 .svp-cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.svp-cta-actions .btn-ghost { background: transparent !important; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, .4) !important; }
+.svp-cta-actions .btn-ghost:hover { background: rgba(255, 255, 255, .15) !important; color: #ffffff !important; border-color: rgba(255, 255, 255, .7) !important; }
 .svp-poc-card {
   text-align: center; padding: 2.2rem 2rem; border-radius: 22px;
   background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .22);
@@ -488,165 +492,7 @@ const styles = `
 }
 `;
 
-/* =========================================================
-   Helpers
-   ========================================================= */
 
-function useInView(threshold = 0.12) {
-  const ref = useRef(null);
-  const [shown, setShown] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setShown(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          io.disconnect();
-        }
-      },
-      { threshold, rootMargin: "0px 0px -40px 0px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [threshold]);
-  return [ref, shown];
-}
-
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  as: Tag = "div",
-  ...rest
-}) {
-  const [ref, shown] = useInView();
-  return (
-    <Tag
-      ref={ref}
-      className={`rv ${shown ? "rv-in" : ""} ${className}`}
-      style={{ "--rv-delay": `${delay}ms` }}
-      {...rest}
-    >
-      {children}
-    </Tag>
-  );
-}
-
-function CountUp({ value, duration = 1500 }) {
-  const text = String(value ?? "");
-  const match = text.match(/^(\D*?)(\d+(?:\.\d+)?)(\D*)$/);
-  const countable = Boolean(match);
-  const prefix = countable ? match[1] : "";
-  const target = countable ? parseFloat(match[2]) : 0;
-  const suffix = countable ? match[3] : "";
-  const decimals =
-    countable && match[2].includes(".") ? match[2].split(".")[1].length : 0;
-  const ref = useRef(null);
-  const [n, setN] = useState(countable ? 0 : target);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !countable) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || typeof IntersectionObserver === "undefined") {
-      setN(target);
-      return;
-    }
-    let raf;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        io.disconnect();
-        const start = performance.now();
-        const tick = (now) => {
-          const p = Math.min((now - start) / duration, 1);
-          setN(target * (1 - Math.pow(1 - p, 3)));
-          if (p < 1) raf = requestAnimationFrame(tick);
-        };
-        raf = requestAnimationFrame(tick);
-      },
-      { threshold: 0.4 }
-    );
-    io.observe(el);
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(raf);
-    };
-  }, [target, duration, countable]);
-
-  return (
-    <strong ref={ref}>
-      {countable ? `${prefix}${n.toFixed(decimals)}${suffix}` : text}
-    </strong>
-  );
-}
-
-function ScrollProgress() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    let raf;
-    const update = () => {
-      const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      if (el) el.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
-    };
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-  return (
-    <div className="svp-progress" aria-hidden="true">
-      <span ref={ref} />
-    </div>
-  );
-}
-
-const onSpot = (e) => {
-  const el = e.currentTarget;
-  let r = el._cachedRect;
-  if (!r) {
-    r = el.getBoundingClientRect();
-    el._cachedRect = r;
-  }
-  el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  el.style.setProperty("--my", `${e.clientY - r.top}px`);
-};
-
-const onTilt = (e) => {
-  if (!window.matchMedia("(hover: hover) and (min-width: 861px)").matches)
-    return;
-  const el = e.currentTarget;
-  let r = el._cachedRect;
-  if (!r) {
-    r = el.getBoundingClientRect();
-    el._cachedRect = r;
-  }
-  const x = (e.clientX - r.left) / r.width - 0.5;
-  const y = (e.clientY - r.top) / r.height - 0.5;
-  el.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
-  el.style.setProperty("--ry", `${(x * 9).toFixed(2)}deg`);
-};
-
-const onTiltEnd = (e) => {
-  e.currentTarget._cachedRect = null;
-  e.currentTarget.style.setProperty("--rx", "0deg");
-  e.currentTarget.style.setProperty("--ry", "0deg");
-};
 
 /* =========================================================
    Static Data
@@ -737,40 +583,41 @@ const whyProductItems = [
    ========================================================= */
 
 export default function ProductPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [openFaq, setOpenFaq] = useState(0);
+  const counts = { All: productsData.length };
+  productsData.forEach((p) => {
+    counts[p.category] = (counts[p.category] || 0) + 1;
+  });
 
-  const filteredProducts = useMemo(() => {
-    if (selectedCategory === "All") return productsData;
-    return productsData.filter((p) => p.category === selectedCategory);
-  }, [selectedCategory]);
+  const trimmedProducts = productsData.map((prod) => ({
+    id: prod.id,
+    slug: prod.slug,
+    category: prod.category,
+    badge: prod.badge,
+    number: prod.number,
+    gradient: prod.gradient,
+    icon: prod.icon,
+    shortTitle: prod.shortTitle,
+    rating: prod.rating,
+    reviewsCount: prod.reviewsCount,
+    image: prod.image,
+    title: prod.title,
+    shortDescription: prod.shortDescription,
+    features: prod.features?.slice(0, 3).map((f) => ({ title: f.title })),
+    pricing: prod.pricing,
+  }));
 
-  const counts = useMemo(() => {
-    const map = { All: productsData.length };
-    productsData.forEach((p) => {
-      map[p.category] = (map[p.category] || 0) + 1;
-    });
-    return map;
-  }, []);
-
-  const marqueeKeywords = useMemo(() => {
-    return [
-      "BillsBook Invoicing & POS",
-      "FilterBook RO Service CRM",
-      "TripsBook Fleet Management",
-      "SiteDesk Real Estate ERP",
-      "Sub-30s Counter POS Billing",
-      "Automated WhatsApp PDF Invoices",
-      "Live GPS Fleet Telemetry",
-      "Plot EMI & Dastavej Records",
-      "White-Label SaaS Platforms",
-      "100% Source Code Ownership"
-    ];
-  }, []);
-
-  const toggleFaq = (idx) => {
-    setOpenFaq((prev) => (prev === idx ? null : idx));
-  };
+  const marqueeKeywords = [
+    "BillsBook Invoicing & POS",
+    "FilterBook RO Service CRM",
+    "TripsBook Fleet Management",
+    "SiteDesk Real Estate ERP",
+    "Sub-30s Counter POS Billing",
+    "Automated WhatsApp PDF Invoices",
+    "Live GPS Fleet Telemetry",
+    "Plot EMI & Dastavej Records",
+    "White-Label SaaS Platforms",
+    "100% Source Code Ownership"
+  ];
 
   return (
     <div className="svp">
@@ -822,10 +669,10 @@ export default function ProductPage() {
               <b /> Mobile Apps
             </span>
 
-            <div
+            <Reveal
               className="bcard big svp-hero-card"
-              onMouseMove={onTilt}
-              onMouseLeave={onTiltEnd}
+              tilt
+              reveal={false}
             >
               <div className="bcard-top">
                 <span className="btag">01 · Production Ready</span>
@@ -854,7 +701,7 @@ export default function ProductPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -887,132 +734,11 @@ export default function ProductPage() {
             </p>
           </Reveal>
 
-          {/* Filter tabs */}
-          <div className="filter-wrap">
-            <div className="filter-tabs" role="tablist" aria-label="Product categories">
-              {productCategories.map((cat) => {
-                const count = counts[cat] || 0;
-                const isActive = selectedCategory === cat;
-                return (
-                  <button
-                    key={cat}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    className={`filter-tab ${isActive ? "active" : ""}`}
-                    onClick={(e) => {
-                      setSelectedCategory(cat);
-                      e.currentTarget.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-                    }}
-                  >
-                    <span>{cat}</span>
-                    <em>{count}</em>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Products Grid */}
-          {filteredProducts.length === 0 ? (
-            <div className="svp-empty">
-              <p>No products found under this category.</p>
-            </div>
-          ) : (
-            <div className="cols c3">
-              {filteredProducts.map((prod, idx) => (
-                <Reveal
-                  key={prod.id}
-                  as="article"
-                  delay={idx * 75}
-                  className="card svp-card"
-                  onMouseMove={onSpot}
-                >
-                  <div className="svp-card-top">
-                    <span className="prod-badge">{prod.badge}</span>
-                    <span className="svc-num">{prod.number}</span>
-                  </div>
-
-                  <span
-                    className="ico"
-                    style={{
-                      background: prod.gradient
-                        ? `${prod.gradient.replace("linear-gradient", "radial-gradient")}`
-                        : undefined
-                    }}
-                  >
-                    <svg className="i" aria-hidden="true">
-                      <use href={`#${prod.icon || "i-box"}`} />
-                    </svg>
-                  </span>
-
-                  <h3>{prod.shortTitle}</h3>
-
-                  <div className="prod-meta">
-                    <span className="prod-rating">★ {prod.rating}</span>
-                    <span className="prod-reviews">({prod.reviewsCount})</span>
-                  </div>
-
-                  {prod.image && (
-                    <div
-                      style={{
-                        width: "100%",
-                        aspectRatio: "16 / 9",
-                        borderRadius: "12px",
-                        overflow: "hidden",
-                        background: "#0b1120",
-                        margin: "0.85rem 0 1.1rem",
-                        border: "1px solid rgba(255, 255, 255, 0.08)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center"
-                      }}
-                    >
-                      <img
-                        src={prod.image}
-                        alt={prod.title}
-                        loading="lazy"
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "contain",
-                          display: "block"
-                        }}
-                      />
-                    </div>
-                  )}
-
-                  <p>{prod.shortDescription}</p>
-
-                  <ul className="ticks">
-                    {prod.features.slice(0, 3).map((f, fIdx) => (
-                      <li key={fIdx}>
-                        <svg className="i" aria-hidden="true">
-                          <use href="#i-check" />
-                        </svg>
-                        <span>{f.title}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="pricing-badge">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M12 6v6l4 2" />
-                    </svg>
-                    <span>{prod.pricing}</span>
-                  </div>
-
-                  <Link href={`/products/${prod.slug}`} className="more">
-                    View Platform &amp; Architecture
-                    <svg className="i" aria-hidden="true">
-                      <use href="#i-arrow" />
-                    </svg>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
-          )}
+          <ProductFilterGrid
+            categories={productCategories}
+            counts={counts}
+            products={trimmedProducts}
+          />
         </div>
       </section>
 
@@ -1034,7 +760,7 @@ export default function ProductPage() {
                 key={idx}
                 delay={idx * 80}
                 className="card svp-step"
-                onMouseMove={onSpot}
+                spot
               >
                 <span className="ico">
                   <svg className="i" aria-hidden="true">
@@ -1067,7 +793,7 @@ export default function ProductPage() {
                 key={step.n}
                 delay={idx * 90}
                 className="card svp-step"
-                onMouseMove={onSpot}
+                spot
               >
                 <span className="svp-step-num">{step.n}</span>
                 <span className="ico">
@@ -1095,42 +821,7 @@ export default function ProductPage() {
             </p>
           </Reveal>
 
-          <div className="faq-wrap">
-            {generalProductFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <Reveal
-                  key={idx}
-                  delay={idx * 70}
-                  className={`faq-card ${isOpen ? "open" : ""}`}
-                >
-                  <button
-                    type="button"
-                    id={`faq-btn-${idx}`}
-                    className="faq-card-head"
-                    onClick={() => toggleFaq(idx)}
-                    aria-expanded={isOpen}
-                    aria-controls={`faq-panel-${idx}`}
-                  >
-                    <span>{faq.q}</span>
-                    <span className="faq-icon" aria-hidden="true">
-                      +
-                    </span>
-                  </button>
-                  <div
-                    id={`faq-panel-${idx}`}
-                    role="region"
-                    aria-labelledby={`faq-btn-${idx}`}
-                    className="faq-card-body"
-                  >
-                    <div className="faq-inner">
-                      <p>{faq.a}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
+          <FaqAccordion items={generalProductFaqs} />
         </div>
       </section>
 

@@ -389,11 +389,12 @@ const styles = `
 .svp-cta::before { width: 420px; height: 420px; right: -120px; top: -160px; animation: svp-spin 40s linear infinite; border-style: dashed; }
 .svp-cta::after { width: 260px; height: 260px; left: -90px; bottom: -120px; background: radial-gradient(circle, rgba(251, 146, 60, .35), transparent 70%); border: 0; animation: svp-float 10s ease-in-out infinite; }
 .svp-cta .eyebrow { background: rgba(255, 255, 255, .12); color: #a5f3fc; }
-.svp-cta h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); margin: 1rem 0 .8rem; line-height: 1.15; color: #fff; }
+.svp-cta h2, .cta-box.svp-cta h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); margin: 1rem 0 .8rem; line-height: 1.15; color: #ffffff !important; }
 .svp-cta .sub { color: rgba(255, 255, 255, .8); margin: 0; max-width: 56ch; }
-.svp-cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
-.svp-cta-actions .btn-ghost { color: #fff; border-color: rgba(255, 255, 255, .4); }
-.svp-cta-actions .btn-ghost:hover { background: rgba(255, 255, 255, .12); }
+.svp-cta-actions .btn-light { background: #ffffff !important; color: #1e1b4b !important; font-weight: 700 !important; box-shadow: 0 10px 24px -8px rgba(0, 0, 0, .35) !important; }
+.svp-cta-actions .btn-light:hover { background: #f1f2ff !important; color: #4338ca !important; transform: translateY(-2px); }
+.svp-cta-actions .btn-ghost { background: transparent !important; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, .4) !important; }
+.svp-cta-actions .btn-ghost:hover { background: rgba(255, 255, 255, .15) !important; color: #ffffff !important; border-color: rgba(255, 255, 255, .7) !important; }
 .svp-poc-card {
   text-align: center; padding: 2.2rem 2rem; border-radius: 22px;
   background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .22);
@@ -909,7 +910,7 @@ export default function ServiceDetailPage({ service: propService }) {
           <Reveal className="cta-box svp-cta">
             <div>
               <span className="eyebrow">Ready to Build?</span>
-              <h2>Let&apos;s Architect Your {service.title} Solution</h2>
+              <h2>Let&apos;s Architect Your {service.title ? service.title.replace(/\s*solutions?$/i, "") : "Digital"} Solution</h2>
               <p className="sub">
                 Connect directly with a lead solution architect. We&apos;ll
                 evaluate your use case, provide an architectural feasibility

@@ -1,9 +1,11 @@
-"use client";
-
-import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { blogsData } from "@/data/blogs";
+import { absoluteUrl } from "@/lib/site";
+import ReadingProgress from "@/components/blog/ReadingProgress";
+import TableOfContents from "@/components/blog/TableOfContents";
+import ShareActions from "@/components/blog/ShareActions";
+import CopyCodeButton from "@/components/blog/CopyCodeButton";
 
 /* =========================================================
    Blog detail — full redesign (mobile-first, reading-focused)
@@ -408,148 +410,27 @@ export default function BlogDetailPage({ blog: propBlog }) {
   const blog = propBlog || blogsData[0];
   const sections = blog.content?.sections || [];
 
-  const [toast, setToast] = useState("");
-  const [copiedCode, setCopiedCode] = useState(null);
-  const [active, setActive] = useState("intro");
-  const [shareUrl, setShareUrl] = useState(
-    `https://visiontechnolabs.com/blog/${blog.slug}`,
-  );
-  const progressRef = useRef(null);
-  const tocRef = useRef(null);
+  const toc = [
+    { id: "intro", label: "Introduction" },
+    ...(blog.keyTakeaways?.length ? [{ id: "takeaways", label: "Key Takeaways" }] : []),
+    ...sections.map((s, i) => ({ id: `section-${i}`, label: s.heading })),
+    { id: "conclusion", label: "Conclusion" },
+  ];
 
-  /* table of contents model */
-  const toc = useMemo(() => {
-    const items = [{ id: "intro", label: "Introduction" }];
-    if (blog.keyTakeaways?.length)
-      items.push({ id: "takeaways", label: "Key Takeaways" });
-    sections.forEach((s, i) =>
-      items.push({ id: `section-${i}`, label: s.heading }),
-    );
-    items.push({ id: "conclusion", label: "Conclusion" });
-    return items;
-  }, [blog, sections]);
+  const canonicalUrl = absoluteUrl(`/blog/${blog.slug}`);
 
-  useEffect(() => setShareUrl(window.location.href), [blog]);
+  const related = blogsData
+    .filter((b) => b.id !== blog.id && b.slug !== blog.slug)
+    .slice(0, 3);
 
-  /* reading progress */
-  useEffect(() => {
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      const p = total > 0 ? window.scrollY / total : 0;
-      if (progressRef.current)
-        progressRef.current.style.transform = `scaleX(${Math.min(1, Math.max(0, p))})`;
-    };
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
-
-  /* active section tracking */
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
-      { rootMargin: "-18% 0px -70% 0px", threshold: 0 },
-    );
-    toc.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) obs.observe(el);
-    });
-    return () => obs.disconnect();
-  }, [toc]);
-
-  const flash = (msg) => {
-    setToast(msg);
-    setTimeout(() => setToast(""), 2400);
-  };
-
-  const copyText = async (text) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } catch {
-      return false;
-    }
-  };
-
-  const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: blog.title,
-          text: blog.excerpt,
-          url: shareUrl,
-        });
-        return;
-      } catch {
-        /* cancelled — fall through to copy */
-      }
-    }
-    flash(
-      (await copyText(shareUrl))
-        ? "Link copied to clipboard"
-        : "Couldn't copy the link",
-    );
-  };
-
-  const handleCopyCode = async (code, i) => {
-    if (await copyText(code)) {
-      setCopiedCode(i);
-      setTimeout(() => setCopiedCode(null), 2200);
-    }
-  };
-
-  const related = useMemo(
-    () =>
-      blogsData
-        .filter((b) => b.id !== blog.id && b.slug !== blog.slug)
-        .slice(0, 3),
-    [blog],
-  );
-
-  const twitter = `https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(shareUrl)}`;
-  const linkedin = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
   const authorName = blog.author?.name || "Vision Engineering Team";
   const firstName = blog.author?.name ? blog.author.name.split(" ")[0] : "Our";
-
-  const TocLinks = ({ onClick }) => (
-    <nav className="toc" aria-label="Table of contents">
-      {toc.map((t) => (
-        <a
-          key={t.id}
-          href={`#${t.id}`}
-          onClick={onClick}
-          className={active === t.id ? "active" : ""}
-          aria-current={active === t.id ? "true" : undefined}
-        >
-          {t.label}
-        </a>
-      ))}
-    </nav>
-  );
 
   return (
     <div className="bd">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
 
-      <div className="bd-progress" aria-hidden="true">
-        <span ref={progressRef} />
-      </div>
-      {toast && (
-        <div className="toast" role="status">
-          ✓ {toast}
-        </div>
-      )}
+      <ReadingProgress />
 
       {/* ================= HEADER ================= */}
       <header className="bd-head">
@@ -604,52 +485,11 @@ export default function BlogDetailPage({ blog: propBlog }) {
                   <span>{blog.author?.role || "Staff Software Engineer"}</span>
                 </div>
               </div>
-              <div className="share" aria-label="Share this article">
-                <button
-                  type="button"
-                  className="ibtn"
-                  onClick={handleShare}
-                  title="Share or copy link"
-                  aria-label="Share or copy link"
-                >
-                  <Ico>
-                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                  </Ico>
-                </button>
-                <a
-                  href={twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ibtn"
-                  title="Share on X"
-                  aria-label="Share on X"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                </a>
-                <a
-                  href={linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ibtn"
-                  title="Share on LinkedIn"
-                  aria-label="Share on LinkedIn"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                  </svg>
-                </a>
-              </div>
+              <ShareActions
+                title={blog.title}
+                excerpt={blog.excerpt}
+                url={canonicalUrl}
+              />
             </div>
           </div>
         </div>
@@ -674,7 +514,7 @@ export default function BlogDetailPage({ blog: propBlog }) {
           {/* Desktop sticky rail */}
           <aside className="rail" aria-label="Article navigation">
             <div className="rail-title">On this page</div>
-            <TocLinks />
+            <TableOfContents toc={toc} />
             <div className="rail-cta">
               <h4>Need an architecture audit?</h4>
               <p>
@@ -689,15 +529,7 @@ export default function BlogDetailPage({ blog: propBlog }) {
 
           <div style={{ minWidth: 0 }}>
             {/* Mobile TOC */}
-            <details className="mobile-toc" ref={tocRef}>
-              <summary>
-                <span>On this page</span>
-                <i aria-hidden="true">+</i>
-              </summary>
-              <TocLinks
-                onClick={() => tocRef.current?.removeAttribute("open")}
-              />
-            </details>
+            <TableOfContents toc={toc} mobile />
 
             <article className="article" style={{ marginTop: "1.5rem" }}>
               {blog.content?.introduction && (
@@ -759,13 +591,7 @@ export default function BlogDetailPage({ blog: propBlog }) {
                           </div>
                           <span className="lang">{sec.language || "Code"}</span>
                         </div>
-                        <button
-                          type="button"
-                          className="copy"
-                          onClick={() => handleCopyCode(sec.codeSnippet, i)}
-                        >
-                          {copiedCode === i ? "✓ Copied" : "Copy"}
-                        </button>
+                        <CopyCodeButton code={sec.codeSnippet} />
                       </div>
                       <pre tabIndex={0}>
                         <code>{sec.codeSnippet}</code>

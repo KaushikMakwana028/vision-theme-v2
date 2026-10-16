@@ -1,8 +1,7 @@
-"use client";
-
-import { useState, useMemo } from "react";
 import Link from "next/link";
 import { brandInfo } from "@/data/company";
+import ContactForm from "@/components/contact/ContactForm";
+import FaqAccordion from "@/components/common/FaqAccordion";
 
 /* =========================================================
    Contact page — full redesign (mobile-first)
@@ -402,17 +401,6 @@ const faqs = [
   },
 ];
 
-const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
-const emptyForm = {
-  name: "",
-  email: "",
-  phone: "",
-  company: "",
-  message: "",
-  requireNda: true,
-  honeypot: "",
-};
-
 /* ---------- small icon helper ---------- */
 const Ico = ({ children, ...p }) => (
   <svg
@@ -430,57 +418,6 @@ const Ico = ({ children, ...p }) => (
 );
 
 export default function ContactPage() {
-  const [form, setForm] = useState(emptyForm);
-  const [touched, setTouched] = useState({});
-  const [submitting, setSubmitting] = useState(false);
-  const [done, setDone] = useState(false);
-  const [ticket, setTicket] = useState("");
-  const [openFaq, setOpenFaq] = useState(0);
-
-  const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
-  const blur = (k) => () => setTouched((t) => ({ ...t, [k]: true }));
-
-  const errors = useMemo(() => {
-    const e = {};
-    if (form.name.trim().length < 2) e.name = "Please enter your full name.";
-    if (!emailOk(form.email.trim()))
-      e.email = "Please enter a valid work email.";
-    if (form.message.trim().length < 15)
-      e.message = "Tell us a bit more (at least 15 characters).";
-    return e;
-  }, [form]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (form.honeypot) return; // spam trap
-    if (Object.keys(errors).length) {
-      setTouched({ name: true, email: true, message: true });
-      const first = ["name", "email", "message"].find((k) => errors[k]);
-      document.getElementById(`ct-${first}`)?.focus();
-      return;
-    }
-    setSubmitting(true);
-    // TODO: replace with a real API call (fetch("/api/contact", { method: "POST", body: ... }))
-    setTimeout(() => {
-      setSubmitting(false);
-      setDone(true);
-      setTicket(
-        `VT-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`,
-      );
-      document
-        .getElementById("brief")
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 1100);
-  };
-
-  const reset = () => {
-    setDone(false);
-    setForm(emptyForm);
-    setTouched({});
-  };
-
-  const showErr = (k) => touched[k] && errors[k];
-
   return (
     <div className="ct">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
@@ -570,7 +507,10 @@ export default function ContactPage() {
                 →
               </span>
             </a>
-            <a href={`tel:${brandInfo.phone.replace(/[^0-9+]/g, "")}`} className="channel">
+            <a
+              href={`tel:${brandInfo.phone.replace(/[^0-9+]/g, "")}`}
+              className="channel"
+            >
               <div className="ico">
                 <Ico>
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -607,237 +547,7 @@ export default function ContactPage() {
 
           <div className="hub">
             {/* ---------- FORM ---------- */}
-            <section
-              id="brief"
-              className="card form-card"
-              aria-labelledby="brief-title"
-            >
-              {done ? (
-                <div className="success" role="status">
-                  <div className="tick">
-                    <Ico strokeWidth="3">
-                      <polyline points="20 6 9 17 4 12" />
-                    </Ico>
-                  </div>
-                  <h2>Request received!</h2>
-                  <p className="lead">
-                    Thank you, <strong>{form.name}</strong>. A senior architect
-                    has been assigned to evaluate your requirements.
-                  </p>
-                  <div className="ticket">Tracking ID: {ticket}</div>
-                  <ol className="steps">
-                    <li>
-                      <b>1</b>
-                      <span>
-                        Architectural review of technical scope &amp; requirements.
-                      </span>
-                    </li>
-                    <li>
-                      <b>2</b>
-                      <span>
-                        {form.requireNda
-                          ? "Mutual NDA generated and sent to your email."
-                          : "NDA available on request."}
-                      </span>
-                    </li>
-                    <li>
-                      <b>3</b>
-                      <span>
-                        Invitation to a 30-minute discovery call with our tech
-                        lead.
-                      </span>
-                    </li>
-                    <li>
-                      <b>4</b>
-                      <span>
-                        Itemized estimate, sprint plan and delivery milestones.
-                      </span>
-                    </li>
-                  </ol>
-                  <button type="button" className="btn" onClick={reset}>
-                    Send another request →
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} noValidate>
-                  <div className="form-head">
-                    <h2 id="brief-title">Send Us a Message</h2>
-                    <p>
-                      Fill out the form below and our engineering leads will
-                      reply within 24 hours with a direct technical assessment.
-                    </p>
-                  </div>
-
-                  {/* honeypot */}
-                  <div
-                    style={{ position: "absolute", left: "-9999px" }}
-                    aria-hidden="true"
-                  >
-                    <input
-                      type="text"
-                      name="website"
-                      tabIndex={-1}
-                      autoComplete="off"
-                      value={form.honeypot}
-                      onChange={set("honeypot")}
-                    />
-                  </div>
-
-                  <div className="fields" style={{ marginTop: "1.75rem" }}>
-                    <div className="field">
-                      <label htmlFor="ct-name">Full name *</label>
-                      <input
-                        id="ct-name"
-                        className={`input ${showErr("name") ? "bad" : ""}`}
-                        type="text"
-                        autoComplete="name"
-                        placeholder="Alex Morgan"
-                        value={form.name}
-                        onChange={set("name")}
-                        onBlur={blur("name")}
-                        aria-invalid={!!showErr("name")}
-                        aria-describedby={
-                          showErr("name") ? "ct-name-e" : undefined
-                        }
-                      />
-                      {showErr("name") && (
-                        <span id="ct-name-e" className="err">
-                          {errors.name}
-                        </span>
-                      )}
-                    </div>
-                    <div className="field">
-                      <label htmlFor="ct-email">Work email *</label>
-                      <input
-                        id="ct-email"
-                        className={`input ${showErr("email") ? "bad" : ""}`}
-                        type="email"
-                        inputMode="email"
-                        autoComplete="email"
-                        placeholder="alex@organization.com"
-                        value={form.email}
-                        onChange={set("email")}
-                        onBlur={blur("email")}
-                        aria-invalid={!!showErr("email")}
-                        aria-describedby={
-                          showErr("email") ? "ct-email-e" : undefined
-                        }
-                      />
-                      {showErr("email") && (
-                        <span id="ct-email-e" className="err">
-                          {errors.email}
-                        </span>
-                      )}
-                    </div>
-                    <div className="field">
-                      <label htmlFor="ct-phone">
-                        Phone / WhatsApp <small>(optional)</small>
-                      </label>
-                      <input
-                        id="ct-phone"
-                        className="input"
-                        type="tel"
-                        inputMode="tel"
-                        autoComplete="tel"
-                        placeholder="+1 (555) 000-0000"
-                        value={form.phone}
-                        onChange={set("phone")}
-                      />
-                    </div>
-                    <div className="field">
-                      <label htmlFor="ct-company">
-                        Company / Organization <small>(optional)</small>
-                      </label>
-                      <input
-                        id="ct-company"
-                        className="input"
-                        type="text"
-                        autoComplete="organization"
-                        placeholder="Acme Technologies"
-                        value={form.company}
-                        onChange={set("company")}
-                      />
-                    </div>
-                    <div className="field full">
-                      <label htmlFor="ct-message">
-                        Project details &amp; requirements *
-                      </label>
-                      <textarea
-                        id="ct-message"
-                        className={`input ${showErr("message") ? "bad" : ""}`}
-                        maxLength={2000}
-                        placeholder="Tell us about your project requirements, current tech stack (if any), scope and target outcomes..."
-                        value={form.message}
-                        onChange={set("message")}
-                        onBlur={blur("message")}
-                        aria-invalid={!!showErr("message")}
-                        aria-describedby={
-                          showErr("message") ? "ct-message-e" : undefined
-                        }
-                      />
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          gap: ".5rem",
-                        }}
-                      >
-                        {showErr("message") ? (
-                          <span id="ct-message-e" className="err">
-                            {errors.message}
-                          </span>
-                        ) : (
-                          <span />
-                        )}
-                        <span className="counter">
-                          {form.message.length}/2000
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <label className="nda" htmlFor="ct-nda">
-                    <input
-                      id="ct-nda"
-                      type="checkbox"
-                      checked={form.requireNda}
-                      onChange={(e) =>
-                        setForm({ ...form, requireNda: e.target.checked })
-                      }
-                    />
-                    <span>
-                      <strong>Request a mutual NDA.</strong> We&apos;ll send one
-                      before the technical discovery call.
-                    </span>
-                  </label>
-
-                  <button
-                    type="submit"
-                    className="btn submit"
-                    disabled={submitting}
-                  >
-                    {submitting ? (
-                      <>
-                        <span className="spinner" />
-                        <span>Sending your request…</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>Send Request</span>
-                        <Ico width="18" height="18" strokeWidth="2.5">
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                          <polyline points="12 5 19 12 12 19" />
-                        </Ico>
-                      </>
-                    )}
-                  </button>
-                  <p className="fine">
-                    🔒 Your details stay private and are never shared or used to
-                    train AI.
-                  </p>
-                </form>
-              )}
-            </section>
+            <ContactForm />
 
             {/* ---------- SIDEBAR: OFFICE LOCATION & GOOGLE MAP ---------- */}
             <aside className="side" aria-label="Our office location">
@@ -861,7 +571,11 @@ export default function ContactPage() {
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6643.213747688789!2d72.66355678439143!3d23.078965902005443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4a61dfa5596be2b5%3A0xb0dc504e60aaf50a!2sVision%20Technolabs!5e1!3m2!1sen!2sin!4v1791888630555!5m2!1sen!2sin"
                     width="100%"
                     height="380"
-                    style={{ border: 0, borderRadius: "14px", display: "block" }}
+                    style={{
+                      border: 0,
+                      borderRadius: "14px",
+                      display: "block",
+                    }}
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="strict-origin-when-cross-origin"
@@ -877,13 +591,19 @@ export default function ContactPage() {
                     </div>
                     <div className="meta-row">
                       <span className="meta-label">Phone:</span>
-                      <a href={`tel:${brandInfo.phone.replace(/[^0-9+]/g, "")}`} className="meta-link">
+                      <a
+                        href={`tel:${brandInfo.phone.replace(/[^0-9+]/g, "")}`}
+                        className="meta-link"
+                      >
                         {brandInfo.phone}
                       </a>
                     </div>
                     <div className="meta-row">
                       <span className="meta-label">Email:</span>
-                      <a href={`mailto:${brandInfo.email}`} className="meta-link">
+                      <a
+                        href={`mailto:${brandInfo.email}`}
+                        className="meta-link"
+                      >
                         {brandInfo.email}
                       </a>
                     </div>
@@ -946,40 +666,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="faq">
-            {faqs.map((f, i) => {
-              const open = openFaq === i;
-              return (
-                <div key={f.q} className={`faq-item ${open ? "open" : ""}`}>
-                  <h3 style={{ margin: 0 }}>
-                    <button
-                      type="button"
-                      className="faq-q"
-                      aria-expanded={open}
-                      aria-controls={`faq-a-${i}`}
-                      id={`faq-q-${i}`}
-                      onClick={() => setOpenFaq(open ? -1 : i)}
-                    >
-                      <span>{f.q}</span>
-                      <span className="faq-ico" aria-hidden="true">
-                        +
-                      </span>
-                    </button>
-                  </h3>
-                  <div
-                    className="faq-a"
-                    id={`faq-a-${i}`}
-                    role="region"
-                    aria-labelledby={`faq-q-${i}`}
-                  >
-                    <div>
-                      <p>{f.a}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <FaqAccordion items={faqs} variant="contact" />
 
           <div className="guar">
             <div className="g">

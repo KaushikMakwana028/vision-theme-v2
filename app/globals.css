@@ -2931,6 +2931,20 @@ h1 em {
   margin-bottom: 1.75rem;
 }
 
+.cta-box .btn-ghost,
+.svp-cta-actions .btn-ghost {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+.cta-box .btn-ghost:hover,
+.svp-cta-actions .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
 .info li {
   display: flex;
   align-items: center;
@@ -3131,6 +3145,7 @@ h1 em {
   font-size: 0.88rem;
   transition: color 0.2s ease, transform 0.2s ease;
   display: inline-block;
+  padding: 0.15rem 0;
 }
 
 .foot-links a:hover {
@@ -3479,6 +3494,46 @@ h1 em {
 
 .foot-legal-sep {
   color: #475569;
+}
+
+@media (max-width: 639px) {
+  .foot {
+    padding: 3.25rem 0 1.75rem;
+  }
+  .foot-grid {
+    gap: 2.25rem;
+  }
+  .foot-desc {
+    max-width: 100%;
+    margin-bottom: 1.25rem;
+  }
+  .foot-bottom {
+    margin-top: 2.5rem;
+    padding: 1.5rem 0 0.5rem;
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    gap: 1.15rem;
+  }
+  .foot-bottom-left {
+    align-items: center;
+    text-align: center;
+    gap: 0.35rem;
+  }
+  .foot-bottom-right {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 0.85rem;
+  }
+  .foot-legal-btn {
+    padding: 0.25rem 0.35rem;
+  }
+  .foot-wa-btn {
+    width: 100%;
+    justify-content: center;
+    max-width: 280px;
+  }
 }
 
 /* Legal Modal Dialogs */
@@ -4416,8 +4471,7 @@ h1 em {
 
   h2,
   .sec-head h2,
-  .about-grid h2,
-  .cta-box h2 {
+  .about-grid h2 {
     font-size: clamp(1.65rem, 6.2vw, 2.15rem) !important;
     line-height: 1.2 !important;
     letter-spacing: -0.025em !important;
@@ -4426,7 +4480,9 @@ h1 em {
     margin: 0.5rem 0 0.65rem !important;
   }
 
-  .ai h2 {
+  .ai h2,
+  .cta-box h2,
+  .svp-cta h2 {
     font-size: clamp(1.65rem, 6.2vw, 2.15rem) !important;
     line-height: 1.2 !important;
     letter-spacing: -0.025em !important;

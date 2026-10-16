@@ -1,9 +1,10 @@
-"use client";
-
-import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { caseStudiesData } from "@/data/caseStudies";
+import ScrollProgress from "@/components/motion/ScrollProgress";
+import CountUp from "@/components/motion/CountUp";
+import Reveal from "@/components/motion/Reveal";
+import ProjectGallery from "@/components/work/ProjectGallery";
 
 /* =========================================================
    Page styles (scoped under .svp) — matches serviceDetailPage.js
@@ -11,18 +12,7 @@ import { caseStudiesData } from "@/data/caseStudies";
 const styles = `
 .svp { overflow-x: clip; }
 .svp section[id] { scroll-margin-top: calc(var(--header-h) + 32px); }
-.cs-showcase-sec,
-#project-overview,
-#system-modules,
-#deliverables,
-#business-impact,
-#client-review,
-#related-work,
-.svp-cta-sec {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 650px;
-}
-
+ 
 /* ---------- Scroll progress ---------- */
 .svp-progress {
   position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 1000;
@@ -34,9 +24,9 @@ const styles = `
 }
 
 /* ---------- Reveal on scroll ---------- */
-.svp .rv { opacity: 0; }
-.svp .rv.rv-in { opacity: 1; animation: svp-in .8s var(--ease) var(--rv-delay, 0ms) backwards; }
-.svp .rv.rv-in.svp-cta { animation: svp-in .8s var(--ease) backwards; }
+.svp .rv { opacity: 1; transform: none; }
+.svp .rv.rv-in { opacity: 1; transform: none; }
+.svp .rv.svp-cta { animation: svp-bg 14s ease-in-out infinite; }
 
 /* ---------- Redirection bar / Breadcrumbs ---------- */
 .breadcrumbs-bar {
@@ -484,9 +474,12 @@ const styles = `
 .svp-cta::before { width: 420px; height: 420px; right: -120px; top: -160px; border-style: dashed; opacity: .4; }
 .svp-cta::after { width: 260px; height: 260px; left: -90px; bottom: -120px; background: radial-gradient(circle, rgba(251, 146, 60, .25), transparent 70%); border: 0; }
 .svp-cta .eyebrow { background: rgba(255, 255, 255, .12); color: #a5f3fc; }
-.svp-cta h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); margin: 1rem 0 .8rem; line-height: 1.15; color: #fff; }
+.svp-cta h2, .cta-box.svp-cta h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); margin: 1rem 0 .8rem; line-height: 1.15; color: #ffffff !important; }
 .svp-cta .sub { color: rgba(255, 255, 255, .8); margin: 0; max-width: 56ch; }
-.svp-cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.svp-cta-actions .btn-light { background: #ffffff !important; color: #1e1b4b !important; font-weight: 700 !important; box-shadow: 0 10px 24px -8px rgba(0, 0, 0, .35) !important; }
+.svp-cta-actions .btn-light:hover { background: #f1f2ff !important; color: #4338ca !important; transform: translateY(-2px); }
+.svp-cta-actions .btn-ghost { background: transparent !important; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, .4) !important; }
+.svp-cta-actions .btn-ghost:hover { background: rgba(255, 255, 255, .15) !important; color: #ffffff !important; border-color: rgba(255, 255, 255, .7) !important; }
 .svp-poc-card {
   text-align: center; padding: 2.2rem 2rem; border-radius: 22px;
   background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .18);
@@ -1106,179 +1099,7 @@ const styles = `
 }
 `;
 
-/* =========================================================
-   Helpers
-   ========================================================= */
 
-function useInView(threshold = 0.12) {
-  const ref = useRef(null);
-  const [shown, setShown] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setShown(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          io.disconnect();
-        }
-      },
-      { threshold, rootMargin: "0px 0px -40px 0px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [threshold]);
-  return [ref, shown];
-}
-
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  as: Tag = "div",
-  ...rest
-}) {
-  const [ref, shown] = useInView();
-  return (
-    <Tag
-      ref={ref}
-      className={`rv ${shown ? "rv-in" : ""} ${className}`}
-      style={{ "--rv-delay": `${delay}ms` }}
-      {...rest}
-    >
-      {children}
-    </Tag>
-  );
-}
-
-function CountUp({ value, duration = 1500 }) {
-  const text = String(value ?? "");
-  const match = text.match(/^(\D*?)(\d+(?:\.\d+)?)(\D*)$/);
-  const countable = Boolean(match);
-  const prefix = countable ? match[1] : "";
-  const target = countable ? parseFloat(match[2]) : 0;
-  const suffix = countable ? match[3] : "";
-  const decimals =
-    countable && match[2].includes(".") ? match[2].split(".")[1].length : 0;
-  const ref = useRef(null);
-  const [n, setN] = useState(countable ? 0 : target);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !countable) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || typeof IntersectionObserver === "undefined") {
-      setN(target);
-      return;
-    }
-    let raf;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        io.disconnect();
-        const start = performance.now();
-        const tick = (now) => {
-          const p = Math.min((now - start) / duration, 1);
-          setN(target * (1 - Math.pow(1 - p, 3)));
-          if (p < 1) raf = requestAnimationFrame(tick);
-        };
-        raf = requestAnimationFrame(tick);
-      },
-      { threshold: 0.4 }
-    );
-    io.observe(el);
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(raf);
-    };
-  }, [target, duration, countable]);
-
-  return (
-    <strong ref={ref}>
-      {countable ? `${prefix}${n.toFixed(decimals)}${suffix}` : text}
-    </strong>
-  );
-}
-
-function ScrollProgress() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    let raf;
-    const update = () => {
-      const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      if (el) el.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
-    };
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-  return (
-    <div className="svp-progress" aria-hidden="true">
-      <span ref={ref} />
-    </div>
-  );
-}
-
-let spotRaf = null;
-const onSpot = (e) => {
-  const el = e.currentTarget;
-  const clientX = e.clientX;
-  const clientY = e.clientY;
-  if (spotRaf) cancelAnimationFrame(spotRaf);
-  spotRaf = requestAnimationFrame(() => {
-    let r = el._cachedRect;
-    if (!r) {
-      r = el.getBoundingClientRect();
-      el._cachedRect = r;
-    }
-    el.style.setProperty("--mx", `${clientX - r.left}px`);
-    el.style.setProperty("--my", `${clientY - r.top}px`);
-  });
-};
-
-let tiltRaf = null;
-const onTilt = (e) => {
-  if (!window.matchMedia("(hover: hover) and (min-width: 861px)").matches)
-    return;
-  const el = e.currentTarget;
-  const clientX = e.clientX;
-  const clientY = e.clientY;
-  if (tiltRaf) cancelAnimationFrame(tiltRaf);
-  tiltRaf = requestAnimationFrame(() => {
-    let r = el._cachedRect;
-    if (!r) {
-      r = el.getBoundingClientRect();
-      el._cachedRect = r;
-    }
-    const x = (clientX - r.left) / r.width - 0.5;
-    const y = (clientY - r.top) / r.height - 0.5;
-    el.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
-    el.style.setProperty("--ry", `${(x * 9).toFixed(2)}deg`);
-  });
-};
-
-const onTiltEnd = (e) => {
-  if (tiltRaf) cancelAnimationFrame(tiltRaf);
-  const el = e.currentTarget;
-  el._cachedRect = null;
-  el.style.setProperty("--rx", "0deg");
-  el.style.setProperty("--ry", "0deg");
-};
 
 /* =========================================================
    Detail Component
@@ -1305,44 +1126,38 @@ export default function WorkDetailPage({ project }) {
   }
 
   // Related projects (excluding the current one)
-  const relatedProjects = useMemo(() => {
-    return caseStudiesData
-      .filter((p) => p.slug !== project.slug && p.id !== project.id)
-      .slice(0, 3);
-  }, [project]);
+  const relatedProjects = caseStudiesData
+    .filter((p) => p.slug !== project.slug && p.id !== project.id)
+    .slice(0, 3);
 
   // Normalized image collection supporting single or multiple images (minimum 6 screens)
-  const allImages = useMemo(() => {
-    let list = [];
-    if (project?.gallery && project.gallery.length > 0) {
-      list = [...project.gallery];
-    } else if (project?.images && project.images.length > 0) {
-      list = project.images.map((img, i) => ({
-        url: img,
-        caption: `${project.title} — Interface Screen 0${i + 1}`,
-        tag: "Platform Screen",
-        badge: `Screen 0${i + 1} · Production View`,
-      }));
-    } else if (project?.image) {
-      list = [
-        {
-          url: project.image,
-          caption: `${project.title} — Primary Platform Overview`,
-          tag: "Multi-Device UI Showcase",
-          badge: "Screen 01 · Primary Overview",
-        },
-      ];
-    }
+  let allImages = [];
+  if (project?.gallery && project.gallery.length > 0) {
+    allImages = [...project.gallery];
+  } else if (project?.images && project.images.length > 0) {
+    allImages = project.images.map((img, i) => ({
+      url: img,
+      caption: `${project.title} — Interface Screen 0${i + 1}`,
+      tag: "Platform Screen",
+      badge: `Screen 0${i + 1} · Production View`,
+    }));
+  } else if (project?.image) {
+    allImages = [
+      {
+        url: project.image,
+        caption: `${project.title} — Primary Platform Overview`,
+        tag: "Multi-Device UI Showcase",
+        badge: "Screen 01 · Primary Overview",
+      },
+    ];
+  }
 
-    // If already 6 or more images, use them directly
-    if (list.length >= 6) return list;
-
-    // Supplement with other project screenshots from caseStudiesData
+  // If already 6 or more images, use them directly; otherwise supplement
+  if (allImages.length < 6) {
     const isMobile =
       project?.category === "Mobile App Development" ||
       project?.serviceSlug === "mobile-app-development";
 
-    // Pool matching platform type first, then fallback to other projects
     const pool = caseStudiesData
       .filter((p) => p.slug !== project?.slug && p.id !== project?.id && p.image)
       .sort((a, b) => {
@@ -1392,12 +1207,12 @@ export default function WorkDetailPage({ project }) {
 
     let descriptorIdx = 0;
     for (const item of pool) {
-      if (list.length >= 6) break;
-      if (!list.some((existing) => existing.url === item.image)) {
+      if (allImages.length >= 6) break;
+      if (!allImages.some((existing) => existing.url === item.image)) {
         const desc = featureDescriptors[descriptorIdx % featureDescriptors.length];
-        const screenNum = list.length + 1;
+        const screenNum = allImages.length + 1;
         const padNum = screenNum < 10 ? `0${screenNum}` : `${screenNum}`;
-        list.push({
+        allImages.push({
           url: item.image,
           caption: `${item.title.split("–")[0].trim()} — ${desc.defaultCaption}`,
           tag: desc.tag,
@@ -1406,57 +1221,7 @@ export default function WorkDetailPage({ project }) {
         descriptorIdx++;
       }
     }
-
-    return list;
-  }, [project]);
-
-  const [activeImage, setActiveImage] = useState(
-    allImages[0]?.url || project?.image || ""
-  );
-  const [activeCaption, setActiveCaption] = useState(
-    allImages[0]?.caption || ""
-  );
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-
-  useEffect(() => {
-    if (allImages.length > 0 && allImages[0]?.url) {
-      setActiveImage(allImages[0].url);
-      setActiveCaption(allImages[0].caption || "");
-    }
-  }, [allImages]);
-
-  const activeIndex = useMemo(() => {
-    const idx = allImages.findIndex((item) => item.url === activeImage);
-    return idx >= 0 ? idx : 0;
-  }, [allImages, activeImage]);
-
-  const selectImageByIndex = (index) => {
-    if (!allImages.length) return;
-    const boundedIndex = (index + allImages.length) % allImages.length;
-    const target = allImages[boundedIndex];
-    if (target) {
-      setActiveImage(target.url);
-      setActiveCaption(target.caption || "");
-    }
-  };
-
-  const showNextImage = () => selectImageByIndex(activeIndex + 1);
-  const showPrevImage = () => selectImageByIndex(activeIndex - 1);
-
-  useEffect(() => {
-    if (!lightboxOpen) return;
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        setLightboxOpen(false);
-      } else if (e.key === "ArrowRight") {
-        showNextImage();
-      } else if (e.key === "ArrowLeft") {
-        showPrevImage();
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [lightboxOpen, activeIndex, allImages]);
+  }
 
   return (
     <div className="svp">
@@ -1583,10 +1348,10 @@ export default function WorkDetailPage({ project }) {
               <b /> Bank-Grade Code
             </span>
 
-            <div
+            <Reveal
               className="bcard big svp-hero-card"
-              onMouseMove={onTilt}
-              onMouseLeave={onTiltEnd}
+              tilt
+              reveal={false}
             >
               <div className="bcard-top">
                 <span className="btag">{project.category || "Case Study"}</span>
@@ -1637,7 +1402,7 @@ export default function WorkDetailPage({ project }) {
                   </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -1673,155 +1438,14 @@ export default function WorkDetailPage({ project }) {
               </p>
             </Reveal>
 
-            {/* Main Browser Window Mockup */}
-            <Reveal className="cs-browser-frame">
-              <div className="cs-browser-header">
-                <div className="cs-browser-dots" aria-hidden="true">
-                  <span className="dot dot-r" />
-                  <span className="dot dot-y" />
-                  <span className="dot dot-g" />
-                </div>
-                {project.website ? (
-                  <a
-                    href={project.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cs-browser-address cs-browser-address-link"
-                    title="Open live website in a new tab"
-                  >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                    </svg>
-                    <span>{project.website}</span>
-                    <span className="cs-browser-address-arrow" aria-hidden="true">↗</span>
-                  </a>
-                ) : (
-                  <div className="cs-browser-address">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                    </svg>
-                    <span>{`https://${project.domain || (project.slug ? `${project.slug}.com` : "production-preview")}`}</span>
-                  </div>
-                )}
-                <div className="cs-browser-meta">
-                  <span className="cs-live-pill">
-                    <span className="cs-live-pulse" /> Live Deployment
-                  </span>
-                  {project.website && (
-                    <a
-                      href={project.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="cs-browser-live-btn"
-                      title="Launch live website in a new tab"
-                    >
-                      <span>Visit Live Site</span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" aria-hidden="true">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-                      </svg>
-                    </a>
-                  )}
-                  <button
-                    type="button"
-                    className="cs-zoom-btn"
-                    onClick={() => setLightboxOpen(true)}
-                    title="View fullscreen preview"
-                  >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
-                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                    </svg>
-                    Fullscreen
-                  </button>
-                </div>
-              </div>
-
-              <div
-                className="cs-browser-screen"
-                onClick={() => setLightboxOpen(true)}
-                title="Click to expand fullscreen"
-              >
-                <Image
-                  src={activeImage || project.image}
-                  alt={project.title}
-                  width={1200}
-                  height={675}
-                  className="cs-main-screen-img"
-                />
-              </div>
-
-              {activeCaption && (
-                <div className="cs-screen-caption-bar">
-                  <div className="cs-caption-left">
-                    <span className="cs-caption-tag">Active Screen</span>
-                    <span className="cs-caption-text">{activeCaption}</span>
-                  </div>
-                  <button
-                    type="button"
-                    className="cs-caption-zoom-btn"
-                    onClick={() => setLightboxOpen(true)}
-                    title="Click to zoom in fullscreen"
-                  >
-                    <span>Click to Zoom In</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
-                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                    </svg>
-                  </button>
-                </div>
-              )}
-            </Reveal>
-
-            {/* Visual Platform Screen Gallery */}
-            <div className="cs-gallery-container">
-              <div className="cs-gallery-header">
-                <div className="cs-gallery-title">
-                  <h3>Visual Gallery &amp; Platform Screens</h3>
-                  <p>Click any screen to open the interactive high-resolution preview.</p>
-                </div>
-                <span className="cs-gallery-count">
-                  {allImages.length} Screens Available
-                </span>
-              </div>
-
-              <div className="cs-gallery-grid">
-                {allImages.slice(0, 6).map((imgItem, idx) => {
-                  const isSelected = (activeImage || project.image) === imgItem.url;
-                  return (
-                    <div
-                      key={idx}
-                      className={`cs-gallery-card ${isSelected ? "selected" : ""}`}
-                      onClick={() => {
-                        setActiveImage(imgItem.url);
-                        setActiveCaption(imgItem.caption || "");
-                        setLightboxOpen(true);
-                      }}
-                      title="Click to view full-resolution preview"
-                    >
-                      <div className="cs-gallery-inner">
-                        <Image
-                          src={imgItem.url}
-                          alt={imgItem.caption || `Screen ${idx + 1}`}
-                          width={600}
-                          height={338}
-                          className="cs-gallery-img"
-                          loading="lazy"
-                          sizes="(max-width: 640px) 100vw, (max-width: 992px) 50vw, 33vw"
-                        />
-                        <div className="cs-gallery-overlay">
-                          <span className="cs-gallery-zoom-pill">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                            </svg>
-                            <span>Preview</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+            <ProjectGallery
+              images={allImages}
+              title={project.title}
+              website={project.website}
+              domain={project.domain}
+              slug={project.slug}
+              defaultImage={project.image}
+            />
           </div>
         </section>
       )}
@@ -2026,7 +1650,7 @@ export default function WorkDetailPage({ project }) {
                   key={rel.id}
                   delay={idx * 80}
                   className="card flush svp-card svp-proj"
-                  onMouseMove={onSpot}
+                  spot
                 >
                   <Link
                     href={`/work/${rel.slug || rel.id}`}
@@ -2043,9 +1667,6 @@ export default function WorkDetailPage({ project }) {
                       height={520}
                       loading="lazy"
                       sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none";
-                      }}
                     />
                   </Link>
 
@@ -2115,82 +1736,6 @@ export default function WorkDetailPage({ project }) {
           </Reveal>
         </div>
       </section>
-
-      {/* ================= LIGHTBOX MODAL ================= */}
-      {lightboxOpen && (
-        <div className="cs-lightbox" onClick={() => setLightboxOpen(false)}>
-          <div className="cs-lightbox-topbar" onClick={(e) => e.stopPropagation()}>
-            <div className="cs-lightbox-counter">
-              <span className="cs-lightbox-counter-dot" />
-              <span>
-                Screen {activeIndex + 1} of {allImages.length}
-                {allImages[activeIndex]?.tag ? ` · ${allImages[activeIndex].tag}` : ""}
-              </span>
-            </div>
-            <button
-              type="button"
-              className="cs-lightbox-close"
-              onClick={() => setLightboxOpen(false)}
-              aria-label="Close fullscreen view"
-            >
-              ✕
-            </button>
-          </div>
-
-          <div className="cs-lightbox-main" onClick={(e) => e.stopPropagation()}>
-            {allImages.length > 1 && (
-              <>
-                <button
-                  type="button"
-                  className="cs-lightbox-nav cs-lightbox-prev"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    showPrevImage();
-                  }}
-                  aria-label="Previous screen"
-                  title="Previous screen (Left Arrow)"
-                >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
-                    <path d="M15 18l-6-6 6-6" />
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  className="cs-lightbox-nav cs-lightbox-next"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    showNextImage();
-                  }}
-                  aria-label="Next screen"
-                  title="Next screen (Right Arrow)"
-                >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </button>
-              </>
-            )}
-
-            <div className="cs-lightbox-content">
-              <Image
-                src={allImages[activeIndex]?.url || activeImage || project.image}
-                alt={allImages[activeIndex]?.caption || project.title}
-                width={1200}
-                height={800}
-                style={{ width: "auto", height: "auto" }}
-              />
-              <div className="cs-lightbox-bottom">
-                <p className="cs-lightbox-caption">
-                  {allImages[activeIndex]?.caption || activeCaption || project.title}
-                </p>
-                <p className="cs-lightbox-hint">
-                  Use ← / → arrow keys to navigate · Press Esc or click outside to close
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

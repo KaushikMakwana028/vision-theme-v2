@@ -1,9 +1,10 @@
-"use client";
-
-import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { caseStudiesData, workCategories } from "@/data/caseStudies";
+import ScrollProgress from "@/components/motion/ScrollProgress";
+import CountUp from "@/components/motion/CountUp";
+import Reveal from "@/components/motion/Reveal";
+import WorkFilterGrid from "@/components/work/WorkFilterGrid";
+import FaqAccordion from "@/components/common/FaqAccordion";
 
 /* =========================================================
    Page styles (scoped under .svp) — matches servicePage.js & theme
@@ -23,9 +24,9 @@ const styles = `
 }
 
 /* ---------- Reveal on scroll ---------- */
-.svp .rv { opacity: 0; }
-.svp .rv.rv-in { opacity: 1; animation: svp-in .8s var(--ease) var(--rv-delay, 0ms) backwards; }
-.svp .rv.rv-in.svp-cta { animation: svp-in .8s var(--ease) backwards, svp-bg 14s ease-in-out .8s infinite; }
+.svp .rv { opacity: 1; transform: none; }
+.svp .rv.rv-in { opacity: 1; transform: none; }
+.svp .rv.svp-cta { animation: svp-bg 14s ease-in-out infinite; }
 
 /* ---------- Redirection bar / Breadcrumbs ---------- */
 .breadcrumbs-bar {
@@ -418,9 +419,11 @@ const styles = `
 .svp-cta::before { width: 420px; height: 420px; right: -120px; top: -160px; animation: svp-spin 40s linear infinite; border-style: dashed; }
 .svp-cta::after { width: 260px; height: 260px; left: -90px; bottom: -120px; background: radial-gradient(circle, rgba(251, 146, 60, .35), transparent 70%); border: 0; animation: svp-float 10s ease-in-out infinite; }
 .svp-cta .eyebrow { background: rgba(255, 255, 255, .12); color: #a5f3fc; }
-.svp-cta h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); margin: 1rem 0 .8rem; line-height: 1.15; color: #fff; }
+.svp-cta h2, .cta-box.svp-cta h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); margin: 1rem 0 .8rem; line-height: 1.15; color: #ffffff !important; }
 .svp-cta .sub { color: rgba(255, 255, 255, .8); margin: 0; max-width: 56ch; }
 .svp-cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.svp-cta-actions .btn-ghost { background: transparent !important; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, .4) !important; }
+.svp-cta-actions .btn-ghost:hover { background: rgba(255, 255, 255, .15) !important; color: #ffffff !important; border-color: rgba(255, 255, 255, .7) !important; }
 .svp-poc-card {
   text-align: center; padding: 2.2rem 2rem; border-radius: 22px;
   background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .22);
@@ -530,165 +533,7 @@ const styles = `
 }
 `;
 
-/* =========================================================
-   Helpers
-   ========================================================= */
 
-function useInView(threshold = 0.12) {
-  const ref = useRef(null);
-  const [shown, setShown] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setShown(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          io.disconnect();
-        }
-      },
-      { threshold, rootMargin: "0px 0px -40px 0px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [threshold]);
-  return [ref, shown];
-}
-
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  as: Tag = "div",
-  ...rest
-}) {
-  const [ref, shown] = useInView();
-  return (
-    <Tag
-      ref={ref}
-      className={`rv ${shown ? "rv-in" : ""} ${className}`}
-      style={{ "--rv-delay": `${delay}ms` }}
-      {...rest}
-    >
-      {children}
-    </Tag>
-  );
-}
-
-function CountUp({ value, duration = 1500 }) {
-  const text = String(value ?? "");
-  const match = text.match(/^(\D*?)(\d+(?:\.\d+)?)(\D*)$/);
-  const countable = Boolean(match);
-  const prefix = countable ? match[1] : "";
-  const target = countable ? parseFloat(match[2]) : 0;
-  const suffix = countable ? match[3] : "";
-  const decimals =
-    countable && match[2].includes(".") ? match[2].split(".")[1].length : 0;
-  const ref = useRef(null);
-  const [n, setN] = useState(countable ? 0 : target);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !countable) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || typeof IntersectionObserver === "undefined") {
-      setN(target);
-      return;
-    }
-    let raf;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        io.disconnect();
-        const start = performance.now();
-        const tick = (now) => {
-          const p = Math.min((now - start) / duration, 1);
-          setN(target * (1 - Math.pow(1 - p, 3)));
-          if (p < 1) raf = requestAnimationFrame(tick);
-        };
-        raf = requestAnimationFrame(tick);
-      },
-      { threshold: 0.4 }
-    );
-    io.observe(el);
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(raf);
-    };
-  }, [target, duration, countable]);
-
-  return (
-    <strong ref={ref}>
-      {countable ? `${prefix}${n.toFixed(decimals)}${suffix}` : text}
-    </strong>
-  );
-}
-
-function ScrollProgress() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    let raf;
-    const update = () => {
-      const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      if (el) el.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
-    };
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-  return (
-    <div className="svp-progress" aria-hidden="true">
-      <span ref={ref} />
-    </div>
-  );
-}
-
-const onSpot = (e) => {
-  const el = e.currentTarget;
-  let r = el._cachedRect;
-  if (!r) {
-    r = el.getBoundingClientRect();
-    el._cachedRect = r;
-  }
-  el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  el.style.setProperty("--my", `${e.clientY - r.top}px`);
-};
-
-const onTilt = (e) => {
-  if (!window.matchMedia("(hover: hover) and (min-width: 861px)").matches)
-    return;
-  const el = e.currentTarget;
-  let r = el._cachedRect;
-  if (!r) {
-    r = el.getBoundingClientRect();
-    el._cachedRect = r;
-  }
-  const x = (e.clientX - r.left) / r.width - 0.5;
-  const y = (e.clientY - r.top) / r.height - 0.5;
-  el.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
-  el.style.setProperty("--ry", `${(x * 9).toFixed(2)}deg`);
-};
-
-const onTiltEnd = (e) => {
-  e.currentTarget._cachedRect = null;
-  e.currentTarget.style.setProperty("--rx", "0deg");
-  e.currentTarget.style.setProperty("--ry", "0deg");
-};
 
 /* =========================================================
    Static Data
@@ -779,42 +624,36 @@ const collaborationSteps = [
    ========================================================= */
 
 export default function WorkPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [openFaq, setOpenFaq] = useState(0);
+  const counts = { All: caseStudiesData.length };
+  caseStudiesData.forEach((p) => {
+    counts[p.category] = (counts[p.category] || 0) + 1;
+  });
 
-  const filteredProjects = useMemo(() => {
-    if (selectedCategory === "All") return caseStudiesData;
-    return caseStudiesData.filter((p) => p.category === selectedCategory);
-  }, [selectedCategory]);
+  const trimmedProjects = caseStudiesData.map((proj) => ({
+    id: proj.id,
+    slug: proj.slug,
+    title: proj.title,
+    subtitle: proj.subtitle,
+    category: proj.category,
+    image: proj.image,
+    description: proj.description,
+    tags: proj.tags,
+  }));
 
-  const counts = useMemo(() => {
-    const map = { All: caseStudiesData.length };
-    caseStudiesData.forEach((p) => {
-      map[p.category] = (map[p.category] || 0) + 1;
-    });
-    return map;
-  }, []);
-
-  const marqueeKeywords = useMemo(() => {
-    return [
-      "Car Rental ERP & Booking Engines",
-      "Addressable LED Neon E-Commerce",
-      "Hyperlocal On-Demand Marketplaces",
-      "Paying Guest & PG Hostel CRMs",
-      "B2B Enterprise Distribution Portals",
-      "Clinical Drug Interaction Checkers",
-      "Multi-Business Billing & Invoicing SaaS",
-      "Dompdf Vector Invoices & WhatsApp POS",
-      "CodeIgniter MVC Architecture",
-      "Real-Time Bed-Level Occupancy Sync",
-      "Sub-Second Geodesic Road Routing",
-      "Razorpay & Dynamic UPI Integrations"
-    ];
-  }, []);
-
-  const toggleFaq = (idx) => {
-    setOpenFaq((prev) => (prev === idx ? null : idx));
-  };
+  const marqueeKeywords = [
+    "Car Rental ERP & Booking Engines",
+    "Addressable LED Neon E-Commerce",
+    "Hyperlocal On-Demand Marketplaces",
+    "Paying Guest & PG Hostel CRMs",
+    "B2B Enterprise Distribution Portals",
+    "Clinical Drug Interaction Checkers",
+    "Multi-Business Billing & Invoicing SaaS",
+    "Dompdf Vector Invoices & WhatsApp POS",
+    "CodeIgniter MVC Architecture",
+    "Real-Time Bed-Level Occupancy Sync",
+    "Sub-Second Geodesic Road Routing",
+    "Razorpay & Dynamic UPI Integrations"
+  ];
 
   return (
     <div className="svp">
@@ -866,10 +705,10 @@ export default function WorkPage() {
               <b /> 2-Week Sprints
             </span>
 
-            <div
+            <Reveal
               className="bcard big svp-hero-card"
-              onMouseMove={onTilt}
-              onMouseLeave={onTiltEnd}
+              tilt
+              reveal={false}
             >
               <div className="bcard-top">
                 <span className="btag">01 · Production Deployed</span>
@@ -898,7 +737,7 @@ export default function WorkPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -931,89 +770,11 @@ export default function WorkPage() {
             </p>
           </Reveal>
 
-          {/* Filter tabs */}
-          <div className="filter-wrap">
-            <div className="filter-tabs" role="tablist" aria-label="Work categories">
-              {workCategories.map((cat) => {
-                const count = counts[cat] || 0;
-                const isActive = selectedCategory === cat;
-                return (
-                  <button
-                    key={cat}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    className={`filter-tab ${isActive ? "active" : ""}`}
-                    onClick={(e) => {
-                      setSelectedCategory(cat);
-                      e.currentTarget.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-                    }}
-                  >
-                    <span>{cat}</span>
-                    <em>{count}</em>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Case Studies Grid */}
-          <div className="cols c3">
-            {filteredProjects.map((proj, idx) => (
-              <Reveal
-                key={proj.id}
-                as="article"
-                delay={idx * 75}
-                className="card flush svp-card svp-proj"
-                onMouseMove={onSpot}
-              >
-                <Link
-                  href={`/work/${proj.slug || proj.id}`}
-                  className="svp-thumb"
-                  aria-label={`View ${proj.title} case study`}
-                >
-                  <Image
-                    src={proj.image}
-                    alt={proj.title}
-                    width={800}
-                    height={450}
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
-                </Link>
-
-                <div className="wb svp-wb">
-                  {proj.tags?.length > 0 && (
-                    <div className="tags svp-tags">
-                      {proj.tags.map((t, tIdx) => (
-                        <span key={tIdx}>{t}</span>
-                      ))}
-                    </div>
-                  )}
-
-                  <h3>
-                    <Link href={`/work/${proj.slug || proj.id}`}>
-                      {proj.title}
-                    </Link>
-                  </h3>
-
-                  <p>{proj.description}</p>
-
-                  <Link
-                    href={`/work/${proj.slug || proj.id}`}
-                    className="more"
-                    aria-label={`Explore ${proj.title} case study`}
-                  >
-                    Explore Case Study
-                    <svg className="i" aria-hidden="true">
-                      <use href="#i-arrow" />
-                    </svg>
-                  </Link>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <WorkFilterGrid
+            categories={workCategories}
+            counts={counts}
+            projects={trimmedProjects}
+          />
         </div>
       </section>
 
@@ -1035,7 +796,7 @@ export default function WorkPage() {
                 key={idx}
                 delay={idx * 80}
                 className="card svp-step"
-                onMouseMove={onSpot}
+                spot
               >
                 <span className="ico">
                   <svg className="i" aria-hidden="true">
@@ -1068,7 +829,7 @@ export default function WorkPage() {
                 key={step.n}
                 delay={idx * 90}
                 className="card svp-step"
-                onMouseMove={onSpot}
+                spot
               >
                 <span className="svp-step-num">{step.n}</span>
                 <span className="ico">
@@ -1126,42 +887,7 @@ export default function WorkPage() {
             </p>
           </Reveal>
 
-          <div className="faq-wrap">
-            {workFaqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <Reveal
-                  key={idx}
-                  delay={idx * 70}
-                  className={`faq-card ${isOpen ? "open" : ""}`}
-                >
-                  <button
-                    type="button"
-                    id={`faq-btn-${idx}`}
-                    className="faq-card-head"
-                    onClick={() => toggleFaq(idx)}
-                    aria-expanded={isOpen}
-                    aria-controls={`faq-panel-${idx}`}
-                  >
-                    <span>{faq.q}</span>
-                    <span className="faq-icon" aria-hidden="true">
-                      +
-                    </span>
-                  </button>
-                  <div
-                    id={`faq-panel-${idx}`}
-                    role="region"
-                    aria-labelledby={`faq-btn-${idx}`}
-                    className="faq-card-body"
-                  >
-                    <div className="faq-inner">
-                      <p>{faq.a}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
+          <FaqAccordion items={workFaqs} />
         </div>
       </section>
 

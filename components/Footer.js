@@ -8,12 +8,10 @@ import { navigationData } from "@/data/navigation";
 
 export default function Footer() {
   const [showToTop, setShowToTop] = useState(false);
-  const [currentYear, setCurrentYear] = useState(2026);
+  const currentYear = 2026;
   const [activeModal, setActiveModal] = useState(null); // "privacy" | "terms" | null
 
   useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
-
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
@@ -60,7 +58,7 @@ export default function Footer() {
                   <span className="logo-brand-tech">Technolabs</span>
                 </div>
               </Link>
-              <p className="foot-desc">{brandInfo.description}</p>
+              <p className="foot-desc">{brandInfo.footerBio || brandInfo.description}</p>
 
               {/* Social Channels */}
               <div className="soc" aria-label="Social media profiles">
@@ -128,7 +126,7 @@ export default function Footer() {
                     className="addr-link"
                     title="View office location on Google Maps"
                   >
-                    <span>{brandInfo.address}</span>
+                    <span>{brandInfo.shortAddress || brandInfo.address}</span>
                     <span className="addr-open-icon">↗</span>
                   </a>
                 </li>

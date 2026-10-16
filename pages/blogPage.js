@@ -1,9 +1,8 @@
-"use client";
-
-import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { blogsData, blogCategories } from "@/data/blogs";
+import ScrollProgress from "@/components/motion/ScrollProgress";
+import BlogExplorer from "@/components/blog/BlogExplorer";
 
 /* =========================================================
    Page styles (scoped under .svp) — Editorial Magazine Style
@@ -23,9 +22,9 @@ const styles = `
 }
 
 /* ---------- Reveal on scroll ---------- */
-.svp .rv { opacity: 0; }
-.svp .rv.rv-in { opacity: 1; animation: svp-in .8s var(--ease) var(--rv-delay, 0ms) backwards; }
-.svp .rv.rv-in.svp-cta { animation: svp-in .8s var(--ease) backwards, svp-bg 14s ease-in-out .8s infinite; }
+.svp .rv { opacity: 1; transform: none; }
+.svp .rv.rv-in { opacity: 1; transform: none; }
+.svp .rv.svp-cta { animation: svp-bg 14s ease-in-out infinite; }
 
 /* ---------- Shared bits ---------- */
 .svp .eyebrow {
@@ -300,68 +299,31 @@ const styles = `
 }
 `;
 
-/* =========================================================
-   Helpers
-   ========================================================= */
-
-function ScrollProgress() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    let ticking = false;
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const h = document.documentElement;
-          const max = h.scrollHeight - h.clientHeight;
-          if (el) el.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return (
-    <div className="svp-progress" aria-hidden="true">
-      <span ref={ref} style={{ willChange: "transform" }} />
-    </div>
-  );
-}
-
-/* =========================================================
-   Blog Page Component
-   ========================================================= */
-
 export default function BlogPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState("All");
+  const featuredArticle = blogsData.find((b) => b.featured) || blogsData[0];
 
-  // Editor's pick / featured article
-  const featuredArticle = useMemo(() => {
-    const list = blogsData || [];
-    return list.find((b) => b.featured) || list[0];
-  }, []);
+  const trimmedArticles = blogsData.map((article) => ({
+    id: article.id,
+    slug: article.slug,
+    title: article.title,
+    excerpt: article.excerpt,
+    category: article.category,
+    image: article.image,
+    date: article.date,
+    readTime: article.readTime,
+    author: article.author
+      ? { name: article.author.name, avatar: article.author.avatar }
+      : null,
+    tags: article.tags || [],
+  }));
 
-  // Filter articles by category and search query
-  const filteredArticles = useMemo(() => {
-    let list = blogsData || [];
-    if (activeCategory && activeCategory !== "All") {
-      list = list.filter((b) => b.category === activeCategory);
-    }
-    if (!searchQuery.trim()) return list;
-    const query = searchQuery.toLowerCase().trim();
-    return list.filter((article) => {
-      const tags = article.tags || [];
-      return (
-        article.title?.toLowerCase().includes(query) ||
-        article.excerpt?.toLowerCase().includes(query) ||
-        tags.some((t) => t.toLowerCase().includes(query))
-      );
-    });
-  }, [searchQuery, activeCategory]);
+  const categories = blogCategories.map((cat) => ({
+    name: cat,
+    count:
+      cat === "All"
+        ? blogsData.length
+        : blogsData.filter((b) => b.category === cat).length,
+  }));
 
   return (
     <div className="svp">
@@ -457,128 +419,7 @@ export default function BlogPage() {
       {/* ================= ARTICLES FEED ================= */}
       <section className="sec alt" id="articles-catalog">
         <div className="container">
-          {/* Search & Topic Tabs */}
-          <div className="blog-filter-bar">
-            <div className="blog-search-box">
-              <svg
-                className="blog-search-ico"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              <input
-                type="text"
-                placeholder="Search articles by topic, keyword, or framework..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                aria-label="Search articles"
-              />
-            </div>
-
-            <div className="blog-tabs" role="tablist" aria-label="Article categories">
-              {blogCategories.map((cat) => {
-                const count = cat === "All"
-                  ? blogsData.length
-                  : blogsData.filter((b) => b.category === cat).length;
-                return (
-                  <button
-                    key={cat}
-                    type="button"
-                    role="tab"
-                    aria-selected={activeCategory === cat}
-                    className={`blog-tab ${activeCategory === cat ? "active" : ""}`}
-                    onClick={() => setActiveCategory(cat)}
-                  >
-                    <span>{cat}</span>
-                    <em>{count}</em>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Articles Grid */}
-          {filteredArticles.length === 0 ? (
-            <div style={{ textAlign: "center", padding: "4rem 0", color: "var(--muted)" }}>
-              <h3>No articles found</h3>
-              <p>Try searching for a different keyword or category.</p>
-            </div>
-          ) : (
-            <div className="cols c3">
-              {filteredArticles.map((article) => (
-                <article key={article.id} className="mag-card">
-                  <Link
-                    href={`/blog/${article.slug || article.id}`}
-                    className="mag-thumb"
-                  >
-                    <Image
-                      src={article.image}
-                      alt={article.title}
-                      width={800}
-                      height={500}
-                    />
-                  </Link>
-
-                  <div className="mag-body">
-                    <div className="mag-meta">
-                      <span className="mag-cat">{article.category}</span>
-                      <span className="mag-read">{article.readTime}</span>
-                    </div>
-
-                    <h3>
-                      <Link href={`/blog/${article.slug || article.id}`}>
-                        {article.title}
-                      </Link>
-                    </h3>
-
-                    <p>{article.excerpt}</p>
-
-                    <div className="mag-foot">
-                      <div className="mag-auth">
-                        <Image
-                          className="mag-auth-av"
-                          src={article.author?.avatar}
-                          alt={article.author?.name || "Author avatar"}
-                          width={32}
-                          height={32}
-                        />
-                        <div className="mag-auth-text">
-                          <strong>{article.author?.name}</strong>
-                          <span>{article.date}</span>
-                        </div>
-                      </div>
-
-                      <Link
-                        href={`/blog/${article.slug || article.id}`}
-                        className="mag-arrow"
-                        aria-label={`Read ${article.title}`}
-                      >
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                          <polyline points="12 5 19 12 12 19" />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          )}
+          <BlogExplorer categories={categories} articles={trimmedArticles} />
         </div>
       </section>
 
