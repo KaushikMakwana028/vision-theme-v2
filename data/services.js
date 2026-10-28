@@ -104,15 +104,23 @@ export const servicesData = [
     faqs: [
       {
         question: "How long does a custom web development engagement take?",
-        answer: "Standard corporate websites and portals are typically delivered in 4 to 8 weeks. Complex multi-tenant web applications and SaaS platforms require 10 to 16 weeks depending on third-party API dependencies."
+        answer: "Standard corporate websites and portals are typically delivered in 4 to 8 weeks. Complex multi-tenant web applications and SaaS platforms require 10 to 16 weeks depending on custom feature requirements and third-party API dependencies."
       },
       {
-        question: "Do you build custom designs or use pre-made templates?",
-        answer: "Every platform we deliver is 100% custom-designed in Figma from scratch to align with your brand identity and conversion goals. We never use off-the-shelf templates."
+        question: "Do you build custom responsive designs or use pre-made templates?",
+        answer: "Every platform we deliver is 100% custom-designed in Figma from scratch to align with your brand identity and conversion goals. We never use off-the-shelf templates or generic page builders."
       },
       {
-        question: "Will our internal team be able to easily update content?",
-        answer: "Yes, we integrate user-friendly headless CMS solutions like Sanity, Strapi, or WordPress via headless REST APIs, giving non-technical staff full visual control over pages, blogs, and media."
+        question: "Which web frameworks and technologies do you specialize in?",
+        answer: "Our core engineering stack comprises Next.js 15, React 19, TypeScript, Tailwind CSS, Node.js, Python FastAPI, and Laravel, deployed on high-availability cloud infrastructure like Vercel, AWS, and Cloudflare."
+      },
+      {
+        question: "Will our internal team be able to easily update content without touching code?",
+        answer: "Yes. We integrate user-friendly headless CMS solutions like Sanity, Strapi, or headless WordPress, giving non-technical marketing staff complete visual control over pages, blogs, media, and marketing copy."
+      },
+      {
+        question: "How do you guarantee top Core Web Vitals and SEO rankings for our website?",
+        answer: "We build with server-side rendering (SSR), incremental static regeneration (ISR), automated critical CSS inlining, edge asset compression, and schema structured data injection to ensure sub-200ms page load times and 95+ Google Lighthouse scores."
       }
     ]
   },
@@ -183,9 +191,11 @@ export const servicesData = [
       { title: "Multi-Currency & International", desc: "Multi-currency price rounding, geo-IP redirection, and localized payment method presentation for international growth." }
     ],
     faqs: [
-      { question: "Can you migrate our existing store without losing SEO rankings or customer order history?", answer: "Yes, our engineers execute strict 1:1 301 URL redirect mappings, meta tag preservation, and automated ETL scripts to migrate historical customers, orders, and product review ratings with zero data loss." },
-      { question: "Do you integrate custom payment gateways like Razorpay, Stripe, and UPI?", answer: "Yes, we integrate all primary international and Indian payment processors, including Razorpay, Cashfree, Stripe, PayU, and custom dynamic UPI QR payment verification." },
-      { question: "Can you build a unified system for both our online website and offline retail stores?", answer: "Yes, we regularly architect omnichannel systems where walk-in POS counters and web stores share real-time centralized inventory, customer profiles, and consolidated sales analytics." }
+      { question: "Can you migrate our existing store to Shopify Plus or headless commerce without losing SEO rankings or order history?", answer: "Yes. Our engineers execute strict 1:1 301 URL redirect mappings, meta tag preservation, and automated ETL data pipelines to migrate historical customer records, orders, product variants, and reviews with zero data loss or ranking drop." },
+      { question: "Do you integrate domestic and global payment gateways like Razorpay, Stripe, and UPI?", answer: "Yes, we integrate all primary international and Indian payment processors, including Razorpay, Cashfree, Stripe, PayU, and custom dynamic UPI QR payment verification with automated webhooks." },
+      { question: "Can you build a unified system for both our online website and offline retail stores?", answer: "Yes, we regularly architect omnichannel commerce systems where walk-in POS counters and web stores share real-time centralized inventory, customer loyalty profiles, and consolidated financial sales analytics." },
+      { question: "How do you optimize checkout speed and reduce cart abandonment during high-traffic flash sales?", answer: "We deploy headless Next.js edge storefronts, headless checkout extensions, one-click OTP login, address autofill, and scalable Redis inventory queues that withstand 10x sudden flash-sale traffic spikes." },
+      { question: "Do you build custom Shopify apps and private merchant admin extensions?", answer: "Yes. We build custom private and public Shopify Apps using Remix, Node.js, and Shopify Functions for custom bundling, complex volume discounts, B2B wholesale pricing tiers, and custom ERP connectors." }
     ]
   },
 
@@ -255,9 +265,11 @@ export const servicesData = [
       { title: "Over-The-Air (OTA) Instant Updates", desc: "Push critical UI fixes and feature enhancements directly to users instantly without waiting days for store review cycles." }
     ],
     faqs: [
-      { question: "Should we build our mobile app with React Native or fully Native?", answer: "For 95% of businesses, React Native or Flutter is the most strategic choice, delivering identical 60fps native performance while slashing development timeline and cost in half." },
-      { question: "Do you assist with publishing and getting approved on the Apple App Store and Google Play?", answer: "Yes, we handle the entire release lifecycle including provisioning profiles, privacy declarations, screenshot generation, and Apple/Google review coordination." },
-      { question: "How do you manage mobile app updates after launch?", answer: "We configure Over-The-Air (OTA) update pipelines using Expo / CodePush allowing instant deployment of fixes directly to devices." }
+      { question: "Should we build our mobile app with React Native / Flutter or pure Native (Swift & Kotlin)?", answer: "For 95% of businesses, React Native or Flutter is the most strategic choice, delivering identical 60fps native performance and shared business logic while slashing development timelines and maintenance costs in half." },
+      { question: "Do you manage the entire submission, review, and approval process for Google Play and the Apple App Store?", answer: "Yes. We handle the entire release lifecycle including developer account provisioning, app signing keys, privacy manifests, screenshot assets, and store compliance review coordination until approved." },
+      { question: "Can the mobile application function offline and automatically synchronize data when connection returns?", answer: "Yes. We engineer offline-first architectures using local SQLite/WatermelonDB storage with conflict-free background synchronization as soon as internet connectivity is re-established." },
+      { question: "How do you handle push notifications, location telemetry, and biometric authentication?", answer: "We implement native hardware integrations including Apple FaceID / TouchID, Android Biometrics, Google Maps reverse geocoding, foreground/background GPS tracking, and Firebase Cloud Messaging for segmented push alerts." },
+      { question: "How do you manage mobile app updates, OS upgrades, and third-party SDK maintenance after launch?", answer: "We configure Over-The-Air (OTA) update pipelines via Expo / EAS for instant deployment of critical fixes without waiting for app store review delays, and provide scheduled maintenance retainers for new iOS and Android OS major versions." }
     ]
   },
 
@@ -329,7 +341,9 @@ export const servicesData = [
     faqs: [
       { question: "How are autonomous AI agents different from standard chatbots?", answer: "Traditional chatbots simply predict the next word in a chat conversation. Autonomous AI agents can reason, plan multi-step actions, query databases, call external APIs, evaluate results, and self-correct until a task is completely solved." },
       { question: "Is our proprietary company data secure when using your AI agents?", answer: "Yes, we implement enterprise-grade security protocols: zero-data-retention API contracts, tenant-isolated vector databases, Row-Level Security, and optional private air-gapped deployments on your AWS or Azure VPC." },
-      { question: "How quickly can we see a working prototype?", answer: "We deliver functional 2-to-5 day proof-of-concepts (POCs) that let your team interact with a working agent on sample company data before committing to full-scale rollout." }
+      { question: "Can your AI agents query our internal databases, ERPs, and trigger actions in external APIs?", answer: "Yes. Our agents use structured tool calling, LangGraph workflows, and deterministic JSON schemas to execute CRUD operations in your SQL databases, ERPs, CRMs, and customer messaging desks safely." },
+      { question: "How do you prevent AI hallucinations and guarantee reliable, deterministic outputs?", answer: "We enforce schema-constrained JSON outputs, strict system validation layers, automated unit-eval test suites, and human-in-the-loop fallback gates for high-stakes business operations." },
+      { question: "How quickly can we test a working Proof-of-Concept (POC) of an AI agent for our business?", answer: "We deliver functional 2-to-5 day proof-of-concepts (POCs) that let your team interact with a working agent on sample company data before committing to full-scale rollout." }
     ]
   },
 
@@ -376,7 +390,10 @@ export const servicesData = [
     ],
     faqs: [
       { question: "How do you eliminate AI hallucinations in enterprise search?", answer: "We enforce strict RAG architecture: context bounding, cross-encoder reranking, temperature minimization, and mandatory source citations matching real document chunks." },
-      { question: "Can the search system index tables and complex diagrams inside PDFs?", answer: "Yes, our document ingestion pipeline uses multi-modal vision parsers to accurately extract table grids, financial balances, and flowcharts into clean Markdown tables." }
+      { question: "Can the search system index tables and complex diagrams inside PDFs?", answer: "Yes, our document ingestion pipeline uses multi-modal vision parsers to accurately extract table grids, financial balances, and flowcharts into clean Markdown tables." },
+      { question: "How does the search engine enforce user role permissions across sensitive company documents?", answer: "We build metadata-filtered vector search with tenant and role-based access control (RBAC), guaranteeing employees only retrieve answers from documents their clearance permits." },
+      { question: "Can we deploy the RAG search engine on our private cloud or on-premise servers?", answer: "Yes. We support local and private cloud deployments using self-hosted vector databases (Qdrant, pgvector) and open-weights embedding models (BGE, Cohere, or Llama 3) with zero external API calls." },
+      { question: "How fast are hybrid keyword-vector search responses across millions of enterprise documents?", answer: "By combining dense vector embeddings with sparse BM25 indexing in hybrid search pipelines, we achieve sub-250ms query latency across hundreds of thousands of complex documents." }
     ]
   },
 
@@ -448,7 +465,9 @@ export const servicesData = [
     faqs: [
       { question: "Why build a custom CRM instead of subscribing to Salesforce or HubSpot?", answer: "While off-the-shelf CRMs are easy to start with, enterprise subscription costs rapidly balloon into tens of thousands of dollars annually, while still requiring expensive customization. Custom software is 100% owned by you, matches your exact workflows, and incurs zero per-seat licensing penalties." },
       { question: "Can you migrate all our existing customer records from spreadsheets and legacy tools?", answer: "Yes, our engineering team builds automated data sanitation and migration scripts to cleanse, de-duplicate, and import your historical customer data, interaction notes, and invoices." },
-      { question: "Who owns the intellectual property and code repository?", answer: "You own 100% of the intellectual property, source code, database schemas, and documentation upon project milestone signoff." }
+      { question: "Do you integrate WhatsApp Cloud API for automated notifications, reminders, and PDF bills?", answer: "Yes. We integrate official Meta WhatsApp Cloud APIs to dispatch automated vector PDF invoices, payment links, technician alerts, and scheduled reminder pings directly to customer phone numbers." },
+      { question: "Who owns the intellectual property and code repository?", answer: "You own 100% of the intellectual property, source code, database schemas, and documentation upon project milestone signoff with zero vendor lock-in." },
+      { question: "Can the custom CRM scale to support multiple branch locations, field agents, and strict role permissions?", answer: "Yes. We engineer multi-tenant, multi-branch architectures with granular role-based access control (RBAC), allowing management, accountants, branch managers, and field staff to access only their assigned scopes." }
     ]
   },
 
@@ -519,7 +538,10 @@ export const servicesData = [
     ],
     faqs: [
       { question: "What minimum ad budget do you recommend for Meta and Google campaigns?", answer: "We recommend a minimum monthly media spend of $1,500 to $3,000 to ensure sufficient conversion data for algorithmic bid optimization and rapid creative testing." },
-      { question: "Why is server-side Meta CAPI tracking essential?", answer: "Browser ad blockers and Apple iOS privacy policies block up to 35% of standard browser pixel signals. Server-Side CAPI sends conversion events directly from your server to Meta, restoring attribution accuracy and lowering acquisition costs." }
+      { question: "Why is server-side Meta CAPI tracking essential?", answer: "Browser ad blockers and Apple iOS privacy policies block up to 35% of standard browser pixel signals. Server-Side CAPI sends conversion events directly from your server to Meta, restoring attribution accuracy and lowering acquisition costs." },
+      { question: "How do you test and iterate creative ad variations to lower customer acquisition cost (CAC)?", answer: "We employ systematic dynamic creative testing across hooks, value propositions, thumbnail variations, and custom landing page funnels to rapidly discover and scale the lowest CAC variants." },
+      { question: "Do you provide real-time ROAS dashboards and transparent conversion attribution modeling?", answer: "Yes. You receive live Looker Studio dashboards consolidating Google Ads, Meta Ads, and blended Shopify/Stripe revenue for true first-party ROAS visibility without vanity metrics." },
+      { question: "How do you structure retargeting funnels to convert high-intent website visitors into paying buyers?", answer: "We build multi-tiered remarketing funnels segmented by cart abandonment, product engagement recency, and customer lifecycle status, paired with custom landing page offers." }
     ]
   },
 
@@ -591,7 +613,9 @@ export const servicesData = [
     faqs: [
       { question: "How long does it take to see organic ranking improvements from SEO?", answer: "Technical fixes, Core Web Vitals speed improvements, and schema markup often yield indexing gains in 2 to 4 weeks. Meaningful keyword ranking climbs and organic traffic surges typically compound over 3 to 6 months." },
       { question: "Do you implement the technical SEO fixes directly in our codebase?", answer: "Yes, our engineers implement the code changes directly in your repository (Next.js, WordPress, Shopify, Laravel) so you don't need a separate developer to act on recommendations." },
-      { question: "What is Core Web Vitals and why does it affect rankings?", answer: "Core Web Vitals is Google's official user experience metric measuring Largest Contentful Paint (speed), Interaction to Next Paint (responsiveness), and Cumulative Layout Shift (visual stability). Passing all three is a confirmed Google ranking factor." }
+      { question: "What is Core Web Vitals and why does it affect rankings?", answer: "Core Web Vitals is Google's official user experience metric measuring Largest Contentful Paint (speed), Interaction to Next Paint (responsiveness), and Cumulative Layout Shift (visual stability). Passing all three is a confirmed Google ranking factor." },
+      { question: "What technical optimizations do you perform to ensure search engines properly crawl and index dynamic routes?", answer: "We implement dynamic XML sitemaps, server-side rendering for headless apps, canonical tag governance, robots.txt directives, and clean JSON-LD structured data for rich search results." },
+      { question: "Do you provide monthly organic traffic audits, keyword rank tracking, and competitor gap reports?", answer: "Yes. Every client receives dedicated monthly reporting via Google Search Console and Semrush/Ahrefs tracking keyword positions, click share, impression growth, and newly discovered keyword opportunities." }
     ]
   },
 
@@ -638,7 +662,10 @@ export const servicesData = [
     ],
     faqs: [
       { question: "Can you help us cut down our high monthly AWS or Google Cloud bill?", answer: "Yes, our FinOps audits typically uncover 30% to 50% in immediate savings through rightsizing over-provisioned instances, deleting orphan snapshots, and implementing reserved/savings plans." },
-      { question: "How do you guarantee zero downtime during cloud migrations?", answer: "We implement continuous database replication and parallel traffic routing (canary cutover), allowing verification of the new environment before switching primary DNS." }
+      { question: "How do you guarantee zero downtime during cloud migrations?", answer: "We implement continuous database replication and parallel traffic routing (canary cutover), allowing verification of the new environment before switching primary DNS." },
+      { question: "Do you implement automated CI/CD deployment pipelines with zero-downtime rollbacks?", answer: "Yes. We configure GitHub Actions and GitLab CI pipelines that automate linting, unit testing, Docker image building, and blue-green or canary deployments that rollback in under 30 seconds if health checks fail." },
+      { question: "How do you ensure enterprise compliance, DDoS mitigation, and SSL/firewall security?", answer: "We enforce AWS WAF / Cloudflare DDoS protection, automatic SSL certificate rotation, strict IAM least-privilege policies, encrypted storage volumes, and SOC-2/OWASP security baseline compliance." },
+      { question: "Do you provide 24/7 infrastructure monitoring, auto-scaling, and disaster recovery planning?", answer: "Yes. We configure Prometheus, Grafana, Datadog, and PagerDuty monitoring with automated horizontal pod autoscaling (HPA) and automated cross-region database snapshot backups." }
     ]
   }
 ];

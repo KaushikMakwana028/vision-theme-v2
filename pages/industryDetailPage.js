@@ -52,7 +52,7 @@ const styles = `
   width: 14px; height: 14px; flex-shrink: 0; color: var(--muted);
 }
 .svp .breadcrumbs .sep {
-  color: #94a3b8; font-size: .8rem; font-weight: 500;
+  color: #64748b; font-size: .8rem; font-weight: 500;
   padding: 0 .15rem; user-select: none;
 }
 .svp .breadcrumbs .current {
@@ -65,6 +65,7 @@ const styles = `
   padding: .4rem .95rem; border-radius: 999px;
   background: rgba(79, 70, 229, .08); color: var(--primary);
   font-weight: 600; font-size: .85rem; letter-spacing: .01em;
+  width: fit-content;
 }
 .svp .eyebrow::before {
   content: ""; width: 8px; height: 8px; border-radius: 50%;
@@ -140,20 +141,22 @@ const styles = `
   position: relative; z-index: 2;
 }
 .svp-stat-box {
-  text-align: center; padding: .5rem 1.2rem; position: relative;
+  text-align: center; padding: .5rem .75rem; position: relative; min-width: 0;
 }
 .svp-stat-box:not(:last-child)::after {
   content: ""; position: absolute; right: 0; top: 20%; bottom: 20%; width: 1px;
   background: rgba(15, 23, 42, .08);
 }
 .svp-stat-num {
-  font-size: clamp(1.85rem, 3.6vw, 2.5rem); font-weight: 800; line-height: 1.1;
+  font-size: clamp(1.45rem, 2.6vw, 2.15rem); font-weight: 800; line-height: 1.15;
   background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap; word-break: keep-all;
 }
 .svp-stat-label {
-  font-size: .82rem; font-weight: 600; text-transform: uppercase;
+  font-size: .8rem; font-weight: 600; text-transform: uppercase;
   letter-spacing: .04em; color: var(--muted); margin-top: .4rem;
+  white-space: nowrap;
 }
 
 /* ---------- Marquee ribbon ---------- */
@@ -311,6 +314,11 @@ const styles = `
 .svp-standout-title-wrap {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+}
+.svp-standout-title-wrap .eyebrow {
+  align-self: flex-start;
+  width: fit-content;
 }
 .svp-standout-title-wrap h2 {
   font-size: clamp(2rem, 3.8vw, 2.75rem);
@@ -474,21 +482,32 @@ const styles = `
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 0;
   margin-top: 2rem;
 }
 .svp-standout-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.2);
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background: transparent;
   border: 0;
   padding: 0;
   cursor: pointer;
+}
+.svp-standout-dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.2);
+  transform: translate(-50%, -50%);
   transition: all 0.3s var(--ease);
 }
-.svp-standout-dot.active {
-  width: 28px;
+.svp-standout-dot.active::before {
+  width: 22px;
   background: var(--primary);
   box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4);
 }
@@ -790,15 +809,12 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
             </p>
 
             <div className="cta-row">
-              <Link className="btn btn-primary" href="/#contact">
+              <Link className="btn btn-primary" href="/contact">
                 Consult With an Architect{" "}
                 <svg className="i" aria-hidden="true" width="18" height="18">
                   <use href="#i-arrow" />
                 </svg>
               </Link>
-              <a className="btn btn-ghost" href="#solutions">
-                Explore Solutions ↓
-              </a>
             </div>
           </div>
 
@@ -841,20 +857,16 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
                 <span className="hi">{industry.title} Solutions</span> We Build
               </h2>
               <p className="svp-isol-r2-lead">
-                We engineer intelligent {industry.title.toLowerCase()} platforms built from the ground up
-                for clinical accuracy, data security, and regulatory compliance. Our team brings real domain
-                depth to every engagement—not just generic development skills.
+                {industry.description}
               </p>
               <div className="svp-isol-r2-sub">
                 <h3>Building and Integrating Advanced {industry.title} Platforms</h3>
                 <p>
-                  We don&apos;t just build platforms; we engineer for scale, sub-second latency, and
-                  strict external audits. Every release includes comprehensive telemetry, zero-trust tokenization,
-                  and automated compliance reports.
+                  {industry.heroSubtitle || `We engineer custom ${industry.title.toLowerCase()} software with modern architectures, strict compliance protocols, and seamless third-party integrations tailored to your business needs.`}
                 </p>
               </div>
               <div>
-                <Link className="btn btn-primary" href="/#contact">
+                <Link className="btn btn-primary" href="/contact">
                   Share Your Requirements →
                 </Link>
               </div>
@@ -866,7 +878,6 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
                   key={idx}
                   href="#solutions"
                   className="svp-isol-r2-row"
-                  aria-label={cap}
                 >
                   <div className="svp-isol-r2-num">
                     {String(idx + 1).padStart(2, "0")}
@@ -999,10 +1010,10 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
                 </h2>
                 <p className="lead">
                   We combine deep {industry.title.toLowerCase()} domain knowledge with
-                  proven full-lifecycle engineering. We understand clinical and financial workflows,
+                  proven full-lifecycle engineering. We understand vertical-specific workflows,
                   regulatory frameworks, and the high stakes of enterprise deployments.
                 </p>
-                <Link className="btn btn-primary" href="/#contact">
+                <Link className="btn btn-primary" href="/contact">
                   Book a Strategy Call →
                 </Link>
               </div>
@@ -1130,7 +1141,7 @@ export default function IndustryDetailPage({ industry: propIndustry }) {
                 scope realistic delivery milestones.
               </p>
               <div className="svp-final-actions">
-                <Link className="btn btn-primary" href="/#contact">
+                <Link className="btn btn-primary" href="/contact">
                   Schedule Free Discovery Call →
                 </Link>
                 <Link className="btn btn-ghost" href="/industries">

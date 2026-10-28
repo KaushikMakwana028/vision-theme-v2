@@ -70,7 +70,7 @@ export default function WorkFilterGrid({ categories = [], counts = {}, projects 
             >
               <Image
                 src={proj.image}
-                alt={proj.title}
+                alt={proj.imageAlt || `${proj.title} case study developed by Vision Technolabs in Ahmedabad`}
                 width={800}
                 height={450}
                 onError={(e) => {
@@ -99,7 +99,7 @@ export default function WorkFilterGrid({ categories = [], counts = {}, projects 
               <Link
                 href={`/work/${proj.slug || proj.id}`}
                 className="more"
-                aria-label={`Explore ${proj.title} case study`}
+                aria-label={`Explore Case Study: ${proj.title}`}
               >
                 Explore Case Study
                 <svg className="i" aria-hidden="true">

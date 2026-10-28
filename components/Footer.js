@@ -45,10 +45,10 @@ export default function Footer() {
           <div className="foot-grid">
             {/* Column 1: Info, Live Status & Socials */}
             <div className="foot-col foot-brand-col">
-              <Link href="/" className="logo" aria-label="Vision Technolabs home">
+              <Link href="/" className="logo">
                 <Image
                   src="/logo/vision-logo.png"
-                  alt="Vision Technolabs Logo"
+                  alt=""
                   width={36}
                   height={36}
                   className="logo-img"
@@ -81,7 +81,7 @@ export default function Footer() {
 
             {/* Column 2: Engineering Services */}
             <div className="foot-col">
-              <h4 className="foot-title">Engineering Services</h4>
+              <h3 className="foot-title">Engineering Services</h3>
               <ul className="foot-links">
                 {navigationData.footerLinks.services.map((item, idx) => (
                   <li key={idx}>
@@ -97,7 +97,7 @@ export default function Footer() {
 
             {/* Column 3: Company Navigation */}
             <div className="foot-col">
-              <h4 className="foot-title">Company</h4>
+              <h3 className="foot-title">Company</h3>
               <ul className="foot-links">
                 {navigationData.footerLinks.company.map((item, idx) => (
                   <li key={idx}>
@@ -113,7 +113,7 @@ export default function Footer() {
 
             {/* Column 4: Real Contact Data & Newsletter */}
             <div className="foot-col foot-contact-col">
-              <h4 className="foot-title">Get In Touch</h4>
+              <h3 className="foot-title">Get In Touch</h3>
               <ul className="addr">
                 <li>
                   <svg className="i" aria-hidden="true">
@@ -153,7 +153,6 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="foot-wa-btn"
-                  aria-label="Direct WhatsApp Chat"
                 >
                   <svg className="i" width="16" height="16" aria-hidden="true">
                     <use href="#i-wa" />
@@ -164,6 +163,33 @@ export default function Footer() {
               )}
             </div>
           </div>
+
+          {/* Regional IT Company Locations Bar (Temporarily commented out) */}
+          {/*
+          <div
+            className="foot-locations"
+            style={{
+              marginTop: "2.5rem",
+              paddingTop: "1.5rem",
+              borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+              fontSize: "0.85rem",
+              color: "#94a3b8",
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "0.4rem 0.6rem",
+            }}
+          >
+            <span style={{ fontWeight: 600, color: "#fff" }}>IT Company Locations:</span>
+            <Link href="/it-company/naroda" style={{ color: "#94a3b8", textDecoration: "none" }}>IT Company in Naroda</Link>
+            <span>·</span>
+            <Link href="/it-company/ahmedabad" style={{ color: "#94a3b8", textDecoration: "none" }}>IT Company in Ahmedabad</Link>
+            <span>·</span>
+            <Link href="/it-company/gujarat" style={{ color: "#94a3b8", textDecoration: "none" }}>IT Company in Gujarat</Link>
+            <span>·</span>
+            <Link href="/it-company" style={{ color: "var(--primary, #4f46e5)", textDecoration: "none", fontWeight: 600 }}>All Gujarat Locations →</Link>
+          </div>
+          */}
 
           {/* Bottom Bar with Real Legal Modals & Safe Padding */}
           <div className="foot-bottom">

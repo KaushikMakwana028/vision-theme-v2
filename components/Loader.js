@@ -678,7 +678,8 @@ export default function Loader() {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    // Defer the first layout read so it never forces a reflow during hydration
+    const idleId = window.setTimeout(onScroll, 1200);
 
     // Global Link Click Interceptor: ignore modified clicks, new tabs, downloads, protocols, hashes, external URLs
     const handleDocumentClick = (e) => {
@@ -802,6 +803,7 @@ export default function Loader() {
       if (timerRef.current) clearInterval(timerRef.current);
       if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
       if (safetyTimerRef.current) clearTimeout(safetyTimerRef.current);
+      window.clearTimeout(idleId);
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("click", handleDocumentClick);
       window.removeEventListener("popstate", handlePopState);

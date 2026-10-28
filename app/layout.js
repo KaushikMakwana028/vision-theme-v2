@@ -31,7 +31,7 @@ export const viewport = {
 };
 
 const rootDescription =
-  "Vision Technolabs is an Ahmedabad-based web, mobile app and AI development company serving clients in India, the US and the UK.";
+  "Vision Technolabs is an IT company in Naroda, Ahmedabad, Gujarat offering website development, mobile app development, AI automation and cloud solutions for businesses in India and abroad.";
 
 export const metadata = {
   metadataBase: new URL(siteConfig.url),

@@ -69,19 +69,20 @@ export default function RelatedLinks({
             )}
 
             <div className={`cols ${group.items.length === 2 ? "c2" : "c3"}`}>
-              {group.items.map((item, idx) => (
-                <Link
-                  key={item.href || idx}
-                  href={item.href}
-                  className="card related-card"
-                  aria-label={item.ariaLabel || `Read more about ${item.title}`}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    textDecoration: "none",
-                    height: "100%",
-                  }}
-                >
+              {group.items.map((item, idx) => {
+                const ItemHeadingTag = group.title ? "h4" : "h3";
+                return (
+                  <Link
+                    key={item.href || idx}
+                    href={item.href}
+                    className="card related-card"
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      textDecoration: "none",
+                      height: "100%",
+                    }}
+                  >
                   <div
                     style={{
                       display: "flex",
@@ -122,7 +123,7 @@ export default function RelatedLinks({
                     )}
                   </div>
 
-                  <h4
+                  <ItemHeadingTag
                     style={{
                       fontSize: "1.1rem",
                       fontWeight: 600,
@@ -132,7 +133,7 @@ export default function RelatedLinks({
                     }}
                   >
                     {item.title}
-                  </h4>
+                  </ItemHeadingTag>
 
                   {item.description && (
                     <p
@@ -181,7 +182,8 @@ export default function RelatedLinks({
                     </svg>
                   </span>
                 </Link>
-              ))}
+              );
+            })}
             </div>
           </div>
         ))}

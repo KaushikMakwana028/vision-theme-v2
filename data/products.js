@@ -24,7 +24,8 @@ export const productsData = [
     heroSubtitle: "Sub-30-second counter billing, automated barcode inventory, 4 branded PDF templates, and instant WhatsApp delivery engineered for modern retail businesses.",
     pricing: "Turnkey SaaS · Full Source Code Buyout Available",
     liveDemoUrl: "https://billbook.visiontechnolabs.com/",
-    image: "/images/billbook/01_billbook.webp",
+    image: "/images/billbook/billbook-invoicing-inventory-saas-vision-technolabs.webp",
+    imageAlt: "BillsBook multi-business cloud invoicing, POS and inventory management SaaS by Vision Technolabs in Ahmedabad.",
     metrics: [
       { value: "<30s", label: "Counter Billing Speed" },
       { value: "<1%", label: "Stock Discrepancy" },
@@ -108,7 +109,8 @@ export const productsData = [
     heroSubtitle: "Complete mobile app, web admin console, and QR customer portal suite: automated AMC renewals, technician dispatch, and instant WhatsApp billing.",
     pricing: "Turnkey Platform · Mobile App + Web Admin",
     liveDemoUrl: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.filterbook",
-    image: "/app_images/Filterbook/01_app_FB.webp",
+    image: "/app_images/Filterbook/filterbook-ro-service-crm-app-vision-technolabs.webp",
+    imageAlt: "FilterBook RO purifier technician CRM and service management mobile application by Vision Technolabs in Ahmedabad.",
     metrics: [
       { value: "4-in-1", label: "App, Web, Admin & QR" },
       { value: "100%", label: "Auto Service Schedules" },
@@ -192,7 +194,8 @@ export const productsData = [
     heroSubtitle: "Cross-platform mobile app and fleet dashboard: automatic reverse-geocoded pickup detection, live GPS tracking, fuel expense management, and instant PDF duty slips.",
     pricing: "Turnkey Mobile App · White-Label Ready",
     liveDemoUrl: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.tripsbook",
-    image: "/app_images/Tripsbook/01_app_TB.webp",
+    image: "/app_images/Tripsbook/tripsbook-fleet-trip-management-app-vision-technolabs.webp",
+    imageAlt: "TripsBook fleet logistics, driver trip logging, and fuel tracking mobile application by Vision Technolabs in Ahmedabad.",
     metrics: [
       { value: "2 Modes", label: "Fix Cab & On Call Trips" },
       { value: "10 sec", label: "Live GPS Telemetry" },
@@ -276,7 +279,8 @@ export const productsData = [
     heroSubtitle: "Mobile ERP app and 40-endpoint REST API: multi-site plot inventory, 3-stage automated EMI alert engine, dastavej registry vault, and field CRM.",
     pricing: "Turnkey Mobile App + Cloud REST Backend",
     liveDemoUrl: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.sitedesk",
-    image: "/app_images/Sitedesk/01_app_SD.webp",
+    image: "/app_images/Sitedesk/sitedesk-real-estate-crm-app-vision-technolabs.webp",
+    imageAlt: "SiteDesk real estate plot sales, customer EMI tracking, and site management ERP by Vision Technolabs in Ahmedabad.",
     metrics: [
       { value: "40", label: "REST API Endpoints" },
       { value: "25+", label: "Relational DB Tables" },

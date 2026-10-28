@@ -5,7 +5,7 @@ import CountUp from "@/components/services/CountUp";
 import ServiceHeroTilt from "@/components/services/ServiceHeroTilt";
 import FaqAccordion from "@/components/services/FaqAccordion";
 import { servicesData } from "@/data/services";
-import { getProjectsByService, caseStudiesData } from "@/data/caseStudies";
+import { getProjectsByService } from "@/data/caseStudies";
 
 /* =========================================================
    Page styles (scoped under .svp) — matches servicePage.js
@@ -57,7 +57,7 @@ const styles = `
 }
 .svp .breadcrumbs a:hover .bc-icon { transform: none; color: var(--primary); }
 .svp .breadcrumbs .sep {
-  color: #94a3b8; font-size: .8rem; font-weight: 500;
+  color: #64748b; font-size: .8rem; font-weight: 500;
   padding: 0 .15rem; user-select: none;
 }
 .svp .breadcrumbs .current {
@@ -155,7 +155,7 @@ const styles = `
   transition: transform .25s var(--ease);
   animation: svp-in-scale 1s var(--ease) .35s backwards;
 }
-.svp-hero-card h3 { color: #fff; margin: 1rem 0 .6rem; }
+.svp-hero-card h2, .svp-hero-card h3 { color: #fff; margin: 1rem 0 .6rem; }
 .svp-hero-card p { color: rgba(255, 255, 255, .78); margin: 0; }
 .svp-hero-card .btag {
   display: inline-block; padding: .3rem .75rem; border-radius: 999px; font-size: .8rem; font-weight: 600;
@@ -345,6 +345,75 @@ const styles = `
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
+/* ---------- Empty Featured Work ---------- */
+.svp-empty-work-box {
+  background: var(--bg);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 3.5rem 2rem;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px -8px rgba(11, 18, 32, 0.04);
+}
+.svp-empty-work-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: rgba(79, 70, 229, 0.08);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  animation: svp-pulse-glow 3s ease-in-out infinite;
+}
+@keyframes svp-pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.2); transform: scale(1); }
+  50% { box-shadow: 0 0 0 14px rgba(79, 70, 229, 0); transform: scale(1.04); }
+}
+.svp-empty-work-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+.svp-empty-work-box h3 {
+  font-size: clamp(1.3rem, 2.8vw, 1.65rem);
+  font-weight: 750;
+  color: var(--ink);
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+.svp-empty-work-box p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto 2rem;
+}
+.svp-empty-work-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 /* ---------- FAQ ---------- */
 .svp .faq-wrap { max-width: 820px; margin: 0 auto; display: grid; gap: .9rem; }
 .svp .faq-card {
@@ -513,7 +582,7 @@ function ProjectCard({ proj, delay = 0 }) {
       >
         <Image
           src={proj.image}
-          alt={proj.title}
+          alt={proj.imageAlt || `${proj.title} delivered by Vision Technolabs in Ahmedabad`}
           width={800}
           height={520}
         />
@@ -564,9 +633,7 @@ export default function ServiceDetailPage({ service: propService }) {
     );
   }
 
-  const direct = getProjectsByService(service.slug);
-  const projects =
-    direct && direct.length > 0 ? direct : caseStudiesData.slice(0, 3);
+  const projects = getProjectsByService(service.slug) || [];
 
   const marqueeTags =
     service.techStack && service.techStack.length > 0
@@ -605,15 +672,12 @@ export default function ServiceDetailPage({ service: propService }) {
             </p>
 
             <div className="cta-row">
-              <Link className="btn btn-primary" href="/#contact">
+              <Link className="btn btn-primary" href="/contact">
                 Schedule Technical Consultation{" "}
                 <svg className="i" aria-hidden="true">
                   <use href="#i-arrow" />
                 </svg>
               </Link>
-              <a className="btn btn-ghost" href="#capabilities">
-                Explore Capabilities ↓
-              </a>
             </div>
           </div>
 
@@ -638,7 +702,7 @@ export default function ServiceDetailPage({ service: propService }) {
                 <i />
                 Live SLA &amp; Standards
               </span>
-              <h3>Engineered for Measurable Outcomes</h3>
+              <h2>Engineered for Measurable Outcomes</h2>
               <p>
                 Every build is held to strict performance, security, and
                 conversion benchmarks.
@@ -732,18 +796,18 @@ export default function ServiceDetailPage({ service: propService }) {
       </section>
 
       {/* ================= FEATURED PROJECTS / CASE STUDIES ================= */}
-      {projects.length > 0 && (
-        <section className="sec alt" id="projects">
-          <div className="container">
-            <Reveal className="sec-head">
-              <span className="eyebrow">Featured Work</span>
-              <h2>Real-World Projects We&apos;ve Successfully Delivered</h2>
-              <p>
-                Explore recent projects and case studies showcasing how we
-                design, build, and scale solutions with {service.title}.
-              </p>
-            </Reveal>
+      <section className="sec alt" id="projects">
+        <div className="container">
+          <Reveal className="sec-head">
+            <span className="eyebrow">Featured Work</span>
+            <h2>Real-World Projects We&apos;ve Successfully Delivered</h2>
+            <p>
+              Explore recent projects and case studies showcasing how we
+              design, build, and scale solutions with {service.title}.
+            </p>
+          </Reveal>
 
+          {projects.length > 0 ? (
             <div className="cols c3">
               {projects.map((proj, idx) => (
                 <ProjectCard
@@ -753,9 +817,34 @@ export default function ServiceDetailPage({ service: propService }) {
                 />
               ))}
             </div>
-          </div>
-        </section>
-      )}
+          ) : (
+            <Reveal className="svp-empty-work-box">
+              <div className="svp-empty-work-icon" aria-hidden="true">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                </svg>
+              </div>
+              <span className="svp-empty-work-badge">Production Updates In Progress</span>
+              <h3>Featured Work Not Available for {service.title}</h3>
+              <p>
+                Production deployments and client case studies for {service.title} are currently being documented or are protected under active enterprise Non-Disclosure Agreements (NDAs).
+              </p>
+              <div className="svp-empty-work-actions">
+                <Link href="/contact" className="btn btn-primary">
+                  Request Private Architecture Demo{" "}
+                  <svg className="i" aria-hidden="true">
+                    <use href="#i-arrow" />
+                  </svg>
+                </Link>
+                <Link href="/work" className="btn btn-ghost">
+                  Browse All Case Studies
+                </Link>
+              </div>
+            </Reveal>
+          )}
+        </div>
+      </section>
 
       {/* ================= DELIVERY LIFECYCLE ================= */}
       {service.workflow?.length > 0 && (
@@ -890,7 +979,7 @@ export default function ServiceDetailPage({ service: propService }) {
                   <Link
                     className="more"
                     href={`/services/${other.slug}`}
-                    aria-label={`View ${other.title} specifications`}
+                    aria-label={`View Specifications: ${other.title}`}
                   >
                     View Specifications{" "}
                     <svg className="i" aria-hidden="true">
@@ -917,7 +1006,7 @@ export default function ServiceDetailPage({ service: propService }) {
                 blueprint, and scope realistic milestones.
               </p>
               <div className="svp-cta-actions">
-                <Link className="btn btn-light" href="/#contact">
+                <Link className="btn btn-light" href="/contact">
                   Book a Discovery Call →
                 </Link>
                 <Link className="btn btn-ghost" href="/services">

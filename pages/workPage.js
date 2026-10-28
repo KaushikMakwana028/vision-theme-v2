@@ -56,7 +56,7 @@ const styles = `
 }
 .svp .breadcrumbs a:hover .bc-icon { transform: none; color: var(--primary); }
 .svp .breadcrumbs .sep {
-  color: #94a3b8; font-size: .8rem; font-weight: 500;
+  color: #64748b; font-size: .8rem; font-weight: 500;
   padding: 0 .15rem; user-select: none;
 }
 .svp .breadcrumbs .current {
@@ -154,7 +154,7 @@ const styles = `
   transition: transform .25s var(--ease);
   animation: svp-in-scale 1s var(--ease) .35s backwards;
 }
-.svp-hero-card h3 { color: #fff; margin: 1rem 0 .6rem; }
+.svp-hero-card h2, .svp-hero-card h3 { color: #fff; margin: 1rem 0 .6rem; }
 .svp-hero-card p { color: rgba(255, 255, 255, .78); margin: 0; }
 .svp-hero-card .btag {
   display: inline-block; padding: .3rem .75rem; border-radius: 999px; font-size: .8rem; font-weight: 600;
@@ -548,24 +548,36 @@ const heroStats = [
 
 const workFaqs = [
   {
-    q: "Do clients own 100% of the code and intellectual property (IP)?",
-    a: "Yes, absolutely. Once project sprint milestones are completed and paid for, all intellectual property, Git repositories, architectural schemas, and cloud deployment pipelines belong 100% to your company with zero ongoing license fees or vendor lock-in."
+    q: "What types of client projects and industries are showcased in Vision's work portfolio?",
+    a: "Our featured portfolio spans custom enterprise platforms, high-concurrency e-commerce portals, cross-platform mobile apps, and SaaS systems across diverse industries. Notable case studies include Surya Deep Car Rent (fleet ERP and online booking portal), SRL Pixel & Ghanshyam Murti (high-volume e-commerce platforms), ReComm (hyperlocal marketplace), StayFlow CRM (multi-branch PG and hostel ERP), Medicheck (clinical drug-drug interaction checker), and native React Native mobile applications like Divy Shakti, Fitcket, and Kreditmitraa."
   },
   {
-    q: "Can Vision work under strict mutual non-disclosure agreements (NDAs)?",
-    a: "Yes. Every client engagement begins with a legally binding mutual NDA. We strictly protect your proprietary algorithms, client data, and business strategies."
+    q: "How does Vision verify and measure the business outcomes reported in these case studies?",
+    a: "Every case study metric—such as sub-200ms page load speeds, 99.9% uptime, 4x increases in mobile conversions, or 78% reductions in paperwork—is benchmarked directly using production telemetry, Google Core Web Vitals audits, database query profilers, and real client business analytics dashboards before and after deployment."
   },
   {
-    q: "How are sprints structured and how do we monitor progress?",
-    a: "We work in transparent 2-week agile sprints. You receive staging environment access, weekly live video demos, real-time shared Slack/Teams channels, and access to our task tracking boards."
+    q: "Can prospective clients inspect live production platforms or request a live architecture walkthrough?",
+    a: "Yes. Most client projects in our portfolio include direct links to their live websites or Google Play Store application listings. During our discovery call, our senior solution architects can walk you through staging environments, backend admin consoles, database entity-relationship diagrams (ERDs), and API contracts under appropriate mutual non-disclosure agreements (NDAs)."
   },
   {
-    q: "Can you take over and refactor an existing or incomplete codebase?",
-    a: "Yes. Our senior architects routinely perform comprehensive architecture audits, code quality assessments, and database schema profiling to modernize legacy codebases or finish stalled builds."
+    q: "Do clients own 100% of the custom source code, Git repositories, and architecture upon completion?",
+    a: "Yes, unequivocally. All custom software, mobile app codebases, database schemas, CI/CD deployment scripts, and architectural documentation are 100% owned by your company upon milestone sign-off. We transfer full Git repository ownership with zero recurring developer royalties, licensing fees, or vendor lock-in."
   },
   {
-    q: "What warranty or SLA coverage do you provide after launch?",
-    a: "All completed builds include a 30-day post-launch warranty covering bug fixes and performance stability. We also offer monthly SLA maintenance retainers covering 24/7 uptime monitoring and cloud DevOps."
+    q: "Can Vision take over, audit, or refactor an existing or unfinished codebase from another vendor?",
+    a: "Yes. Approximately 35% of our portfolio engagements involve modernizing legacy software or taking over stalled projects. Our senior architects conduct a thorough 360-degree audit evaluating code quality, security vulnerabilities, database normalization, and third-party API dependencies before outlining an agile remediation roadmap."
+  },
+  {
+    q: "How do your 2-week agile sprints work and how closely can our team collaborate?",
+    a: "We operate in disciplined 2-week agile sprints. You receive private access to staging environments with continuous CI/CD deployments, direct collaboration with senior developers in dedicated Slack or Microsoft Teams channels, task boards in Jira or Linear, and weekly live sprint review demonstrations."
+  },
+  {
+    q: "What warranty, SLA guarantees, and ongoing support are provided after go-live?",
+    a: "Every completed deployment includes a complimentary 30-day post-launch warranty covering functional bug fixes, regression testing, and server performance tuning. For long-term peace of mind, we provide ongoing SLA-backed maintenance retainers covering 24/7 uptime monitoring, security patching, database optimization, and cloud infrastructure management."
+  },
+  {
+    q: "How does Vision ensure enterprise security and regulatory compliance across client applications?",
+    a: "Our engineering squads follow OWASP Top 10 security standards by default. We implement strict input sanitization, JWT blacklist token invalidation, role-based access control (RBAC), end-to-end TLS encryption, secure database parameterization, and assist with compliance readiness including PCI-DSS, HIPAA, and GDPR standards."
   }
 ];
 
@@ -688,11 +700,11 @@ export default function WorkPage() {
             </p>
 
             <div className="cta-row">
-              <a className="btn btn-primary" href="#portfolio-catalog">
-                Explore Portfolio ↓
-              </a>
-              <Link className="btn btn-ghost" href="/#contact">
-                Schedule Technical Call →
+              <Link className="btn btn-primary" href="/contact">
+                Schedule Technical Call{" "}
+                <svg className="i" aria-hidden="true" width="18" height="18">
+                  <use href="#i-arrow" />
+                </svg>
               </Link>
             </div>
           </div>
@@ -719,7 +731,7 @@ export default function WorkPage() {
                 </span>
               </div>
 
-              <h3>Deterministic Delivery Track Record</h3>
+              <h2>Deterministic Delivery Track Record</h2>
               <p>
                 Zero missed milestones. Bank-grade architectural rigor. Every build backed by
                 measurable latency reductions and revenue lift.
@@ -904,7 +916,7 @@ export default function WorkPage() {
                 roadmap within 48 hours.
               </p>
               <div className="svp-cta-actions">
-                <Link className="btn btn-light" href="/#contact">
+                <Link className="btn btn-light" href="/contact">
                   Schedule Discovery Call →
                 </Link>
                 <a className="btn btn-ghost" href="#portfolio-catalog">

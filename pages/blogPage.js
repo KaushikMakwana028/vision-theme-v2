@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { blogsData, blogCategories } from "@/data/blogs";
+import { blogsData } from "@/data/blogs";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 import BlogExplorer from "@/components/blog/BlogExplorer";
 
@@ -74,104 +74,13 @@ const styles = `
 .svp-hero-center h1 em {
   font-family: var(--serif); font-style: italic;
   background: var(--grad-warm);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--ink);
 }
 .svp-hero-center p.lead {
   font-size: clamp(1rem, 2vw, 1.18rem); color: var(--muted); line-height: 1.65; margin: 0 auto; max-width: 64ch;
 }
-
-/* ---------- Featured Story Showcase (High Performance) ---------- */
-.featured-card {
-  position: relative; display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(1.5rem, 3.5vw, 3rem);
-  align-items: center; padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--bg);
-  border: 1.5px solid rgba(79, 70, 229, 0.14); border-radius: calc(var(--radius) + 8px); box-shadow: var(--shadow-lg);
-  overflow: hidden; margin-bottom: 3.5rem;
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-  will-change: transform;
-}
-.featured-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(79, 70, 229, 0.38);
-  box-shadow: 0 20px 40px -12px rgba(79, 70, 229, .15);
-}
-
-.featured-thumb {
-  position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 16 / 10;
-  box-shadow: var(--shadow);
-}
-.featured-thumb img {
-  display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease;
-}
-.featured-card:hover .featured-thumb img { transform: scale(1.04); }
-.featured-thumb-badge {
-  position: absolute; top: 1rem; left: 1rem; z-index: 2; padding: .35rem .85rem; border-radius: 999px;
-  background: rgba(11, 16, 32, .85); backdrop-filter: blur(8px); color: #fff; font-size: .8rem; font-weight: 700;
-  letter-spacing: .02em; display: inline-flex; align-items: center; gap: .4rem;
-}
-.featured-thumb-badge i { width: 7px; height: 7px; border-radius: 50%; background: #34d399; }
-
-.featured-content { display: flex; flex-direction: column; justify-content: center; }
-.featured-tag-row { display: flex; align-items: center; gap: .75rem; margin-bottom: .9rem; font-size: .84rem; }
-.featured-cat {
-  padding: .3rem .8rem; border-radius: 999px; background: rgba(79, 70, 229, .08); color: var(--primary);
-  font-weight: 700; text-transform: uppercase; font-size: .75rem; letter-spacing: .04em;
-}
-.featured-read { color: var(--muted); }
-.featured-content h2 {
-  font-size: clamp(1.4rem, 2.5vw, 2.1rem); line-height: 1.25; margin: 0 0 .9rem; color: var(--ink);
-  transition: color .25s;
-}
-.featured-card:hover .featured-content h2 { color: var(--primary); }
-.featured-content p { color: var(--muted); font-size: 1.02rem; line-height: 1.7; margin: 0 0 1.5rem; }
-
-.featured-author-row {
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-  padding-top: 1.25rem; border-top: 1px dashed var(--line); margin-top: auto;
-}
-.featured-author-info { display: flex; align-items: center; gap: .75rem; }
-.featured-author-avatar {
-  width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);
-}
-.featured-author-name strong { display: block; font-size: .92rem; color: var(--ink); }
-.featured-author-name span { font-size: .8rem; color: var(--muted); }
-
-/* ---------- Search and Filter Bar ---------- */
-.blog-filter-bar {
-  display: flex; flex-direction: column; gap: 1.5rem; max-width: 980px; margin: 0 auto 3rem;
-}
-.blog-search-box {
-  position: relative; width: 100%; max-width: 580px; margin: 0 auto;
-}
-.blog-search-box input {
-  width: 100%; padding: .85rem 1.25rem .85rem 3.2rem; border-radius: 999px;
-  background: var(--bg); border: 1.5px solid var(--line); font: inherit; font-size: .96rem;
-  color: var(--ink); box-shadow: var(--shadow); transition: border-color .3s, box-shadow .3s;
-}
-.blog-search-box input:focus {
-  outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, .15);
-}
-.blog-search-ico {
-  position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); width: 19px; height: 19px;
-  color: var(--muted); pointer-events: none;
-}
-
-.blog-tabs { display: flex; gap: .55rem; justify-content: center; flex-wrap: wrap; }
-.blog-tab {
-  display: inline-flex; align-items: center; gap: .5rem; cursor: pointer;
-  padding: .55rem 1.1rem; border-radius: 999px; font: inherit; font-weight: 600; font-size: .9rem;
-  white-space: nowrap; color: var(--ink); background: var(--bg); border: 1px solid var(--line);
-  transition: transform .3s var(--ease), background .3s, color .3s, border-color .3s, box-shadow .3s;
-}
-.blog-tab em {
-  font-style: normal; font-size: .72rem; padding: .1rem .5rem; border-radius: 999px;
-  background: var(--surface); color: var(--muted); transition: background .3s, color .3s;
-}
-.blog-tab:hover { border-color: var(--primary); transform: translateY(-2px); }
-.blog-tab.active {
-  color: #fff; border-color: transparent; background: var(--grad);
-  box-shadow: 0 10px 24px -8px rgba(79, 70, 229, .65); transform: translateY(-2px);
-}
-.blog-tab.active em { background: rgba(255, 255, 255, .22); color: #fff; }
 
 /* ---------- Grids ---------- */
 .svp .cols { display: grid; gap: 1.75rem; }
@@ -269,7 +178,6 @@ const styles = `
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .svp .cols.c3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .featured-card { grid-template-columns: 1fr; }
 }
 @media (max-width: 860px) {
   .svp-cta { grid-template-columns: 1fr; gap: 1.75rem; }
@@ -278,19 +186,6 @@ const styles = `
   .svp-hero-center { margin-bottom: 1.5rem; }
   .svp-hero-center h1 { font-size: clamp(1.45rem, 5.5vw, 1.95rem); line-height: 1.24; margin: .5rem 0 .55rem; }
   .svp-hero-center p.lead { font-size: .92rem; line-height: 1.55; }
-  .featured-card { padding: 1.15rem !important; gap: 1.15rem; border-radius: 16px !important; margin-bottom: 2rem !important; }
-  .featured-content h2 { font-size: 1.25rem !important; line-height: 1.3 !important; margin-bottom: .5rem !important; }
-  .featured-content p { font-size: .88rem !important; line-height: 1.5 !important; margin-bottom: .9rem !important; }
-  .featured-author-row { padding-top: .85rem; }
-  .featured-author-row .btn { width: 100%; justify-content: center; }
-  .blog-filter-bar { gap: .9rem; margin-bottom: 1.75rem; }
-  .blog-tabs {
-    flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; padding: .35rem var(--gutter) .7rem;
-    scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch;
-    margin-inline: calc(var(--gutter) * -1);
-  }
-  .blog-tabs::-webkit-scrollbar { display: none; }
-  .blog-tab { scroll-snap-align: start; }
   .svp .cols.c3 { grid-template-columns: 1fr; gap: 1.15rem; }
   .mag-body { padding: 1.15rem; }
   .mag-body h3 { font-size: 1.15rem; line-height: 1.32; }
@@ -300,8 +195,6 @@ const styles = `
 `;
 
 export default function BlogPage() {
-  const featuredArticle = blogsData.find((b) => b.featured) || blogsData[0];
-
   const trimmedArticles = blogsData.map((article) => ({
     id: article.id,
     slug: article.slug,
@@ -317,14 +210,6 @@ export default function BlogPage() {
     tags: article.tags || [],
   }));
 
-  const categories = blogCategories.map((cat) => ({
-    name: cat,
-    count:
-      cat === "All"
-        ? blogsData.length
-        : blogsData.filter((b) => b.category === cat).length,
-  }));
-
   return (
     <div className="svp">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
@@ -336,7 +221,7 @@ export default function BlogPage() {
         <span className="svp-dots" aria-hidden="true" />
 
         <div className="container">
-          <div className="svp-hero-center">
+          <div className="svp-hero-center" style={{ marginBottom: 0 }}>
             <div style={{ marginBottom: ".75rem" }}>
               <span className="eyebrow">
                 Engineering &amp; Architecture Insights
@@ -353,73 +238,13 @@ export default function BlogPage() {
               from the senior engineering team at Vision Technolabs.
             </p>
           </div>
-
-          {/* ================= FEATURED STORY SHOWCASE ================= */}
-          {featuredArticle && (
-            <article className="featured-card">
-              <Link
-                href={`/blog/${featuredArticle.slug || featuredArticle.id}`}
-                className="featured-thumb"
-                aria-label={`Read ${featuredArticle.title}`}
-              >
-                <Image
-                  src={featuredArticle.image}
-                  alt={featuredArticle.title}
-                  width={1000}
-                  height={600}
-                  priority
-                />
-                <span className="featured-thumb-badge">
-                  <i /> Editor&apos;s Pick
-                </span>
-              </Link>
-
-              <div className="featured-content">
-                <div className="featured-tag-row">
-                  <span className="featured-cat">{featuredArticle.category}</span>
-                  <span className="featured-read">{featuredArticle.readTime}</span>
-                </div>
-
-                <h2>
-                  <Link href={`/blog/${featuredArticle.slug || featuredArticle.id}`}>
-                    {featuredArticle.title}
-                  </Link>
-                </h2>
-
-                <p>{featuredArticle.excerpt}</p>
-
-                <div className="featured-author-row">
-                  <div className="featured-author-info">
-                    <Image
-                      className="featured-author-avatar"
-                      src={featuredArticle.author?.avatar}
-                      alt={featuredArticle.author?.name || "Author avatar"}
-                      width={44}
-                      height={44}
-                    />
-                    <div className="featured-author-name">
-                      <strong>{featuredArticle.author?.name}</strong>
-                      <span>{featuredArticle.date}</span>
-                    </div>
-                  </div>
-
-                  <Link
-                    href={`/blog/${featuredArticle.slug || featuredArticle.id}`}
-                    className="btn btn-primary"
-                  >
-                    Read Full Essay →
-                  </Link>
-                </div>
-              </div>
-            </article>
-          )}
         </div>
       </section>
 
       {/* ================= ARTICLES FEED ================= */}
       <section className="sec alt" id="articles-catalog">
         <div className="container">
-          <BlogExplorer categories={categories} articles={trimmedArticles} />
+          <BlogExplorer articles={trimmedArticles} />
         </div>
       </section>
 
@@ -435,7 +260,7 @@ export default function BlogPage() {
                 30-minute discovery call to evaluate architecture feasibility and roadmap scoping.
               </p>
               <div className="svp-cta-actions">
-                <Link className="btn btn-light" href="/#contact">
+                <Link className="btn btn-light" href="/contact">
                   Schedule Engineering Call →
                 </Link>
                 <Link className="btn btn-ghost" href="/work">

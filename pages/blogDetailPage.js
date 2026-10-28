@@ -153,7 +153,7 @@ const styles = `
   margin-top: 1.75rem; padding: 1.2rem; border-radius: 18px; color: #fff;
   background: linear-gradient(135deg, #1e1b4b, #312e81);
 }
-.bd .rail-cta h4 { font-size: .98rem; margin-bottom: .4rem; }
+.bd .rail-cta h4, .bd .rail-cta .rail-cta-title { font-size: .98rem; font-weight: 700; margin-bottom: .4rem; }
 .bd .rail-cta p { font-size: .83rem; line-height: 1.55; color: #c7cdee; margin-bottom: .9rem; }
 .bd .rail-cta .btn { width: 100%; }
 
@@ -186,8 +186,8 @@ const styles = `
 }
 @media (min-width: 640px) { .bd .takeaways { padding: 1.9rem 2rem 1.9rem 2.2rem; } }
 .bd .takeaways::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 5px; background: var(--bd-grad); }
-.bd .takeaways h3 { display: flex; align-items: center; gap: .6rem; font-size: 1.15rem; font-weight: 800; margin-bottom: 1rem; color: var(--bd-ink); }
-.bd .takeaways h3 svg { width: 22px; height: 22px; color: #fb923c; }
+.bd .takeaways h2, .bd .takeaways h3 { display: flex; align-items: center; gap: .6rem; font-size: 1.15rem; font-weight: 800; margin-bottom: 1rem; color: var(--bd-ink); }
+.bd .takeaways h2 svg, .bd .takeaways h3 svg { width: 22px; height: 22px; color: #fb923c; }
 .bd .takeaways li { display: flex; gap: .8rem; align-items: flex-start; font-size: .98rem; font-weight: 500; color: var(--bd-ink); }
 .bd .takeaways li + li { margin-top: .85rem; }
 .bd .takeaways li b {
@@ -516,7 +516,7 @@ export default function BlogDetailPage({ blog: propBlog }) {
             <div className="rail-title">On this page</div>
             <TableOfContents toc={toc} />
             <div className="rail-cta">
-              <h4>Need an architecture audit?</h4>
+              <div className="rail-cta-title">Need an architecture audit?</div>
               <p>
                 Our principal engineers can review your system topology, latency
                 bottlenecks and cloud costs.
@@ -541,12 +541,12 @@ export default function BlogDetailPage({ blog: propBlog }) {
 
               {blog.keyTakeaways?.length > 0 && (
                 <div className="takeaways" id="takeaways">
-                  <h3>
+                  <h2>
                     <Ico>
                       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                     </Ico>
                     Key takeaways
-                  </h3>
+                  </h2>
                   <ul>
                     {blog.keyTakeaways.map((item, i) => (
                       <li key={i}>

@@ -1,11 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import ScrollProgress from "@/components/industries/ScrollProgress";
 import CountUp from "@/components/industries/CountUp";
-import IndustriesFilter from "@/components/industries/IndustriesFilter";
 import IndustryFaqAccordion from "@/components/industries/IndustryFaqAccordion";
-import { industriesData, industryCategories } from "@/data/industries";
-import { caseStudiesData } from "@/data/caseStudies";
+import { industriesData } from "@/data/industries";
 
 /* =========================================================
    Page styles (scoped under .svp) — Modeled on Metizsoft
@@ -52,7 +49,7 @@ const styles = `
   width: 14px; height: 14px; flex-shrink: 0; color: var(--muted);
 }
 .svp .breadcrumbs .sep {
-  color: #94a3b8; font-size: .8rem; font-weight: 500;
+  color: #64748b; font-size: .8rem; font-weight: 500;
   padding: 0 .15rem; user-select: none;
 }
 .svp .breadcrumbs .current {
@@ -142,20 +139,22 @@ const styles = `
   position: relative; z-index: 2;
 }
 .svp-stat-box {
-  text-align: center; padding: .5rem 1.2rem; position: relative;
+  text-align: center; padding: .5rem .75rem; position: relative; min-width: 0;
 }
 .svp-stat-box:not(:last-child)::after {
   content: ""; position: absolute; right: 0; top: 20%; bottom: 20%; width: 1px;
   background: rgba(15, 23, 42, .08);
 }
 .svp-stat-num {
-  font-size: clamp(1.85rem, 3.6vw, 2.5rem); font-weight: 800; line-height: 1.1;
+  font-size: clamp(1.45rem, 2.6vw, 2.15rem); font-weight: 800; line-height: 1.15;
   background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap; word-break: keep-all;
 }
 .svp-stat-label {
-  font-size: .82rem; font-weight: 600; text-transform: uppercase;
+  font-size: .8rem; font-weight: 600; text-transform: uppercase;
   letter-spacing: .04em; color: var(--muted); margin-top: .4rem;
+  white-space: nowrap;
 }
 
 /* ---------- Marquee ribbon ---------- */
@@ -640,74 +639,41 @@ function Reveal({
   );
 }
 
-function ProjectCard({ proj, delay = 0 }) {
-  return (
-    <Reveal
-      as="article"
-      delay={delay}
-      className="card flush svp-proj"
-    >
-      <Link
-        href={`/work/${proj.slug || proj.id}`}
-        className="thumb svp-thumb"
-        style={{
-          "--g": proj.gradient || "linear-gradient(135deg,#4f46e5,#7c3aed)",
-        }}
-        aria-label={`View ${proj.title} case study`}
-      >
-        <Image
-          src={proj.image}
-          alt={proj.title}
-          width={800}
-          height={520}
-        />
-      </Link>
-      <div className="wb svp-wb">
-        {proj.tags?.length > 0 && (
-          <div className="tags svp-tags">
-            {proj.tags.slice(0, 2).map((t, idx) => (
-              <span key={idx}>{t}</span>
-            ))}
-          </div>
-        )}
-        <h3>
-          <Link href={`/work/${proj.slug || proj.id}`}>
-            {proj.title}
-          </Link>
-        </h3>
-        <p>{proj.description || proj.shortPitch}</p>
-      </div>
-    </Reveal>
-  );
-}
-
 /* =========================================================
    Static Data
    ========================================================= */
 
 const heroStats = [
-  { value: "14+", label: "Years of Experience" },
-  { value: "500+", label: "Projects Delivered" },
-  { value: "125+", label: "Engineering Specialists" },
-  { value: "12+", label: "Industry Partnerships" },
+  { value: "8+", label: "Years of Experience" },
+  { value: "150+", label: "Projects Delivered" },
+  { value: "45+", label: "Senior Engineers" },
+  { value: "100%", label: "Code & IP Ownership" },
 ];
 
 const generalIndustryFaqs = [
   {
-    q: "How do you handle industry-specific regulatory compliance (HIPAA, PCI-DSS, SOC-2)?",
-    a: "We embed compliance directly into our DevOps delivery pipelines: automated static code analysis (SAST/DAST), zero-knowledge tokenization for sensitive PII/PAN fields, Business Associate Agreements (BAAs) for healthcare, and audit-ready logging compliant with SOC-2 Type II standards.",
+    q: "How do you handle industry-specific regulatory compliance (HIPAA, PCI-DSS, SOC-2, GDPR)?",
+    a: "We embed compliance directly into our software architecture and DevOps delivery pipelines. This includes end-to-end data encryption (at rest and in transit), role-based access control (RBAC), audit-ready logging, automated vulnerability scanning (SAST/DAST), and signing Business Associate Agreements (BAAs) or NDAs to ensure strict regulatory conformance.",
   },
   {
-    q: "Can your engineering team integrate with legacy enterprise mainframes and EHRs?",
-    a: "Yes. We frequently build modern REST and GraphQL facade layers on top of legacy core banking engines (FIS, Fiserv, Jack Henry), hospital EHRs (Epic, Cerner via FHIR v4), and legacy industrial SCADA systems without requiring risky database refactoring.",
+    q: "Can your engineering team integrate with legacy enterprise systems and third-party APIs?",
+    a: "Yes. We frequently build secure API gateways, middleware, and microservices to integrate modern web and mobile applications with legacy enterprise ERPs (SAP, Oracle, NetSuite), CRMs (Salesforce, HubSpot), hospital EHRs (Epic, Cerner via HL7/FHIR), banking payment cores, and industrial SCADA/IoT platforms.",
   },
   {
-    q: "Do you build custom software or rely on off-the-shelf templates?",
-    a: "We build bespoke, production-grade applications tailored to your proprietary business workflows. You receive 100% intellectual property ownership, zero ongoing licensing penalties, and clean, documented source code repositories.",
+    q: "Do you build custom software or rely on pre-built templates?",
+    a: "Every solution we deliver is custom-engineered to match your proprietary operational workflows and business logic. We do not use restrictive off-the-shelf templates. You receive 100% intellectual property ownership, zero ongoing vendor license royalties, and clean, documented source code repositories.",
   },
   {
-    q: "What engagement models are available for enterprise industry projects?",
-    a: "We offer dedicated Agile Squads with senior domain architects, Fixed-Price Milestone Builds for clearly scoped projects, and 2–5 Day Proof-of-Concepts (POCs) to evaluate architectural feasibility before large-scale budget allocation.",
+    q: "Who owns the intellectual property and source code once the project is finished?",
+    a: "You retain 100% ownership of all source code, design assets, database schemas, and intellectual property. Upon project completion and milestone handover, full access to git repositories and cloud deployment configurations is transferred directly to your organization.",
+  },
+  {
+    q: "What engagement models and project timelines do you offer for industry verticals?",
+    a: "We offer flexible models tailored to enterprise needs: Dedicated Agile Squads with senior domain engineers, Fixed-Price Milestone Builds for clearly scoped projects, and 2–4 Week Proof-of-Concepts (POCs) to validate architecture and workflows before full budget commitment.",
+  },
+  {
+    q: "What ongoing maintenance and SLA support do you provide post-launch?",
+    a: "We provide comprehensive post-launch SLA support including 24/7 uptime monitoring, critical security patching, operating system/browser updates, continuous performance optimization, and guaranteed response times to keep mission-critical software running smoothly.",
   },
 ];
 
@@ -715,26 +681,26 @@ const methodologySteps = [
   {
     n: "01",
     icon: "i-shield",
-    title: "Regulatory & Threat Scoping",
-    text: "We identify industry compliance frameworks (HIPAA, PCI-DSS, GDPR, ISA-95), data residency mandates, and threat vectors before writing code.",
+    title: "Domain Discovery & Requirements Scoping",
+    text: "We analyze your vertical-specific workflows, compliance requirements (HIPAA, PCI-DSS, GDPR), security threats, and third-party integration points before writing code.",
   },
   {
     n: "02",
     icon: "i-cpu",
-    title: "Domain Architecture & POC",
-    text: "Database schemas with Row-Level Security, zero-trust token vaults, and rapid 2–5 day interactive prototypes to de-risk key workflows.",
+    title: "Architecture Design & Rapid POC",
+    text: "Our architects map database schemas, security protocols, and cloud infrastructure, delivering early proof-of-concept prototypes to validate key assumptions.",
   },
   {
     n: "03",
     icon: "i-code",
-    title: "Agile Sprints & Audits",
-    text: "Two-week agile sprints with bi-weekly live staging demos, automated penetration test checks, and continuous client review channels.",
+    title: "Agile Sprints & Continuous Testing",
+    text: "Development proceeds in transparent two-week sprints with bi-weekly live staging reviews, automated regression tests, and security vulnerability audits.",
   },
   {
     n: "04",
     icon: "i-badge",
-    title: "Production Cutover & SLA",
-    text: "Zero-downtime cutover, 24/7 telemetry monitoring, Core Web Vitals optimization, and SLA-backed ongoing maintenance.",
+    title: "Production Deployment & SLA Support",
+    text: "We execute zero-downtime cutover, configure 24/7 performance telemetry, transfer 100% repository ownership, and provide SLA-backed maintenance.",
   },
 ];
 
@@ -766,11 +732,6 @@ const whyIndustryItems = [
    ========================================================= */
 
 export default function IndustriesPage() {
-  const counts = { All: industriesData.length };
-  industriesData.forEach((ind) => {
-    counts[ind.category] = (counts[ind.category] || 0) + 1;
-  });
-
   const marqueeTags = [
     "PCI-DSS Level 1",
     "HIPAA Certified",
@@ -816,15 +777,12 @@ export default function IndustriesPage() {
             </p>
 
             <div className="cta-row">
-              <Link className="btn btn-primary" href="/#contact">
+              <Link className="btn btn-primary" href="/contact">
                 Talk to an Industry Specialist{" "}
                 <svg className="i" aria-hidden="true" width="18" height="18">
                   <use href="#i-arrow" />
                 </svg>
               </Link>
-              <a className="btn btn-ghost" href="#industries-catalog">
-                Explore Industry Sectors ↓
-              </a>
             </div>
           </div>
 
@@ -870,12 +828,11 @@ export default function IndustriesPage() {
             </p>
           </Reveal>
 
-          <IndustriesFilter categories={industryCategories} counts={counts}>
+          <div className="ind-cards-grid">
             {industriesData.map((ind, i) => (
               <Link
                 key={ind.id}
                 href={`/industries/${ind.slug}`}
-                data-category={ind.category}
                 className="ind-ucard"
                 style={{ "--i": i }}
               >
@@ -922,7 +879,7 @@ export default function IndustriesPage() {
                 </div>
               </Link>
             ))}
-          </IndustriesFilter>
+          </div>
         </div>
       </section>
 
@@ -949,21 +906,21 @@ export default function IndustriesPage() {
           <div className="svp-istats-grid">
             <div className="svp-istats-card">
               <div className="svp-istats-n">
-                <CountUp value="14+" />
+                <CountUp value="8+" />
               </div>
               <p>Years of Experience</p>
             </div>
             <div className="svp-istats-card">
               <div className="svp-istats-n">
-                <CountUp value="500+" />
+                <CountUp value="150+" />
               </div>
               <p>Projects Delivered</p>
             </div>
             <div className="svp-istats-card">
               <div className="svp-istats-n">
-                <CountUp value="125+" />
+                <CountUp value="45+" />
               </div>
-              <p>Engineering Specialists</p>
+              <p>Senior Engineers &amp; Designers</p>
             </div>
             <div className="svp-istats-card">
               <div className="svp-istats-n">
@@ -975,35 +932,15 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* ================= FEATURED ENTERPRISE CASE STUDIES ================= */}
-      <section className="sec alt" id="work">
-        <div className="container">
-          <Reveal className="sec-head">
-            <span className="eyebrow">Proven Results</span>
-            <h2>Recent Enterprise Case Studies Delivered</h2>
-            <p>
-              A selection of recently completed projects across fintech,
-              healthcare, ecommerce, and smart industrial automation.
-            </p>
-          </Reveal>
-
-          <div className="cols c3">
-            {caseStudiesData.slice(0, 6).map((proj, idx) => (
-              <ProjectCard key={proj.id} proj={proj} delay={(idx % 3) * 110} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ================= STRATEGIC METHODOLOGY ================= */}
       <section className="sec" id="how-we-work">
         <div className="container">
           <Reveal className="sec-head">
             <span className="eyebrow">Our Methodology</span>
-            <h2>The 4-Step Engineering Lifecycle for Regulated Sectors</h2>
+            <h2>A Proven 4-Step Engineering Lifecycle</h2>
             <p>
-              We de-risk enterprise delivery with a deterministic framework
-              combining threat modeling, rapid prototyping, and automated audits.
+              We de-risk complex software delivery with a structured process combining
+              thorough requirements scoping, modern architecture, agile sprints, and SLA-backed support.
             </p>
           </Reveal>
 
@@ -1084,7 +1021,7 @@ export default function IndustriesPage() {
                 fit into your roadmap.
               </p>
               <div className="svp-final-actions">
-                <Link className="btn btn-primary" href="/#contact">
+                <Link className="btn btn-primary" href="/contact">
                   Book a Strategy Call →
                 </Link>
                 <Link className="btn btn-ghost" href="/services">

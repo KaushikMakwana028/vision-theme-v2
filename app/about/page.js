@@ -256,6 +256,7 @@ export default function AboutPage() {
                 }}
               >
                 <div
+                  aria-hidden="true"
                   style={{
                     fontSize: "1.75rem",
                     fontFamily: "var(--serif, serif)",
@@ -418,6 +419,7 @@ export default function AboutPage() {
 
                 <Link
                   href={`/work/${project.slug || project.id}`}
+                  aria-label={`Read Case Study: ${project.title}`}
                   style={{
                     display: "inline-flex",
                     alignItems: "center",

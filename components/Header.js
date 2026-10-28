@@ -996,12 +996,11 @@ export default function Header() {
           <Link
             href="/"
             className="logo"
-            aria-label="Vision Technolabs home"
             onClick={closeAll}
           >
             <Image
               src="/logo/vision-logo.png"
-              alt="Vision Technolabs Logo"
+              alt=""
               width={40}
               height={40}
               className="logo-img"

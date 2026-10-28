@@ -3,6 +3,8 @@ import { industriesData, getIndustryBySlug } from "@/data/industries";
 import IndustryDetailPage from "@/pages/industryDetailPage";
 import { buildMetadata, truncate } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
+import { faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const instant = false;
 export const ensureStatic = "navigation";
@@ -41,15 +43,17 @@ export default async function Page({ params }) {
     notFound();
   }
 
+  const breadcrumbItems = [
+    { name: "Home", path: "/" },
+    { name: "Industries", path: "/industries" },
+    { name: industry.title, path: `/industries/${slug}` },
+  ];
+
   return (
     <>
-      <Breadcrumbs
-        items={[
-          { name: "Home", path: "/" },
-          { name: "Industries", path: "/industries" },
-          { name: industry.title, path: `/industries/${slug}` },
-        ]}
-      />
+      {industry.faqs?.length > 0 && <JsonLd data={faqSchema(industry.faqs)} />}
+      <JsonLd data={breadcrumbSchema(breadcrumbItems)} />
+      <Breadcrumbs items={breadcrumbItems} />
       <IndustryDetailPage industry={industry} />
     </>
   );

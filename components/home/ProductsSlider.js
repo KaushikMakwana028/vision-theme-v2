@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProductsSlider({ items = [] }) {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -52,31 +53,48 @@ export default function ProductsSlider({ items = [] }) {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="home-prod-card" key={p.id}>
-        <span className="home-prod-badge">{p.badge}</span>
-        <h3>
-          <Link href={`/products/${p.slug || p.id}`}>
-            {p.shortTitle}
+      <article className="home-prod-card" key={p.id}>
+        {p.image && (
+          <Link
+            href={`/products/${p.slug || p.id}`}
+            className="home-prod-thumb"
+            aria-label={`View ${p.shortTitle} product details`}
+          >
+            <Image
+              src={p.image}
+              alt={p.imageAlt || `${p.shortTitle} SaaS software platform by Vision Technolabs in Ahmedabad`}
+              width={640}
+              height={360}
+              sizes="100vw"
+            />
           </Link>
-        </h3>
-        <p className="home-prod-desc">{p.description}</p>
-        {p.metric && (
-          <div className="home-prod-stat">
-            <strong>{p.metric.value}</strong>
-            <span>{p.metric.label}</span>
-          </div>
         )}
-        <Link
-          className="home-work-link"
-          href={`/products/${p.slug || p.id}`}
-          aria-label={`Explore ${p.shortTitle} product details`}
-        >
-          Explore Product{" "}
-          <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
-            <use href="#i-arrow" />
-          </svg>
-        </Link>
-      </div>
+        <div className="home-prod-body">
+          <span className="home-prod-badge">{p.badge}</span>
+          <h3>
+            <Link href={`/products/${p.slug || p.id}`}>
+              {p.shortTitle}
+            </Link>
+          </h3>
+          <p className="home-prod-desc">{p.description}</p>
+          {p.metric && (
+            <div className="home-prod-stat">
+              <strong>{p.metric.value}</strong>
+              <span>{p.metric.label}</span>
+            </div>
+          )}
+          <Link
+            className="home-work-link"
+            href={`/products/${p.slug || p.id}`}
+            aria-label={`Explore Product: ${p.shortTitle}`}
+          >
+            Explore Product{" "}
+            <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
+              <use href="#i-arrow" />
+            </svg>
+          </Link>
+        </div>
+      </article>
 
       <div className="home-slider-nav">
         <button

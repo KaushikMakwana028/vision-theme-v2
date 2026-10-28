@@ -4,6 +4,8 @@ import BlogDetailPage from "@/pages/blogDetailPage";
 import { buildMetadata, truncate } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import RelatedLinks from "@/components/RelatedLinks";
+import JsonLd from "@/components/JsonLd";
+import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const instant = false;
 export const ensureStatic = "navigation";
@@ -65,15 +67,17 @@ export default async function Page({ params }) {
     ariaLabel: `Read article: ${item.title}`,
   }));
 
+  const breadcrumbItems = [
+    { name: "Home", path: "/" },
+    { name: "Blog", path: "/blog" },
+    { name: blog.title, path: `/blog/${slug}` },
+  ];
+
   return (
     <>
-      <Breadcrumbs
-        items={[
-          { name: "Home", path: "/" },
-          { name: "Blog", path: "/blog" },
-          { name: blog.title, path: `/blog/${slug}` },
-        ]}
-      />
+      <JsonLd data={articleSchema(blog)} />
+      <JsonLd data={breadcrumbSchema(breadcrumbItems)} />
+      <Breadcrumbs items={breadcrumbItems} />
       <BlogDetailPage blog={blog} />
       <RelatedLinks
         title="Related Articles & Engineering Guides"

@@ -3,9 +3,8 @@ import Image from "next/image";
 import ScrollProgress from "@/components/services/ScrollProgress";
 import CountUp from "@/components/services/CountUp";
 import ServiceHeroTilt from "@/components/services/ServiceHeroTilt";
-import ServicesFilter from "@/components/services/ServicesFilter";
 import FaqAccordion from "@/components/services/FaqAccordion";
-import { servicesData, serviceCategories } from "@/data/services";
+import { servicesData } from "@/data/services";
 import { caseStudiesData } from "@/data/caseStudies";
 
 /* =========================================================
@@ -57,7 +56,7 @@ const styles = `
 }
 .svp .breadcrumbs a:hover .bc-icon { transform: none; color: var(--primary); }
 .svp .breadcrumbs .sep {
-  color: #94a3b8; font-size: .8rem; font-weight: 500;
+  color: #64748b; font-size: .8rem; font-weight: 500;
   padding: 0 .15rem; user-select: none;
 }
 .svp .breadcrumbs .current {
@@ -155,7 +154,7 @@ const styles = `
   transition: transform .25s var(--ease);
   animation: svp-in-scale 1s var(--ease) .35s backwards;
 }
-.svp-hero-card h3 { color: #fff; margin: 1rem 0 .6rem; }
+.svp-hero-card h2, .svp-hero-card h3 { color: #fff; margin: 1rem 0 .6rem; }
 .svp-hero-card p { color: rgba(255, 255, 255, .78); margin: 0; }
 .svp-hero-card .btag {
   display: inline-block; padding: .3rem .75rem; border-radius: 999px; font-size: .8rem; font-weight: 600;
@@ -558,7 +557,7 @@ function ProjectCard({ proj, delay = 0 }) {
       >
         <Image
           src={proj.image}
-          alt={proj.title}
+          alt={proj.imageAlt || `${proj.title} case study delivered by Vision Technolabs in Ahmedabad`}
           width={800}
           height={520}
         />
@@ -595,24 +594,28 @@ const heroStats = [
 
 const generalServiceFaqs = [
   {
-    q: "How does Vision structure new client engagements?",
-    a: "We offer flexible engagement models tailored to your business stage: Dedicated Agile Squads for continuous feature engineering, Fixed-Scope Milestone Delivery for well-defined builds, and Rapid 2–5 Day Proof-of-Concepts (POCs) for validating new AI and software initiatives.",
+    q: "What software development & digital engineering services do you provide?",
+    a: "We provide end-to-end engineering across 9 specialized disciplines: Custom Web Development (React, Next.js, Laravel), Mobile Apps (React Native, Flutter, iOS & Android), Headless Ecommerce (Shopify Plus, WooCommerce, custom checkout), Enterprise AI & Automation Agents, Custom CRM & ERP platforms, Enterprise RAG & Semantic Search, Cloud/DevOps infrastructure (AWS, GCP, Docker, Kubernetes), and Growth Engineering (Technical SEO & Performance Ads).",
   },
   {
-    q: "Do we own all the source code and intellectual property (IP)?",
-    a: "Yes, 100%. Upon project milestone completion, full intellectual property, Git repositories, architectural documentation, and cloud deployment pipelines belong entirely to your company. There are zero recurring licensing penalties or vendor lock-in.",
+    q: "Can you build a custom mobile app that works seamlessly on both iOS and Android?",
+    a: "Yes. We specialize in cross-platform mobile app development using React Native and Flutter, delivering native 60fps performance, shared business logic, hardware integrations (camera, GPS telemetry, push notifications, offline SQLite sync), and synchronized web admin dashboards from a single unified codebase.",
   },
   {
-    q: "How quickly can your engineering team kick off our project?",
-    a: "Following an initial discovery session, we typically assemble your dedicated engineering squad, finalize architecture, and begin Sprint 0 within 5 to 7 business days.",
+    q: "How do you integrate AI agents and enterprise automation into existing systems?",
+    a: "We build production-ready autonomous AI agents, LLM workflows, and Enterprise RAG search engines that connect securely via APIs into your existing ERPs, CRMs, databases, and customer channels (WhatsApp, web desks). All data remains strictly private within your secure cloud boundary with zero model training on your confidential assets.",
   },
   {
-    q: "How do we stay updated on development progress?",
-    a: "We operate in transparent 2-week agile sprints. You receive direct access to your staging environment, weekly live video demonstrations, real-time Slack/Teams communication channels, and shared Jira/ClickUp task boards.",
+    q: "Can we hire a dedicated engineering squad or do you work on fixed-scope deliverables?",
+    a: "We support both models based on project certainty. For clearly specified products, we offer milestone-driven Fixed Scope delivery with guaranteed delivery timelines and budget caps. For fast-evolving products and scaling businesses, we provide Dedicated Agile Squads (Senior Full-Stack Engineers, UI/UX Architects, QA, and DevOps) working exclusively on your product backlog in 2-week agile sprints.",
   },
   {
-    q: "Do you offer post-launch maintenance, SLAs, and cloud support?",
-    a: "Yes. Every production launch includes a 30-day warranty. We also provide ongoing monthly SLA retainers covering 24/7 uptime monitoring, server security updates, database optimization, and on-demand feature iterations.",
+    q: "Do you handle legacy software modernization, cloud migration, and CRM revamps?",
+    a: "Yes. We help established businesses migrate monolithic PHP/legacy stacks to modern cloud-native architectures (Next.js, Node.js, microservices), re-architect manual Excel/paper workflows into custom multi-tenant CRMs, and migrate on-premise infrastructure to auto-scaling AWS/GCP clusters with zero operational downtime.",
+  },
+  {
+    q: "What does your post-launch warranty, ongoing maintenance, and SLA support include?",
+    a: "Every custom software release includes an institutional 30-day bug-fix warranty. For post-launch operations, we offer monthly SLA support packages covering 24/7 uptime monitoring, critical security patching, third-party API version updates, database backup verification, and continuous feature enhancements.",
   },
 ];
 
@@ -671,11 +674,6 @@ const whyItems = [
    ========================================================= */
 
 export default function ServicePage() {
-  const counts = { All: servicesData.length };
-  servicesData.forEach((s) => {
-    counts[s.category] = (counts[s.category] || 0) + 1;
-  });
-
   const allTags = [...new Set(servicesData.flatMap((s) => s.tags || []))];
   const marqueeTags = allTags.length
     ? allTags
@@ -715,15 +713,12 @@ export default function ServicePage() {
             </p>
 
             <div className="cta-row">
-              <Link className="btn btn-primary" href="/#contact">
+              <Link className="btn btn-primary" href="/contact">
                 Schedule Strategy Call{" "}
                 <svg className="i" aria-hidden="true">
                   <use href="#i-arrow" />
                 </svg>
               </Link>
-              <a className="btn btn-ghost" href="#services-catalog">
-                Explore Capabilities ↓
-              </a>
             </div>
           </div>
 
@@ -748,7 +743,7 @@ export default function ServicePage() {
                 <i />
                 Vision Engineering Engine
               </span>
-              <h3>Full-Cycle Digital Execution</h3>
+              <h2>Full-Cycle Digital Execution</h2>
               <p>
                 Proven frameworks, sub-second architectures, and dedicated agile
                 squads that take products from idea to global scale.
@@ -792,11 +787,12 @@ export default function ServicePage() {
             </p>
           </Reveal>
 
-          <ServicesFilter categories={serviceCategories} counts={counts}>
+          <div className="cols c3 svp-grid">
             {servicesData.map((svc, i) => (
-              <article
+              <Reveal
+                as="article"
                 key={svc.id}
-                data-category={svc.category}
+                delay={i * 60}
                 className="card svc-card svp-card"
                 style={{ "--i": i }}
               >
@@ -832,16 +828,16 @@ export default function ServicePage() {
                 <Link
                   className="more"
                   href={`/services/${svc.slug}`}
-                  aria-label={`View ${svc.title} specifications`}
+                  aria-label={`View Specifications: ${svc.title}`}
                 >
                   View Specifications{" "}
                   <svg className="i" aria-hidden="true">
                     <use href="#i-arrow" />
                   </svg>
                 </Link>
-              </article>
+              </Reveal>
             ))}
-          </ServicesFilter>
+          </div>
         </div>
       </section>
 
@@ -935,12 +931,22 @@ export default function ServicePage() {
             <span className="eyebrow">Common Questions</span>
             <h2>Everything You Need to Know About Working With Us</h2>
             <p>
-              Have a question about our engagement models, delivery timelines,
-              or security? Find answers below.
+              Have a question about our engineering services, tech stack, or delivery models? Find clear answers below.
             </p>
           </Reveal>
 
           <FaqAccordion items={generalServiceFaqs} />
+
+          {/*
+          <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
+            <p style={{ fontSize: "0.9rem", color: "var(--muted, #64748b)", margin: 0 }}>
+              Serving Naroda, Ahmedabad and Gujarat: Discover dedicated engineering hubs in{" "}
+              <Link href="/it-company/naroda" style={{ color: "var(--primary, #4f46e5)", fontWeight: 600 }}>Naroda</Link>,{" "}
+              <Link href="/it-company/ahmedabad" style={{ color: "var(--primary, #4f46e5)", fontWeight: 600 }}>Ahmedabad</Link>, and across{" "}
+              <Link href="/it-company/gujarat" style={{ color: "var(--primary, #4f46e5)", fontWeight: 600 }}>Gujarat</Link>.
+            </p>
+          </div>
+          */}
         </div>
       </section>
 
@@ -957,7 +963,7 @@ export default function ServicePage() {
                 architectural estimate — no sales fluff.
               </p>
               <div className="svp-cta-actions">
-                <Link className="btn btn-light" href="/#contact">
+                <Link className="btn btn-light" href="/contact">
                   Schedule Free Consultation →
                 </Link>
               </div>

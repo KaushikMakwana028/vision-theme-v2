@@ -48,6 +48,8 @@ export default function HomePage() {
     slug: prod.slug || prod.id,
     badge: prod.badge,
     shortTitle: prod.shortTitle,
+    image: prod.image,
+    imageAlt: prod.imageAlt,
     description: prod.shortDescription || prod.description,
     metric: prod.metrics && prod.metrics[0]
       ? { value: prod.metrics[0].value, label: prod.metrics[0].label }
@@ -342,7 +344,6 @@ export default function HomePage() {
                 key={svc.id}
                 className="card svc-card rv"
                 href={`/services/${svc.slug}`}
-                aria-label={`Learn more about ${svc.title}`}
               >
                 <span className="svc-num">{svc.number}</span>
                 <span className="ico">
@@ -397,7 +398,7 @@ export default function HomePage() {
                   </svg>
                 </span>
                 <div>
-                  <h4>RAG Systems</h4>
+                  <h3>RAG Systems</h3>
                   <p>Ground LLMs in your private data for accurate, cited answers.</p>
                 </div>
               </div>
@@ -408,7 +409,7 @@ export default function HomePage() {
                   </svg>
                 </span>
                 <div>
-                  <h4>LLM Integration</h4>
+                  <h3>LLM Integration</h3>
                   <p>GPT, Claude &amp; open-source models wired into your product.</p>
                 </div>
               </div>
@@ -419,7 +420,7 @@ export default function HomePage() {
                   </svg>
                 </span>
                 <div>
-                  <h4>AI Agents</h4>
+                  <h3>AI Agents</h3>
                   <p>Autonomous agents that plan, decide and take real action.</p>
                 </div>
               </div>
@@ -430,7 +431,7 @@ export default function HomePage() {
                   </svg>
                 </span>
                 <div>
-                  <h4>Workflow Automation</h4>
+                  <h3>Workflow Automation</h3>
                   <p>Connects CRM, ERP &amp; tools so work happens without manual steps.</p>
                 </div>
               </div>
@@ -689,7 +690,7 @@ export default function HomePage() {
                 >
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={project.imageAlt || `${project.title} software system built by Vision Technolabs in Ahmedabad`}
                     width={640}
                     height={360}
                   />
@@ -709,7 +710,7 @@ export default function HomePage() {
                   <Link
                     className="home-work-link"
                     href={`/work/${project.slug || project.id}`}
-                    aria-label={`Read ${project.title} case study`}
+                    aria-label={`Read Case Study: ${project.title}`}
                   >
                     Read Case Study{" "}
                     <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
@@ -751,31 +752,48 @@ export default function HomePage() {
           {/* Desktop & Tablet Grid (4 Products) */}
           <div className="home-prod-grid rv">
             {featuredProducts.map((prod) => (
-              <div className="home-prod-card" key={prod.id}>
-                <span className="home-prod-badge">{prod.badge}</span>
-                <h3>
-                  <Link href={`/products/${prod.slug || prod.id}`}>
-                    {prod.shortTitle}
+              <article className="home-prod-card" key={prod.id}>
+                {prod.image && (
+                  <Link
+                    href={`/products/${prod.slug || prod.id}`}
+                    className="home-prod-thumb"
+                    aria-label={`View ${prod.shortTitle || prod.title} product details`}
+                  >
+                    <Image
+                      src={prod.image}
+                      alt={prod.imageAlt || `${prod.shortTitle || prod.title} SaaS software platform by Vision Technolabs in Ahmedabad`}
+                      width={640}
+                      height={360}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
                   </Link>
-                </h3>
-                <p className="home-prod-desc">{prod.shortDescription || prod.description}</p>
-                {prod.metrics && prod.metrics[0] && (
-                  <div className="home-prod-stat">
-                    <strong>{prod.metrics[0].value}</strong>
-                    <span>{prod.metrics[0].label}</span>
-                  </div>
                 )}
-                <Link
-                  className="home-work-link"
-                  href={`/products/${prod.slug || prod.id}`}
-                  aria-label={`Explore ${prod.shortTitle || prod.title} product details`}
-                >
-                  Explore Product{" "}
-                  <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
-                    <use href="#i-arrow" />
-                  </svg>
-                </Link>
-              </div>
+                <div className="home-prod-body">
+                  <span className="home-prod-badge">{prod.badge}</span>
+                  <h3>
+                    <Link href={`/products/${prod.slug || prod.id}`}>
+                      {prod.shortTitle}
+                    </Link>
+                  </h3>
+                  <p className="home-prod-desc">{prod.shortDescription || prod.description}</p>
+                  {prod.metrics && prod.metrics[0] && (
+                    <div className="home-prod-stat">
+                      <strong>{prod.metrics[0].value}</strong>
+                      <span>{prod.metrics[0].label}</span>
+                    </div>
+                  )}
+                  <Link
+                    className="home-work-link"
+                    href={`/products/${prod.slug || prod.id}`}
+                    aria-label={`Explore Product: ${prod.shortTitle || prod.title}`}
+                  >
+                    Explore Product{" "}
+                    <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>
+                      <use href="#i-arrow" />
+                    </svg>
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
 
@@ -950,6 +968,110 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ================= REGIONAL LOCATIONS (Temporarily commented out) ================= */}
+      {/*
+      <section className="sec alt" id="regional-presence" aria-labelledby="regional-presence-title">
+        <div className="container">
+          <div className="sec-head rv" style={{ marginBottom: "2rem" }}>
+            <span className="eyebrow">Local Presence &amp; Engineering Hubs</span>
+            <h2 id="regional-presence-title">IT Company in Naroda, Ahmedabad and Across Gujarat</h2>
+            <p style={{ maxWidth: "780px", margin: "1rem auto 0", lineHeight: 1.65 }}>
+              Vision Technolabs is a premier software development and IT company headquartered at Vitthal Plaza on Naroda-Dehgam Road in Naroda, Ahmedabad. For over 8 years, our in-house team of 45+ engineers has delivered 150+ custom web platforms, mobile applications, and AI automation systems for businesses across Gujarat. Whether you require an on-site technical discovery session at our development center or scalable cloud solutions for manufacturing, retail, or fintech operations, we provide institutional code quality, 100% intellectual property ownership, and rapid local support.
+            </p>
+          </div>
+
+          <div
+            className="rv"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "1.25rem",
+              marginTop: "1.75rem",
+            }}
+          >
+            <Link
+              href="/it-company/naroda"
+              className="card"
+              style={{
+                padding: "1.5rem",
+                borderRadius: "16px",
+                background: "#fff",
+                border: "1px solid var(--line)",
+                textDecoration: "none",
+              }}
+            >
+              <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "var(--ink)", marginBottom: "0.35rem" }}>
+                IT Company in Naroda
+              </h3>
+              <p style={{ fontSize: "0.85rem", color: "var(--muted)", margin: 0, lineHeight: 1.5 }}>
+                Local headquarters at Vitthal Plaza serving Naroda GIDC and North Ahmedabad.
+              </p>
+            </Link>
+
+            <Link
+              href="/it-company/ahmedabad"
+              className="card"
+              style={{
+                padding: "1.5rem",
+                borderRadius: "16px",
+                background: "#fff",
+                border: "1px solid var(--line)",
+                textDecoration: "none",
+              }}
+            >
+              <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "var(--ink)", marginBottom: "0.35rem" }}>
+                IT Company in Ahmedabad
+              </h3>
+              <p style={{ fontSize: "0.85rem", color: "var(--muted)", margin: 0, lineHeight: 1.5 }}>
+                Full-stack web, app, and AI platforms for high-growth Ahmedabad enterprises.
+              </p>
+            </Link>
+
+            <Link
+              href="/it-company/gujarat"
+              className="card"
+              style={{
+                padding: "1.5rem",
+                borderRadius: "16px",
+                background: "#fff",
+                border: "1px solid var(--line)",
+                textDecoration: "none",
+              }}
+            >
+              <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "var(--ink)", marginBottom: "0.35rem" }}>
+                IT Company in Gujarat
+              </h3>
+              <p style={{ fontSize: "0.85rem", color: "var(--muted)", margin: 0, lineHeight: 1.5 }}>
+                Serving Surat, Vadodara, Rajkot, Gandhinagar and state-wide industrial sectors.
+              </p>
+            </Link>
+
+            <Link
+              href="/it-company"
+              className="card"
+              style={{
+                padding: "1.5rem",
+                borderRadius: "16px",
+                background: "rgba(79, 70, 229, 0.04)",
+                border: "1px solid rgba(79, 70, 229, 0.18)",
+                textDecoration: "none",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "var(--primary)", marginBottom: "0.35rem" }}>
+                All Gujarat Locations →
+              </h3>
+              <p style={{ fontSize: "0.85rem", color: "var(--muted)", margin: 0, lineHeight: 1.5 }}>
+                Explore all 7 regional technology hubs and domain case studies.
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+      */}
 
       {/* ================= CONTACT ================= */}
       <section id="contact" aria-labelledby="ct-t">

@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { caseStudiesData } from "@/data/caseStudies";
 import ScrollProgress from "@/components/motion/ScrollProgress";
-import CountUp from "@/components/motion/CountUp";
 import Reveal from "@/components/motion/Reveal";
 import ProjectGallery from "@/components/work/ProjectGallery";
 
@@ -56,7 +55,7 @@ const styles = `
 }
 .svp .breadcrumbs a:hover .bc-icon { transform: none; color: var(--primary); }
 .svp .breadcrumbs .sep {
-  color: #94a3b8; font-size: .8rem; font-weight: 500;
+  color: #64748b; font-size: .8rem; font-weight: 500;
   padding: 0 .15rem; user-select: none;
 }
 .svp .breadcrumbs .current {
@@ -104,7 +103,7 @@ const styles = `
 /* ---------- Hero layout (two-column) ---------- */
 .svp .svp-hero .container.hero-wrap {
   display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
-  gap: clamp(2rem, 4vw, 4rem); align-items: center;
+  gap: clamp(2rem, 4vw, 4rem); align-items: start !important;
 }
 .svp .svp-hero .container.hero-wrap > * { min-width: 0; }
 .svp-hero-wrap { width: 100%; }
@@ -113,11 +112,13 @@ const styles = `
 }
 
 /* ---------- Hero ---------- */
+.svp .svp-hero,
+.hero.svp-hero,
 .svp-hero {
   position: relative;
   overflow: hidden;
-  padding-top: 1.5rem;
-  padding-bottom: 2.75rem;
+  padding-top: 0.65rem !important;
+  padding-bottom: 2.25rem !important;
 }
 .svp-hero .container { position: relative; z-index: 2; }
 .svp-dots {
@@ -316,7 +317,7 @@ const styles = `
   transition: transform .25s var(--ease);
   animation: svp-in-scale 1s var(--ease) .35s backwards;
 }
-.svp-hero-card h3 { color: #fff; margin: 1rem 0 .6rem; }
+.svp-hero-card h2 { color: #fff; margin: 1rem 0 .6rem; }
 .svp-hero-card p { color: rgba(255, 255, 255, .78); margin: 0; }
 .svp-hero-card .btag {
   display: inline-block; padding: .3rem .75rem; border-radius: 999px; font-size: .8rem; font-weight: 600;
@@ -420,7 +421,7 @@ const styles = `
   background: var(--grad); color: #fff;
 }
 .cs-deliv-ico .i { width: 22px; height: 22px; }
-.cs-deliv-text h4 { margin: 0 0 .3rem; color: var(--ink); font-size: 1.05rem; }
+.cs-deliv-text h4, .cs-deliv-text h3 { margin: 0 0 .3rem; color: var(--ink); font-size: 1.05rem; }
 .cs-deliv-text p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.6; }
 
 /* ---------- Testimonial Quote Block ---------- */
@@ -495,7 +496,7 @@ const styles = `
 
 /* ---------- Hero Preview Card ---------- */
 .cs-hero-preview-box {
-  position: relative; margin-bottom: 1.25rem; border-radius: 14px; overflow: hidden;
+  position: relative; margin-top: 1rem; margin-bottom: 0; border-radius: 14px; overflow: hidden;
   border: 1px solid rgba(255, 255, 255, .25); background: #0f172a;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
 }
@@ -604,10 +605,10 @@ const styles = `
 .cs-browser-screen {
   position: relative; background: #0b1120; overflow: hidden;
   display: flex; align-items: center; justify-content: center; cursor: zoom-in;
-  width: 100%; aspect-ratio: 16 / 9;
+  width: 100%; aspect-ratio: 3 / 2;
 }
 .cs-main-screen-img {
-  width: 100%; height: 100%; display: block; object-fit: cover; object-position: center;
+  width: 100%; height: 100%; display: block; object-fit: contain; object-position: center;
   transition: transform .5s var(--ease);
 }
 .cs-browser-screen:hover .cs-main-screen-img { transform: scale(1.02); }
@@ -678,10 +679,10 @@ const styles = `
   box-shadow: var(--shadow-sm);
 }
 
-/* ---------- Metizsoft-Style Uniform 3-Column Gallery Grid ---------- */
+/* ---------- Uniform 2-Column (2x2) Gallery Grid for 4 Screens ---------- */
 .cs-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
   align-items: stretch;
   margin-top: 1.25rem;
@@ -708,15 +709,17 @@ const styles = `
 .cs-gallery-inner {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
-  display: block;
-  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f172a;
 }
 .cs-gallery-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -774,8 +777,9 @@ const styles = `
     border-radius: 14px;
   }
   .cs-gallery-inner {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 3 / 2;
   }
+    .svp-hero-card h2 { color: #fff; }
 }
 
 /* ---------- Upgraded Lightbox Modal ---------- */
@@ -1029,7 +1033,7 @@ const styles = `
   .cs-deliv-card { padding: 1rem; gap: 0.85rem; }
   .cs-deliv-ico { width: 38px; height: 38px; }
   .cs-deliv-ico .i { width: 18px; height: 18px; }
-  .cs-deliv-text h4 { font-size: 0.95rem; }
+  .cs-deliv-text h4, .cs-deliv-text h3 { font-size: 0.95rem; }
   .cs-deliv-text p { font-size: 0.85rem; }
   .svp-poc-card { padding: 1.4rem 1.15rem; }
   .svp-poc-big { font-size: 1.85rem; }
@@ -1051,7 +1055,7 @@ const styles = `
   .cs-screen-caption-bar {
     display: none !important;
   }
-  .cs-browser-screen { padding: 0; width: 100%; aspect-ratio: 16 / 9; cursor: pointer; }
+  .cs-browser-screen { padding: 0; width: 100%; aspect-ratio: 3 / 2; cursor: pointer; }
   .cs-main-screen-img { width: 100%; height: 100%; object-fit: contain; }
 
   /* Mobile Visual Gallery */
@@ -1060,7 +1064,7 @@ const styles = `
     gap: 1rem;
   }
   .cs-gallery-card { max-width: 100%; border-radius: 14px; }
-  .cs-gallery-inner { aspect-ratio: 16 / 9; }
+  .cs-gallery-inner { aspect-ratio: 3 / 2; }
   .cs-gallery-header { margin-bottom: 1rem; }
   .cs-gallery-title h3 { font-size: 1.15rem; }
   .cs-gallery-title p { font-size: 0.82rem; }
@@ -1130,98 +1134,16 @@ export default function WorkDetailPage({ project }) {
     .filter((p) => p.slug !== project.slug && p.id !== project.id)
     .slice(0, 3);
 
-  // Normalized image collection supporting single or multiple images (minimum 6 screens)
-  let allImages = [];
-  if (project?.gallery && project.gallery.length > 0) {
-    allImages = [...project.gallery];
-  } else if (project?.images && project.images.length > 0) {
-    allImages = project.images.map((img, i) => ({
-      url: img,
-      caption: `${project.title} — Interface Screen 0${i + 1}`,
-      tag: "Platform Screen",
-      badge: `Screen 0${i + 1} · Production View`,
-    }));
-  } else if (project?.image) {
-    allImages = [
-      {
-        url: project.image,
-        caption: `${project.title} — Primary Platform Overview`,
-        tag: "Multi-Device UI Showcase",
-        badge: "Screen 01 · Primary Overview",
-      },
-    ];
-  }
+  // Gallery images for website projects only (apps do not render gallery)
+  const isAppProject =
+    project?.category === "Mobile App Development" ||
+    project?.serviceSlug === "mobile-app-development" ||
+    project?.image?.includes("/app_images/");
 
-  // If already 6 or more images, use them directly; otherwise supplement
-  if (allImages.length < 6) {
-    const isMobile =
-      project?.category === "Mobile App Development" ||
-      project?.serviceSlug === "mobile-app-development";
-
-    const pool = caseStudiesData
-      .filter((p) => p.slug !== project?.slug && p.id !== project?.id && p.image)
-      .sort((a, b) => {
-        const aMatches =
-          (a.category === "Mobile App Development" ||
-            a.serviceSlug === "mobile-app-development") === isMobile;
-        const bMatches =
-          (b.category === "Mobile App Development" ||
-            b.serviceSlug === "mobile-app-development") === isMobile;
-        if (aMatches && !bMatches) return -1;
-        if (!aMatches && bMatches) return 1;
-        return 0;
-      });
-
-    const featureDescriptors = [
-      {
-        tag: "Analytics & Telemetry",
-        badgeDesc: "Analytics Desk",
-        defaultCaption: "Real-Time KPI Telemetry & Performance Dashboard",
-      },
-      {
-        tag: "Transactional Flow",
-        badgeDesc: "Core Workflow",
-        defaultCaption: "End-to-End Processing Desk & Instant Operations",
-      },
-      {
-        tag: "Admin Operations",
-        badgeDesc: "Operations Console",
-        defaultCaption: "Role-Secured Governance Portal & Audit Log Cockpit",
-      },
-      {
-        tag: "Customer Experience",
-        badgeDesc: "User Interface",
-        defaultCaption: "Interactive Responsive Experience & Touchpoint Journey",
-      },
-      {
-        tag: "Audit & Compliance",
-        badgeDesc: "Document Engine",
-        defaultCaption: "Automated Document Generation & Compliance Verification Records",
-      },
-      {
-        tag: "Field Companion",
-        badgeDesc: "Mobile Operations",
-        defaultCaption: "Optimized Field Companion & Real-Time Push Notification Center",
-      },
-    ];
-
-    let descriptorIdx = 0;
-    for (const item of pool) {
-      if (allImages.length >= 6) break;
-      if (!allImages.some((existing) => existing.url === item.image)) {
-        const desc = featureDescriptors[descriptorIdx % featureDescriptors.length];
-        const screenNum = allImages.length + 1;
-        const padNum = screenNum < 10 ? `0${screenNum}` : `${screenNum}`;
-        allImages.push({
-          url: item.image,
-          caption: `${item.title.split("–")[0].trim()} — ${desc.defaultCaption}`,
-          tag: desc.tag,
-          badge: `Screen ${padNum} · ${desc.badgeDesc}`,
-        });
-        descriptorIdx++;
-      }
-    }
-  }
+  const galleryImages =
+    !isAppProject && project?.gallery && project.gallery.length > 0
+      ? project.gallery
+      : [];
 
   return (
     <div className="svp">
@@ -1261,45 +1183,10 @@ export default function WorkDetailPage({ project }) {
                   <span>Industry:</span> {project.industry}
                 </div>
               )}
-              {project.duration && (
-                <div className="cs-meta-pill">
-                  <span>Timeline:</span> {project.duration}
-                </div>
-              )}
-              {project.country && (
-                <div className="cs-meta-pill">
-                  <span>Region:</span> {project.country}
-                </div>
-              )}
-              {project.website && (
-                <a
-                  href={project.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cs-meta-pill cs-meta-link"
-                  title="Open live website in a new tab"
-                >
-                  <span className="cs-meta-live-dot" aria-hidden="true" />
-                  <span>Live URL:</span>
-                  <strong>{project.domain || project.website.replace(/^https?:\/\//, "")}</strong>
-                  <svg
-                    className="cs-meta-arrow"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                  </svg>
-                </a>
-              )}
             </div>
 
             <div className="cta-row">
-              <Link className="btn btn-primary" href="/#contact">
+              <Link className="btn btn-primary" href="/contact">
                 Discuss a Similar Build{" "}
                 <svg className="i" aria-hidden="true">
                   <use href="#i-arrow" />
@@ -1334,20 +1221,10 @@ export default function WorkDetailPage({ project }) {
                   </svg>
                 </a>
               )}
-              <a className="btn btn-ghost" href="#project-showcase">
-                View Platform Screens ↓
-              </a>
             </div>
           </div>
 
           <div className="svp-hero-wrap">
-            <span className="svp-chip svp-chip-a" aria-hidden="true">
-              <b /> Verified ROI
-            </span>
-            <span className="svp-chip svp-chip-b" aria-hidden="true">
-              <b /> Bank-Grade Code
-            </span>
-
             <Reveal
               className="bcard big svp-hero-card"
               tilt
@@ -1364,44 +1241,16 @@ export default function WorkDetailPage({ project }) {
 
               {project.image && (
                 <div className="cs-hero-preview-box">
-                  <a
-                    href="#project-showcase"
-                    className="cs-hero-preview-link"
-                    title="Click to view full interface showcase"
-                  >
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} Preview`}
-                      width={800}
-                      height={450}
-                      className="cs-hero-preview-img"
-                      priority
-                    />
-                    <div className="cs-hero-preview-badge">
-                      <span>Click to View Full Showcase ↓</span>
-                    </div>
-                  </a>
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt || `${project.title} software platform preview developed by Vision Technolabs in Ahmedabad`}
+                    width={800}
+                    height={450}
+                    className="cs-hero-preview-img"
+                    priority
+                  />
                 </div>
               )}
-
-              <h3>Quantified Business Outcomes</h3>
-              <p>
-                Every engineering milestone tied directly to verifiable application speed,
-                scalability, and bottom-line revenue impact.
-              </p>
-
-              <div className="agent-live">
-                <i /> Production Deployed
-              </div>
-
-              <div className="svp-stats">
-                {project.metrics?.map((m, i) => (
-                  <div key={i}>
-                    <CountUp value={m.value} />
-                    <span>{m.label}</span>
-                  </div>
-                ))}
-              </div>
             </Reveal>
           </div>
         </div>
@@ -1425,8 +1274,8 @@ export default function WorkDetailPage({ project }) {
         </div>
       )}
 
-      {/* ================= VISUAL PLATFORM SHOWCASE & SCREEN GALLERY ================= */}
-      {(project.image || allImages.length > 0) && (
+      {/* ================= VISUAL PLATFORM SHOWCASE & SCREEN GALLERY (WEBSITE PROJECTS ONLY) ================= */}
+      {galleryImages.length > 0 && (
         <section className="sec cs-showcase-sec" id="project-showcase">
           <div className="container">
             <Reveal className="sec-head">
@@ -1439,12 +1288,13 @@ export default function WorkDetailPage({ project }) {
             </Reveal>
 
             <ProjectGallery
-              images={allImages}
+              gallery={galleryImages}
               title={project.title}
               website={project.website}
               domain={project.domain}
               slug={project.slug}
               defaultImage={project.image}
+              project={project}
             />
           </div>
         </section>
@@ -1541,7 +1391,7 @@ export default function WorkDetailPage({ project }) {
                     </svg>
                   </span>
                   <div className="cs-deliv-text">
-                    <h4>{item}</h4>
+                    <h3>{item}</h3>
                     <p>Designed for high concurrency, automated testing coverage, and zero downtime.</p>
                   </div>
                 </Reveal>
@@ -1662,7 +1512,7 @@ export default function WorkDetailPage({ project }) {
                   >
                     <Image
                       src={rel.image}
-                      alt={rel.title}
+                      alt={rel.imageAlt || `${rel.title} case study developed by Vision Technolabs in Ahmedabad`}
                       width={800}
                       height={520}
                       loading="lazy"
@@ -1687,7 +1537,11 @@ export default function WorkDetailPage({ project }) {
 
                     <p>{rel.description}</p>
 
-                    <Link href={`/work/${rel.slug || rel.id}`} className="more">
+                    <Link
+                      href={`/work/${rel.slug || rel.id}`}
+                      className="more"
+                      aria-label={`Read Case Study: ${rel.title}`}
+                    >
                       Read Case Study
                       <svg className="i" aria-hidden="true">
                         <use href="#i-arrow" />
@@ -1714,7 +1568,7 @@ export default function WorkDetailPage({ project }) {
                 actionable roadmap.
               </p>
               <div className="svp-cta-actions">
-                <Link className="btn btn-light" href="/#contact">
+                <Link className="btn btn-light" href="/contact">
                   Schedule Free Discovery Call →
                 </Link>
                 <Link className="btn btn-ghost" href="/work">

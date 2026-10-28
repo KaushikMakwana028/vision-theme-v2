@@ -112,6 +112,7 @@ export const navigationData = {
       { label: "Industries", href: "/industries" },
       { label: "Products", href: "/products" },
       { label: "Engineering Blog", href: "/blog" },
+      // { label: "IT Company Locations", href: "/it-company" },
       { label: "Contact Us", href: "/contact" }
     ],
     legal: [

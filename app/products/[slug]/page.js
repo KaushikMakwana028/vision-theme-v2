@@ -3,6 +3,8 @@ import { productsData, getProductBySlug } from "@/data/products";
 import ProductDetailPage from "@/pages/productDetailPage";
 import { buildMetadata, truncate } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
+import { softwareSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const instant = false;
 export const ensureStatic = "navigation";
@@ -40,15 +42,18 @@ export default async function Page({ params }) {
     notFound();
   }
 
+  const breadcrumbItems = [
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    { name: product.shortTitle || product.title, path: `/products/${slug}` },
+  ];
+
   return (
     <>
-      <Breadcrumbs
-        items={[
-          { name: "Home", path: "/" },
-          { name: "Products", path: "/products" },
-          { name: product.shortTitle || product.title, path: `/products/${slug}` },
-        ]}
-      />
+      <JsonLd data={softwareSchema(product)} />
+      {product.faqs?.length > 0 && <JsonLd data={faqSchema(product.faqs)} />}
+      <JsonLd data={breadcrumbSchema(breadcrumbItems)} />
+      <Breadcrumbs items={breadcrumbItems} />
       <ProductDetailPage product={product} />
     </>
   );

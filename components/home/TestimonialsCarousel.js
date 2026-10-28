@@ -63,7 +63,7 @@ export default function TestimonialsCarousel({ items = [] }) {
       >
         {items.map((item, idx) => (
           <figure className="card quote t-item" key={idx}>
-            <div className="stars" aria-label="5 out of 5 stars">
+            <div className="stars" role="img" aria-label="5 out of 5 stars">
               {[...Array(item.rating)].map((_, sIdx) => (
                 <svg className="i fill" key={sIdx}>
                   <use href="#i-star" />

@@ -62,7 +62,7 @@ export default function ProjectsSlider({ items = [] }) {
         >
           <Image
             src={proj.image}
-            alt={proj.title}
+            alt={proj.imageAlt || `${proj.title} case study developed by Vision Technolabs in Ahmedabad`}
             width={640}
             height={360}
           />
@@ -82,7 +82,7 @@ export default function ProjectsSlider({ items = [] }) {
           <Link
             className="home-work-link"
             href={`/work/${proj.slug || proj.id}`}
-            aria-label={`Read ${proj.title} case study`}
+            aria-label={`Read Case Study: ${proj.title}`}
           >
             Read Case Study{" "}
             <svg className="i" width="14" height="14" style={{ width: 14, height: 14, flexShrink: 0 }}>

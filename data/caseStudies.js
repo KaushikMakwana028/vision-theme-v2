@@ -24,19 +24,41 @@ export const caseStudiesData = [
     shortPitch: "Surya Deep Car Rent is an end-to-end vehicle rental management system that transforms car hire operations. It provides customers with a seamless 3-step online booking and paperless KYC workflow, while equipping fleet owners with live vehicle scheduling, pre/post inspection photo logs, Razorpay payments, and per-vehicle profit-and-loss analytics.",
     tags: ["Fleet ERP", "PHP / CodeIgniter", "Razorpay", "Live Platform"],
     gradient: "linear-gradient(135deg,#0369a1,#1e3a8a)",
-    image: "/images/suryadeepcarrent/01_suryadeepcarrent.webp",
+    image: "/images/suryadeepcarrent/suryadeepcarrent-car-rental-portal-vision-technolabs.webp",
+    imageAlt: "Surya Deep Car Rent online car rental reservation and fleet booking portal developed by Vision Technolabs in Ahmedabad, Gujarat.",
     images: [
-      "/images/suryadeepcarrent/01_suryadeepcarrent.webp"
+      "/images/suryadeepcarrent/suryadeepcarrent-car-rental-portal-vision-technolabs.webp"
       // Add extra images here when added in public/images/suryadeepcarrent/
     ],
     gallery: [
       {
-        url: "/images/suryadeepcarrent/01_suryadeepcarrent.webp",
-        caption: "Responsive Multi-Device Platform — Laptop, Tablet & Mobile Booking Interface",
-        tag: "Multi-Device UI Showcase",
-        badge: "Screen 01 · Primary Overview"
+        src: "/images/suryadeepcarrent/gallery/suryadeepcarrent-booking-engine-website-ahmedabad-01.webp",
+        alt: "Surya Deep Car Rent instant online car rental reservation engine built by Vision Technolabs in Ahmedabad.",
+        caption: "Surya Deep Car Rent instant online car rental reservation engine built by Vision Technolabs in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/suryadeepcarrent/gallery/suryadeepcarrent-fleet-selection-website-ahmedabad-02.webp",
+        alt: "Surya Deep Car Rent sedan and luxury SUV fleet catalog with transparent pricing designed in Ahmedabad.",
+        caption: "Surya Deep Car Rent sedan and luxury SUV fleet catalog with transparent pricing designed in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/suryadeepcarrent/gallery/suryadeepcarrent-reservation-portal-website-ahmedabad-03.webp",
+        alt: "Surya Deep Car Rent round-trip and one-way outstation cab booking interface created in Ahmedabad.",
+        caption: "Surya Deep Car Rent round-trip and one-way outstation cab booking interface created in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/suryadeepcarrent/gallery/suryadeepcarrent-driver-document-website-ahmedabad-04.webp",
+        alt: "Surya Deep Car Rent instant digital driving license verification and security deposit portal developed in Ahmedabad.",
+        caption: "Surya Deep Car Rent instant digital driving license verification and security deposit portal developed in Ahmedabad.",
+        width: 1536,
+        height: 1024
       }
-      // Additional gallery screens can be added here
     ],
     metrics: [
       { value: "<2 min", label: "Booking Turnaround" },
@@ -199,19 +221,41 @@ export const caseStudiesData = [
     shortPitch: "SRL Pixel LED’s Glowing Hub is a specialized LED hardware commerce platform uniting an online shopping experience with in-store walk-in POS billing, OTP verification, live inventory sync, and automated GST tax invoicing.",
     tags: ["E-Commerce & POS", "PHP / CodeIgniter", "Neon Glow UI", "Live Platform"],
     gradient: "linear-gradient(135deg,#db2777,#be185d,#1e1b4b)",
-    image: "/images/srlpixel/01_srlpixel.webp",
+    image: "/images/srlpixel/srlpixel-led-lighting-ecommerce-vision-technolabs.webp",
+    imageAlt: "SRL Pixel LED lighting architectural e-commerce store and fixture catalog engineered by Vision Technolabs in Ahmedabad.",
     images: [
-      "/images/srlpixel/01_srlpixel.webp"
+      "/images/srlpixel/srlpixel-led-lighting-ecommerce-vision-technolabs.webp"
       // Add extra screenshots here when placed in public/images/srlpixel/
     ],
     gallery: [
       {
-        url: "/images/srlpixel/01_srlpixel.webp",
-        caption: "Responsive Multi-Device Storefront — MacBook, iPad & iPhone Shopping Experience",
-        tag: "Multi-Device Storefront UI",
-        badge: "Screen 01 · Storefront Overview"
+        src: "/images/srlpixel/gallery/srlpixel-lighting-storefront-ecommerce-ahmedabad-01.webp",
+        alt: "SRL Pixel commercial architectural LED lighting storefront homepage engineered by Vision Technolabs in Ahmedabad.",
+        caption: "SRL Pixel commercial architectural LED lighting storefront homepage engineered by Vision Technolabs in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/srlpixel/gallery/srlpixel-led-catalog-ecommerce-ahmedabad-02.webp",
+        alt: "SRL Pixel pixel controller and LED tube interactive product catalog created in Ahmedabad.",
+        caption: "SRL Pixel pixel controller and LED tube interactive product catalog created in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/srlpixel/gallery/srlpixel-product-specs-ecommerce-ahmedabad-03.webp",
+        alt: "SRL Pixel luminaire technical specifications and photometric data sheet built in Ahmedabad.",
+        caption: "SRL Pixel luminaire technical specifications and photometric data sheet built in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/srlpixel/gallery/srlpixel-fixture-categories-ecommerce-ahmedabad-04.webp",
+        alt: "SRL Pixel architectural lighting categories and customized bulk order portal developed in Ahmedabad.",
+        caption: "SRL Pixel architectural lighting categories and customized bulk order portal developed in Ahmedabad.",
+        width: 1536,
+        height: 1024
       }
-      // Additional gallery screens can be added here
     ],
     metrics: [
       { value: "0%", label: "Stock Discrepancy" },
@@ -373,19 +417,41 @@ export const caseStudiesData = [
     shortPitch: "ReComm is a scalable on-demand hyperlocal marketplace ecosystem connecting local vendors, supermarkets, and specialty merchants with neighborhood consumers. Features sub-second GPS store discovery, hybrid geodesic road-routing, flexible multi-slot delivery, instant mobile OTP authentication, and automated GST tax invoicing.",
     tags: ["Hyperlocal Quick-Commerce", "PHP / CodeIgniter", "Multi-Vendor", "Live Platform"],
     gradient: "linear-gradient(135deg,#059669,#10b981,#022c22)",
-    image: "/images/recomm/01_recomm.webp",
+    image: "/images/recomm/recomm-hyperlocal-marketplace-platform-vision-technolabs.webp",
+    imageAlt: "ReComm hyperlocal multi-vendor marketplace platform and merchant discovery portal built by Vision Technolabs in Ahmedabad.",
     images: [
-      "/images/recomm/01_recomm.webp"
+      "/images/recomm/recomm-hyperlocal-marketplace-platform-vision-technolabs.webp"
       // Add extra screenshots here when placed in public/images/recomm/
     ],
     gallery: [
       {
-        url: "/images/recomm/01_recomm.webp",
-        caption: "Responsive Multi-Device Platform — MacBook Pro, iPad & iPhone Hyperlocal Shopping Experience",
-        tag: "Multi-Device Marketplace UI",
-        badge: "Screen 01 · Primary Marketplace View"
+        src: "/images/recomm/gallery/recomm-marketplace-portal-ecommerce-ahmedabad-01.webp",
+        alt: "ReComm hyperlocal discovery portal and nearby merchant storefront index built by Vision Technolabs in Ahmedabad.",
+        caption: "ReComm hyperlocal discovery portal and nearby merchant storefront index built by Vision Technolabs in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/recomm/gallery/recomm-category-browser-ecommerce-ahmedabad-02.webp",
+        alt: "ReComm retail merchandise and neighborhood vendor catalog browser engineered in Ahmedabad.",
+        caption: "ReComm retail merchandise and neighborhood vendor catalog browser engineered in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/recomm/gallery/recomm-vendor-showcase-ecommerce-ahmedabad-03.webp",
+        alt: "ReComm merchant product catalog with real-time neighborhood inventory designed in Ahmedabad.",
+        caption: "ReComm merchant product catalog with real-time neighborhood inventory designed in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/recomm/gallery/recomm-order-checkout-ecommerce-ahmedabad-04.webp",
+        alt: "ReComm contactless instant checkout and hyper-local doorstep delivery desk built in Ahmedabad.",
+        caption: "ReComm contactless instant checkout and hyper-local doorstep delivery desk built in Ahmedabad.",
+        width: 1536,
+        height: 1024
       }
-      // Additional gallery screens can be added here
     ],
     metrics: [
       { value: "<100ms", label: "Store GPS Discovery" },
@@ -547,19 +613,41 @@ export const caseStudiesData = [
     shortPitch: "StayFlow CRM is a modern, high-performance property management software tailored for Paying Guest (PG) and student hostel businesses. Built with a scalable MVC architecture and an intuitive modern UI, it centralizes multi-branch property operations—from automated recurring rent invoices and digital KYC identity verification to dynamic bed-level occupancy tracking and real-time income-expense bookkeeping.",
     tags: ["PropTech / CRM", "PHP / CodeIgniter", "Multi-Property ERP", "Live Platform"],
     gradient: "linear-gradient(135deg,#4f46e5,#2563eb,#0f172a)",
-    image: "/images/pg/01_pg.webp",
+    image: "/images/pg/pg-hostel-management-crm-vision-technolabs.webp",
+    imageAlt: "StayFlow CRM student hostel and PG room management ERP platform developed by Vision Technolabs in Ahmedabad.",
     images: [
-      "/images/pg/01_pg.webp"
+      "/images/pg/pg-hostel-management-crm-vision-technolabs.webp"
       // Add extra screenshots here when placed in public/images/pg/
     ],
     gallery: [
       {
-        url: "/images/pg/01_pg.webp",
-        caption: "Responsive Multi-Device Platform — MacBook Pro, iPad & iPhone Property Operations Dashboard",
-        tag: "Multi-Device CRM Interface",
-        badge: "Screen 01 · Executive Dashboard & Operations"
+        src: "/images/pg/gallery/pg-hostel-dashboard-erp-ahmedabad-01.webp",
+        alt: "StayFlow CRM student hostel and PG occupancy telemetry dashboard built by Vision Technolabs in Ahmedabad.",
+        caption: "StayFlow CRM student hostel and PG occupancy telemetry dashboard built by Vision Technolabs in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/pg/gallery/pg-room-management-erp-ahmedabad-02.webp",
+        alt: "StayFlow CRM bed allocation, air-conditioning inventory, and room status engineered in Ahmedabad.",
+        caption: "StayFlow CRM bed allocation, air-conditioning inventory, and room status engineered in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/pg/gallery/pg-property-overview-erp-ahmedabad-03.webp",
+        alt: "StayFlow CRM multi-building property management and lease agreement repository designed in Ahmedabad.",
+        caption: "StayFlow CRM multi-building property management and lease agreement repository designed in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/pg/gallery/pg-revenue-reporting-erp-ahmedabad-04.webp",
+        alt: "StayFlow CRM monthly rent collection, mess fee tracking, and financial ledger created in Ahmedabad.",
+        caption: "StayFlow CRM monthly rent collection, mess fee tracking, and financial ledger created in Ahmedabad.",
+        width: 1586,
+        height: 992
       }
-      // Additional gallery screens can be added here
     ],
     metrics: [
       { value: "80%", label: "Admin Reduction" },
@@ -733,19 +821,41 @@ export const caseStudiesData = [
     shortPitch: "Nandani Kitchen Appliances is an enterprise-grade corporate portal and digital distribution platform developed for a leading kitchenware distributor with a 35+ year manufacturing legacy. The solution features an interactive, filterable multi-brand product catalog, a structured dealer onboarding and distributor application engine, a multimedia corporate facility showcase, and a role-secured Admin CMS with real-time lead tracking and inventory controls.",
     tags: ["B2B Distribution", "PHP / CodeIgniter", "Bootstrap 5", "Enterprise CMS"],
     gradient: "linear-gradient(135deg,#dc2626,#991b1b,#1e1b4b)",
-    image: "/images/nandani/01_nandani.webp",
+    image: "/images/nandani/nandani-kitchen-appliances-portal-vision-technolabs.webp",
+    imageAlt: "Nandani kitchen appliances web catalog and dealer showcase portal engineered by Vision Technolabs in Ahmedabad.",
     images: [
-      "/images/nandani/01_nandani.webp"
+      "/images/nandani/nandani-kitchen-appliances-portal-vision-technolabs.webp"
       // Add extra screenshots here when placed in public/images/nandani/
     ],
     gallery: [
       {
-        url: "/images/nandani/01_nandani.webp",
-        caption: "Responsive Multi-Device Platform — MacBook Pro, iPad & iPhone B2B Distribution Portal",
-        tag: "Multi-Device Showcase",
-        badge: "Screen 01 · Corporate Portal Overview"
+        src: "/images/nandani/gallery/nandani-storefront-homepage-website-ahmedabad-01.webp",
+        alt: "Nandani premium kitchen appliance storefront homepage developed by Vision Technolabs in Ahmedabad.",
+        caption: "Nandani premium kitchen appliance storefront homepage developed by Vision Technolabs in Ahmedabad.",
+        width: 1586,
+        height: 992
+      },
+      {
+        src: "/images/nandani/gallery/nandani-appliance-catalog-website-ahmedabad-02.webp",
+        alt: "Nandani smart kitchen chimney and gas stove catalog browser designed in Ahmedabad.",
+        caption: "Nandani smart kitchen chimney and gas stove catalog browser designed in Ahmedabad.",
+        width: 1586,
+        height: 992
+      },
+      {
+        src: "/images/nandani/gallery/nandani-brand-partners-website-ahmedabad-03.webp",
+        alt: "Nandani authorized dealership network and warranty verification portal built in Ahmedabad.",
+        caption: "Nandani authorized dealership network and warranty verification portal built in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/nandani/gallery/nandani-company-story-website-ahmedabad-04.webp",
+        alt: "Nandani manufacturing heritage and dealer distribution center overview engineered in Ahmedabad.",
+        caption: "Nandani manufacturing heritage and dealer distribution center overview engineered in Ahmedabad.",
+        width: 1536,
+        height: 1024
       }
-      // Additional gallery screens can be added here
     ],
     metrics: [
       { value: "100%", label: "Digital Catalog Access" },
@@ -908,19 +1018,41 @@ export const caseStudiesData = [
     shortPitch: "Medicheck is a clinical decision-support web platform that helps doctors prescribe more safely. Doctors register patients, build prescriptions from a searchable drug formulary, and get drug-drug interaction alerts graded by severity before an invoice is generated. A separate admin console manages doctors, the drug registry, the interaction-rule database (with bulk Excel/CSV import), and patient records.",
     tags: ["Health-Tech", "PHP / CodeIgniter", "Clinical DDI Engine", "Live Platform"],
     gradient: "linear-gradient(135deg,#0d9488,#059669,#042f2e)",
-    image: "/images/medicheck/01_medicheck.webp",
+    image: "/images/medicheck/medicheck-clinical-drug-interaction-app-vision-technolabs.webp",
+    imageAlt: "Medicheck clinical drug-to-drug interaction checker and prescription safety platform built by Vision Technolabs in Ahmedabad.",
     images: [
-      "/images/medicheck/01_medicheck.webp"
+      "/images/medicheck/medicheck-clinical-drug-interaction-app-vision-technolabs.webp"
       // Add extra screenshots here when placed in public/images/medicheck/
     ],
     gallery: [
       {
-        url: "/images/medicheck/01_medicheck.webp",
-        caption: "Responsive Multi-Device Platform — MacBook Pro, iPad & iPhone Clinical DDI Admin & Doctor Console",
-        tag: "Clinical Decision Support UI",
-        badge: "Screen 01 · Admin Management Console"
+        src: "/images/medicheck/gallery/medicheck-drug-interaction-web-app-ahmedabad-01.webp",
+        alt: "Medicheck clinical drug-to-drug interaction checker engine built by Vision Technolabs in Ahmedabad.",
+        caption: "Medicheck clinical drug-to-drug interaction checker engine built by Vision Technolabs in Ahmedabad.",
+        width: 1586,
+        height: 992
+      },
+      {
+        src: "/images/medicheck/gallery/medicheck-prescription-safety-web-app-ahmedabad-02.webp",
+        alt: "Medicheck prescription dosage validation and contraindication safety alerts designed in Ahmedabad.",
+        caption: "Medicheck prescription dosage validation and contraindication safety alerts designed in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/medicheck/gallery/medicheck-clinical-history-web-app-ahmedabad-03.webp",
+        alt: "Medicheck longitudinal patient medication history and dosage timeline built in Ahmedabad.",
+        caption: "Medicheck longitudinal patient medication history and dosage timeline built in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/medicheck/gallery/medicheck-patient-records-web-app-ahmedabad-04.webp",
+        alt: "Medicheck secure HIPAA-ready clinician portal and patient diagnostics created in Ahmedabad.",
+        caption: "Medicheck secure HIPAA-ready clinician portal and patient diagnostics created in Ahmedabad.",
+        width: 1536,
+        height: 1024
       }
-      // Additional gallery screens can be added here
     ],
     metrics: [
       { value: "1,800+", label: "Formulary Drugs" },
@@ -1065,105 +1197,6 @@ export const caseStudiesData = [
     }
   },
   {
-    id: "billbook",
-    slug: "billbook",
-    seoTitle: "BillsBook: Billing & ERP Case Study",
-    serviceSlug: "custom-software-crm",
-    category: "Custom Software & CRM",
-    title: "BillsBook – Multi-Business Billing, Invoicing & Inventory SaaS",
-    client: "BillsBook Accounting Technologies",
-    industry: "Retail & Small Business / Accounting & Billing SaaS",
-    duration: "10 Weeks",
-    country: "India",
-    website: "https://billbook.visiontechnolabs.com/",
-    domain: "billbook.visiontechnolabs.com",
-    description: "High-performance web billing and inventory application for shopkeepers and retail businesses featuring 30-second counter invoicing, instant WhatsApp PDF delivery, and live stock tracking.",
-    tags: ["Billing & Invoicing", "Inventory ERP", "WhatsApp Invoicing", "PHP / CodeIgniter", "Dompdf"],
-    gradient: "linear-gradient(135deg,#2563eb,#1d4ed8,#0f172a)",
-    image: "/images/billbook/01_billbook.webp",
-    metrics: [
-      { value: "<30s", label: "Counter Billing Speed" },
-      { value: "<1%", label: "Stock Discrepancy" },
-      { value: "-78%", label: "Paper & Print Overhead" },
-      { value: "Instant", label: "WhatsApp Delivery" }
-    ],
-    challenge: "Small-to-medium retail shopkeepers, wholesalers, and service businesses were handcuffed between cumbersome, overpriced enterprise ERPs (like Tally or SAP) and error-prone handwritten paper bill books. Writing manual receipts led to 18–25% inventory shrinkage, customer disputes over illegible bills, lost customer phone records, and over 45 minutes wasted every evening manually tallying cash drawers and GST records.",
-    solution: "Vision engineered BillsBook—a lightweight, lightning-fast counter-billing and multi-tenant inventory SaaS powered by CodeIgniter MVC. The web app empowers shopkeepers to look up items in milliseconds, auto-calculate GST line items, dispatch branded PDF invoices directly to customer WhatsApp numbers, and automatically reconcile stock levels with full financial analytics.",
-    deliverables: [
-      "Sub-30-Second Counter POS Invoicing Desk with Select2 instant lookup and barcode support",
-      "Real-time bidirectional inventory synchronization with low-stock alerts and safety thresholds",
-      "4 Branded Vector PDF Invoice Templates (Modern, Classic, Minimalist, Thermal POS) via Dompdf",
-      "Automated one-click WhatsApp invoice delivery integration with PDF download links",
-      "Multi-tenant data isolation schema allowing seamless multi-business and multi-branch management",
-      "Executive visual sales, revenue, profit margin, and payment mode analytics with ApexCharts & Chart.js",
-      "Customer ledger management tracking lifetime purchase histories, balances, and aging statements",
-      "Complete GST/tax computation engine with automated HSN/SAC code tracking and Excel export"
-    ],
-    techStack: [
-      "PHP 7.4+ / 8.x",
-      "CodeIgniter 3.1 MVC",
-      "MySQL / MariaDB",
-      "Bootstrap 5",
-      "JavaScript (ES6+)",
-      "jQuery",
-      "Select2",
-      "SweetAlert2",
-      "Dompdf",
-      "WhatsApp REST API",
-      "Chart.js & ApexCharts",
-      "Apache / Linux LAMP"
-    ],
-    keyModules: [
-      {
-        title: "Smart Counter Invoicing Desk",
-        desc: "High-speed billing interface enabling operators to search items via name or barcode, apply item-level discounts, compute GST/non-GST taxes, and finalize sales in under 30 seconds across Cash, UPI, Card, and Bank Transfer modes.",
-        icon: "i-credit"
-      },
-      {
-        title: "Automated Stock & Inventory Engine",
-        desc: "Bidirectional inventory management that decrements product stock in real time upon invoice generation and safely replenishes stock upon invoice edit or cancellation, complete with color-coded low-stock threshold alerts.",
-        icon: "i-box"
-      },
-      {
-        title: "4 Branded Invoice Templates & WhatsApp Delivery",
-        desc: "Pixel-perfect vector PDF generation supporting Modern, Classic, Minimalist, and 58/80mm Thermal POS slip layouts with company branding, dynamic UPI QR codes, and instant 1-click WhatsApp customer delivery.",
-        icon: "i-code"
-      },
-      {
-        title: "Sales & Gross Profit Analytics Dashboard",
-        desc: "Comprehensive executive visual reporting powered by ApexCharts and Chart.js revealing daily revenue trends, best-selling product rankings, payment mode breakdowns, customer aging balances, and net profit margins.",
-        icon: "i-chart"
-      },
-      {
-        title: "Multi-Tenant Architecture & Data Isolation",
-        desc: "Secure multi-business database partitioning ensuring every store owner retains 100% segregated catalog, client, and billing data with role-based access control, bcrypt encryption, and CSRF token security.",
-        icon: "i-shield"
-      }
-    ],
-    resultsComparison: [
-      { metric: "Counter Invoicing Speed", before: "3–5 mins manual handwritten bills", after: "<30 seconds with auto-fill & tax calculation" },
-      { metric: "Stock Discrepancy Rate", before: "18–25% untracked inventory shrinkage", after: "<1% real-time automated stock sync" },
-      { metric: "Paper & Stationery Cost", before: "₹12,000+ monthly pre-printed stationery", after: "78% cost drop via direct WhatsApp PDF delivery" },
-      { metric: "Daily Sales Settlement", before: "45+ mins manual register reconciliation", after: "Instant 1-click end-of-day revenue audit" }
-    ],
-    architectureDetails: {
-      pattern: "Model-View-Controller (MVC) Multi-Tenant Billing Engine with Automated Stock Transactions",
-      highlights: [
-        "Multi-Tenant Partitioning: Strict business_id scoping across all queries guaranteeing 100% data isolation across independent shopkeeper accounts",
-        "Atomic Stock Transactions: Database transaction locks wrapping invoice creation and stock quantity decrements to eliminate race conditions",
-        "Vector PDF Rendering Engine: Optimized Dompdf rendering pipeline producing crisp, lightweight printable bills and thermal POS receipts",
-        "Direct WhatsApp Gateway Integration: URL-encoded mobile dispatch mechanism delivering bills directly to customer phones with zero paper waste",
-        "Asynchronous Counter Search: Select2 AJAX-driven product indexing returning matching catalog items in under 50ms without page reloads"
-      ]
-    },
-    testimonial: {
-      quote: "BillsBook has completely eliminated billing chaos in our store. Our staff generates GST invoices in seconds, stock updates automatically without stockouts, and customers love receiving beautiful PDF bills directly on their WhatsApp.",
-      author: "Retail Operations Director",
-      role: "Store Owner & Distributor",
-      company: "BillsBook Client Store"
-    }
-  },
-  {
     id: "ghanshyammurtibhandar",
     slug: "ghanshyammurtibhandar",
     seoTitle: "Ghanshyam Murti: E-Commerce Case Study",
@@ -1181,16 +1214,39 @@ export const caseStudiesData = [
     shortPitch: "Ghanshyam Murti Bhandar is an enterprise-grade devotional e-commerce platform engineered for a premier Rajkot-based artisan of handcrafted white marble idols and temple sculptures. It unifies a responsive customer storefront, a 50+ endpoint mobile REST API, Shiprocket shipping automation with live tracking webhooks, mobile OTP authentication, and multi-panel Admin and Retailer consoles for managing orders, low stock, distributors, and transit damage resolutions.",
     tags: ["Marble Murti E-Commerce", "CodeIgniter 3", "REST API", "Shiprocket", "Razorpay", "Live Platform"],
     gradient: "linear-gradient(135deg, #b45309, #78350f)",
-    image: "/images/ghanshyammurtibhandar/01_ghanshyammurtibhandar.webp",
+    image: "/images/ghanshyammurtibhandar/ghanshyammurtibhandar-marble-murti-ecommerce-vision-technolabs.webp",
+    imageAlt: "Ghanshyam Murti Bhandar marble deity sculpture e-commerce and artisan gallery portal developed by Vision Technolabs in Ahmedabad.",
     images: [
-      "/images/ghanshyammurtibhandar/01_ghanshyammurtibhandar.webp"
+      "/images/ghanshyammurtibhandar/ghanshyammurtibhandar-marble-murti-ecommerce-vision-technolabs.webp"
     ],
     gallery: [
       {
-        url: "/images/ghanshyammurtibhandar/01_ghanshyammurtibhandar.webp",
-        caption: "Responsive Devotional E-Commerce Ecosystem — Storefront, Multi-Panel Admin & Mobile REST API",
-        tag: "Devotional Storefront & API",
-        badge: "Screen 01 · Production View"
+        src: "/images/ghanshyammurtibhandar/gallery/ghanshyammurtibhandar-murti-gallery-ecommerce-ahmedabad-01.webp",
+        alt: "Ghanshyam Murti Bhandar handcrafted marble deity sculpture e-commerce portal built by Vision Technolabs in Ahmedabad.",
+        caption: "Ghanshyam Murti Bhandar handcrafted marble deity sculpture e-commerce portal built by Vision Technolabs in Ahmedabad.",
+        width: 1586,
+        height: 992
+      },
+      {
+        src: "/images/ghanshyammurtibhandar/gallery/ghanshyammurtibhandar-sculpture-catalog-ecommerce-ahmedabad-02.webp",
+        alt: "Ghanshyam Murti Bhandar Makrana white marble deity catalog with custom sizing designed in Ahmedabad.",
+        caption: "Ghanshyam Murti Bhandar Makrana white marble deity catalog with custom sizing designed in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/ghanshyammurtibhandar/gallery/ghanshyammurtibhandar-marble-detail-ecommerce-ahmedabad-03.webp",
+        alt: "Ghanshyam Murti Bhandar artisanal gold leaf detailing and high-resolution artisan gallery created in Ahmedabad.",
+        caption: "Ghanshyam Murti Bhandar artisanal gold leaf detailing and high-resolution artisan gallery created in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/ghanshyammurtibhandar/gallery/ghanshyammurtibhandar-artisan-collections-ecommerce-ahmedabad-04.webp",
+        alt: "Ghanshyam Murti Bhandar temple architecture artifacts and worldwide spiritual freight developed in Ahmedabad.",
+        caption: "Ghanshyam Murti Bhandar temple architecture artifacts and worldwide spiritual freight developed in Ahmedabad.",
+        width: 1586,
+        height: 992
       }
     ],
     metrics: [
@@ -1357,16 +1413,39 @@ export const caseStudiesData = [
     shortPitch: "Venus Automotive ERP streamlines multi-bay garage operations and auto spare parts warehousing. It equips mechanics with digital tablet job cards, parts managers with barcode inventory tracking, and vehicle owners with automated WhatsApp service milestones, itemized estimates, and online UPI payment reconciliation.",
     tags: ["Automotive ERP", "Job Card CRM", "Parts Inventory", "WhatsApp Updates", "Live Platform"],
     gradient: "linear-gradient(135deg, #0284c7, #0f172a)",
-    image: "/images/automobile/01_automobile.webp",
+    image: "/images/automobile/automobile-fleet-parts-erp-vision-technolabs.webp",
+    imageAlt: "Venus Automotive commercial fleet service management and spare parts ERP portal built by Vision Technolabs in Ahmedabad.",
     images: [
-      "/images/automobile/01_automobile.webp"
+      "/images/automobile/automobile-fleet-parts-erp-vision-technolabs.webp"
     ],
     gallery: [
       {
-        url: "/images/automobile/01_automobile.webp",
-        caption: "Multi-Device Showcase — Workshop Job Card Console, Inventory Suite & Customer Portal",
-        tag: "Workshop & Inventory Suite",
-        badge: "Screen 01 · Production View"
+        src: "/images/automobile/gallery/automobile-fleet-management-erp-ahmedabad-01.webp",
+        alt: "Venus Automotive enterprise fleet service dashboard and workshop scheduling built by Vision Technolabs in Ahmedabad.",
+        caption: "Venus Automotive enterprise fleet service dashboard and workshop scheduling built by Vision Technolabs in Ahmedabad.",
+        width: 1600,
+        height: 900
+      },
+      {
+        src: "/images/automobile/gallery/automobile-customer-ledger-erp-ahmedabad-02.webp",
+        alt: "Venus Automotive commercial vehicle service history and ledger tracking designed in Ahmedabad.",
+        caption: "Venus Automotive commercial vehicle service history and ledger tracking designed in Ahmedabad.",
+        width: 1600,
+        height: 900
+      },
+      {
+        src: "/images/automobile/gallery/automobile-client-onboarding-erp-ahmedabad-03.webp",
+        alt: "Venus Automotive multi-vehicle corporate account creation and maintenance intake developed in Ahmedabad.",
+        caption: "Venus Automotive multi-vehicle corporate account creation and maintenance intake developed in Ahmedabad.",
+        width: 1600,
+        height: 900
+      },
+      {
+        src: "/images/automobile/gallery/automobile-job-card-erp-ahmedabad-04.webp",
+        alt: "Venus Automotive bay allocation, spare parts inventory dispatch, and job card control created in Ahmedabad.",
+        caption: "Venus Automotive bay allocation, spare parts inventory dispatch, and job card control created in Ahmedabad.",
+        width: 1600,
+        height: 900
       }
     ],
     metrics: [
@@ -1506,16 +1585,39 @@ export const caseStudiesData = [
     shortPitch: "Anaya Home Service is a responsive business website built for an interior design and home-finishing company in New Ranip, Ahmedabad. Engineered with WordPress and Elementor for effortless no-code content management, it presents ten service categories, a project gallery, a YouTube video testimonial section, an FAQ, and a blog—complete with a 'Book Appointment' funnel, contact forms, one-tap WhatsApp chat, click-to-call, and Google Maps location routing to turn local visitors into qualified enquiries.",
     tags: ["WordPress & Elementor", "Interior Design", "Lead Generation", "WhatsApp Integration", "Live Platform"],
     gradient: "linear-gradient(135deg, #d97706, #78350f)",
-    image: "/images/ananyahomeservice/01_ananyahomeservice.webp",
+    image: "/images/ananyahomeservice/ananyahomeservice-interior-design-website-vision-technolabs.webp",
+    imageAlt: "Anaya Home Service luxury residential interior design and turnkey fit-out website engineered by Vision Technolabs in Ahmedabad.",
     images: [
-      "/images/ananyahomeservice/01_ananyahomeservice.webp"
+      "/images/ananyahomeservice/ananyahomeservice-interior-design-website-vision-technolabs.webp"
     ],
     gallery: [
       {
-        url: "/images/ananyahomeservice/01_ananyahomeservice.webp",
-        caption: "Responsive Multi-Device Showcase — Hero Slider, 10-Service Catalogue & Instant Quote Booking",
-        tag: "Corporate & Lead Gen Website",
-        badge: "Screen 01 · Production View"
+        src: "/images/ananyahomeservice/gallery/ananyahomeservice-portfolio-showcase-website-ahmedabad-01.webp",
+        alt: "Anaya Home Service luxury residential interior architecture showcase developed by Vision Technolabs in Ahmedabad.",
+        caption: "Anaya Home Service luxury residential interior architecture showcase developed by Vision Technolabs in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/ananyahomeservice/gallery/ananyahomeservice-service-catalog-website-ahmedabad-02.webp",
+        alt: "Anaya Home Service turnkey interior fit-out, false ceiling, and renovation services built in Ahmedabad.",
+        caption: "Anaya Home Service turnkey interior fit-out, false ceiling, and renovation services built in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/ananyahomeservice/gallery/ananyahomeservice-about-studio-website-ahmedabad-03.webp",
+        alt: "Anaya Home Service design philosophy, master craftsmen, and studio profile designed in Ahmedabad.",
+        caption: "Anaya Home Service design philosophy, master craftsmen, and studio profile designed in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/ananyahomeservice/gallery/ananyahomeservice-booking-inquiry-website-ahmedabad-04.webp",
+        alt: "Anaya Home Service bespoke interior consultation and site measurement booking engineered in Ahmedabad.",
+        caption: "Anaya Home Service bespoke interior consultation and site measurement booking engineered in Ahmedabad.",
+        width: 1536,
+        height: 1024
       }
     ],
     metrics: [
@@ -1640,180 +1742,6 @@ export const caseStudiesData = [
     }
   },
   {
-    id: "filterbook",
-    slug: "filterbook",
-    seoTitle: "FilterBook: RO Purifier CRM Case Study",
-    serviceSlug: "mobile-app-development",
-    category: "Mobile App Development",
-    title: "FilterBook – CRM, Billing & Service Management Platform for RO Water Purifier Businesses",
-    subtitle: "Manage Customers, Service Schedules, AMC Contracts, QR Complaints & WhatsApp Billing — All in One Place",
-    client: "FilterBook by Vision Technolabs",
-    industry: "B2B SaaS / CRM / Field Service Management / Retail & After-Sales Service",
-    duration: "12 Weeks",
-    country: "India",
-    website: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.filterbook",
-    domain: "com.visiontechnolabs.filterbook",
-    description: "FilterBook is a CRM and service management platform built for RO water purifier sales and service businesses. It replaces paper registers and spreadsheets with automatic service scheduling, WhatsApp PDF invoices, QR-code complaint registration, AMC contract tracking with audit logs, and a shareable digital product catalogue across Android, iOS, and Web.",
-    shortPitch: "Water purifier businesses depend on long-term relationships after the sale: filter changes, scheduled maintenance visits, Annual Maintenance Contract (AMC) renewals, and quick complaint handling. FilterBook brings all of this into one connected ecosystem—featuring a React Native (Expo) mobile app for daily field and counter operations, a Vendor Web Admin Panel, a Multi-Tenant Super Admin Console, and zero-login Public QR pages for customer complaints and product catalogue browsing.",
-    tags: ["React Native (Expo)", "Field Service CRM", "WhatsApp PDF Billing", "QR Complaints", "Android & iOS"],
-    gradient: "linear-gradient(135deg, #0284c7, #1d4ed8)",
-    image: "/app_images/Filterbook/01_app_FB.webp",
-    images: [
-      "/app_images/Filterbook/01_app_FB.webp"
-    ],
-    gallery: [
-      {
-        url: "/app_images/Filterbook/01_app_FB.webp",
-        caption: "Omnichannel RO Service SaaS — Android & iOS Mobile App, Vendor Web Panel & Public QR Portals",
-        tag: "Mobile App & SaaS Suite",
-        badge: "Screen 01 · Production View"
-      }
-    ],
-    metrics: [
-      { value: "4-in-1", label: "App, Web, Admin & QR" },
-      { value: "100%", label: "Auto Service Schedules" },
-      { value: "<1 min", label: "QR Complaint Logging" },
-      { value: "Instant", label: "WhatsApp PDF Invoices" }
-    ],
-    challenge: "Water purifier businesses depend on long relationships after the sale—filter replacements, periodic maintenance visits, Annual Maintenance Contract (AMC) renewals, and rapid complaint resolution. Most shop owners managed hundreds of customers in paper diaries or disconnected Excel sheets, leading to missed recurring service dates, lost AMC renewal revenue once contracts expired, slow phone-based complaint handling, tedious manual invoice writing, and no simple way to share a digital product catalogue with prospective buyers or view orders, services, and complaints in one unified dashboard.",
-    solution: "Vision engineered FilterBook, a 4-tier multi-tenant SaaS ecosystem comprising a React Native (Expo) mobile app for Android and iOS, a Vendor Web Admin Panel, a Super Admin Console, and zero-login Public QR Web Pages. When an order is saved, FilterBook automatically generates the customer's full recurring maintenance schedule, renders an itemized A4 PDF invoice with upcoming service dates via TCPDF, and delivers it directly to the customer's WhatsApp via the Meta WhatsApp Cloud API. Customers register complaints in under a minute by scanning a QR code on their purifier, triggering instant push notifications to the shop owner's phone.",
-    deliverables: [
-      "Cross-Platform Mobile Application for Android & iOS (React Native / Expo)",
-      "Vendor Web Admin Panel for Store, Order, Service & AMC Operations",
-      "Multi-Tenant Super Admin Console for Platform-Wide Business Governance",
-      "Public QR Complaint Registration Portal (Zero App or Login Required)",
-      "Shareable Public QR Digital Product Catalogue with Direct WhatsApp Enquiry",
-      "Automated TCPDF A4 Invoice Generator & Meta WhatsApp Cloud API Delivery",
-      "AMC Contract Lifecycle Engine with Duplicate Protection & Full Audit Logs",
-      "Automated Daily Cron Reminders via Expo Push & Firebase Cloud Messaging (FCM)"
-    ],
-    techStack: [
-      "React Native (Expo)",
-      "PHP 7.4+ / 8.x",
-      "CodeIgniter 3 MVC",
-      "MySQL / MariaDB",
-      "REST API & Stateless JWT (HS256)",
-      "Meta WhatsApp Cloud API",
-      "TCPDF (A4 PDF Invoices)",
-      "Expo Push & Firebase FCM",
-      "Bootstrap 5.3 & DataTables",
-      "DLT SMS OTP Gateway",
-      "Zoho SMTP"
-    ],
-    modules: [
-      {
-        title: "Real-Time Business Dashboard & Smart Alerts",
-        icon: "i-chart",
-        description: "Live operational command center tracking monthly and lifetime business KPIs alongside automated daily push reminders.",
-        features: [
-          "Live counters for total customers, orders, active vs. expired AMCs, open vs. solved complaints, and pending vs. completed services",
-          "At-a-glance priority lists for upcoming service visits, expiring AMC contracts, and newly submitted customer complaints",
-          "Scheduled background jobs identifying services due today and tomorrow with automated push alerts to the owner's phones",
-          "Multi-device session synchronization ensuring push notifications reach every signed-in device"
-        ]
-      },
-      {
-        title: "Orders, Auto-Scheduling & WhatsApp PDF Invoices",
-        icon: "i-file-text",
-        description: "One-step order entry that simultaneously builds the maintenance calendar and dispatches a branded invoice on WhatsApp.",
-        features: [
-          "Smart 10-digit mobile number lookup that retrieves existing customer profiles or creates new accounts automatically",
-          "Automated recurring service calendar generation based on purchase date, interval (e.g., every 3 or 6 months), and service count",
-          "Dynamic TCPDF generation producing branded A4 invoices with itemized pricing and the complete upcoming service schedule",
-          "Zero-click Meta WhatsApp Cloud API integration uploading and sending the PDF invoice directly to the customer's WhatsApp"
-        ]
-      },
-      {
-        title: "Service Tracker & AMC Contract Management",
-        icon: "i-shield",
-        description: "End-to-end lifecycle tracking for routine filter maintenance visits and Annual Maintenance Contracts with full audit history.",
-        features: [
-          "Interactive service tracker filtering scheduled visits by Pending or Done across any month and year",
-          "Custom standalone service plans for customers who purchased purifiers elsewhere but enroll for recurring maintenance",
-          "AMC contract engine tracking start/end dates, contract value, remaining days, Active/Expired badges, and duplicate protection",
-          "Immutable audit log recording every AMC creation, modification, and deletion with before-and-after field snapshots"
-        ]
-      },
-      {
-        title: "Zero-Login QR Complaint System",
-        icon: "i-smartphone",
-        description: "Frictionless QR-based support workflow allowing customers to report purifier issues in seconds without installing an app.",
-        features: [
-          "Customer scans the shop's QR code sticker on their purifier, selects their product and issue type, and submits a ticket",
-          "Instant real-time push notification dispatched via Expo Push / FCM to the shop owner's mobile app",
-          "Centralized complaint queue allowing technicians and owners to transition tickets from Pending to Solved",
-          "Complete complaint history tied to the customer's profile for informed field technician visits"
-        ]
-      },
-      {
-        title: "Inventory & Shareable QR Digital Catalogue",
-        icon: "i-shopping-bag",
-        description: "Integrated stock control paired with a public-facing digital storefront shareable via a single QR code.",
-        features: [
-          "Catalog and inventory management covering categories, purifier models, brands, units, stock quantities, and purchase/selling prices",
-          "Public digital product catalogue showcasing featured RO models with high-res photos, specifications, and pricing",
-          "Single shareable QR code and link for showroom counters, visiting cards, and social media marketing",
-          "Built-in 'Enquire on WhatsApp' button on every product card to turn catalogue browsers into direct sales leads"
-        ]
-      },
-      {
-        title: "Multi-Tenant Super Admin & Security Architecture",
-        icon: "i-lock",
-        description: "Platform-level governance console with stateless JWT security, SMS OTP authentication, and remote session control.",
-        features: [
-          "Super Admin Console overseeing all registered RO businesses, platform-wide orders, complaints, and tenant customer bases",
-          "Instant tenant lifecycle controls to activate, suspend, or inspect any registered vendor account",
-          "DLT-compliant SMS OTP registration/login, stateless HS256 JWT authentication, and server-side remote token invalidation",
-          "Zoho SMTP password recovery, self-service account deletion compliance, and built-in Privacy, Terms & Refund policy pages"
-        ]
-      }
-    ],
-    featureHighlights: [
-      {
-        title: "Automatic Service Calendar Generation",
-        desc: "Entering an order's service interval and count automatically builds the entire multi-month maintenance schedule and triggers daily due-date push alerts.",
-        icon: "i-calendar"
-      },
-      {
-        title: "Instant WhatsApp Cloud PDF Invoicing",
-        desc: "Generates an itemized A4 PDF invoice containing the customer's upcoming service schedule and sends it directly to their WhatsApp number upon saving an order.",
-        icon: "i-file-text"
-      },
-      {
-        title: "Scan-to-Log QR Complaint Portal",
-        desc: "Customers scan a QR code on their water purifier to log service issues in under 60 seconds with zero app download or login, alerting the owner immediately.",
-        icon: "i-smartphone"
-      },
-      {
-        title: "AMC Tracking with Immutable Audit Logs",
-        desc: "Protects recurring AMC revenue with expiry dashboard alerts, duplicate contract prevention, and a complete before/after audit trail of every contract change.",
-        icon: "i-shield"
-      }
-    ],
-    resultsComparison: [
-      { metric: "Recurring Service Tracking", before: "Paper diaries & forgotten maintenance dates", after: "100% automated schedule & daily push reminders" },
-      { metric: "Customer Billing & Delivery", before: "Manual handwritten bills & separate sharing", after: "Instant A4 PDF invoice sent via WhatsApp Cloud API" },
-      { metric: "Complaint Registration", before: "Phone calls easily missed or forgotten", after: "<1 min customer QR scan with instant owner push alert" },
-      { metric: "AMC Renewal Visibility", before: "Expired contracts noticed only when customer calls", after: "Proactive dashboard expiry lists & full audit history" }
-    ],
-    architectureDetails: {
-      pattern: "Multi-Tenant SaaS MVC Backend with Stateless JWT REST API, React Native (Expo) Mobile App & Public QR Micro-Frontends",
-      highlights: [
-        "Omnichannel 4-Tier Sync: Unified MySQL relational schema serving the React Native app, Vendor Web Panel, Super Admin Console, and Public QR pages",
-        "Stateless JWT + Remote Revocation: HS256 token authentication paired with server-side session invalidation for instant multi-device security",
-        "Automated Document & Messaging Pipeline: Server-side TCPDF rendering piped directly into Meta WhatsApp Cloud API media endpoints",
-        "Dual Push Notification Engine: Coordinated Expo Push Service and Firebase Cloud Messaging (FCM) with cron-driven daily service reminders",
-        "Relational Audit Logging: Dedicated change-tracking tables capturing old and new state payloads across AMC contract lifecycles"
-      ]
-    },
-    testimonial: {
-      quote: "FilterBook replaced all our paper registers. Now whenever we sell an RO purifier, the customer immediately gets a PDF bill with their service dates on WhatsApp, our team gets daily reminders for filter changes, and customers just scan our QR code to log a complaint.",
-      author: "Product & Operations Team",
-      role: "SaaS Platform Division",
-      company: "FilterBook by Vision Technolabs"
-    }
-  },
-  {
     id: "divyshakti",
     slug: "divyshakti",
     seoTitle: "Divy Shakti: Wellness App Case Study",
@@ -1831,18 +1759,12 @@ export const caseStudiesData = [
     shortPitch: "Divy Shakti brings community-driven direct selling of wellness, herbal, and lifestyle products onto one unified cross-platform mobile application. Built with React Native 0.81, Expo SDK 54, and React 19 (New Architecture), it combines sponsor-validated member onboarding, a 15-field Aadhaar/PAN/Bank KYC workflow with live admin polling, a custom interactive 2D SVG genealogy tree, a UPI-integrated digital wallet with protected on-hold withdrawal accounting, and a full e-commerce order lifecycle.",
     tags: ["React Native 0.81 & Expo 54", "2D SVG Genealogy Tree", "Digital Wallet & UPI", "15-Field KYC Verification", "Android & iOS"],
     gradient: "linear-gradient(135deg, #E64A78, #C89738)",
-    image: "/app_images/Divy_Shakti/01_app_DS.webp",
+    image: "/app_images/Divy_Shakti/divyshakti-wellness-referral-app-vision-technolabs.webp",
+    imageAlt: "Divy Shakti Ayurvedic wellness e-commerce and community referral mobile application developed by Vision Technolabs in Ahmedabad.",
     images: [
-      "/app_images/Divy_Shakti/01_app_DS.webp"
+      "/app_images/Divy_Shakti/divyshakti-wellness-referral-app-vision-technolabs.webp"
     ],
-    gallery: [
-      {
-        url: "/app_images/Divy_Shakti/01_app_DS.webp",
-        caption: "Divy Shakti Mobile App — Wellness Storefront, Interactive 2D Genealogy Network, KYC & Digital Wallet",
-        tag: "Cross-Platform Mobile App",
-        badge: "Screen 01 · Production View"
-      }
-    ],
+    
     metrics: [
       { value: "23", label: "Native App Screens" },
       { value: "15-Field", label: "KYC & Bank Verification" },
@@ -1974,166 +1896,6 @@ export const caseStudiesData = [
     }
   },
   {
-    id: "tripsbook",
-    slug: "tripsbook",
-    seoTitle: "TripsBook: Fleet Management Case Study",
-    serviceSlug: "mobile-app-development",
-    category: "Mobile App Development",
-    title: "TripsBook – Fleet, Driver Trip & Fuel Management Mobile App",
-    subtitle: "Track Your Journeys — Drive Safe, Track Smart with Live GPS Trip Logging, Fuel Auditing & Instant PDF Duty Slips",
-    client: "TripsBook by Vision Technolabs",
-    industry: "Fleet Management / Logistics / Commercial Cab & Corporate Transport",
-    duration: "10 Weeks",
-    country: "India",
-    website: "https://play.google.com/store/apps/details?id=com.tripsbook.app&hl=en_IN",
-    domain: "com.visiontechnolabs.tripsbook",
-    description: "TripsBook is a fleet and driver trip management mobile app for commercial cab operators and corporate transport fleets. Drivers log Fix Cab and On Call trips in seconds, with pickup and drop areas detected automatically from GPS, live location sent to dispatch during active trips, fuel and odometer tracking, and one-tap PDF Duty Slips and Monthly Vehicle Log Sheets.",
-    shortPitch: "Fleet operators have traditionally relied on paper duty slips, handwritten odometer logs, and loose fuel receipts—leading to billing delays, calculation mistakes, and zero real-time visibility for dispatchers. Vision Technolabs built TripsBook on React Native 0.81, Expo SDK 54, and React 19 (New Architecture) to replace that paperwork with a mobile-first digital workflow where drivers record Fix Cab and On Call duties, share live GPS coordinates, track multi-fuel expenses, and produce print-ready A4 Duty Slips and Monthly Vehicle Log Sheets straight from their phone.",
-    tags: ["React Native 0.81 & Expo 54", "Live GPS Fleet Tracking", "PDF Duty Slips & Log Sheets", "Multi-Fuel Expense Audit", "Android & iOS"],
-    gradient: "linear-gradient(135deg, #0f172a, #2563eb)",
-    image: "/app_images/Tripsbook/01_app_TB.webp",
-    images: [
-      "/app_images/Tripsbook/01_app_TB.webp"
-    ],
-    gallery: [
-      {
-        url: "/app_images/Tripsbook/01_app_TB.webp",
-        caption: "TripsBook Mobile App — Live Driver Dashboard, Fix Cab & On Call Trip Modes, GPS Tracking & A4 Duty Slip PDF",
-        tag: "Fleet & Driver Mobile App",
-        badge: "Screen 01 · Production View"
-      }
-    ],
-    metrics: [
-      { value: "2 Modes", label: "Fix Cab & On Call Trips" },
-      { value: "10 sec", label: "Live GPS Dispatch Pings" },
-      { value: "5 Fuels", label: "Multi-Fuel Mileage Audit" },
-      { value: "Instant", label: "A4 Duty Slip & Log PDFs" }
-    ],
-    challenge: "Commercial cab operators and corporate transport fleets traditionally relied on handwritten paper duty slips, manual odometer logbooks, and loose fuel receipts. Paper slips were easily lost or misread, manual distance and overnight duration calculations caused frequent corporate billing disputes, dispatchers had to phone drivers to know where an active trip stood, fuel receipts across petrol, diesel, CNG, electric, and LPG vehicles were disconnected from odometer readings, and preparing monthly corporate vehicle log sheets took days of clerical effort.",
-    solution: "Vision Technolabs engineered TripsBook, a cross-platform Android and iOS mobile app built with React Native 0.81, Expo SDK 54, and React 19 (New Architecture). Drivers log Fix Cab and On Call duties with automatic GPS reverse-geocoded pickup detection, strict odometer validation, and 10-second live location pings during active trips. Upon trip completion, TripsBook calculates total distance and overnight duration automatically, generates branded A4 Duty Slip PDFs and Monthly Vehicle Log Sheet PDFs via expo-print, and tracks fuel expenses across five fuel types linked directly to odometer readings.",
-    deliverables: [
-      "Cross-Platform Android & iOS Mobile App (React Native 0.81, Expo SDK 54, React 19)",
-      "Live Driver Dashboard with Daily & Monthly Trips, Kilometres & Driving Hours",
-      "Dual Trip Logging Engine (Fix Cab Point-to-Point & On Call Charter Duties)",
-      "Automatic Pickup Detection via expo-location & Google Maps Reverse Geocoding API",
-      "Active Trip GPS Telemetry (10-Second Coordinate Pings & Foreground Location Guard)",
-      "On-Device HTML-to-PDF Engine for A4 Duty Slips & Monthly Vehicle Log Sheets",
-      "5-Type Fuel & Expense Auditor (Petrol, Diesel, CNG, Electric, LPG) with Odometer Linking",
-      "Fleet Admin-Code Driver Onboarding, JWT Auth Interceptors & Store Compliance Suite"
-    ],
-    techStack: [
-      "React Native 0.81 (New Architecture)",
-      "Expo SDK 54 & React 19",
-      "React Navigation 7",
-      "expo-location & Google Maps Geocoding API",
-      "expo-print & expo-sharing (A4 PDFs)",
-      "Axios + JWT Bearer Interceptors",
-      "AsyncStorage",
-      "RESTful Fleet Backend API"
-    ],
-    modules: [
-      {
-        title: "Live Driver Dashboard & Dual Trip Modes",
-        icon: "i-truck",
-        description: "Real-time daily operational summary paired with specialized workflows for scheduled Fix Cab routes and on-demand On Call duties.",
-        features: [
-          "Four live summary cards tracking Today's Trips, This Month's Trips, Kilometres Driven Today, and Hours Driven Today",
-          "Today's trip feed with color-coded Running and Completed badges, customer details, route summary, duration, and distance",
-          "Fix Cab mode for scheduled point-to-point routes with automatic pickup area detection from phone GPS via Google Maps reverse geocoding",
-          "On Call mode for charter duties capturing customer name, mobile number, start date/time, and validated starting odometer readings"
-        ]
-      },
-      {
-        title: "Live GPS Telemetry & Odometer Guardrails",
-        icon: "i-compass",
-        description: "Automated location reporting during active trips combined with strict odometer validation to prevent entry mistakes.",
-        features: [
-          "Sends live GPS coordinates to the dispatch backend every 10 seconds while a trip is running, plus an immediate ping on app foregrounding",
-          "Persistent Location Guard banner and alert verifying device GPS and app permissions with one-tap deep linking to phone settings",
-          "Strict odometer validation blocking invalid characters, enforcing decimal precision, and ensuring closing km exceeds starting km",
-          "Automatic distance and duration calculation in hours and minutes, accurately handling trips that cross midnight"
-        ]
-      },
-      {
-        title: "Instant A4 Duty Slips & Monthly Log Sheet PDFs",
-        icon: "i-file-text",
-        description: "On-device PDF generation producing corporate-ready duty slips and monthly audit tables ready for printing or WhatsApp sharing.",
-        features: [
-          "Branded A4 Duty Slip PDF with company header, customer details, route, vehicle number, start/closing timestamps, start/closing/total km, and signature block",
-          "One-tap text receipt and PDF sharing through WhatsApp, SMS, or email via expo-sharing and React Native Share",
-          "Six-month trip archive filterable by month and organized into dedicated Fix Cab and On Call tabs",
-          "Monthly Vehicle Log Sheet PDF generating a chronological corporate billing table with business header, vehicle details, and audit signature columns"
-        ]
-      },
-      {
-        title: "Multi-Fuel & Mileage Expense Tracker",
-        icon: "i-chart",
-        description: "Comprehensive fuel ledger supporting conventional, gas, and electric fleet vehicles tied directly to odometer readings.",
-        features: [
-          "Supports five fuel types—Petrol, Diesel, CNG, Electric, and LPG—automatically selecting the right unit (Litres, Kilograms, or kWh)",
-          "Records fuel quantity, total cost in ₹, automatic price-per-unit calculation, current odometer reading, and driver notes",
-          "Month-by-month fuel history filter enabling fleet managers and drivers to audit fuel spend against kilometres driven",
-          "Eliminates loose paper fuel slips by keeping every refill chronologically linked to vehicle mileage"
-        ]
-      },
-      {
-        title: "Fleet-Linked Onboarding & Store Compliance",
-        icon: "i-shield",
-        description: "Verified driver registration tied to fleet Admin Codes with JWT session security and store-compliant account governance.",
-        features: [
-          "Fleet-linked registration capturing driver mobile, email, vehicle name, registration plate, driving licence number, and fleet Admin Code",
-          "Driver profile management with photo upload, company selection, and secure password update flows",
-          "Axios networking layer with automatic JWT bearer-token injection and graceful expired-session handling",
-          "Built-in Terms & Conditions, Privacy Policy, and confirmed self-service Delete Account flow for Play Store and App Store compliance"
-        ]
-      }
-    ],
-    featureHighlights: [
-      {
-        title: "Auto-Geocoded Fix Cab & On Call Logging",
-        desc: "Detects pickup areas automatically from GPS via Google Maps reverse geocoding and enforces strict odometer validation on every trip.",
-        icon: "i-compass"
-      },
-      {
-        title: "10-Second Active Trip GPS Pings",
-        desc: "Streams live driver coordinates to dispatch every 10 seconds during running trips, backed by an always-on permission and GPS status guard.",
-        icon: "i-truck"
-      },
-      {
-        title: "One-Tap A4 Duty Slip & Monthly Log PDFs",
-        desc: "Generates print-ready A4 Duty Slips and full Monthly Vehicle Log Sheet PDFs on the phone for instant WhatsApp sharing and corporate billing.",
-        icon: "i-file-text"
-      },
-      {
-        title: "5-Fuel Odometer-Linked Expense Tracker",
-        desc: "Tracks Petrol, Diesel, CNG, Electric, and LPG refills with automatic unit selection (L, kg, kWh), per-unit cost math, and odometer auditing.",
-        icon: "i-chart"
-      }
-    ],
-    resultsComparison: [
-      { metric: "Duty Slip & Log Preparation", before: "Handwritten paper slips & manual monthly tables", after: "Instant on-device A4 Duty Slip & Monthly Log PDFs" },
-      { metric: "Distance & Duration Math", before: "Manual odometer subtraction & billing disputes", after: "Validated odometer checks & auto overnight math" },
-      { metric: "Dispatch Trip Visibility", before: "Repeated phone calls to check driver location", after: "Live 10-second GPS pings & auto-geocoded pickups" },
-      { metric: "Fuel & Mileage Auditing", before: "Loose paper fuel receipts across vehicle types", after: "5-fuel digital ledger tied to odometer readings" }
-    ],
-    architectureDetails: {
-      pattern: "React Native 0.81 & Expo SDK 54 (React 19 New Architecture) Mobile Client with GPS Telemetry & On-Device HTML-to-PDF Engine",
-      highlights: [
-        "React 19 & New Architecture: Engineered on React Native 0.81, Expo SDK 54, and React Navigation 7 combining native stack and bottom-tab workflows",
-        "Geolocation & Reverse Geocoding Pipeline: Integrates expo-location with Google Maps Reverse Geocoding API for automatic pickup area detection and 10s telemetry",
-        "On-Device PDF Rendering: Uses expo-print and expo-sharing to compile dynamic HTML templates into branded A4 Duty Slips and Monthly Vehicle Log Sheets",
-        "Interceptor-Backed JWT Networking: Axios client with automated bearer token attachment, session expiry recovery, and AsyncStorage persistence",
-        "Multi-Fuel Unit & Odometer Validation Engine: Deterministic client-side guardrails enforcing monotonic odometer progression and automatic fuel unit mapping"
-      ]
-    },
-    testimonial: {
-      quote: "TripsBook eliminated our paper duty slips and manual monthly logbooks. Drivers log Fix Cab and On Call trips with automatic GPS pickup detection, our dispatch team sees live location updates during active trips, and corporate billing PDFs are ready in one tap.",
-      author: "Product & Fleet Operations Team",
-      role: "Mobility SaaS Division",
-      company: "TripsBook by Vision Technolabs"
-    }
-  },
-  {
     id: "thakarmart",
     slug: "thakarmart",
     seoTitle: "Thakar Mart: Grocery App Case Study",
@@ -2151,18 +1913,12 @@ export const caseStudiesData = [
     shortPitch: "Thakar Mart is a dedicated single-store grocery and dairy mobile shopping application engineered by Vision Technolabs to extend a neighbourhood retail store beyond walk-in counter sales. Built with a clean violet-accented mobile UI and connected admin backend, the app puts the store's complete everyday range—from fresh milk and curd to biscuits, snacks, cold drinks, and daily staples—into the customer's pocket with category tiles, strike-through discount pricing, cart checkout, and real-time doorstep delivery tracking.",
     tags: ["Grocery & Dairy App", "Single-Store E-Commerce", "Category & Offer Discovery", "Doorstep Order Tracking", "Android Mobile App"],
     gradient: "linear-gradient(135deg, #6d28d9, #4f46e5)",
-    image: "/app_images/Thakar_Mart/01_app_TM.webp",
+    image: "/app_images/Thakar_Mart/thakarmart-grocery-shopping-app-vision-technolabs.webp",
+    imageAlt: "Thakar Mart on-demand grocery and fresh dairy delivery mobile application developed by Vision Technolabs in Ahmedabad.",
     images: [
-      "/app_images/Thakar_Mart/01_app_TM.webp"
+      "/app_images/Thakar_Mart/thakarmart-grocery-shopping-app-vision-technolabs.webp"
     ],
-    gallery: [
-      {
-        url: "/app_images/Thakar_Mart/01_app_TM.webp",
-        caption: "Thakar Mart Mobile App — Kirana & Dairy Category Storefront, Discount Product Cards & Doorstep Order Tracking",
-        tag: "Grocery & Dairy Mobile App",
-        badge: "Screen 01 · Google Play Live"
-      }
-    ],
+    
     metrics: [
       { value: "5+ Depts", label: "Grocery, Dairy & Produce" },
       { value: "5-Tab", label: "Bottom App Navigation" },
@@ -2298,18 +2054,12 @@ export const caseStudiesData = [
     shortPitch: "Fitcket brings gyms, personal trainers, live classes, on-demand FitTV courses, and interactive cricket prediction pools into a single Android and iOS mobile platform. Powered by a 55+ endpoint CodeIgniter 3 MVC REST API (~7,500 lines of controller architecture) and 40+ relational MySQL tables, the platform orchestrates Haversine geo-distance discovery, flexible duration-based pass bookings with Buy-X-Get-Y offers, server-verified Razorpay checkouts, Agora live video token streaming with 15-minute cron reminders, and JWT + SMS OTP security.",
     tags: ["Expo Mobile App", "Agora Live Streaming", "Razorpay Checkout", "Haversine Geo-Search", "55+ REST API Endpoints"],
     gradient: "linear-gradient(135deg, #10b981, #047857)",
-    image: "/app_images/Fitcket/01_app_FK.webp",
+    image: "/app_images/Fitcket/fitcket-fitness-booking-sports-app-vision-technolabs.webp",
+    imageAlt: "Fitcket fitness workout scheduling, live trainer streaming, and community sports pools mobile application created by Vision Technolabs in Ahmedabad.",
     images: [
-      "/app_images/Fitcket/01_app_FK.webp"
+      "/app_images/Fitcket/fitcket-fitness-booking-sports-app-vision-technolabs.webp"
     ],
-    gallery: [
-      {
-        url: "/app_images/Fitcket/01_app_FK.webp",
-        caption: "Fitcket Mobile Marketplace — Nearby Gym & Trainer Booking, Agora Live Sessions, FitTV Courses & Cricket Pools",
-        tag: "Fitness Marketplace & Live App",
-        badge: "Screen 01 · Production View"
-      }
-    ],
+    
     metrics: [
       { value: "55+", label: "REST API Endpoints" },
       { value: "40+", label: "Relational DB Tables" },
@@ -2453,166 +2203,6 @@ export const caseStudiesData = [
     }
   },
   {
-    id: "sitedesk",
-    slug: "sitedesk",
-    seoTitle: "SiteDesk: Real Estate ERP Case Study",
-    serviceSlug: "mobile-app-development",
-    category: "Mobile App Development",
-    title: "SiteDesk – Real Estate Plot Sales, EMI Tracking & Site Management Platform",
-    subtitle: "Multi-Site Plot Inventory, Buyer Cash/EMI Ledgers, Dastavej Registry, Selfie Attendance & Field Inquiry CRM",
-    client: "SiteDesk by Vision Technolabs",
-    industry: "Real Estate / Plotting & Layout Development / Sales Operations",
-    duration: "12 Weeks",
-    country: "India",
-    website: "https://play.google.com/store/apps/details?id=com.visiontechnolabs.sitedesk",
-    domain: "com.visiontechnolabs.sitedesk",
-    description: "SiteDesk is a mobile-first operations platform for real estate developers who sell plots across multiple sites. Team members see their assigned sites and live plot availability, register buyers, set up cash or EMI payment plans, record monthly instalments, track sale-deed (dastavej) paperwork, log site expenses with receipts, mark selfie attendance, and manage customer inquiries with follow-ups.",
-    shortPitch: "Real estate plot developers juggle multiple layout sites, hundreds of plots, buyers paying via cash or multi-month EMIs, sale-deed (dastavej) registry paperwork, field expenses, staff attendance, and daily buyer inquiries. SiteDesk replaces scattered paper registers and spreadsheets with an Expo mobile app backed by a 40-endpoint CodeIgniter 3 MVC REST API (~4,600 lines of controller code) across 25+ MySQL tables—scoping data strictly to each staff member's assigned sites while automating EMI due reminders via Expo Push Notifications.",
-    tags: ["Expo Mobile App", "Plot & EMI Management", "Dastavej Registry Tracker", "Selfie Attendance & CRM", "40 REST API Endpoints"],
-    gradient: "linear-gradient(135deg, #0d9488, #0f172a)",
-    image: "/app_images/Sitedesk/01_app_SD.webp",
-    images: [
-      "/app_images/Sitedesk/01_app_SD.webp"
-    ],
-    gallery: [
-      {
-        url: "/app_images/Sitedesk/01_app_SD.webp",
-        caption: "SiteDesk Real Estate App — Assigned Site & Plot Availability, Buyer EMI Ledger, Dastavej Records & Field CRM",
-        tag: "Real Estate Operations App",
-        badge: "Screen 01 · Production View"
-      }
-    ],
-    metrics: [
-      { value: "40", label: "REST API Endpoints" },
-      { value: "25+", label: "Relational DB Tables" },
-      { value: "3-Stage", label: "Auto EMI Push Alerts" },
-      { value: "100%", label: "Site-Scoped Access" }
-    ],
-    challenge: "Real estate plotting developers operating across multiple layout sites struggled to maintain accurate, real-time visibility of available versus sold plots when teams relied on paper registers and phone calls. Buyers purchasing plots through monthly EMI plans or part-cash payments required strict month-by-month balance tracking and timely payment reminders, while sale-deed (dastavej) registry numbers were frequently disconnected from plot records. Furthermore, management lacked verifiable proof of field staff daily attendance, receipt-backed site expenses, and structured follow-up tracking for prospective plot inquiries.",
-    solution: "Vision engineered SiteDesk, an Expo-powered mobile application supported by a 40-endpoint CodeIgniter 3 REST API (~4,600 lines of controller logic) and 25+ relational MySQL tables. Staff sign in via 30-minute time-limited mobile OTP with JWT blacklist security and see only their assigned sites, live available/sold plot counts, and layout maps. From the field, teams register buyers with Aadhaar details, configure Cash or monthly EMI plans, log instalments with duplicate protection, record dastavej registry numbers, upload receipt-backed site expenses, submit daily selfie attendance, and track buyer inquiries—while cron jobs automatically send EMI alerts 3 days before, on the due date, and when overdue.",
-    deliverables: [
-      "Cross-Platform Real Estate Operations Mobile App (Expo / React Native)",
-      "40-Endpoint JWT-Secured CodeIgniter 3 MVC REST JSON API (~4,600 Lines of Code)",
-      "Assigned-Site & Plot Inventory Engine with Live Available/Sold Filtering & Site Maps",
-      "Buyer Onboarding & Flexible Cash / Monthly EMI Payment Plan Ledger",
-      "Automated 3-Stage EMI Reminder Cron Engine (3 Days Prior, Due Date & Overdue Push Alerts)",
-      "Sale-Deed (Dastavej) Registry Tracker & 4 MB Multi-Format Document Vault (JPG/PNG/PDF)",
-      "Receipt-Backed Site Expense Workflow with Overall, Approved & Pending Summaries",
-      "Daily Selfie Attendance & Salary Tracker + 4-Stage Field Inquiry Mini-CRM"
-    ],
-    techStack: [
-      "Expo Mobile App (Android & iOS)",
-      "PHP & CodeIgniter 3 (MVC REST API)",
-      "MySQL / MariaDB (25+ Tables)",
-      "JWT (firebase/php-jwt) + Token Blacklist",
-      "Mobile SMS OTP Authentication",
-      "Expo Push Notifications",
-      "Cron Scheduler (EMI & Plan Expiry)",
-      "Multipart Image & PDF Vault (Up to 4 MB)"
-    ],
-    modules: [
-      {
-        title: "Assigned-Site & Live Plot Inventory Management",
-        icon: "i-layers",
-        description: "Role-scoped site and plot directory giving sales staff real-time availability, layout maps, and buyer histories.",
-        features: [
-          "Executive dashboard summarizing total sites, total plots, active buyer inquiries, and cumulative site expenses",
-          "Per-user data scoping ensuring field staff view and search only the real estate sites explicitly assigned to them",
-          "Site summary cards displaying total, available, and sold plot counters alongside location, area size, site map, and listed layout map",
-          "Interactive plot directory filterable by Available or Sold status, with plot detail views showing buyer info, payment plan, paid totals, and dastavej status"
-        ]
-      },
-      {
-        title: "Buyer Registration, Cash/EMI Plans & Auto-Reminders",
-        icon: "i-credit-card",
-        description: "End-to-end financial ledger tracking plot down payments, monthly EMI schedules, cash part-payments, and automated due alerts.",
-        features: [
-          "Buyer onboarding capturing full name, mobile number, email, residential address, and Aadhaar number linked directly to a specific plot and site",
-          "Flexible Cash or EMI payment plans recording total plot price, down payment, remaining balance, EMI duration, start date, and monthly instalment amount",
-          "Monthly instalment logging with payment mode, notes, running balance calculation, duplicate-entry prevention, and a separate cash part-payment log",
-          "Scheduled cron jobs dispatching automated push and in-app reminders 3 days before the EMI due date, on the due date, and when an instalment is overdue"
-        ]
-      },
-      {
-        title: "Sale-Deed (Dastavej) Registry & Document Vault",
-        icon: "i-file-text",
-        description: "Legal registry tracking and secure cloud document storage tied directly to plots, buyers, and site operations.",
-        features: [
-          "Dedicated Sale-Deed (Dastavej) recording flow capturing the official registry number and registry amount against the buyer and plot",
-          "Automatic completion badge on the plot detail screen once the dastavej record is logged",
-          "In-app Document Vault supporting upload, listing, and deletion of personal or site documents across JPG, PNG, and PDF formats (up to 4 MB)",
-          "Strict server-side MIME type and file size validation protecting storage integrity"
-        ]
-      },
-      {
-        title: "Site Expenses, Selfie Attendance & Monthly Salary",
-        icon: "i-camera",
-        description: "Field accountability suite combining receipt-verified site expenditure tracking with daily photo attendance and payroll visibility.",
-        features: [
-          "Site expense submission with description, amount, date, site selection, and mandatory receipt photo upload, filterable by site, month, and year",
-          "Split expense totals showing Overall, Approved, and Pending amounts to support administrative review and approval",
-          "Daily selfie attendance lock allowing one timestamped photo submission per day held in a pending review state",
-          "Attendance and salary breakdown displaying Present, Absent, Pending, and Rejected counts alongside calculated monthly salary"
-        ]
-      },
-      {
-        title: "Field Inquiry Mini-CRM & JWT Device Security",
-        icon: "i-users",
-        description: "Built-in lead follow-up pipeline paired with OTP authentication, device registration, and automated subscription management.",
-        features: [
-          "Customer inquiry capture recording prospect name, mobile, address, interested site, notes, and scheduled follow-up date, time, and remarks",
-          "4-stage lead pipeline tracking inquiries through Pending, Follow-Up, Converted, and Lost statuses with full search, edit, and delete controls",
-          "30-minute time-limited Mobile OTP login issuing firebase/php-jwt tokens, backed by a database token blacklist and per-device push token registration",
-          "Automated cron job for expiring lapsed subscription plans, plus CMS-served Privacy/Terms policies and self-service soft account deactivation"
-        ]
-      }
-    ],
-    featureHighlights: [
-      {
-        title: "Site-Scoped Plot Availability & Maps",
-        desc: "Staff access only their assigned plotting sites with live Available/Sold plot counters, layout maps, and one-tap plot status updates.",
-        icon: "i-layers"
-      },
-      {
-        title: "Cash & EMI Plans with 3-Stage Alerts",
-        desc: "Tracks down payments, monthly EMI instalments, and cash logs while cron jobs automatically alert accounts 3 days prior, on due date, and when overdue.",
-        icon: "i-credit-card"
-      },
-      {
-        title: "Dastavej Registry & 4 MB Document Vault",
-        desc: "Links sale-deed (dastavej) numbers and amounts directly to plots and buyers, alongside a validated JPG/PNG/PDF document vault.",
-        icon: "i-file-text"
-      },
-      {
-        title: "Selfie Attendance, Expenses & Inquiry CRM",
-        desc: "Combines daily timestamped selfie attendance, receipt-backed site expense approvals, and a 4-stage buyer inquiry follow-up CRM.",
-        icon: "i-shield"
-      }
-    ],
-    resultsComparison: [
-      { metric: "Plot Inventory Visibility", before: "Paper registers & phone calls across sites", after: "Live site-scoped Available/Sold counts & maps" },
-      { metric: "EMI & Balance Tracking", before: "Manual spreadsheets & missed due dates", after: "Duplicate-proof EMI ledger & 3-stage push alerts" },
-      { metric: "Legal & Field Accountability", before: "Unlinked dastavej files & unverified expenses", after: "Plot-linked dastavej records, receipt uploads & selfie attendance" },
-      { metric: "Buyer Lead Conversion", before: "Lost walk-in inquiries & forgotten follow-ups", after: "Scheduled follow-up CRM (Pending to Converted)" }
-    ],
-    architectureDetails: {
-      pattern: "CodeIgniter 3 MVC REST JSON API (40 Endpoints, 25+ MySQL Tables) with Site-Scoped Access & Cron Notification Engine",
-      highlights: [
-        "Per-User Site Scoping: Relational assignment middleware ensuring sales and field staff can query and mutate only their designated real estate sites",
-        "40-Endpoint Controller Architecture: ~4,600 lines of structured PHP CodeIgniter 3 logic managing plots, buyers, EMI schedules, dastavej records, expenses, attendance, and CRM leads",
-        "Stateless JWT + Blacklist Security: 30-minute SMS OTP authentication paired with firebase/php-jwt tokens, device push-token binding, and instant logout token blacklisting",
-        "Automated Cron Scheduling: Background jobs evaluating EMI due dates (T-3 days, T-0, and Overdue) for Expo Push dispatch and auto-expiring lapsed subscriptions",
-        "Idempotent Financial & Attendance Guards: Server-side constraints preventing duplicate monthly instalment entries and enforcing a strict one-selfie-per-day attendance lock"
-      ]
-    },
-    testimonial: {
-      quote: "SiteDesk brought all our plotting sites, buyer EMI schedules, dastavej registry records, site expenses, staff selfie attendance, and customer inquiry follow-ups into one mobile app. Each team member sees their assigned sites clearly and no EMI follow-up gets missed.",
-      author: "Product & Operations Team",
-      role: "Real Estate SaaS Division",
-      company: "SiteDesk by Vision Technolabs"
-    }
-  },
-  {
     id: "ghanshyam-murti-app",
     slug: "ghanshyam-murti-app",
     seoTitle: "Ghanshyam Murti: Mobile App Case Study",
@@ -2630,18 +2220,12 @@ export const caseStudiesData = [
     shortPitch: "Selling heavy, fragile, handcrafted marble idols on mobile requires more than a standard catalogue: shipping costs depend on exact cart weight and buyer pincode, one-of-a-kind stock cannot oversell, and transit damage claims need photo/video evidence. Vision engineered the Ghanshyam Murti Bhandar mobile app and its 75-endpoint CodeIgniter 3 REST API (~5,100 lines of controller code) sharing a unified 35+ table MySQL database with the web storefront and admin suite.",
     tags: ["Mobile App & 75 REST APIs", "Guest Cart & OTP Login", "Shiprocket Weight Shipping", "Razorpay & COD Checkout", "B2B Partner Onboarding"],
     gradient: "linear-gradient(135deg, #b45309, #78350f)",
-    image: "/app_images/Ghanshyam_Murti_Bhandar/01_app_GMB.webp",
+    image: "/app_images/Ghanshyam_Murti_Bhandar/ghanshyam-murti-ecommerce-app-vision-technolabs.webp",
+    imageAlt: "Ghanshyam Murti Bhandar marble deity shopping and custom sculpture inquiry mobile app developed by Vision Technolabs in Ahmedabad.",
     images: [
-      "/app_images/Ghanshyam_Murti_Bhandar/01_app_GMB.webp"
+      "/app_images/Ghanshyam_Murti_Bhandar/ghanshyam-murti-ecommerce-app-vision-technolabs.webp"
     ],
-    gallery: [
-      {
-        url: "/app_images/Ghanshyam_Murti_Bhandar/01_app_GMB.webp",
-        caption: "Ghanshyam Murti Bhandar Mobile App — Guest Marble Idol Storefront, Shiprocket Pincode Rates, Razorpay Checkout & B2B Onboarding",
-        tag: "E-Commerce Mobile App & API",
-        badge: "Screen 01 · Production View"
-      }
-    ],
+    
     metrics: [
       { value: "75", label: "REST API Endpoints" },
       { value: "35+", label: "Shared MySQL Tables" },
@@ -2790,18 +2374,12 @@ export const caseStudiesData = [
     shortPitch: "Consumer lending demands absolute verification and pricing transparency: borrowers need to see every interest rupee, platform fee, and GST charge upfront, while lending teams must enforce strict one-active-loan limits and verify repayment receipts before closing loans. Vision engineered the Kreditmitraa mobile ecosystem and its 18-endpoint CodeIgniter 3 MVC REST API (~1,500 lines of controller code) across 10+ MySQL tables—featuring 30-day JWT sessions, KYC approval gates, scheme-based loan pricing, and a milestone referral wallet.",
     tags: ["Fintech & Loan App", "18 REST API Endpoints", "KYC Approval Gate", "UPI Receipt Repayments", "Referral Rewards Wallet"],
     gradient: "linear-gradient(135deg, #059669, #0284c7)",
-    image: "/app_images/Kreditmitraa/01_app_KM.webp",
+    image: "/app_images/Kreditmitraa/kreditmitraa-loan-rewards-app-vision-technolabs.webp",
+    imageAlt: "Kreditmitraa instant short-term personal credit and referral reward cashpoint mobile application engineered by Vision Technolabs in Ahmedabad.",
     images: [
-      "/app_images/Kreditmitraa/01_app_KM.webp"
+      "/app_images/Kreditmitraa/kreditmitraa-loan-rewards-app-vision-technolabs.webp"
     ],
-    gallery: [
-      {
-        url: "/app_images/Kreditmitraa/01_app_KM.webp",
-        caption: "Kreditmitraa Mobile App — Short-Term Loan Dashboard, KYC Approval Gate, Repayment Desk & Referral Wallet",
-        tag: "Fintech Mobile App & API",
-        badge: "Screen 01 · Production View"
-      }
-    ],
+    
     metrics: [
       { value: "18", label: "REST API Endpoints" },
       { value: "15/30", label: "Day Micro-Tenures" },
@@ -2939,16 +2517,39 @@ export const caseStudiesData = [
     shortPitch: "The Aexon Graphics CRM runs a print and packaging factory from order to dispatch. The office creates Purchase Orders for raw material, turns each approved order into a Job, and sends it through production stations such as plate making, printing, lamination, punching, pasting, cutting, and dispatch. Each worker sees only their own jobs, and the system tracks material stock, stage progress, and waste. GST-ready Purchase Orders and Proforma Invoices are created as PDFs and sent over WhatsApp.",
     tags: ["Print & Packaging ERP", "PHP / CodeIgniter", "Production Workstations", "Dompdf & WhatsApp", "Live Platform"],
     gradient: "linear-gradient(135deg, #0284c7, #0f172a)",
-    image: "/images/axon/01_axon.webp",
+    image: "/images/axon/axon-print-packaging-erp-vision-technolabs.webp",
+    imageAlt: "Aexon Graphics CRM print and packaging workflow, purchase order, and invoicing ERP built by Vision Technolabs in Ahmedabad.",
     images: [
-      "/images/axon/01_axon.webp"
+      "/images/axon/axon-print-packaging-erp-vision-technolabs.webp"
     ],
     gallery: [
       {
-        url: "/images/axon/01_axon.webp",
-        caption: "Aexon Graphics CRM — Print & Packaging Production, Station Workstation Queue & Invoicing Overview",
-        tag: "Production ERP & Factory Desk",
-        badge: "Screen 01 · Production Overview"
+        src: "/images/axon/gallery/axon-admin-dashboard-web-app-ahmedabad-01.webp",
+        alt: "Axon admin dashboard showing live sales analytics, built by Vision Technolabs in Ahmedabad.",
+        caption: "Axon admin dashboard showing live sales analytics, built by Vision Technolabs in Ahmedabad.",
+        width: 1536,
+        height: 1024
+      },
+      {
+        src: "/images/axon/gallery/axon-purchase-order-web-app-ahmedabad-02.webp",
+        alt: "Axon purchase order and raw material procurement desk built by Vision Technolabs in Ahmedabad.",
+        caption: "Axon purchase order and raw material procurement desk built by Vision Technolabs in Ahmedabad.",
+        width: 1600,
+        height: 900
+      },
+      {
+        src: "/images/axon/gallery/axon-team-collaboration-web-app-ahmedabad-03.webp",
+        alt: "Axon print floor team scheduling and job queue interface developed in Ahmedabad.",
+        caption: "Axon print floor team scheduling and job queue interface developed in Ahmedabad.",
+        width: 1586,
+        height: 992
+      },
+      {
+        src: "/images/axon/gallery/axon-job-workflow-web-app-ahmedabad-04.webp",
+        alt: "Axon multi-stage packaging job tracking and dispatch workflow engineered in Ahmedabad.",
+        caption: "Axon multi-stage packaging job tracking and dispatch workflow engineered in Ahmedabad.",
+        width: 1584,
+        height: 993
       }
     ],
     metrics: [
@@ -3124,18 +2725,12 @@ export const caseStudiesData = [
     shortPitch: "Traditional and regional folk songs often live scattered across handwritten diaries, fragmented PDFs, and oral memory. Loksangeet unifies regional musical heritage into an elegant mobile platform powered by a 26-endpoint CodeIgniter 3 MVC REST API (~2,200 lines of controller code) and relational MySQL database. Featuring a multi-level category tree, full-text lyrics search, personal favourites, lightweight mobile authentication with token blacklisting, and a 3-state community moderation workflow, Loksangeet allows cultural song libraries to grow continuously under strict editorial quality control.",
     tags: ["Lyrics Mobile App", "26 REST Endpoints", "CodeIgniter MVC", "Nested Categories", "Community Moderation", "JWT Security"],
     gradient: "linear-gradient(135deg, #d97706, #9333ea)",
-    image: "/app_images/loksangeet/01_app_LSL.webp",
+    image: "/app_images/loksangeet/loksangeet-lyrics-music-app-vision-technolabs.webp",
+    imageAlt: "Loksangeet regional folk music lyrics, artist catalog, and offline singing mobile application built by Vision Technolabs in Ahmedabad.",
     images: [
-      "/app_images/loksangeet/01_app_LSL.webp"
+      "/app_images/loksangeet/loksangeet-lyrics-music-app-vision-technolabs.webp"
     ],
-    gallery: [
-      {
-        url: "/app_images/loksangeet/01_app_LSL.webp",
-        caption: "Loksangeet Mobile App — Traditional & Regional Lyrics Library, Nested Categories, Search & Community Moderation",
-        tag: "Lyrics Mobile App & API",
-        badge: "Screen 01 · Production View"
-      }
-    ],
+    
     metrics: [
       { value: "26", label: "REST API Endpoints" },
       { value: "3-Level", label: "Nested Category Tree" },
@@ -3321,9 +2916,6 @@ export function getCaseStudyBySlug(slug) {
   if (slug === "fitpulse-workout-app" || slug === "medicheck" || slug === "ddi-checker" || slug === "medicheck-ddi") {
     return caseStudiesData.find((item) => item.slug === "medicheck" || item.id === "medicheck") || caseStudiesData[5];
   }
-  if (slug === "billbook" || slug === "billsbook" || slug === "bill-book" || slug === "nexus-ai-support-agents" || slug === "intellidoc-rag-engine" || slug === "shipfast-logistics" || slug === "metrobuild-erp-system" || slug === "peakscale-performance-ads" || slug === "urbanzen-cro-campaign") {
-    return caseStudiesData.find((item) => item.slug === "billbook" || item.id === "billbook") || caseStudiesData[6];
-  }
   if (slug === "ghanshyammurtibhandar" || slug === "ghanshyam" || slug === "murti" || slug === "ghanshyam-murti-bhandar") {
     return caseStudiesData.find((item) => item.slug === "ghanshyammurtibhandar" || item.id === "ghanshyammurtibhandar") || caseStudiesData[7];
   }
@@ -3333,23 +2925,14 @@ export function getCaseStudyBySlug(slug) {
   if (slug === "ananyahomeservice" || slug === "anayahomeservice" || slug === "ananya-home-service" || slug === "anaya-home-service") {
     return caseStudiesData.find((item) => item.slug === "ananyahomeservice" || item.id === "ananyahomeservice") || caseStudiesData[9];
   }
-  if (slug === "filterbook" || slug === "filter-book" || slug === "ro-crm") {
-    return caseStudiesData.find((item) => item.slug === "filterbook" || item.id === "filterbook") || caseStudiesData[10];
-  }
   if (slug === "divyshakti" || slug === "divy-shakti" || slug === "divya-shakti" || slug === "divyashakti") {
     return caseStudiesData.find((item) => item.slug === "divyshakti" || item.id === "divyshakti") || caseStudiesData[11];
-  }
-  if (slug === "tripsbook" || slug === "tripbook" || slug === "trips-book" || slug === "trip-book") {
-    return caseStudiesData.find((item) => item.slug === "tripsbook" || item.id === "tripsbook") || caseStudiesData[12];
   }
   if (slug === "thakarmart" || slug === "thakar-mart" || slug === "thakar_mart" || slug === "jpthakarmart") {
     return caseStudiesData.find((item) => item.slug === "thakarmart" || item.id === "thakarmart") || caseStudiesData[13];
   }
   if (slug === "fitcket" || slug === "fit-cket" || slug === "fitcket-app") {
     return caseStudiesData.find((item) => item.slug === "fitcket" || item.id === "fitcket") || caseStudiesData[14];
-  }
-  if (slug === "sitedesk" || slug === "sidedesk" || slug === "site-desk" || slug === "side-desk") {
-    return caseStudiesData.find((item) => item.slug === "sitedesk" || item.id === "sitedesk") || caseStudiesData[15];
   }
   if (slug === "ghanshyam-murti-app" || slug === "ghanshyammurtibhandar-app" || slug === "gmb-app" || slug === "ghanshyam-app") {
     return caseStudiesData.find((item) => item.slug === "ghanshyam-murti-app" || item.id === "ghanshyam-murti-app") || caseStudiesData[16];
@@ -3367,30 +2950,20 @@ export function getCaseStudyBySlug(slug) {
 }
 
 export function getProjectsByService(serviceSlug) {
-  if (!serviceSlug) return caseStudiesData.slice(0, 3);
+  if (!serviceSlug) return [];
 
   const serviceProjectMap = {
     "website-development": ["suryadeepcarrent", "nandani", "ananyahomeservice"],
     "ecommerce-solutions": ["srlpixel", "recomm", "ghanshyammurtibhandar"],
     "mobile-app-development": [
-      "kreditmitraa",
-      "tripsbook",
-      "fitcket",
       "divyshakti",
+      "fitcket",
+      "kreditmitraa",
       "thakarmart",
-      "filterbook",
       "loksangeet",
       "ghanshyam-murti-app"
     ],
-    "ai-automation": ["medicheck", "sitedesk", "stayflow-crm"],
-    "ai-automation-agents": ["medicheck", "sitedesk", "stayflow-crm"],
-    "rag-knowledge-bases": ["medicheck", "recomm", "srlpixel"],
-    "enterprise-rag-search": ["medicheck", "recomm", "srlpixel"],
-    "custom-software-crm": ["stayflow-crm", "billbook", "automobile", "aexongraphics-crm"],
-    "meta-google-ads": ["srlpixel", "suryadeepcarrent", "divyshakti"],
-    "seo-site-optimizations": ["suryadeepcarrent", "nandani", "ananyahomeservice"],
-    "cro-conversion-optimization": ["suryadeepcarrent", "nandani", "srlpixel"],
-    "cloud-devops-engineering": ["recomm", "suryadeepcarrent", "stayflow-crm"]
+    "custom-software-crm": ["stayflow-crm", "automobile", "aexongraphics-crm", "medicheck"],
   };
 
   const projectIds = serviceProjectMap[serviceSlug];
@@ -3404,5 +2977,5 @@ export function getProjectsByService(serviceSlug) {
   const direct = caseStudiesData.filter((item) => item.serviceSlug === serviceSlug);
   if (direct.length > 0) return direct;
 
-  return caseStudiesData.slice(0, 3);
+  return [];
 }

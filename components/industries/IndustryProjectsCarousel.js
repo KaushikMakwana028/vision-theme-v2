@@ -62,7 +62,12 @@ export default function IndustryProjectsCarousel({
       <div className="container">
         <div className="svp-standout-head">
           <div className="svp-standout-title-wrap">
-            <span className="eyebrow">Proven Case Studies</span>
+            <span
+              className="eyebrow"
+              style={{ width: "fit-content", alignSelf: "flex-start" }}
+            >
+              Proven Case Studies
+            </span>
             <h2>
               Our Standout <span className="hi">{industryTitle} Projects</span>
             </h2>
@@ -174,7 +179,7 @@ export default function IndustryProjectsCarousel({
               <Link
                 className="svp-standout-link"
                 href={`/work/${currentProject.slug || currentProject.id}`}
-                aria-label={`Read ${currentProject.title} case study`}
+                aria-label={`Read the Case Study: ${currentProject.title}`}
               >
                 <span>Read the Case Study</span>
                 <svg
@@ -213,7 +218,7 @@ export default function IndustryProjectsCarousel({
               >
                 <Image
                   src={currentProject.image}
-                  alt={currentProject.title}
+                  alt={currentProject.imageAlt || `${currentProject.title} engineered by Vision Technolabs in Ahmedabad`}
                   width={760}
                   height={500}
                 />

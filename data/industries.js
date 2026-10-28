@@ -21,16 +21,16 @@ export const industriesData = [
     blobColor: "#4f46e5",
     icoGradient: "linear-gradient(135deg,#4f46e5,#818cf8)",
     href: "/industries/fintech-banking",
-    caseStudySlugs: ["kreditmitraa", "billbook"],
+    caseStudySlugs: ["kreditmitraa"],
     pillTags: ["Fraud Detection", "Compliance Automation", "KYC & AML", "Risk Scoring"],
     shortDescription: "Lending, payments, digital wallets & algorithmic trading platforms built for ultra-low latency and bank-grade regulatory compliance.",
     description: "We architect bank-grade fintech platforms, real-time settlement rails, digital banking applications, and automated fraud prevention engines engineered to handle billions in transaction volume.",
     heroSubtitle: "Zero-trust banking architectures, sub-second payment reconciliations, and automated regulatory reporting engineered for fintech disruptors and licensed financial institutions.",
     metrics: [
-      { value: "$2.8B+", label: "Annual Volume" },
+      { value: "$25M+", label: "Transaction Volume Handled" },
       { value: "99.99%", label: "Uptime SLA" },
       { value: "Sub-150ms", label: "Settlement Speed" },
-      { value: "Zero", label: "Breach Record" }
+      { value: "100%", label: "Audit & Compliance Rate" }
     ],
     compliance: ["PCI-DSS Level 1", "SOC-2 Type II", "GDPR", "ISO 27001", "Open Banking / PSD2", "AML & KYC"],
     techStack: ["Next.js", "Node.js", "Python", "Kafka", "PostgreSQL", "Redis", "AWS FinTech", "Kubernetes"],
@@ -79,7 +79,9 @@ export const industriesData = [
     faqs: [
       { question: "How do you ensure PCI-DSS and SOC-2 compliance during development?", answer: "We enforce security as code: automated pipeline SAST/DAST scanning, strict principle-of-least-privilege IAM roles, external penetration testing, and zero storage of raw credit card PAN data through tokenized vaults." },
       { question: "Can you integrate with our legacy core banking system?", answer: "Yes. We have built modern REST and GraphQL facade layers on top of legacy core mainframes (such as FIS, Fiserv, and Jack Henry) to power modern, snappy mobile and web applications without disrupting legacy core databases." },
-      { question: "What is your experience with multi-currency cross-border transactions?", answer: "We have architected FX conversion engines that support dynamic mid-market rate feeds, automated hedging triggers, and regional compliance filing for North American, European, and APAC corridors." }
+      { question: "What is your experience with multi-currency cross-border transactions and FX?", answer: "We have architected FX conversion engines that support dynamic mid-market rate feeds, automated hedging triggers, and regional compliance filing for North American, European, and APAC corridors." },
+      { question: "How do you implement automated KYC, AML, and identity verification?", answer: "We integrate identity verification providers like Onfido, Sumsub, or Persona with automated watchlist screening, sanctions checks, and algorithmic risk scoring to minimize fraud and manual compliance review overhead." },
+      { question: "Who owns the financial algorithms, smart contracts, and source code upon completion?", answer: "You retain 100% intellectual property and source code ownership. Upon project delivery and milestone sign-off, all git repositories, cryptographic configurations, and cloud deployment pipelines are transferred exclusively to your organization." }
     ]
   },
   {
@@ -102,8 +104,8 @@ export const industriesData = [
     heroSubtitle: "HIPAA-compliant telemedicine platforms, HL7/FHIR interoperability engines, and clinical software systems trusted by healthcare providers, diagnostic labs, and digital health startups.",
     metrics: [
       { value: "100%", label: "HIPAA Compliance" },
-      { value: "4.9★", label: "Patient App Rating" },
-      { value: "450k+", label: "Virtual Consults" },
+      { value: "4.9/5", label: "Patient App Rating" },
+      { value: "50k+", label: "Virtual Consults" },
       { value: "Sub-300ms", label: "EHR Sync Latency" }
     ],
     compliance: ["HIPAA", "HITECH", "FHIR v4", "HL7", "FDA Part 11", "SOC-2 Type II"],
@@ -153,7 +155,9 @@ export const industriesData = [
     faqs: [
       { question: "Will your team sign a Business Associate Agreement (BAA)?", answer: "Yes, absolutely. We execute formal BAAs with all healthcare clients prior to initiating architecture or touching any protected health information (PHI)." },
       { question: "How do you handle Epic and Cerner EHR integrations?", answer: "We leverage modern SMART-on-FHIR specifications and OAuth2 authorization flows, allowing clinical staff to launch our tools directly within their existing EHR workflows without double data entry." },
-      { question: "Are your video consultation solutions HIPAA compliant?", answer: "Yes. All video and audio streams are end-to-end encrypted using WebRTC DTLS-SRTP protocols. Media servers do not store recordings without explicit clinical consent and encrypted key retention." }
+      { question: "Are your video consultation solutions HIPAA compliant?", answer: "Yes. All video and audio streams are end-to-end encrypted using WebRTC DTLS-SRTP protocols. Media servers do not store recordings without explicit clinical consent and encrypted key retention." },
+      { question: "How is Protected Health Information (PHI) secured in storage and in transit?", answer: "All clinical databases enforce AES-256 encryption at rest, TLS 1.3 in transit, automated snapshot encryption, and dedicated Row-Level Security policies to ensure zero unauthorized cross-patient data exposure." },
+      { question: "Can you connect remote patient monitoring (RPM) with Bluetooth medical devices?", answer: "Yes. We build native BLE and Web Bluetooth connectors for vitals monitors, blood glucose sensors, and pulse oximeters, supporting real-time clinical threshold alerts and structured FHIR observation ingestion." }
     ]
   },
   {
@@ -177,8 +181,8 @@ export const industriesData = [
     metrics: [
       { value: "48%", label: "Conversion Lift" },
       { value: "0.7s", label: "Page Load Speed" },
-      { value: "100k+", label: "Flash Sale RPM" },
-      { value: "$120M+", label: "GMV Handled" }
+      { value: "50k+", label: "Peak Orders / Month" },
+      { value: "$15M+", label: "Annual GMV Managed" }
     ],
     compliance: ["PCI-DSS", "GDPR", "CCPA", "WCAG 2.1 AA", "Core Web Vitals 95+"],
     techStack: ["Shopify Plus", "Next.js", "Algolia", "Sanity CMS", "Stripe", "Klaviyo", "Redis"],
@@ -227,7 +231,9 @@ export const industriesData = [
     faqs: [
       { question: "Should we migrate from traditional Shopify to Headless Shopify?", answer: "Headless Shopify is ideal if your store requires sub-second load times worldwide, custom interactive 3D/configurator experiences, or complex multi-brand architectures that traditional liquid templates cannot provide." },
       { question: "How do you protect our store against crashes during flash sales?", answer: "We decouple catalog viewing from checkout transactions using Redis caching, serverless edge functions, and virtual queue throttles that prevent database connection pooling exhaustion." },
-      { question: "Can you migrate our legacy store data without losing SEO rankings?", answer: "Yes. We execute comprehensive 301 redirect mapping, preserve canonical URLs, carry over customer order histories, and audit structured product schema to guarantee zero search traffic drop." }
+      { question: "Can you migrate our legacy store data without losing SEO rankings?", answer: "Yes. We execute comprehensive 301 redirect mapping, preserve canonical URLs, carry over customer order histories, and audit structured product schema to guarantee zero search traffic drop." },
+      { question: "How do you synchronize inventory in real time across physical retail POS and online storefronts?", answer: "We build event-driven webhook connectors between physical POS terminals (Shopify POS, Square, Lightspeed) and central ERP/warehouse systems, updating balances in under 5 seconds to eliminate stockouts." },
+      { question: "Do you support multi-vendor marketplace architectures with automated seller payouts?", answer: "Yes. We engineer multi-vendor platforms using Stripe Connect Custom or Express accounts, supporting split payments, automated vendor commission withholding, and individualized merchant dashboards." }
     ]
   },
   {
@@ -243,15 +249,15 @@ export const industriesData = [
     blobColor: "#f59e0b",
     icoGradient: "linear-gradient(135deg,#f59e0b,#fbbf24)",
     href: "/industries/real-estate-proptech",
-    caseStudySlugs: ["stayflow-crm", "sitedesk", "ananyahomeservice"],
+    caseStudySlugs: ["stayflow-crm", "ananyahomeservice"],
     pillTags: ["RESO Web API", "Interactive Map Search", "Brokerage CRM", "Lease Portals"],
     shortDescription: "Listings portals, brokerage CRM, lease management & interactive map search engineered for property enterprises.",
     description: "We build intuitive property discovery portals, RESO Web API and IDX/MLS data feeds, 3D virtual tour integrations, automated lead routing, and tenant management portals.",
     heroSubtitle: "Interactive map search portals, automated MLS/RESO data ingestion pipelines, and property management platforms engineered for top real estate brokerages, REITs, and PropTech innovators.",
     metrics: [
-      { value: "2.4M+", label: "Active Listings" },
+      { value: "25k+", label: "Active Listings" },
       { value: "65%", label: "Lead Growth" },
-      { value: "Sub-100ms", label: "Map Cluster Latency" },
+      { value: "Sub-100ms", label: "Search Latency" },
       { value: "99.8%", label: "MLS Sync Accuracy" }
     ],
     compliance: ["RESO Web API", "RESO Data Dictionary", "Fair Housing Guidelines", "SOC-2 Type II"],
@@ -301,7 +307,9 @@ export const industriesData = [
     faqs: [
       { question: "How often are listings refreshed from the MLS?", answer: "Our automated RESO Web API ingest pipelines pull delta updates every 5 to 15 minutes, ensuring pending sales, price drops, and new listings display virtually in real time." },
       { question: "Can we support custom neighborhood polygon searches?", answer: "Yes. Users can draw custom boundaries directly onto the map using finger or mouse gestures, querying our PostGIS database with sub-100ms response times." },
-      { question: "Do you integrate with Matterport and 3D walkthroughs?", answer: "Yes. We embed interactive Matterport 3D tours, interactive floorplans, and video walk-throughs directly into property detail layouts with zero layout shift." }
+      { question: "Do you integrate with Matterport and 3D walkthroughs?", answer: "Yes. We embed interactive Matterport 3D tours, interactive floorplans, and video walk-throughs directly into property detail layouts with zero layout shift." },
+      { question: "Can you build automated lead routing and CRM workflows for multi-agent brokerages?", answer: "Yes. We implement round-robin, geography-based, or price-tier lead distribution rules, paired with automated SMS/email alerts via Twilio and SendGrid so agents connect with prospects instantly." },
+      { question: "How do you handle online rent collection and digital lease signing?", answer: "We integrate secure ACH bank transfers and credit card payments via Stripe Billing, paired with automated DocuSign or HelloSign workflows for paperless lease execution and automated payment reminders." }
     ]
   },
   {
@@ -317,7 +325,7 @@ export const industriesData = [
     blobColor: "#0891b2",
     icoGradient: "linear-gradient(135deg,#0891b2,#22d3ee)",
     href: "/industries/logistics-supply-chain",
-    caseStudySlugs: ["tripsbook", "automobile"],
+    caseStudySlugs: ["automobile", "suryadeepcarrent"],
     pillTags: ["Fleet Telematics", "Route Optimization", "WMS Warehousing", "EDI Integration"],
     shortDescription: "Fleet telematics, warehouse management (WMS), route optimization & end-to-end freight visibility platforms.",
     description: "We architect intelligent transportation management systems (TMS), warehouse inventory scanners, IoT sensor pipelines, dynamic route dispatchers, and automated electronic bill of lading (eBOL) software.",
@@ -325,7 +333,7 @@ export const industriesData = [
     metrics: [
       { value: "32%", label: "Fuel Cost Savings" },
       { value: "99.4%", label: "On-Time Dispatch" },
-      { value: "12M+", label: "Parcels Tracked" },
+      { value: "150k+", label: "Shipments Tracked" },
       { value: "Sub-5s", label: "IoT Telematics Sync" }
     ],
     compliance: ["FMCSA ELD Standards", "ISO 28000", "SOC-2 Type II", "EDI 204/210/214"],
@@ -375,7 +383,9 @@ export const industriesData = [
     faqs: [
       { question: "Can your system connect with our existing telematics hardware?", answer: "Yes. We ingest data from major ELD and telematics providers (including Samsara, Geotab, and Omnitracs) via standardized Webhooks and REST APIs." },
       { question: "How does offline mode function for drivers in low-coverage areas?", answer: "Our driver mobile apps utilize IndexedDB and SQLite local storage to cache routes, manifest records, and signature captures locally, automatically syncing upon network recovery." },
-      { question: "Do you support EDI integrations with legacy shipping partners?", answer: "Yes. We have built-in translation microservices that convert legacy ANSI X12 EDI documents into modern JSON payloads for your core database." }
+      { question: "Do you support EDI integrations with legacy shipping partners?", answer: "Yes. We have built-in translation microservices that convert legacy ANSI X12 EDI documents (EDI 204, 210, 214) into modern JSON payloads for your core database." },
+      { question: "How do dynamic routing algorithms reduce fleet fuel and driver idle times?", answer: "Our routing engine solves the vehicle routing problem with time windows (VRPTW), factoring in vehicle capacities, live traffic data, and delivery constraints to produce fuel-efficient multi-stop manifests." },
+      { question: "Can the platform handle paperless electronic proof of delivery (ePOD)?", answer: "Yes. Drivers capture sign-on-glass customer signatures, take photo proof of cargo drop-off, record timestamps and GPS coordinates, instantly generating verifiable PDF bills of lading." }
     ]
   },
   {
@@ -399,7 +409,7 @@ export const industriesData = [
     metrics: [
       { value: "28%", label: "Downtime Reduction" },
       { value: "94.2%", label: "OEE Factory Benchmark" },
-      { value: "50k+", label: "Sensors Monitored" },
+      { value: "10k+", label: "Sensors Monitored" },
       { value: "Sub-50ms", label: "PLC Ingest Latency" }
     ],
     compliance: ["ISA-95", "ISO 9001", "IEC 62443", "SOC-2 Type II"],
@@ -449,7 +459,9 @@ export const industriesData = [
     faqs: [
       { question: "Can we connect legacy machines that lack modern Ethernet ports?", answer: "Yes. We deploy non-invasive IoT current clamps, vibration sensors, and micro-PLC edge gateways that digitize machine run state without modifying internal machine warranties." },
       { question: "How does the platform handle shop-floor network outages?", answer: "Edge gateways run lightweight local buffer engines that store up to 72 hours of telemetry locally during network disconnection, backfilling the cloud database immediately upon reconnect." },
-      { question: "Is this platform compliant with industrial cybersecurity standards?", answer: "Yes. Our architecture conforms to ISA/IEC 62443 guidelines, implementing one-way DMZ data diodes and TLS 1.3 mutual certificate authentication." }
+      { question: "Is this platform compliant with industrial cybersecurity standards?", answer: "Yes. Our architecture conforms to ISA/IEC 62443 guidelines, implementing one-way DMZ data diodes and TLS 1.3 mutual certificate authentication." },
+      { question: "How is Overall Equipment Effectiveness (OEE) calculated across machine cells?", answer: "The system captures real-time run times (Availability), units produced vs target speeds (Performance), and scrapped part ratios (Quality) to calculate and visualize live OEE metrics down to the minute." },
+      { question: "How do predictive maintenance models prevent unexpected motor or tool failures?", answer: "We monitor high-frequency vibration and motor current signatures using TimescaleDB, training anomaly detection algorithms to flag abnormal harmonic spikes before physical degradation occurs." }
     ]
   },
   {
@@ -465,16 +477,16 @@ export const industriesData = [
     blobColor: "#d946ef",
     icoGradient: "linear-gradient(135deg,#d946ef,#f472b6)",
     href: "/industries/saas-cloud-platforms",
-    caseStudySlugs: ["filterbook", "billbook", "stayflow-crm"],
+    caseStudySlugs: ["stayflow-crm", "aexongraphics-crm", "medicheck"],
     pillTags: ["Multi-Tenant RLS", "Enterprise SSO", "Usage-Based Billing", "Developer APIs"],
     shortDescription: "Multi-tenant software, B2B workspaces, usage-based billing & scalable subscription platforms engineered for fast growth.",
     description: "We build modern B2B SaaS products, tenant-isolated data architectures, automated Stripe billing engines, role-based team management, and developer-facing API portals.",
     heroSubtitle: "High-velocity multi-tenant architectures, self-serve subscription billing, and enterprise security features engineered for B2B SaaS founders and product teams.",
     metrics: [
       { value: "99.99%", label: "Platform SLA" },
-      { value: "4.2x", label: "ARR Growth" },
+      { value: "3.5x", label: "User Scale Growth" },
       { value: "Sub-120ms", label: "API Response" },
-      { value: "SOC-2", label: "Readiness Built-In" }
+      { value: "100%", label: "SOC-2 Readiness" }
     ],
     compliance: ["SOC-2 Type II", "GDPR", "CCPA", "ISO 27001", "SAML 2.0 / SCIM"],
     techStack: ["Next.js", "Node.js", "TypeScript", "PostgreSQL", "Stripe Billing", "WorkOS", "Redis", "AWS"],
@@ -523,7 +535,9 @@ export const industriesData = [
     faqs: [
       { question: "How do you ensure data isolation between different customer accounts?", answer: "We enforce PostgreSQL Row-Level Security (RLS) at the database layer paired with tenant ID session scoping on every query, guaranteeing zero cross-tenant contamination." },
       { question: "Can you implement Enterprise SSO (Okta, Azure AD) for our product?", answer: "Yes. We configure SAML 2.0 and OIDC connectors via modern protocols like WorkOS or NextAuth, enabling your enterprise customers to enforce single sign-on seamlessly." },
-      { question: "How do you handle complex usage-based metered billing?", answer: "We implement high-throughput Redis event counters that aggregate usage events asynchronously, reporting consolidated metrics to Stripe's metered billing API with zero checkout lag." }
+      { question: "How do you handle complex usage-based metered billing?", answer: "We implement high-throughput Redis event counters that aggregate usage events asynchronously, reporting consolidated metrics to Stripe's metered billing API with zero checkout lag." },
+      { question: "Can you build developer-facing public APIs with rate limits and documentation?", answer: "Yes. We generate OpenAPI/Swagger documentation, issue revocable developer API keys, and enforce token-bucket rate limits via Redis to protect core microservices from abuse." },
+      { question: "What steps do you take to prepare a SaaS product for SOC-2 Type II audits?", answer: "We implement automated infrastructure audit logging (AWS CloudTrail), encrypted backups, enforced MFA/SSO, strict IAM role permissions, and formal security documentation templates ready for external auditors." }
     ]
   },
   {
@@ -539,16 +553,16 @@ export const industriesData = [
     blobColor: "#7c3aed",
     icoGradient: "linear-gradient(135deg,#7c3aed,#a78bfa)",
     href: "/industries/travel-hospitality",
-    caseStudySlugs: ["suryadeepcarrent", "tripsbook"],
+    caseStudySlugs: ["suryadeepcarrent"],
     pillTags: ["GDS / Amadeus", "Booking Engines", "Overbooking Locks", "PMS Sync"],
     shortDescription: "Booking engines, Global Distribution System (GDS) integrations, dynamic itinerary planners & guest loyalty platforms.",
     description: "We build intuitive online travel booking engines, hotel reservation portals, airline and GDS API connectors, dynamic package builders, and mobile guest companion apps.",
     heroSubtitle: "High-speed reservation engines, multi-provider GDS integrations, and dynamic packaging platforms engineered for OTAs, hotel groups, and tour operators.",
     metrics: [
-      { value: "Sub-800ms", label: "Search Engine Response" },
+      { value: "Sub-800ms", label: "Search Speed" },
       { value: "38%", label: "Direct Booking Lift" },
-      { value: "1.2M+", label: "Bookings Processed" },
-      { value: "4.8★", label: "Guest App Rating" }
+      { value: "85k+", label: "Bookings Processed" },
+      { value: "4.9/5", label: "Guest Satisfaction" }
     ],
     compliance: ["PCI-DSS", "GDPR", "IATA NDC Standards", "SOC-2 Type II"],
     techStack: ["Next.js", "Node.js", "Redis", "Elasticsearch", "Amadeus / Sabre API", "Stripe", "AWS"],
@@ -597,7 +611,9 @@ export const industriesData = [
     faqs: [
       { question: "How do you minimize expensive GDS API search lookup fees?", answer: "We architect an intelligent Redis caching layer that caches room and seat availability queries with adaptive TTLs, reducing raw GDS API call volumes by up to 75%." },
       { question: "Can you connect with our existing Property Management System (PMS)?", answer: "Yes. We have connected with leading PMS platforms including Opera, Cloudbeds, and SiteMinder via standard REST and HTNG XML protocols." },
-      { question: "Do your booking engines handle complex cancellation and refund policies?", answer: "Yes. Our booking state machine enforces non-refundable, partially refundable, and flexible cancellation rules with automated Stripe refund webhooks." }
+      { question: "Do your booking engines handle complex cancellation and refund policies?", answer: "Yes. Our booking state machine enforces non-refundable, partially refundable, and flexible cancellation rules with automated Stripe refund webhooks." },
+      { question: "How do you prevent simultaneous overbooking across multiple OTA channels?", answer: "We implement distributed Redis lock primitives and instant webhook sync with your channel manager to guarantee inventory is locked during the checkout flow." },
+      { question: "Can you build a contactless mobile guest companion with digital room key access?", answer: "Yes. We develop native iOS/Android mobile apps that allow guests to check in remotely, chat with concierge, and unlock hotel room doors via Bluetooth Low Energy (BLE) lock integration." }
     ]
   },
   {
@@ -619,8 +635,8 @@ export const industriesData = [
     description: "We engineer high-engagement fitness mobile apps, gym management ERPs, on-demand workout streaming platforms, and Bluetooth Low Energy (BLE) IoT wearable integrations that keep members motivated and businesses profitable.",
     heroSubtitle: "Custom mobile fitness applications, IoT wearable integrations (Apple HealthKit & Google Health Connect), subscription membership billing, and AI-powered personal training workflows engineered for gyms, fitness creators, and wellness brands.",
     metrics: [
-      { value: "4.8★", label: "App Store Rating" },
-      { value: "250k+", label: "Active Athletes" },
+      { value: "4.9/5", label: "App Store Rating" },
+      { value: "35k+", label: "Active Members" },
       { value: "60Hz", label: "Sensor Telemetry Sync" },
       { value: "99.9%", label: "Live Stream SLA" }
     ],
@@ -671,7 +687,9 @@ export const industriesData = [
     faqs: [
       { question: "Can your fitness apps integrate with Apple HealthKit and Google Health Connect?", answer: "Yes. We build native bridge connectors that seamlessly read and write workouts, active energy burned, resting heart rate, sleep analysis, and step counts with full user privacy consent." },
       { question: "How do you handle live streaming and on-demand workout video playback?", answer: "We use adaptive bitrate HLS and low-latency WebRTC streaming (via Mux or AWS Interactive Video Service) to ensure smooth HD playback across mobile and casted screens (AirPlay/Chromecast) even on gym Wi-Fi." },
-      { question: "Can the software control physical gym turnstiles or door locks for 24/7 unstaffed facilities?", answer: "Yes. Our gym management backend integrates with leading cloud access hardware (such as Kisi, Brivo, and Paxton) via secure webhooks, enabling members to unlock turnstiles instantly using their phone's digital NFC key or dynamic QR code." }
+      { question: "Can the software control physical gym turnstiles or door locks for 24/7 unstaffed facilities?", answer: "Yes. Our gym management backend integrates with leading cloud access hardware (such as Kisi, Brivo, and Paxton) via secure webhooks, enabling members to unlock turnstiles instantly using their phone's digital NFC key or dynamic QR code." },
+      { question: "How do you handle recurring gym membership billing and failed payment dunning?", answer: "We integrate Stripe Billing subscription schedules with automated smart retry logic, dunning email sequences, and self-serve member pause/resume options to minimize involuntary churn." },
+      { question: "Can you build AI-driven workout recommendations and macro nutrition tracking into the app?", answer: "Yes. We develop personalized workout progression algorithms and computer vision barcode/food recognition models that calculate daily caloric and macronutrient targets based on user goals." }
     ]
   }
 ];

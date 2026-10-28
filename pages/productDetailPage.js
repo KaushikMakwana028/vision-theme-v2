@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { productsData } from "@/data/products";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 import CountUp from "@/components/motion/CountUp";
@@ -55,7 +56,7 @@ const styles = `
 }
 .svp .breadcrumbs a:hover .bc-icon { transform: none; color: var(--primary); }
 .svp .breadcrumbs .sep {
-  color: #94a3b8; font-size: .8rem; font-weight: 500;
+  color: #64748b; font-size: .8rem; font-weight: 500;
   padding: 0 .15rem; user-select: none;
 }
 .svp .breadcrumbs .current {
@@ -153,7 +154,7 @@ const styles = `
   transition: transform .25s var(--ease);
   animation: svp-in-scale 1s var(--ease) .35s backwards;
 }
-.svp-hero-card h3 { color: #fff; margin: 1rem 0 .6rem; }
+.svp-hero-card h2, .svp-hero-card h3 { color: #fff; margin: 1rem 0 .6rem; }
 .svp-hero-card p { color: rgba(255, 255, 255, .78); margin: 0; }
 .svp-hero-card .btag {
   display: inline-block; padding: .3rem .75rem; border-radius: 999px; font-size: .8rem; font-weight: 600;
@@ -570,7 +571,7 @@ export default function ProductDetailPage({ product }) {
                 </span>
               </div>
 
-              <h3>{product.shortTitle} Engine</h3>
+              <h2>{product.shortTitle} Engine</h2>
               <p>{product.tagline}</p>
 
               {product.image && (
@@ -588,9 +589,13 @@ export default function ProductDetailPage({ product }) {
                     justifyContent: "center"
                   }}
                 >
-                  <img
+                  <Image
                     src={product.image}
-                    alt={`${product.shortTitle} Preview`}
+                    alt={product.imageAlt || `${product.title} preview by Vision Technolabs in Ahmedabad`}
+                    width={800}
+                    height={450}
+                    priority
+                    sizes="(max-width: 900px) 100vw, 420px"
                     style={{
                       width: "100%",
                       height: "100%",
@@ -857,10 +862,12 @@ export default function ProductDetailPage({ product }) {
                         justifyContent: "center"
                       }}
                     >
-                      <img
+                      <Image
                         src={rel.image}
-                        alt={rel.title}
-                        loading="lazy"
+                        alt={rel.imageAlt || `${rel.title} preview by Vision Technolabs in Ahmedabad`}
+                        width={640}
+                        height={360}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
                         style={{
                           width: "100%",
                           height: "100%",
@@ -877,7 +884,7 @@ export default function ProductDetailPage({ product }) {
                     <Link
                       href={`/products/${rel.slug}`}
                       className="more"
-                      aria-label={`Explore ${rel.shortTitle} platform`}
+                      aria-label={`Explore Platform: ${rel.shortTitle}`}
                     >
                       Explore Platform
                       <svg className="i" aria-hidden="true">

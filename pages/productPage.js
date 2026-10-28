@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { productsData, productCategories } from "@/data/products";
+import { productsData } from "@/data/products";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 import CountUp from "@/components/motion/CountUp";
 import Reveal from "@/components/motion/Reveal";
@@ -56,7 +56,7 @@ const styles = `
 }
 .svp .breadcrumbs a:hover .bc-icon { transform: none; color: var(--primary); }
 .svp .breadcrumbs .sep {
-  color: #94a3b8; font-size: .8rem; font-weight: 500;
+  color: #64748b; font-size: .8rem; font-weight: 500;
   padding: 0 .15rem; user-select: none;
 }
 .svp .breadcrumbs .current {
@@ -154,7 +154,7 @@ const styles = `
   transition: transform .25s var(--ease);
   animation: svp-in-scale 1s var(--ease) .35s backwards;
 }
-.svp-hero-card h3 { color: #fff; margin: 1rem 0 .6rem; }
+.svp-hero-card h2, .svp-hero-card h3 { color: #fff; margin: 1rem 0 .6rem; }
 .svp-hero-card p { color: rgba(255, 255, 255, .78); margin: 0; }
 .svp-hero-card .btag {
   display: inline-block; padding: .3rem .75rem; border-radius: 999px; font-size: .8rem; font-weight: 600;
@@ -219,25 +219,135 @@ const styles = `
 }
 .svp-marquee-group span:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
 
-/* ---------- Filter tabs ---------- */
-.svp .filter-wrap { position: relative; margin: 0 auto 2.25rem; width: 100%; }
-.svp .filter-tabs { display: flex; gap: .55rem; justify-content: center; flex-wrap: wrap; }
-.svp .filter-tab {
-  display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; flex-shrink: 0;
-  padding: .6rem 1.15rem; border-radius: 999px; font: inherit; font-weight: 600; font-size: .92rem;
-  white-space: nowrap; color: var(--ink); background: var(--bg); border: 1px solid var(--line);
-  transition: transform .3s var(--ease), background .3s, color .3s, border-color .3s, box-shadow .3s;
+/* ---------- Product Catalog Grid & Enhanced Cards ---------- */
+.prod-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
 }
-.svp .filter-tab em {
-  font-style: normal; font-size: .72rem; padding: .1rem .5rem; border-radius: 999px;
-  background: var(--surface); color: var(--muted); transition: background .3s, color .3s;
+@media (max-width: 900px) {
+  .prod-catalog-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
-.svp .filter-tab:hover { border-color: var(--primary); transform: translateY(-2px); }
-.svp .filter-tab.active {
-  color: #fff; border-color: transparent; background: var(--grad);
-  box-shadow: 0 10px 24px -8px rgba(79, 70, 229, .65); transform: translateY(-2px);
+
+.prod-catalog-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.85rem;
+  border-radius: 20px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, .05);
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .3s;
 }
-.svp .filter-tab.active em { background: rgba(255, 255, 255, .22); color: #fff; }
+.prod-catalog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -15px rgba(79, 70, 229, .15);
+  border-color: rgba(79, 70, 229, .3);
+}
+
+.prod-card-thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0f172a;
+  margin: 0.25rem 0 1.25rem;
+  border: 1px solid rgba(15, 23, 42, .08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+}
+.prod-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform .6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.prod-catalog-card:hover .prod-card-img {
+  transform: scale(1.04);
+}
+.prod-card-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 70%, rgba(15, 23, 42, .12) 100%);
+}
+
+.prod-card-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+.prod-card-head .ico {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+.prod-card-head .ico .i {
+  width: 24px;
+  height: 24px;
+}
+.prod-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+.prod-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.25rem;
+  line-height: 1.25;
+}
+.prod-desc {
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+  margin: 0 0 1.15rem;
+}
+
+.prod-catalog-card .ticks {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+.prod-catalog-card .ticks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
+}
+.prod-catalog-card .ticks .i {
+  width: 17px;
+  height: 17px;
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.prod-card-footer {
+  margin-top: auto;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+.prod-card-footer .pricing-badge {
+  margin: 0;
+}
 
 /* ---------- Grids ---------- */
 .svp .cols { display: grid; gap: 1.5rem; }
@@ -425,39 +535,6 @@ const styles = `
   .svp .cols.c3, .svp .cols.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .svp-chip { display: none; }
 }
-@media (max-width: 900px) {
-  .svp .filter-wrap {
-    margin-left: calc(var(--gutter, 1.25rem) * -1) !important;
-    margin-right: calc(var(--gutter, 1.25rem) * -1) !important;
-    padding: 0 !important;
-    overflow: hidden;
-  }
-  .svp .filter-wrap::after {
-    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 36px; pointer-events: none;
-    background: linear-gradient(90deg, transparent, var(--bg)); z-index: 2;
-  }
-  .svp .sec.alt .filter-wrap::after { background: linear-gradient(90deg, transparent, var(--surface)); }
-  .svp .filter-tabs {
-    flex-wrap: nowrap !important;
-    justify-content: flex-start !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    touch-action: pan-x !important;
-    scroll-snap-type: none !important;
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-    padding: .35rem var(--gutter, 1.25rem) .75rem !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-  .svp .filter-tabs::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
-  .svp .filter-tab {
-    flex-shrink: 0 !important;
-    white-space: nowrap !important;
-    scroll-snap-align: none !important;
-  }
-}
 @media (max-width: 860px) {
   .svp-cta { grid-template-columns: 1fr; gap: 1.75rem; }
   .svp-hero-card { transform: none !important; }
@@ -507,24 +584,36 @@ const heroStats = [
 
 const generalProductFaqs = [
   {
-    q: "What is the difference between Managed SaaS and Source Code Buyout?",
-    a: "Managed Cloud SaaS includes hosting, automatic server infrastructure maintenance, security patches, and ongoing software updates on a monthly subscription. The Source Code Buyout gives you 100% intellectual property ownership, complete Git repositories, and deployment scripts to run on your own AWS/GCP/DigitalOcean infrastructure with zero recurring licensing fees."
+    q: "What proprietary software products does Vision Technolabs develop and offer?",
+    a: "Vision Technolabs has engineered 4 enterprise-grade proprietary platforms: (1) BillsBook — multi-business counter POS billing, barcode inventory, and automated WhatsApp PDF delivery; (2) FilterBook — complete RO water purifier AMC management, field technician dispatch app, and zero-login QR complaint portal; (3) TripsBook — commercial fleet management, 10-second GPS telemetry, dual Fix Cab & On-Call logging, and on-device A4 duty slips; and (4) SiteDesk — real estate layout plot sales, 3-stage automated EMI collection alerts, and dastavej registry vault."
   },
   {
-    q: "Can we rebrand and white-label these products under our own company name?",
-    a: "Yes. All 4 products support full white-labeling. You can configure custom domains, brand logos, primary color schemes, transactional email templates, and connect your own payment gateways to bill your clients directly."
+    q: "How does BillsBook handle counter POS billing speed, barcode scanning, and GST tax filing?",
+    a: "BillsBook is engineered with sub-30-second counter billing speed. Cashiers scan items using standard USB/Bluetooth barcode scanners or instant Select2 keyboard search. It automatically calculates CGST, SGST, IGST or composite tax slabs, handles multi-tender split payments (Cash, UPI, Card, Credit), decrements inventory in real-time, renders vector PDFs (A4, Modern, Minimalist, 80mm/58mm thermal receipts), and exports GSTR-1 compliant Excel reports."
   },
   {
-    q: "Can Vision customize features or add bespoke integrations before deployment?",
-    a: "Absolutely. Since all platforms are engineered in-house by our senior architects, our squad can rapidly tailor workflows, connect proprietary ERP/CRM systems, adjust database models, or integrate custom payment gateways within 5 to 14 days."
+    q: "How do RO water purifier businesses use FilterBook for AMC tracking and customer QR complaints?",
+    a: "FilterBook automates purifier service schedules (sediment, pre-carbon, RO membrane, and post-carbon filter replacements) based on installation date. Customers scan an affixed purifier QR sticker to lodge service requests and photo proofs in under 60 seconds without installing an app. Technicians manage assigned tickets via the React Native mobile app, while owners track Comprehensive vs Service-Only AMC renewals and dispatch WhatsApp invoices."
   },
   {
-    q: "Are the mobile applications available on Google Play and Apple App Store?",
-    a: "Yes. FilterBook, TripsBook, and SiteDesk are live on the Google Play Store and can be installed immediately or compiled for custom deployment under your own organization developer accounts."
+    q: "How does TripsBook log driver trips, verify fuel expenses, and generate client duty slips?",
+    a: "TripsBook supports dual trip modes: fixed corporate commute routes (Fix Cab) and charter duties (On Call). It uses foreground GPS telemetry (10-second interval) and Google Maps Reverse Geocoding to record accurate pickup/drop coordinates and odometer readings. Drivers capture pump receipt photos across 5 fuel types (Petrol, Diesel, CNG, Electric, LPG) for mileage auditing, and generate print-ready A4 PDF Duty Slips and Monthly Vehicle Log Sheets directly on device."
   },
   {
-    q: "How fast can we launch a sandbox proof-of-concept (POC)?",
-    a: "We can provide live sandbox credentials or spin up a dedicated demo environment for your engineering team within 24 to 48 business hours."
+    q: "How does SiteDesk prevent double-booking of plots and automate buyer EMI installment collections?",
+    a: "SiteDesk links layout maps with real-time plot statuses (Available, Booked, Sold), scoping sales agents strictly to their assigned sites to prevent double-booking. When a plot is booked, it generates flexible monthly Cash or EMI payment schedules. A 3-stage automated reminder engine dispatches push notifications and WhatsApp reminders 3 days before due date, on the due date, and when overdue. It also houses an encrypted document vault for dastavej registry numbers and buyer Aadhaar KYC."
+  },
+  {
+    q: "Can we purchase 100% full source code buyout instead of a monthly SaaS subscription?",
+    a: "Yes. All Vision Technolabs products are available under both models. With Managed Cloud SaaS, we handle cloud hosting, high-concurrency server maintenance, SSL certificates, automated daily backups, and ongoing security updates. With 100% Source Code Buyout, your organization receives complete Git repository access (React Native frontend, CodeIgniter 3/Node.js REST APIs, relational MySQL schemas, deployment Dockerfiles) with zero recurring licensing fees or vendor lock-in."
+  },
+  {
+    q: "Can we rebrand and white-label these applications under our own company name and domain?",
+    a: "Absolutely. Every product is built multi-tenant and white-label ready. You can configure your corporate brand name, logos, splash screens, custom subdomains with SSL, primary and accent brand colors, transactional SMS/WhatsApp templates, and integrate your own Razorpay, Stripe, or PayPal payment gateway credentials to collect revenues directly."
+  },
+  {
+    q: "Can Vision customize features or integrate these products with our existing ERP or CRM?",
+    a: "Yes. Because every line of code was engineered in-house by our senior engineering team, our dedicated product squad can tailor workflows, add custom database fields, integrate with third-party software (Tally Prime, SAP, Salesforce, custom warehouse systems), or build custom mobile modules within a rapid 1 to 2-week turnaround."
   }
 ];
 
@@ -583,11 +672,6 @@ const whyProductItems = [
    ========================================================= */
 
 export default function ProductPage() {
-  const counts = { All: productsData.length };
-  productsData.forEach((p) => {
-    counts[p.category] = (counts[p.category] || 0) + 1;
-  });
-
   const trimmedProducts = productsData.map((prod) => ({
     id: prod.id,
     slug: prod.slug,
@@ -600,6 +684,7 @@ export default function ProductPage() {
     rating: prod.rating,
     reviewsCount: prod.reviewsCount,
     image: prod.image,
+    imageAlt: prod.imageAlt,
     title: prod.title,
     shortDescription: prod.shortDescription,
     features: prod.features?.slice(0, 3).map((f) => ({ title: f.title })),
@@ -652,11 +737,11 @@ export default function ProductPage() {
             </p>
 
             <div className="cta-row">
-              <a className="btn btn-primary" href="#products-catalog">
-                Explore Product Catalog ↓
-              </a>
-              <Link className="btn btn-ghost" href="/#contact">
-                Schedule Sandbox Demo →
+              <Link className="btn btn-primary" href="/contact">
+                Schedule Sandbox Demo{" "}
+                <svg className="i" aria-hidden="true" width="18" height="18">
+                  <use href="#i-arrow" />
+                </svg>
               </Link>
             </div>
           </div>
@@ -683,7 +768,7 @@ export default function ProductPage() {
                 </span>
               </div>
 
-              <h3>Instant Time-to-Market Advantage</h3>
+              <h2>Instant Time-to-Market Advantage</h2>
               <p>
                 Bypass 9+ months of boilerplate development. Deploy battle-hardened SaaS solutions
                 with managed cloud hosting or full source code buyout.
@@ -735,8 +820,6 @@ export default function ProductPage() {
           </Reveal>
 
           <ProductFilterGrid
-            categories={productCategories}
-            counts={counts}
             products={trimmedProducts}
           />
         </div>
@@ -838,7 +921,7 @@ export default function ProductPage() {
                 options tailored to your technical requirements.
               </p>
               <div className="svp-cta-actions">
-                <Link className="btn btn-light" href="/#contact">
+                <Link className="btn btn-light" href="/contact">
                   Schedule Sandbox Demo →
                 </Link>
                 <a className="btn btn-ghost" href="#products-catalog">
