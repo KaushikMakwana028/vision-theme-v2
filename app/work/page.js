@@ -1,4 +1,4 @@
-import WorkPage from "@/pages/workPage";
+import WorkPage from "@/views/workPage";
 import { buildMetadata } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 

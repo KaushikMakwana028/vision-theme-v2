@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { servicesData, getServiceBySlug } from "@/data/services";
-import ServiceDetailPage from "@/pages/serviceDetailPage";
+import ServiceDetailPage from "@/views/serviceDetailPage";
 import { buildMetadata, truncate } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";

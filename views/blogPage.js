@@ -53,23 +53,63 @@ const styles = `
   transform: skewX(-20deg); animation: svp-shine 3.8s ease-in-out 1.5s infinite;
 }
 
+/* ---------- Redirection bar / Breadcrumbs ---------- */
+.breadcrumbs-bar {
+  display: flex; width: 100%; justify-content: center; margin-bottom: 1.25rem;
+}
+.svp .breadcrumbs {
+  display: inline-flex; align-items: center; flex-wrap: wrap; gap: .45rem;
+  padding: .28rem .85rem; border-radius: 999px;
+  background: rgba(255, 255, 255, .7);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border: 1px solid rgba(15, 23, 42, .08);
+  box-shadow: 0 1px 2px rgba(11, 16, 32, .03);
+  font-size: .81rem; line-height: 1.25; margin-bottom: 0;
+  width: fit-content;
+}
+.svp .breadcrumbs a {
+  display: inline-flex; align-items: center; gap: .35rem;
+  color: var(--muted); font-weight: 500; text-decoration: none;
+  transition: color var(--t) var(--ease);
+}
+.svp .breadcrumbs a:hover {
+  color: var(--primary); transform: none;
+}
+.svp .breadcrumbs .bc-icon {
+  width: 13px; height: 13px; flex-shrink: 0; color: var(--muted);
+  transition: color var(--t) var(--ease);
+}
+.svp .breadcrumbs a:hover .bc-icon { transform: none; color: var(--primary); }
+.svp .breadcrumbs .sep {
+  color: #64748b; font-size: .8rem; font-weight: 500;
+  padding: 0 .15rem; user-select: none;
+}
+.svp .breadcrumbs .current {
+  color: var(--ink); font-weight: 600; letter-spacing: .01em;
+}
+
 /* ---------- Hero (Ultra-Smooth 60fps) ---------- */
 .svp-hero {
-  position: relative; overflow: hidden; padding-bottom: 2rem;
-  background: radial-gradient(ellipse 750px 340px at 75% 12%, rgba(79, 70, 229, 0.08), transparent 70%),
-              radial-gradient(ellipse 500px 280px at 15% 85%, rgba(6, 182, 212, 0.06), transparent 60%);
+  position: relative; overflow: hidden; padding-top: 1rem; padding-bottom: 2.75rem;
+  background: radial-gradient(ellipse 750px 340px at 75% 12%, rgba(79, 70, 229, 0.12), transparent 70%),
+              radial-gradient(ellipse 500px 280px at 15% 85%, rgba(6, 182, 212, 0.08), transparent 60%);
 }
 .svp-hero .container { position: relative; z-index: 2; }
 .svp-dots {
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image: radial-gradient(rgba(79, 70, 229, .15) 1px, transparent 1px);
-  background-size: 26px 26px; opacity: 0.6;
+  background-image: radial-gradient(rgba(79, 70, 229, .2) 1.2px, transparent 1.2px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%);
 }
+.svp-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
+.svp-orb-a { width: 400px; height: 400px; top: -140px; right: 10%; background: var(--primary); opacity: .2; }
+.svp-orb-b { width: 340px; height: 340px; bottom: -120px; left: 8%; background: var(--accent); opacity: .18; }
 
-.svp-hero-center { text-align: center; max-width: 860px; margin: 0 auto 2.5rem; }
+.svp-hero-center { text-align: center; max-width: 860px; margin: 0 auto; }
 .svp-hero-center h1 {
-  font-size: clamp(1.85rem, 4.2vw, 3.2rem); line-height: 1.2; margin: .85rem 0 .75rem; color: var(--ink);
-  letter-spacing: -.02em;
+  font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.15; margin: .85rem 0 1.15rem; color: var(--ink);
+  letter-spacing: -.025em; font-weight: 800;
 }
 .svp-hero-center h1 em {
   font-family: var(--serif); font-style: italic;
@@ -79,7 +119,24 @@ const styles = `
   color: var(--ink);
 }
 .svp-hero-center p.lead {
-  font-size: clamp(1rem, 2vw, 1.18rem); color: var(--muted); line-height: 1.65; margin: 0 auto; max-width: 64ch;
+  font-size: clamp(1.02rem, 1.8vw, 1.18rem); color: var(--muted); line-height: 1.7; margin: 0 auto 2rem; max-width: 68ch;
+}
+
+.blog-hero-stats {
+  display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1rem 1.75rem;
+  padding: .75rem 1.5rem; border-radius: 999px;
+  background: rgba(255, 255, 255, .8); border: 1px solid rgba(15, 23, 42, .08);
+  box-shadow: 0 4px 16px -4px rgba(15, 23, 42, .06);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.blog-hero-stat {
+  display: inline-flex; align-items: center; gap: .45rem; font-size: .84rem; color: var(--muted);
+}
+.blog-hero-stat strong {
+  color: var(--ink); font-weight: 700;
+}
+.blog-hero-stat svg {
+  width: 15px; height: 15px; color: var(--primary);
 }
 
 /* ---------- Grids ---------- */
@@ -117,10 +174,10 @@ const styles = `
 }
 .mag-read { color: var(--muted); }
 
-.mag-body h3 {
+.mag-body h2 {
   margin: 0 0 .75rem; font-size: 1.25rem; line-height: 1.35; color: var(--ink); transition: color .3s;
 }
-.mag-card:hover .mag-body h3 { color: var(--primary); }
+.mag-card:hover .mag-body h2 { color: var(--primary); }
 .mag-body p { margin: 0 0 1.25rem; color: var(--muted); font-size: .94rem; line-height: 1.65; }
 
 .mag-foot {
@@ -188,7 +245,7 @@ const styles = `
   .svp-hero-center p.lead { font-size: .92rem; line-height: 1.55; }
   .svp .cols.c3 { grid-template-columns: 1fr; gap: 1.15rem; }
   .mag-body { padding: 1.15rem; }
-  .mag-body h3 { font-size: 1.15rem; line-height: 1.32; }
+  .mag-body h2 { font-size: 1.15rem; line-height: 1.32; }
   .mag-body p { font-size: .88rem; line-height: 1.55; margin-bottom: 1rem; }
   .svp-cta-actions .btn { width: 100%; justify-content: center; text-align: center; }
 }
@@ -219,12 +276,28 @@ export default function BlogPage() {
       <section className="hero svp-hero" aria-labelledby="blog-hero-title">
         <div className="hero-bg" aria-hidden="true" />
         <span className="svp-dots" aria-hidden="true" />
+        <span className="svp-orb svp-orb-a" aria-hidden="true" />
+        <span className="svp-orb svp-orb-b" aria-hidden="true" />
 
         <div className="container">
-          <div className="svp-hero-center" style={{ marginBottom: 0 }}>
-            <div style={{ marginBottom: ".75rem" }}>
+          <div className="svp-hero-center">
+            <div className="breadcrumbs-bar">
+              <nav aria-label="Breadcrumb" className="breadcrumbs">
+                <Link href="/">
+                  <svg className="bc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                  </svg>
+                  Home
+                </Link>
+                <span className="sep">/</span>
+                <span className="current">Blog</span>
+              </nav>
+            </div>
+
+            <div style={{ marginBottom: "1rem" }}>
               <span className="eyebrow">
-                Engineering &amp; Architecture Insights
+                Engineering &amp; Architecture Insights · Production Case Studies
               </span>
             </div>
 
@@ -237,6 +310,29 @@ export default function BlogPage() {
               Practical architectural breakdowns, performance benchmarks, and production lessons
               from the senior engineering team at Vision Technolabs.
             </p>
+
+            <div className="blog-hero-stats" aria-label="Blog Engineering Credentials">
+              <div className="blog-hero-stat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                </svg>
+                <span><strong>{trimmedArticles.length}+</strong> Deep Technical Guides</span>
+              </div>
+              <div className="blog-hero-stat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span><strong>100%</strong> Production Tested</span>
+              </div>
+              <div className="blog-hero-stat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                <span>Updated <strong>Weekly</strong></span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

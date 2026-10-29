@@ -84,24 +84,47 @@ export default function HomePage() {
         <div className="hero-bg" aria-hidden="true" />
         <div className="container hero-wrap">
           <div className="copy">
-            <span className="eyebrow-hero">
-              <strong>{brandInfo.experienceYears}</strong> Years of Building Digital Products
-            </span>
+            <div style={{ marginBottom: "1.1rem" }}>
+              <span className="eyebrow-hero">
+                <span className="eyebrow-live-dot" aria-hidden="true" />
+                <strong>{brandInfo.experienceYears}</strong> Years of Building Digital Products · Trusted by 500+ Brands
+              </span>
+            </div>
             <h1 id="hero-title">
               Websites, Apps &amp; AI Solutions{" "}
               <em>Engineered to Grow Your Business</em>
             </h1>
-            <p className="lead">{brandInfo.description}</p>
+            <p className="lead">{brandInfo.heroLead}</p>
             <div className="cta-row">
               <a className="btn btn-primary" href="#contact">
                 Talk to Our Experts{" "}
-                <svg className="i">
+                <svg className="i" aria-hidden="true">
                   <use href="#i-arrow" />
                 </svg>
               </a>
               <Link className="btn btn-ghost" href="/services">
                 Explore All Services
               </Link>
+            </div>
+            <div className="hero-trust-row" aria-label="Key Trust Signals">
+              <div className="hero-trust-item">
+                <span className="trust-stars" aria-hidden="true">★★★★★</span>
+                <span><strong>4.9/5</strong> Rating</span>
+              </div>
+              <span className="hero-trust-sep" aria-hidden="true" />
+              <div className="hero-trust-item">
+                <svg className="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span><strong>{brandInfo.projectsDelivered}</strong> Delivered</span>
+              </div>
+              <span className="hero-trust-sep" aria-hidden="true" />
+              <div className="hero-trust-item">
+                <svg className="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                <span><strong>100%</strong> IP Ownership</span>
+              </div>
             </div>
           </div>
 

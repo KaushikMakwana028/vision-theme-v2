@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { industriesData, getIndustryBySlug } from "@/data/industries";
-import IndustryDetailPage from "@/pages/industryDetailPage";
+import IndustryDetailPage from "@/views/industryDetailPage";
 import { buildMetadata, truncate } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";

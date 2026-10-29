@@ -77,23 +77,71 @@ export default async function LocationPage({ params }) {
       <Breadcrumbs items={breadcrumbItems} />
 
       {/* ================= HERO SECTION ================= */}
-      <section className="sec hero-subpage" style={{ paddingTop: "2.5rem", paddingBottom: "3.5rem" }}>
-        <div className="container">
-          <div style={{ maxWidth: "860px" }}>
-            <span
-              className="eyebrow"
-              style={{
-                display: "inline-block",
-                fontSize: "0.82rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-                color: "var(--primary, #4f46e5)",
-                marginBottom: "0.85rem",
-              }}
-            >
-              {location.heroEyebrow}
-            </span>
+      <section
+        className="sec hero-subpage"
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          paddingTop: "clamp(2rem, 5vw, 3.5rem)",
+          paddingBottom: "clamp(2.5rem, 6vw, 4rem)",
+          background: "radial-gradient(ellipse 750px 340px at 50% 15%, rgba(79, 70, 229, 0.09), transparent 70%), radial-gradient(ellipse 550px 280px at 15% 85%, rgba(6, 182, 212, 0.07), transparent 60%)",
+        }}
+      >
+        <span
+          className="svp-dots"
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 0,
+            pointerEvents: "none",
+            backgroundImage: "radial-gradient(rgba(79, 70, 229, .2) 1.2px, transparent 1.2px)",
+            backgroundSize: "26px 26px",
+            WebkitMaskImage: "radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%)",
+            maskImage: "radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%)",
+          }}
+          aria-hidden="true"
+        />
+        <span
+          style={{
+            position: "absolute",
+            width: "420px",
+            height: "420px",
+            top: "-140px",
+            right: "8%",
+            borderRadius: "50%",
+            background: "var(--primary, #4f46e5)",
+            opacity: 0.16,
+            filter: "blur(90px)",
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+          aria-hidden="true"
+        />
+        <span
+          style={{
+            position: "absolute",
+            width: "360px",
+            height: "360px",
+            bottom: "-100px",
+            left: "6%",
+            borderRadius: "50%",
+            background: "var(--accent2, #fb923c)",
+            opacity: 0.14,
+            filter: "blur(80px)",
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
+          <div style={{ maxWidth: "880px" }}>
+            <div style={{ marginBottom: "1rem" }}>
+              <span className="eyebrow-hero">
+                <span className="eyebrow-live-dot" aria-hidden="true" />
+                {location.heroEyebrow}
+              </span>
+            </div>
 
             <h1
               id="location-title"
@@ -113,7 +161,7 @@ export default async function LocationPage({ params }) {
               className="lead"
               style={{
                 fontSize: "clamp(1.05rem, 1.6vw, 1.2rem)",
-                lineHeight: 1.65,
+                lineHeight: 1.7,
                 color: "var(--muted, #64748b)",
                 marginBottom: "2rem",
               }}
@@ -126,11 +174,14 @@ export default async function LocationPage({ params }) {
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
-                gap: "1rem",
-                padding: "1.25rem 1.5rem",
-                borderRadius: "16px",
-                background: "var(--soft, #f8fafc)",
-                border: "1px solid var(--line, #e2e8f0)",
+                gap: "1.25rem",
+                padding: "1.25rem 1.6rem",
+                borderRadius: "20px",
+                background: "rgba(255, 255, 255, 0.85)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                border: "1px solid rgba(15, 23, 42, 0.08)",
+                boxShadow: "0 4px 20px -4px rgba(15, 23, 42, 0.06)",
                 marginBottom: "2.25rem",
               }}
             >
@@ -138,8 +189,12 @@ export default async function LocationPage({ params }) {
                 <div key={sIdx}>
                   <div
                     style={{
-                      fontSize: "1.65rem",
+                      fontSize: "1.75rem",
                       fontWeight: 800,
+                      background: "var(--grad)",
+                      WebkitBackgroundClip: "text",
+                      backgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
                       color: "var(--primary, #4f46e5)",
                       lineHeight: 1.1,
                       fontVariantNumeric: "tabular-nums",
@@ -153,7 +208,9 @@ export default async function LocationPage({ params }) {
                       fontSize: "0.8rem",
                       fontWeight: 600,
                       color: "var(--muted, #64748b)",
-                      marginTop: "0.2rem",
+                      marginTop: "0.3rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.03em",
                     }}
                   >
                     {st.label}

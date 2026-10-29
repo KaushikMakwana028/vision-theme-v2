@@ -1,4 +1,4 @@
-import ServicePage from "@/pages/servicePage";
+import ServicePage from "@/views/servicePage";
 import { buildMetadata } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 

@@ -28,22 +28,70 @@ export default function LocationsIndexPage() {
 
       <Breadcrumbs items={breadcrumbItems} />
 
-      <section className="sec hero-subpage" style={{ paddingTop: "2.5rem", paddingBottom: "3rem" }}>
-        <div className="container" style={{ maxWidth: "860px" }}>
-          <span
-            className="eyebrow"
-            style={{
-              display: "inline-block",
-              fontSize: "0.82rem",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              color: "var(--primary, #4f46e5)",
-              marginBottom: "0.85rem",
-            }}
-          >
-            Regional Engineering Network
-          </span>
+      <section
+        className="sec hero-subpage"
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          paddingTop: "clamp(2rem, 5vw, 3.5rem)",
+          paddingBottom: "clamp(2.5rem, 6vw, 4rem)",
+          background: "radial-gradient(ellipse 750px 340px at 50% 15%, rgba(79, 70, 229, 0.09), transparent 70%), radial-gradient(ellipse 550px 280px at 15% 85%, rgba(6, 182, 212, 0.07), transparent 60%)",
+        }}
+      >
+        <span
+          className="svp-dots"
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 0,
+            pointerEvents: "none",
+            backgroundImage: "radial-gradient(rgba(79, 70, 229, .2) 1.2px, transparent 1.2px)",
+            backgroundSize: "26px 26px",
+            WebkitMaskImage: "radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%)",
+            maskImage: "radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%)",
+          }}
+          aria-hidden="true"
+        />
+        <span
+          style={{
+            position: "absolute",
+            width: "420px",
+            height: "420px",
+            top: "-140px",
+            right: "8%",
+            borderRadius: "50%",
+            background: "var(--primary, #4f46e5)",
+            opacity: 0.16,
+            filter: "blur(90px)",
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+          aria-hidden="true"
+        />
+        <span
+          style={{
+            position: "absolute",
+            width: "360px",
+            height: "360px",
+            bottom: "-100px",
+            left: "6%",
+            borderRadius: "50%",
+            background: "var(--accent2, #fb923c)",
+            opacity: 0.14,
+            filter: "blur(80px)",
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="container" style={{ position: "relative", zIndex: 2, maxWidth: "900px", textAlign: "center" }}>
+          <div style={{ marginBottom: "1rem" }}>
+            <span className="eyebrow-hero">
+              <span className="eyebrow-live-dot" aria-hidden="true" />
+              Regional Engineering Network · Gujarat &amp; India
+            </span>
+          </div>
 
           <h1
             style={{
@@ -52,25 +100,93 @@ export default function LocationsIndexPage() {
               lineHeight: 1.15,
               letterSpacing: "-0.025em",
               color: "var(--ink, #0f172a)",
-              margin: "0 0 1.25rem",
+              margin: "0 auto 1.25rem",
+              maxWidth: "26ch",
             }}
           >
-            IT Company Locations &amp; Regional Engineering Across Gujarat
+            IT Company Locations &amp;{" "}
+            <em
+              style={{
+                fontFamily: "var(--serif, Georgia, serif)",
+                fontStyle: "italic",
+                background: "var(--grad-warm)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                color: "var(--ink, #0f172a)",
+              }}
+            >
+              Regional Engineering Across Gujarat
+            </em>
           </h1>
 
           <p
             className="lead"
             style={{
               fontSize: "clamp(1.05rem, 1.6vw, 1.2rem)",
-              lineHeight: 1.65,
+              lineHeight: 1.7,
               color: "var(--muted, #64748b)",
-              marginBottom: "2rem",
+              marginBottom: "2.25rem",
+              maxWidth: "760px",
+              marginLeft: "auto",
+              marginRight: "auto",
             }}
           >
             Vision Technolabs delivers high-performance website development, custom mobile applications,
             and enterprise software across Gujarat. Discover our dedicated regional engineering hubs,
             local technical expertise, and verified client implementations in your area.
           </p>
+
+          {/* Quick Metrics Pill Bar */}
+          <div
+            style={{
+              display: "inline-grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+              gap: "1.25rem",
+              width: "100%",
+              maxWidth: "760px",
+              padding: "1.25rem 1.75rem",
+              borderRadius: "20px",
+              background: "rgba(255, 255, 255, 0.85)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              border: "1px solid rgba(15, 23, 42, 0.08)",
+              boxShadow: "0 4px 20px -4px rgba(15, 23, 42, 0.06)",
+            }}
+          >
+            <div>
+              <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--primary, #4f46e5)", lineHeight: 1.2 }}>
+                Ahmedabad
+              </div>
+              <div style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--muted, #64748b)", textTransform: "uppercase", letterSpacing: "0.04em", marginTop: "0.25rem" }}>
+                Global HQ &amp; Labs
+              </div>
+            </div>
+            <div>
+              <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--primary, #4f46e5)", lineHeight: 1.2 }}>
+                7+ Hubs
+              </div>
+              <div style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--muted, #64748b)", textTransform: "uppercase", letterSpacing: "0.04em", marginTop: "0.25rem" }}>
+                Across Gujarat
+              </div>
+            </div>
+            <div>
+              <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--primary, #4f46e5)", lineHeight: 1.2 }}>
+                500+
+              </div>
+              <div style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--muted, #64748b)", textTransform: "uppercase", letterSpacing: "0.04em", marginTop: "0.25rem" }}>
+                Production Releases
+              </div>
+            </div>
+            <div>
+              <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--primary, #4f46e5)", lineHeight: 1.2 }}>
+                On-Site
+              </div>
+              <div style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--muted, #64748b)", textTransform: "uppercase", letterSpacing: "0.04em", marginTop: "0.25rem" }}>
+                Tech Consultation
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

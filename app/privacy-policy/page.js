@@ -32,18 +32,32 @@ export default function PrivacyPolicyPage() {
       <article style={{ padding: "clamp(3rem, 6vw, 5rem) 0" }}>
         <div className="container" style={{ maxWidth: "860px", margin: "0 auto" }}>
           {/* Header */}
-          <header style={{ marginBottom: "2.5rem" }}>
-            <div style={{ marginBottom: "0.75rem" }}>
-              <span className="eyebrow">Trust &amp; Transparency</span>
+          <header
+            style={{
+              position: "relative",
+              overflow: "hidden",
+              padding: "2rem 2.25rem",
+              borderRadius: "24px",
+              background: "radial-gradient(ellipse 650px 300px at 70% 20%, rgba(79, 70, 229, 0.08), transparent 70%), #ffffff",
+              border: "1px solid rgba(15, 23, 42, 0.08)",
+              boxShadow: "0 4px 20px -4px rgba(15, 23, 42, 0.04)",
+              marginBottom: "2.5rem",
+            }}
+          >
+            <div style={{ marginBottom: "1rem" }}>
+              <span className="eyebrow-hero">
+                <span className="eyebrow-live-dot" aria-hidden="true" />
+                Trust &amp; Transparency · GDPR &amp; DPDP Compliant
+              </span>
             </div>
             <h1
               style={{
-                fontSize: "clamp(2.2rem, 5vw, 3.25rem)",
+                fontSize: "clamp(2.2rem, 5vw, 3.4rem)",
                 fontWeight: 800,
                 lineHeight: 1.15,
                 letterSpacing: "-0.03em",
                 color: "var(--ink, #0f172a)",
-                marginBottom: "0.75rem",
+                marginBottom: "0.85rem",
               }}
             >
               Privacy Policy
@@ -53,10 +67,10 @@ export default function PrivacyPolicyPage() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                fontSize: "0.9rem",
+                fontSize: "0.85rem",
                 color: "var(--muted, #64748b)",
-                background: "var(--surface, #f8fafc)",
-                padding: "0.35rem 0.85rem",
+                background: "rgba(243, 245, 251, 0.9)",
+                padding: "0.35rem 0.95rem",
                 borderRadius: "999px",
                 border: "1px solid var(--line, #e2e8f0)",
               }}

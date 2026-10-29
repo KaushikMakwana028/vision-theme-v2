@@ -25,15 +25,74 @@ export default function AboutPage() {
       />
 
       {/* Hero Section */}
-      <section className="about-hero" style={{ padding: "clamp(3rem, 6vw, 5.5rem) 0 3rem" }}>
-        <div className="container" style={{ maxWidth: "1080px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", maxWidth: "820px", margin: "0 auto" }}>
-            <div style={{ marginBottom: "1rem" }}>
-              <span className="eyebrow">About Vision Technolabs</span>
+      <section
+        className="about-hero"
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          padding: "clamp(2rem, 5vw, 4.5rem) 0 clamp(3rem, 6vw, 4.5rem)",
+          background: "radial-gradient(ellipse 750px 340px at 50% 12%, rgba(79, 70, 229, 0.09), transparent 70%), radial-gradient(ellipse 550px 280px at 15% 85%, rgba(6, 182, 212, 0.07), transparent 60%)",
+        }}
+      >
+        <span
+          className="svp-dots"
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 0,
+            pointerEvents: "none",
+            backgroundImage: "radial-gradient(rgba(79, 70, 229, .2) 1.2px, transparent 1.2px)",
+            backgroundSize: "26px 26px",
+            WebkitMaskImage: "radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%)",
+            maskImage: "radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%)",
+          }}
+          aria-hidden="true"
+        />
+        <span
+          style={{
+            position: "absolute",
+            width: "420px",
+            height: "420px",
+            top: "-140px",
+            right: "8%",
+            borderRadius: "50%",
+            background: "var(--primary, #4f46e5)",
+            opacity: 0.16,
+            filter: "blur(90px)",
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+          aria-hidden="true"
+        />
+        <span
+          style={{
+            position: "absolute",
+            width: "360px",
+            height: "360px",
+            bottom: "-100px",
+            left: "6%",
+            borderRadius: "50%",
+            background: "var(--accent2, #fb923c)",
+            opacity: 0.14,
+            filter: "blur(80px)",
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="container" style={{ position: "relative", zIndex: 2, maxWidth: "1080px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", maxWidth: "860px", margin: "0 auto" }}>
+            <div style={{ marginBottom: "1.1rem" }}>
+              <span className="eyebrow-hero">
+                <span className="eyebrow-live-dot" aria-hidden="true" />
+                About Vision Technolabs · 14+ Years of Engineering
+              </span>
             </div>
             <h1
+              id="about-title"
               style={{
-                fontSize: "clamp(2.2rem, 5vw, 3.5rem)",
+                fontSize: "clamp(2.2rem, 5vw, 3.6rem)",
                 fontWeight: 800,
                 lineHeight: 1.15,
                 letterSpacing: "-0.03em",
@@ -41,14 +100,30 @@ export default function AboutPage() {
                 marginBottom: "1.25rem",
               }}
             >
-              Engineering Digital Platforms for High-Growth Enterprises
+              Engineering Digital Platforms for{" "}
+              <em
+                style={{
+                  fontFamily: "var(--serif, Georgia, serif)",
+                  fontStyle: "italic",
+                  background: "var(--grad-warm)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "var(--ink, #0f172a)",
+                }}
+              >
+                High-Growth Enterprises
+              </em>
             </h1>
             <p
+              className="lead"
               style={{
-                fontSize: "clamp(1.05rem, 2vw, 1.25rem)",
-                lineHeight: 1.65,
+                fontSize: "clamp(1.05rem, 2vw, 1.22rem)",
+                lineHeight: 1.7,
                 color: "var(--muted, #64748b)",
                 marginBottom: "2rem",
+                maxWidth: "740px",
+                margin: "0 auto 2rem",
               }}
             >
               {brandInfo.description}
@@ -59,7 +134,7 @@ export default function AboutPage() {
                 gap: "1rem",
                 justifyContent: "center",
                 flexWrap: "wrap",
-                marginBottom: "2.5rem",
+                marginBottom: "3rem",
               }}
             >
               <Link href="/contact" className="btn btn-primary">
@@ -75,9 +150,9 @@ export default function AboutPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
               gap: "1.25rem",
-              marginTop: "2rem",
+              marginTop: "1.5rem",
             }}
           >
             {brandInfo.stats.map((stat, idx) => (
@@ -85,21 +160,28 @@ export default function AboutPage() {
                 key={idx}
                 className="card"
                 style={{
-                  padding: "1.75rem 1.25rem",
+                  padding: "1.85rem 1.35rem",
                   textAlign: "center",
-                  borderRadius: "var(--radius, 16px)",
-                  background: "#ffffff",
-                  border: "1px solid var(--line, #e2e8f0)",
-                  boxShadow: "0 2px 8px rgba(15, 23, 42, 0.04)",
+                  borderRadius: "20px",
+                  background: "rgba(255, 255, 255, 0.85)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                  border: "1px solid rgba(15, 23, 42, 0.08)",
+                  boxShadow: "0 4px 20px -4px rgba(15, 23, 42, 0.06)",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
                 }}
               >
                 <div
                   style={{
                     fontFamily: "var(--serif, serif)",
                     fontStyle: "italic",
-                    fontSize: "2.75rem",
-                    fontWeight: 700,
+                    fontSize: "2.85rem",
+                    fontWeight: 800,
                     lineHeight: 1,
+                    background: "var(--grad)",
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
                     color: "var(--primary, #4f46e5)",
                     marginBottom: "0.5rem",
                   }}
@@ -262,7 +344,7 @@ export default function AboutPage() {
                     fontFamily: "var(--serif, serif)",
                     fontStyle: "italic",
                     fontWeight: 700,
-                    color: "rgba(79, 70, 229, 0.25)",
+                    color: "rgba(79, 70, 229, 0.7)",
                     lineHeight: 1,
                     marginBottom: "1rem",
                   }}

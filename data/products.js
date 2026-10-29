@@ -8,6 +8,34 @@ export const productsData = [
   {
     id: "billsbook",
     slug: "billsbook",
+    seo: {
+          "title": "BillsBook: GST Billing Software & POS for Retail Shops",
+          "description": "BillsBook is GST billing, POS and inventory software for retail shops and wholesalers: barcode billing, WhatsApp invoices, multi-branch stock. Built in Ahmedabad.",
+          "primaryKeyword": "billing software for retail shop",
+          "keywords": [
+                "billing software",
+                "GST billing software",
+                "invoice software India",
+                "POS billing software",
+                "retail billing software",
+                "barcode billing software",
+                "inventory management software",
+                "WhatsApp invoice software",
+                "wholesale billing software",
+                "multi-branch billing software",
+                "billing software Ahmedabad",
+                "online billing website"
+          ],
+          "introHeading": "Billing software for shops, wholesalers and multi-branch stores",
+          "intro": "Looking for billing software for your shop, wholesale business or multi-branch store? BillsBook is a cloud billing, POS and inventory system built by Vision Technolabs in Ahmedabad. Create GST and non-GST invoices at the counter in under 30 seconds, scan barcodes, track stock across branches and send branded PDF invoices to customers on WhatsApp.",
+          "audience": [
+                "Retail shops and general stores",
+                "Wholesalers and distributors",
+                "Multi-branch businesses",
+                "GST-registered and non-GST businesses"
+          ],
+          "os": "Web"
+    },
     number: "01",
     title: "BillsBook — Multi-Business Invoicing, POS & Inventory SaaS",
     shortTitle: "BillsBook",
@@ -93,6 +121,33 @@ export const productsData = [
   {
     id: "filterbook",
     slug: "filterbook",
+    seo: {
+          "title": "FilterBook: RO Water Purifier Service CRM & AMC App",
+          "description": "FilterBook is a CRM and mobile app for RO water purifier businesses: filter service reminders, AMC renewals, technician dispatch and a QR complaint portal.",
+          "primaryKeyword": "water purifier service management software",
+          "keywords": [
+                "RO service software",
+                "water purifier CRM",
+                "water purifier service management app",
+                "AMC management software",
+                "RO AMC software",
+                "water filter service app",
+                "RO dealer software",
+                "technician dispatch app",
+                "water purifier billing software",
+                "QR complaint system",
+                "water purifier business software India"
+          ],
+          "introHeading": "Service software for RO and water purifier businesses",
+          "intro": "Running a water purifier or RO service business? FilterBook schedules filter and membrane services automatically, tracks AMC contracts, assigns technicians and lets customers raise a complaint by scanning a QR code on the purifier. It also sends GST invoices and renewal reminders on WhatsApp. Built by Vision Technolabs, Ahmedabad.",
+          "audience": [
+                "RO and water purifier dealers",
+                "AMC and service providers",
+                "Franchise and dealer networks",
+                "Field service technicians"
+          ],
+          "os": "Android, iOS"
+    },
     number: "02",
     title: "FilterBook — RO Purifier CRM & Service Management Platform",
     shortTitle: "FilterBook",
@@ -178,6 +233,32 @@ export const productsData = [
   {
     id: "tripsbook",
     slug: "tripsbook",
+    seo: {
+          "title": "TripsBook: Fleet, Driver Trip & Fuel Management App",
+          "description": "TripsBook is a fleet management app for cab operators and rental agencies: GPS trip logging, fuel expense tracking, duty slips and monthly log sheet PDFs.",
+          "primaryKeyword": "fleet management app",
+          "keywords": [
+                "fleet management software",
+                "cab operator software",
+                "driver trip management app",
+                "fuel management app",
+                "duty slip app",
+                "vehicle log sheet software",
+                "taxi fleet management app India",
+                "car rental management software",
+                "GPS trip tracking app",
+                "fuel expense tracker for fleet"
+          ],
+          "introHeading": "Fleet and driver trip management for cab and rental businesses",
+          "intro": "Need a fleet management app for your cabs, corporate vehicles or rental business? TripsBook lets drivers log trips with GPS, record fuel and toll expenses with receipt photos, and generate A4 duty slips and monthly vehicle log sheets as PDFs. It supports petrol, diesel, CNG, LPG and electric vehicles. Built by Vision Technolabs, Ahmedabad.",
+          "audience": [
+                "Commercial cab operators",
+                "Corporate fleets",
+                "Car rental agencies",
+                "Drivers and dispatchers"
+          ],
+          "os": "Android, iOS"
+    },
     number: "03",
     title: "TripsBook — Fleet, Driver Trip & Fuel Management Mobile App",
     shortTitle: "TripsBook",
@@ -263,6 +344,32 @@ export const productsData = [
   {
     id: "sitedesk",
     slug: "sitedesk",
+    seo: {
+          "title": "SiteDesk: Real Estate Plot Sales & EMI Tracking App",
+          "description": "SiteDesk is a real estate CRM and ERP for plot developers: live plot inventory, EMI ledger and reminders, dastavej tracking and site expense logging.",
+          "primaryKeyword": "real estate CRM software",
+          "keywords": [
+                "real estate CRM software",
+                "plot booking software",
+                "real estate ERP",
+                "EMI tracking software",
+                "land developer software",
+                "plot inventory management",
+                "real estate management app India",
+                "site management app",
+                "real estate sales CRM",
+                "dastavej tracker"
+          ],
+          "introHeading": "Plot sales, EMI tracking and site management for real estate developers",
+          "intro": "Selling plots and tracking monthly installments in spreadsheets? SiteDesk gives layout developers and sales teams live plot availability, a cash and EMI ledger, three-stage payment reminders, a sale-deed (dastavej) tracker and field expense logging in one mobile app. Built by Vision Technolabs, Ahmedabad.",
+          "audience": [
+                "Real estate and layout developers",
+                "Plot sales teams and agents",
+                "Site managers",
+                "Accounts and back-office staff"
+          ],
+          "os": "Android"
+    },
     number: "04",
     title: "SiteDesk — Real Estate Plot Sales, EMI Tracking & Site Management ERP",
     shortTitle: "SiteDesk",

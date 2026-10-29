@@ -45,7 +45,7 @@ export default function Footer() {
           <div className="foot-grid">
             {/* Column 1: Info, Live Status & Socials */}
             <div className="foot-col foot-brand-col">
-              <Link href="/" className="logo">
+              <Link prefetch={false} href="/" className="logo">
                 <Image
                   src="/logo/vision-logo.png"
                   alt=""
@@ -86,7 +86,7 @@ export default function Footer() {
                 {navigationData.footerLinks.services.map((item, idx) => (
                   <li key={idx}>
                     {item.href.startsWith("/") ? (
-                      <Link href={item.href}>{item.label}</Link>
+                      <Link prefetch={false} href={item.href}>{item.label}</Link>
                     ) : (
                       <a href={item.href}>{item.label}</a>
                     )}
@@ -102,7 +102,7 @@ export default function Footer() {
                 {navigationData.footerLinks.company.map((item, idx) => (
                   <li key={idx}>
                     {item.href.startsWith("/") ? (
-                      <Link href={item.href}>{item.label}</Link>
+                      <Link prefetch={false} href={item.href}>{item.label}</Link>
                     ) : (
                       <a href={item.href}>{item.label}</a>
                     )}
@@ -181,13 +181,13 @@ export default function Footer() {
             }}
           >
             <span style={{ fontWeight: 600, color: "#fff" }}>IT Company Locations:</span>
-            <Link href="/it-company/naroda" style={{ color: "#94a3b8", textDecoration: "none" }}>IT Company in Naroda</Link>
+            <Link prefetch={false} href="/it-company/naroda" style={{ color: "#94a3b8", textDecoration: "none" }}>IT Company in Naroda</Link>
             <span>·</span>
-            <Link href="/it-company/ahmedabad" style={{ color: "#94a3b8", textDecoration: "none" }}>IT Company in Ahmedabad</Link>
+            <Link prefetch={false} href="/it-company/ahmedabad" style={{ color: "#94a3b8", textDecoration: "none" }}>IT Company in Ahmedabad</Link>
             <span>·</span>
-            <Link href="/it-company/gujarat" style={{ color: "#94a3b8", textDecoration: "none" }}>IT Company in Gujarat</Link>
+            <Link prefetch={false} href="/it-company/gujarat" style={{ color: "#94a3b8", textDecoration: "none" }}>IT Company in Gujarat</Link>
             <span>·</span>
-            <Link href="/it-company" style={{ color: "var(--primary, #4f46e5)", textDecoration: "none", fontWeight: 600 }}>All Gujarat Locations →</Link>
+            <Link prefetch={false} href="/it-company" style={{ color: "var(--primary, #4f46e5)", textDecoration: "none", fontWeight: 600 }}>All Gujarat Locations →</Link>
           </div>
           */}
 
@@ -202,14 +202,14 @@ export default function Footer() {
               </span>
             </div>
             <div className="foot-bottom-right">
-              <Link
+              <Link prefetch={false}
                 href="/privacy-policy"
                 className="foot-legal-btn"
               >
                 Privacy Policy
               </Link>
               <span className="foot-legal-sep">·</span>
-              <Link
+              <Link prefetch={false}
                 href="/terms"
                 className="foot-legal-btn"
               >

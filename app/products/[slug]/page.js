@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { productsData, getProductBySlug } from "@/data/products";
-import ProductDetailPage from "@/pages/productDetailPage";
+import ProductDetailPage from "@/views/productDetailPage";
 import { buildMetadata, truncate } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
@@ -9,13 +9,11 @@ import { softwareSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 export const instant = false;
 export const ensureStatic = "navigation";
 
-// Generate static params for all products at build time
+// One canonical URL per product (legacy aliases are redirected in next.config.mjs)
 export async function generateStaticParams() {
-  const slugs = ["billsbook", "billbook", "filterbook", "tripsbook", "sitedesk"];
-  return slugs.map((slug) => ({ slug }));
+  return productsData.map((p) => ({ slug: p.slug }));
 }
 
-// Generate dynamic SEO metadata
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const product = getProductBySlug(slug);
@@ -24,13 +22,15 @@ export async function generateMetadata({ params }) {
     notFound();
   }
 
-  const rawTitle = `${product.shortTitle}: ${product.badge}`;
-  const title = product.seoTitle || truncate(rawTitle, 40);
+  const seo = product.seo || {};
+  const title = seo.title || product.seoTitle || truncate(`${product.shortTitle}: ${product.badge}`, 60);
 
   return buildMetadata({
-    title,
-    description: product.shortDescription || product.description,
-    path: `/products/${slug}`,
+    title: { absolute: title },
+    description: seo.description || product.shortDescription || product.description,
+    path: `/products/${product.slug}`,
+    image: product.image,
+    keywords: seo.keywords,
   });
 }
 
@@ -45,7 +45,7 @@ export default async function Page({ params }) {
   const breadcrumbItems = [
     { name: "Home", path: "/" },
     { name: "Products", path: "/products" },
-    { name: product.shortTitle || product.title, path: `/products/${slug}` },
+    { name: product.shortTitle || product.title, path: `/products/${product.slug}` },
   ];
 
   return (

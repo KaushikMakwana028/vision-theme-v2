@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { blogsData, getBlogBySlug } from "@/data/blogs";
-import BlogDetailPage from "@/pages/blogDetailPage";
+import BlogDetailPage from "@/views/blogDetailPage";
 import { buildMetadata, truncate } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import RelatedLinks from "@/components/RelatedLinks";

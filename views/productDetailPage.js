@@ -501,9 +501,26 @@ export default function ProductDetailPage({ product }) {
 
         <div className="container hero-wrap">
           <div className="copy svp-hero-copy">
-            <div style={{ marginBottom: "1rem" }}>
+            <div className="breadcrumbs-bar">
+              <nav aria-label="Breadcrumb" className="breadcrumbs">
+                <Link href="/">
+                  <svg className="bc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                  </svg>
+                  Home
+                </Link>
+                <span className="sep">/</span>
+                <Link href="/products">Products</Link>
+                <span className="sep">/</span>
+                <span className="current">{product.shortTitle || product.title.split("—")[0].trim()}</span>
+              </nav>
+            </div>
+
+            <div style={{ marginBottom: "0.85rem" }}>
               <span className="eyebrow-hero">
-                <strong>{product.badge}</strong> · Turnkey Deployment
+                <span className="eyebrow-live-dot" aria-hidden="true" />
+                <strong>{product.badge}</strong> · Turnkey Commercial Deployment
               </span>
             </div>
 
@@ -546,6 +563,27 @@ export default function ProductDetailPage({ product }) {
               <a className="btn btn-ghost" href="#product-features">
                 Explore Architecture ↓
               </a>
+            </div>
+
+            <div className="hero-trust-row" aria-label="Product Highlights">
+              <div className="hero-trust-item">
+                <span className="trust-stars" aria-hidden="true">★★★★★</span>
+                <span><strong>{product.rating}</strong> Rating</span>
+              </div>
+              <span className="hero-trust-sep" aria-hidden="true" />
+              <div className="hero-trust-item">
+                <svg className="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span><strong>Turnkey</strong> Setup</span>
+              </div>
+              <span className="hero-trust-sep" aria-hidden="true" />
+              <div className="hero-trust-item">
+                <svg className="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                <span><strong>100%</strong> Code Ownership</span>
+              </div>
             </div>
           </div>
 
@@ -788,6 +826,30 @@ export default function ProductDetailPage({ product }) {
                 </Reveal>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* ================= WHO IT IS FOR (search-intent section) ================= */}
+      {product.seo?.intro && (
+        <section className="sec" id="who-is-it-for">
+          <div className="container">
+            <Reveal className="sec-head">
+              <span className="eyebrow">Who It Is For</span>
+              <h2>{product.seo.introHeading || `Who uses ${product.shortTitle}`}</h2>
+              <p>{product.seo.intro}</p>
+            </Reveal>
+            {product.seo.audience?.length > 0 && (
+              <div className="cols c2">
+                {product.seo.audience.map((who, idx) => (
+                  <Reveal key={idx} delay={idx * 60} className="card svp-why">
+                    <div>
+                      <h3>{who}</h3>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       )}

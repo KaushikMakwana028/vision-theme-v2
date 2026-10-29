@@ -76,16 +76,32 @@ const styles = `
 .ct .btn-ghost:hover { background: var(--ct-soft); border-color: var(--ct-primary); }
 
 /* ---------- hero ---------- */
-.ct .hero { position: relative; overflow: hidden; padding: 1.25rem 0 2.25rem; }
+.ct .hero {
+  position: relative; overflow: hidden; padding: 1.5rem 0 2.75rem;
+  background: radial-gradient(ellipse 750px 340px at 50% 10%, rgba(79, 70, 229, 0.08), transparent 70%);
+}
 .ct .hero::before, .ct .hero::after {
-  content: ""; position: absolute; border-radius: 50%; filter: blur(70px);
+  content: ""; position: absolute; border-radius: 50%; filter: blur(80px);
   pointer-events: none; z-index: 0;
 }
 .ct .hero::before {
-  width: 420px; height: 420px; top: -180px; left: -120px; background: rgba(79,70,229,.16);
+  width: 440px; height: 440px; top: -160px; left: 6%; background: rgba(79,70,229,.18);
+  animation: ct-float 14s ease-in-out infinite;
 }
 .ct .hero::after {
-  width: 380px; height: 380px; top: -120px; right: -120px; background: rgba(251,146,60,.18);
+  width: 380px; height: 380px; top: -120px; right: 6%; background: rgba(251,146,60,.18);
+  animation: ct-float 16s ease-in-out -6s infinite reverse;
+}
+.ct .hero .ct-dots {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(79, 70, 229, .18) 1.2px, transparent 1.2px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+}
+@keyframes ct-float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(15px, -15px); }
 }
 .ct .hero .wrap { position: relative; z-index: 1; text-align: center; }
 .ct .crumbs {
@@ -424,11 +440,26 @@ export default function ContactPage() {
 
       {/* ================= HERO ================= */}
       <header className="hero">
+        <span className="ct-dots" aria-hidden="true" />
         <div className="wrap">
-          <div>
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: "1.25rem" }}>
+            <nav className="crumbs" aria-label="Breadcrumb">
+              <Link href="/">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span>Home</span>
+              </Link>
+              <span className="sep">/</span>
+              <span className="cur">Contact Us</span>
+            </nav>
+          </div>
+
+          <div style={{ marginBottom: "0.85rem" }}>
             <span className="eyebrow">
               <i />
-              Direct Engineering Consultation
+              Direct Engineering Consultation · 24h SLA Response
             </span>
           </div>
 

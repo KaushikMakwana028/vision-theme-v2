@@ -1,6 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import { caseStudiesData, getCaseStudyBySlug } from "@/data/caseStudies";
-import WorkDetailPage from "@/pages/workDetailPage";
+import WorkDetailPage from "@/views/workDetailPage";
 import { buildMetadata, truncate } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";

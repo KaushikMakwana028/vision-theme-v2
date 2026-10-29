@@ -841,7 +841,7 @@ const isDesktop = () =>
 /* Internal links use next/link, everything else a plain anchor */
 function SmartLink({ href, children, ...props }) {
   return href?.startsWith("/") ? (
-    <Link href={href} {...props}>
+    <Link prefetch={false} href={href} {...props}>
       {children}
     </Link>
   ) : (
@@ -993,7 +993,7 @@ export default function Header() {
       >
         <div className="container bar">
           {/* Logo (Vision Technolabs Logo + Brand Text Preserved) */}
-          <Link
+          <Link prefetch={false}
             href="/"
             className="logo"
             onClick={closeAll}
@@ -1048,7 +1048,7 @@ export default function Header() {
                     } ${isItemActive(item) ? "active" : ""}`}
                     {...hoverProps(item.id)}
                   >
-                    <Link
+                    <Link prefetch={false}
                       className={`trigger ${isItemActive(item) ? "active" : ""}`}
                       href={item.href || (isMega ? "/services" : "#")}
                       aria-expanded={isOpen}
@@ -1108,7 +1108,7 @@ export default function Header() {
                                       : "Proprietary SaaS & mobile field platforms built by Vision Technolabs"}
                                   </span>
                                 </div>
-                                <Link
+                                <Link prefetch={false}
                                   href={bottomHref}
                                   onClick={closeAll}
                                   className="mega-bottom-btn"
@@ -1141,7 +1141,7 @@ export default function Header() {
 
                             {item.bottomAction && (
                               <div className="dropdown-bottom">
-                                <Link
+                                <Link prefetch={false}
                                   href={item.bottomAction.href}
                                   onClick={closeAll}
                                   className="dropdown-bottom-btn"
@@ -1161,7 +1161,7 @@ export default function Header() {
 
               {/* Mobile Drawer "Get in Touch" Button */}
               <li className="nav-cta-m">
-                <Link className="hdr-cta" href="/contact" onClick={closeAll}>
+                <Link prefetch={false} className="hdr-cta" href="/contact" onClick={closeAll}>
                   Get in Touch
                 </Link>
               </li>
@@ -1170,7 +1170,7 @@ export default function Header() {
 
           {/* Right Action: Metizsoft-Style "Get in Touch" Button + Mobile Burger */}
           <div className="actions">
-            <Link className="hdr-cta" href="/contact">
+            <Link prefetch={false} className="hdr-cta" href="/contact">
               Get in Touch
             </Link>
             <button

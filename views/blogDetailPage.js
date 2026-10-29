@@ -63,15 +63,29 @@ const styles = `
 .bd .btn.sm { min-height: 40px; padding: .5rem 1.1rem; font-size: .86rem; }
 
 /* ---------- header ---------- */
-.bd-head { position: relative; padding: 1.25rem 0 1.5rem; overflow: hidden; }
+.bd-head {
+  position: relative; padding: 1.5rem 0 2.25rem; overflow: hidden;
+  background: radial-gradient(ellipse 700px 320px at 80% 20%, rgba(79, 70, 229, 0.08), transparent 70%),
+              radial-gradient(ellipse 500px 260px at 10% 80%, rgba(251, 146, 60, 0.06), transparent 60%);
+}
 .bd-head::before {
   content: ""; position: absolute; inset: -200px -100px auto auto; width: 460px; height: 460px;
-  border-radius: 50%; background: rgba(79,70,229,.1); filter: blur(80px); pointer-events: none;
+  border-radius: 50%; background: rgba(79,70,229,.12); filter: blur(80px); pointer-events: none;
 }
-.bd-head .inner { position: relative; max-width: 820px; margin: 0 auto; }
+.bd-head .bd-dots {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(79, 70, 229, .18) 1.1px, transparent 1.1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%);
+}
+.bd-head .inner { position: relative; max-width: 820px; margin: 0 auto; z-index: 2; }
 .bd .crumbs {
-  display: flex; align-items: center; gap: .45rem; margin-bottom: 1.25rem;
-  font-size: .82rem; min-width: 0; flex-wrap: nowrap; overflow: hidden;
+  display: inline-flex; align-items: center; gap: .45rem; margin-bottom: 1.25rem;
+  padding: .28rem .85rem; border-radius: 999px;
+  background: rgba(255, 255, 255, .75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(15, 23, 42, .08); box-shadow: 0 1px 2px rgba(11, 16, 32, .03);
+  font-size: .81rem; min-width: 0; max-width: 100%; overflow: hidden;
 }
 .bd .crumbs a { color: var(--bd-muted); text-decoration: none; font-weight: 500; white-space: nowrap; display: inline-flex; align-items: center; gap: .3rem; }
 .bd .crumbs a:hover { color: var(--bd-primary); }
@@ -81,8 +95,11 @@ const styles = `
 
 .bd .meta { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; margin-bottom: 1.1rem; }
 .bd .cat {
-  padding: .32rem .85rem; border-radius: 999px; background: rgba(79,70,229,.1); color: var(--bd-primary);
-  font-size: .76rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .35rem .9rem; border-radius: 999px;
+  background: rgba(79, 70, 229, .08); border: 1px solid rgba(79, 70, 229, .15);
+  color: var(--bd-primary); font-size: .78rem; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase;
 }
 .bd .meta span.m { display: inline-flex; align-items: center; gap: .4rem; color: var(--bd-muted); font-size: .86rem; font-weight: 500; }
 .bd .meta svg { width: 15px; height: 15px; }
@@ -434,6 +451,7 @@ export default function BlogDetailPage({ blog: propBlog }) {
 
       {/* ================= HEADER ================= */}
       <header className="bd-head">
+        <span className="bd-dots" aria-hidden="true" />
         <div className="wrap">
           <div className="inner">
             <nav className="crumbs" aria-label="Breadcrumb">

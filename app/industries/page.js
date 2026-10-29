@@ -1,4 +1,4 @@
-import IndustriesPage from "@/pages/industriesPage";
+import IndustriesPage from "@/views/industriesPage";
 import { buildMetadata } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 

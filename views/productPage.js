@@ -1,14 +1,13 @@
 import Link from "next/link";
-import Image from "next/image";
-import ScrollProgress from "@/components/services/ScrollProgress";
-import CountUp from "@/components/services/CountUp";
-import ServiceHeroTilt from "@/components/services/ServiceHeroTilt";
-import FaqAccordion from "@/components/services/FaqAccordion";
-import { servicesData } from "@/data/services";
-import { getProjectsByService } from "@/data/caseStudies";
+import { productsData } from "@/data/products";
+import ScrollProgress from "@/components/motion/ScrollProgress";
+import CountUp from "@/components/motion/CountUp";
+import Reveal from "@/components/motion/Reveal";
+import ProductFilterGrid from "@/components/products/ProductFilterGrid";
+import FaqAccordion from "@/components/common/FaqAccordion";
 
 /* =========================================================
-   Page styles (scoped under .svp) — matches servicePage.js
+   Page styles (scoped under .svp) — matches servicePage.js & theme
    ========================================================= */
 const styles = `
 .svp { overflow-x: clip; }
@@ -77,7 +76,7 @@ const styles = `
   box-shadow: 0 0 0 0 rgba(251, 146, 60, .6);
   animation: svp-ping 2s infinite;
 }
-.svp .sec-head { text-align: center; max-width: 760px; margin: 0 auto 2.75rem; }
+.svp .sec-head { text-align: center; max-width: 780px; margin: 0 auto 2.75rem; }
 .svp .sec-head h2 { margin: 1rem 0 .8rem; line-height: 1.15; color: var(--ink); }
 .svp .sec-head p { color: var(--muted); margin: 0; }
 .svp .sec.alt { background: var(--surface); }
@@ -220,6 +219,136 @@ const styles = `
 }
 .svp-marquee-group span:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
 
+/* ---------- Product Catalog Grid & Enhanced Cards ---------- */
+.prod-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+@media (max-width: 900px) {
+  .prod-catalog-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.prod-catalog-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.85rem;
+  border-radius: 20px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, .05);
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .3s;
+}
+.prod-catalog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -15px rgba(79, 70, 229, .15);
+  border-color: rgba(79, 70, 229, .3);
+}
+
+.prod-card-thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0f172a;
+  margin: 0.25rem 0 1.25rem;
+  border: 1px solid rgba(15, 23, 42, .08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+}
+.prod-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform .6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.prod-catalog-card:hover .prod-card-img {
+  transform: scale(1.04);
+}
+.prod-card-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 70%, rgba(15, 23, 42, .12) 100%);
+}
+
+.prod-card-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+.prod-card-head .ico {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+.prod-card-head .ico .i {
+  width: 24px;
+  height: 24px;
+}
+.prod-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+.prod-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.25rem;
+  line-height: 1.25;
+}
+.prod-desc {
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+  margin: 0 0 1.15rem;
+}
+
+.prod-catalog-card .ticks {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+.prod-catalog-card .ticks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
+}
+.prod-catalog-card .ticks .i {
+  width: 17px;
+  height: 17px;
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.prod-card-footer {
+  margin-top: auto;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+.prod-card-footer .pricing-badge {
+  margin: 0;
+}
+
 /* ---------- Grids ---------- */
 .svp .cols { display: grid; gap: 1.5rem; }
 .svp .cols.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -231,7 +360,7 @@ const styles = `
   padding: 1.75rem; box-shadow: var(--shadow);
 }
 
-/* ---------- Spotlight cards ---------- */
+/* ---------- Product cards (spotlight + animated border) ---------- */
 .svp-card {
   position: relative; display: flex; flex-direction: column; overflow: hidden;
   animation: svp-in .65s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 80ms);
@@ -255,28 +384,40 @@ const styles = `
 .svp-card:hover::before, .svp-card:hover::after { opacity: 1; }
 .svp-card:hover .ico { background: var(--grad); color: #fff; transform: rotate(-8deg) scale(1.08); box-shadow: 0 12px 24px -10px rgba(79, 70, 229, .7); }
 .svp-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; }
+.svp-card .prod-badge {
+  font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  padding: .3rem .75rem; border-radius: 999px;
+  background: rgba(79, 70, 229, .08); color: var(--primary);
+}
 .svp-card .svc-num {
-  position: static; font-family: var(--serif); font-style: italic; font-size: 1.9rem; font-weight: 700; line-height: 1;
+  position: static; font-family: var(--serif); font-style: italic; font-size: 1.8rem; font-weight: 700; line-height: 1;
   color: transparent; -webkit-text-stroke: 1px rgba(79, 70, 229, .35);
   transition: -webkit-text-stroke-color .3s, color .3s;
 }
 .svp-card:hover .svc-num { color: rgba(79, 70, 229, .12); -webkit-text-stroke-color: var(--primary); }
-.svp-card h3 { margin: 0 0 .5rem; color: var(--ink); }
-.svp-card p { margin: 0; color: var(--muted); line-height: 1.65; }
-.svp-card .ticks { list-style: none; margin: 1.2rem 0; padding: 0; display: grid; gap: .6rem; }
-.svp-card .ticks li { display: flex; align-items: flex-start; gap: .55rem; font-size: .94rem; color: var(--ink); }
-.svp-card .ticks .i { flex-shrink: 0; width: 18px; height: 18px; margin-top: .15rem; color: var(--accent); }
-.svp-card .svc-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; padding-top: 1.1rem; }
-.svp-card .svc-tags span {
-  font-size: .76rem; font-weight: 600; padding: .25rem .65rem; border-radius: 999px;
-  background: var(--surface); color: var(--primary); transition: background .3s, color .3s;
+.svp-card h3 { margin: .85rem 0 .4rem; color: var(--ink); font-size: 1.25rem; line-height: 1.3; }
+.svp-card .prod-meta {
+  display: flex; align-items: center; gap: .75rem; margin-bottom: .85rem; font-size: .84rem;
 }
-.svp-card:hover .svc-tags span { background: rgba(79, 70, 229, .1); }
+.svp-card .prod-rating {
+  display: inline-flex; align-items: center; gap: .3rem; font-weight: 700; color: #f59e0b;
+}
+.svp-card .prod-reviews { color: var(--muted); font-size: .8rem; }
+.svp-card p { margin: 0; color: var(--muted); line-height: 1.65; font-size: .95rem; }
+.svp-card .ticks { list-style: none; margin: 1.2rem 0; padding: 0; display: grid; gap: .6rem; }
+.svp-card .ticks li { display: flex; align-items: flex-start; gap: .55rem; font-size: .92rem; color: var(--ink); }
+.svp-card .ticks .i { flex-shrink: 0; width: 18px; height: 18px; margin-top: .15rem; color: var(--accent); }
+.svp-card .pricing-badge {
+  display: inline-flex; align-items: center; gap: .45rem; margin-top: auto; margin-bottom: 1.1rem;
+  padding: .45rem .85rem; border-radius: 8px; font-size: .8rem; font-weight: 600;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line);
+}
 .svp-card .more {
-  margin-top: auto; display: inline-flex; align-items: center; gap: .45rem; font-weight: 700; color: var(--primary);
+  display: inline-flex; align-items: center; gap: .45rem; font-weight: 700; color: var(--primary);
 }
 .svp-card .more .i { width: 18px; height: 18px; transition: transform .35s var(--ease); }
 .svp-card .more:hover .i { transform: translateX(6px); }
+.svp-empty { text-align: center; color: var(--muted); padding: 3rem 0; }
 
 /* ---------- Process ---------- */
 .svp-step { position: relative; overflow: hidden; transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
@@ -286,7 +427,7 @@ const styles = `
   background: var(--grad-warm); transform: scaleX(0); transform-origin: left;
   transition: transform 1s var(--ease); transition-delay: calc(var(--rv-delay, 0ms) + .5s);
 }
-.svp-step::after, .svp-step.rv-in::after { transform: scaleX(1); }
+.svp-step.rv-in::after { transform: scaleX(1); }
 .svp-step-num {
   display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
   font-weight: 700; font-size: .85rem; color: #fff; background: var(--grad); margin-bottom: 1rem;
@@ -310,109 +451,6 @@ const styles = `
 .svp-why:hover .ico { background: var(--grad); color: #fff; transform: rotate(-8deg) scale(1.08); }
 .svp-why h3 { margin: 0 0 .4rem; color: var(--ink); }
 .svp-why p { margin: 0; color: var(--muted); line-height: 1.65; }
-
-/* ---------- Projects / case studies ---------- */
-.svp .card.flush { padding: 0; }
-.svp-proj { height: 100%; }
-.svp-thumb { position: relative; overflow: hidden; width: 100%; aspect-ratio: 16 / 9; background: #0b1120; border-bottom: 1px solid var(--line); display: block; padding: 0 !important; }
-.svp-thumb img { display: block; width: 100%; height: 100%; object-fit: contain !important; object-position: center; transition: transform .5s var(--ease); }
-.svp-thumb::before {
-  content: ""; position: absolute; top: 0; bottom: 0; left: -70%; width: 45%; z-index: 2; pointer-events: none;
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .35), transparent); transform: skewX(-20deg);
-  transition: left .9s var(--ease);
-}
-.svp-proj:hover .svp-thumb img { transform: scale(1.025); }
-.svp-proj:hover .svp-thumb::before { left: 130%; }
-.svp-proj:hover .svp-thumb::after { opacity: 1; }
-.svp-wb { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
-.svp-wb h3 { margin: .9rem 0 .5rem; color: var(--ink); transition: color .3s; }
-.svp-proj:hover .svp-wb h3 { color: var(--primary); }
-.svp-wb p { margin: 0 0 1.25rem; color: var(--muted); line-height: 1.65; }
-.svp .svp-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-.svp .svp-tags span { font-size: .74rem; font-weight: 600; padding: .25rem .65rem; border-radius: 999px; background: var(--surface); color: var(--primary); }
-.svp .svp-met {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: auto;
-  padding-top: 1.15rem; border-top: 1px dashed var(--line); min-height: 56px;
-}
-.svp .svp-met > div { min-width: 0; }
-.svp .svp-met strong {
-  display: block; font-size: 1.35rem; font-weight: 800; font-variant-numeric: tabular-nums;
-  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
-  line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.svp .svp-met span {
-  display: block; font-size: .76rem; color: var(--muted); margin-top: .2rem; line-height: 1.35;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-
-/* ---------- Empty Featured Work ---------- */
-.svp-empty-work-box {
-  background: var(--bg);
-  border: 1px dashed var(--line);
-  border-radius: var(--radius);
-  padding: 3.5rem 2rem;
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 20px -8px rgba(11, 18, 32, 0.04);
-}
-.svp-empty-work-icon {
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  background: rgba(79, 70, 229, 0.08);
-  border: 1px solid rgba(79, 70, 229, 0.2);
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  animation: svp-pulse-glow 3s ease-in-out infinite;
-}
-@keyframes svp-pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.2); transform: scale(1); }
-  50% { box-shadow: 0 0 0 14px rgba(79, 70, 229, 0); transform: scale(1.04); }
-}
-.svp-empty-work-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.3rem 0.8rem;
-  border-radius: 999px;
-  background: rgba(79, 70, 229, 0.08);
-  color: var(--primary);
-  margin-bottom: 1rem;
-}
-.svp-empty-work-box h3 {
-  font-size: clamp(1.3rem, 2.8vw, 1.65rem);
-  font-weight: 750;
-  color: var(--ink);
-  margin: 0 0 0.75rem;
-  letter-spacing: -0.02em;
-}
-.svp-empty-work-box p {
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  max-width: 580px;
-  margin: 0 auto 2rem;
-}
-.svp-empty-work-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
 /* ---------- FAQ ---------- */
 .svp .faq-wrap { max-width: 820px; margin: 0 auto; display: grid; gap: .9rem; }
@@ -460,8 +498,7 @@ const styles = `
 .svp-cta .eyebrow { background: rgba(255, 255, 255, .12); color: #a5f3fc; }
 .svp-cta h2, .cta-box.svp-cta h2 { font-size: clamp(1.7rem, 3.5vw, 2.8rem); margin: 1rem 0 .8rem; line-height: 1.15; color: #ffffff !important; }
 .svp-cta .sub { color: rgba(255, 255, 255, .8); margin: 0; max-width: 56ch; }
-.svp-cta-actions .btn-light { background: #ffffff !important; color: #1e1b4b !important; font-weight: 700 !important; box-shadow: 0 10px 24px -8px rgba(0, 0, 0, .35) !important; }
-.svp-cta-actions .btn-light:hover { background: #f1f2ff !important; color: #4338ca !important; transform: translateY(-2px); }
+.svp-cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
 .svp-cta-actions .btn-ghost { background: transparent !important; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, .4) !important; }
 .svp-cta-actions .btn-ghost:hover { background: rgba(255, 255, 255, .15) !important; color: #ffffff !important; border-color: rgba(255, 255, 255, .7) !important; }
 .svp-poc-card {
@@ -477,15 +514,6 @@ const styles = `
 }
 .svp-poc-title { font-weight: 600; font-size: 1.1rem; margin-top: .3rem; color: #fff; }
 .svp-poc-card p { color: rgba(255, 255, 255, .82); font-size: .9rem; margin: .6rem 0 0; }
-
-/* ---------- 404 ---------- */
-.svp-nf { text-align: center; padding: 6rem 0; }
-.svp-nf-code {
-  font-family: var(--serif); font-style: italic; font-size: clamp(4rem, 14vw, 8rem); font-weight: 700; line-height: 1;
-  background: var(--grad-warm); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: svp-grad 5s linear infinite;
-}
-.svp-nf h2 { margin: .5rem 0; color: var(--ink); }
-.svp-nf p { margin: 1rem 0 2rem; color: var(--muted); }
 
 /* ---------- Keyframes ---------- */
 @keyframes svp-in { from { opacity: 0; transform: translateY(22px); } }
@@ -528,11 +556,9 @@ const styles = `
   .svp .faq-inner p { padding: 0 1rem 1rem; }
   .svp-poc-card { padding: 1.6rem 1.25rem; }
   .svp-marquee { padding: 1rem 0; }
-  .svp-wb { padding: 1.25rem; }
-  .svp-thumb { aspect-ratio: 16 / 9; }
 }
 @media (hover: none) {
-  .svp-card:hover, .svp-step:hover, .svp-why:hover, .svp-proj:hover .svp-thumb img { transform: none; }
+  .svp-card:hover, .svp-step:hover, .svp-why:hover { transform: none; }
   .svp-card::before { display: none; }
 }
 
@@ -543,104 +569,140 @@ const styles = `
 }
 `;
 
+
+
 /* =========================================================
-   Helpers
+   Static Data
    ========================================================= */
 
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  as: Tag = "div",
-  ...rest
-}) {
-  return (
-    <Tag
-      className={`rv  ${className}`}
-      style={{ "--rv-delay": `${delay}ms` }}
-      {...rest}
-    >
-      {children}
-    </Tag>
-  );
-}
+const heroStats = [
+  { value: "4", label: "Proprietary Products" },
+  { value: "10x", label: "Faster Launch" },
+  { value: "99.9%", label: "Uptime SLA" },
+  { value: "100%", label: "Source Code IP" },
+];
 
-function ProjectCard({ proj, delay = 0 }) {
-  return (
-    <Reveal
-      as="article"
-      delay={delay}
-      className="card flush svp-card svp-proj"
-    >
-      <Link
-        href={`/work/${proj.slug || proj.id}`}
-        className="thumb svp-thumb"
-        style={{
-          "--g": proj.gradient || "linear-gradient(135deg,#4f46e5,#7c3aed)",
-        }}
-        aria-label={`View ${proj.title} case study`}
-      >
-        <Image
-          src={proj.image}
-          alt={proj.imageAlt || `${proj.title} delivered by Vision Technolabs in Ahmedabad`}
-          width={800}
-          height={520}
-        />
-      </Link>
-      <div className="wb svp-wb">
-        {proj.tags?.length > 0 && (
-          <div className="tags svp-tags">
-            {proj.tags.map((t, idx) => (
-              <span key={idx}>{t}</span>
-            ))}
-          </div>
-        )}
-        <h3>
-          <Link href={`/work/${proj.slug || proj.id}`}>
-            {proj.title}
-          </Link>
-        </h3>
-        <p>{proj.description}</p>
-      </div>
-    </Reveal>
-  );
-}
+const generalProductFaqs = [
+  {
+    q: "What proprietary software products does Vision Technolabs develop and offer?",
+    a: "Vision Technolabs has engineered 4 enterprise-grade proprietary platforms: (1) BillsBook — multi-business counter POS billing, barcode inventory, and automated WhatsApp PDF delivery; (2) FilterBook — complete RO water purifier AMC management, field technician dispatch app, and zero-login QR complaint portal; (3) TripsBook — commercial fleet management, 10-second GPS telemetry, dual Fix Cab & On-Call logging, and on-device A4 duty slips; and (4) SiteDesk — real estate layout plot sales, 3-stage automated EMI collection alerts, and dastavej registry vault."
+  },
+  {
+    q: "How does BillsBook handle counter POS billing speed, barcode scanning, and GST tax filing?",
+    a: "BillsBook is engineered with sub-30-second counter billing speed. Cashiers scan items using standard USB/Bluetooth barcode scanners or instant Select2 keyboard search. It automatically calculates CGST, SGST, IGST or composite tax slabs, handles multi-tender split payments (Cash, UPI, Card, Credit), decrements inventory in real-time, renders vector PDFs (A4, Modern, Minimalist, 80mm/58mm thermal receipts), and exports GSTR-1 compliant Excel reports."
+  },
+  {
+    q: "How do RO water purifier businesses use FilterBook for AMC tracking and customer QR complaints?",
+    a: "FilterBook automates purifier service schedules (sediment, pre-carbon, RO membrane, and post-carbon filter replacements) based on installation date. Customers scan an affixed purifier QR sticker to lodge service requests and photo proofs in under 60 seconds without installing an app. Technicians manage assigned tickets via the React Native mobile app, while owners track Comprehensive vs Service-Only AMC renewals and dispatch WhatsApp invoices."
+  },
+  {
+    q: "How does TripsBook log driver trips, verify fuel expenses, and generate client duty slips?",
+    a: "TripsBook supports dual trip modes: fixed corporate commute routes (Fix Cab) and charter duties (On Call). It uses foreground GPS telemetry (10-second interval) and Google Maps Reverse Geocoding to record accurate pickup/drop coordinates and odometer readings. Drivers capture pump receipt photos across 5 fuel types (Petrol, Diesel, CNG, Electric, LPG) for mileage auditing, and generate print-ready A4 PDF Duty Slips and Monthly Vehicle Log Sheets directly on device."
+  },
+  {
+    q: "How does SiteDesk prevent double-booking of plots and automate buyer EMI installment collections?",
+    a: "SiteDesk links layout maps with real-time plot statuses (Available, Booked, Sold), scoping sales agents strictly to their assigned sites to prevent double-booking. When a plot is booked, it generates flexible monthly Cash or EMI payment schedules. A 3-stage automated reminder engine dispatches push notifications and WhatsApp reminders 3 days before due date, on the due date, and when overdue. It also houses an encrypted document vault for dastavej registry numbers and buyer Aadhaar KYC."
+  },
+  {
+    q: "Can we purchase 100% full source code buyout instead of a monthly SaaS subscription?",
+    a: "Yes. All Vision Technolabs products are available under both models. With Managed Cloud SaaS, we handle cloud hosting, high-concurrency server maintenance, SSL certificates, automated daily backups, and ongoing security updates. With 100% Source Code Buyout, your organization receives complete Git repository access (React Native frontend, CodeIgniter 3/Node.js REST APIs, relational MySQL schemas, deployment Dockerfiles) with zero recurring licensing fees or vendor lock-in."
+  },
+  {
+    q: "Can we rebrand and white-label these applications under our own company name and domain?",
+    a: "Absolutely. Every product is built multi-tenant and white-label ready. You can configure your corporate brand name, logos, splash screens, custom subdomains with SSL, primary and accent brand colors, transactional SMS/WhatsApp templates, and integrate your own Razorpay, Stripe, or PayPal payment gateway credentials to collect revenues directly."
+  },
+  {
+    q: "Can Vision customize features or integrate these products with our existing ERP or CRM?",
+    a: "Yes. Because every line of code was engineered in-house by our senior engineering team, our dedicated product squad can tailor workflows, add custom database fields, integrate with third-party software (Tally Prime, SAP, Salesforce, custom warehouse systems), or build custom mobile modules within a rapid 1 to 2-week turnaround."
+  }
+];
 
-const workflowIcons = ["i-web", "i-code", "i-db", "i-badge"];
-const advantageIcons = ["i-shield", "i-speed", "i-lock", "i-headset"];
+const turnkeySteps = [
+  {
+    n: "01",
+    icon: "i-play",
+    title: "Interactive Sandbox Demo",
+    text: "Experience the product live with mock data, explore administrative consoles, and inspect API contracts with our solution engineers."
+  },
+  {
+    n: "02",
+    icon: "i-pen",
+    title: "Branding & Domain Setup",
+    text: "Configure your company logos, brand color palette, subdomains, SSL certificates, and custom transactional email providers."
+  },
+  {
+    n: "03",
+    icon: "i-code",
+    title: "API & Data Integrations",
+    text: "Connect your payment gateways (Stripe/PayPal), existing ERP databases, customer CRMs, and webhooks for real-time automation."
+  },
+  {
+    n: "04",
+    icon: "i-badge",
+    title: "Production Cutover & SLAs",
+    text: "Deploy to production with automated load balancing, automated backups, admin training, and SLA-backed ongoing cloud monitoring."
+  }
+];
+
+const whyProductItems = [
+  {
+    icon: "i-speed",
+    title: "Instant Time-to-Market",
+    text: "Skip 6–12 months of boilerplate engineering and expensive discovery cycles. Deploy proven, production-tested software in days."
+  },
+  {
+    icon: "i-shield",
+    title: "100% IP & Code Ownership",
+    text: "Available source-code buyout options guarantee that your enterprise retains complete intellectual property with zero vendor lock-in."
+  },
+  {
+    icon: "i-layers",
+    title: "White-Label Reseller Model",
+    text: "Monetize software under your brand. Perfect for agencies looking to provide immediate recurring SaaS value to their clients."
+  },
+  {
+    icon: "i-lock",
+    title: "Enterprise Security & Scale",
+    text: "Pre-hardened with OWASP Top 10 standards, encrypted database stores, role-based access control, and high-concurrency cloud architecture."
+  }
+];
 
 /* =========================================================
    Page Component
    ========================================================= */
 
-export default function ServiceDetailPage({ service: propService }) {
-  // Graceful fallback if rendered directly without props
-  const service = propService || servicesData[0];
+export default function ProductPage() {
+  const trimmedProducts = productsData.map((prod) => ({
+    id: prod.id,
+    slug: prod.slug,
+    category: prod.category,
+    badge: prod.badge,
+    number: prod.number,
+    gradient: prod.gradient,
+    icon: prod.icon,
+    shortTitle: prod.shortTitle,
+    rating: prod.rating,
+    reviewsCount: prod.reviewsCount,
+    image: prod.image,
+    imageAlt: prod.imageAlt,
+    title: prod.title,
+    shortDescription: prod.shortDescription,
+    features: prod.features?.slice(0, 3).map((f) => ({ title: f.title })),
+    pricing: prod.pricing,
+  }));
 
-  if (!service) {
-    return (
-      <div className="svp">
-        <style dangerouslySetInnerHTML={{ __html: styles }} />
-        <div className="container svp-nf">
-          <div className="svp-nf-code">404</div>
-          <h2>Service Not Found</h2>
-          <p>The requested service could not be located in our catalog.</p>
-          <Link href="/services" className="btn btn-primary">
-            Back to All Services
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  const projects = getProjectsByService(service.slug) || [];
-
-  const marqueeTags =
-    service.techStack && service.techStack.length > 0
-      ? service.techStack
-      : ["Next.js", "React", "TypeScript", "Node.js", "Docker", "AWS"];
-
-  const otherServices = servicesData.filter((s) => s.slug !== service.slug);
+  const marqueeKeywords = [
+    "BillsBook Invoicing & POS",
+    "FilterBook RO Service CRM",
+    "TripsBook Fleet Management",
+    "SiteDesk Real Estate ERP",
+    "Sub-30s Counter POS Billing",
+    "Automated WhatsApp PDF Invoices",
+    "Live GPS Fleet Telemetry",
+    "Plot EMI & Dastavej Records",
+    "White-Label SaaS Platforms",
+    "100% Source Code Ownership"
+  ];
 
   return (
     <div className="svp">
@@ -648,7 +710,7 @@ export default function ServiceDetailPage({ service: propService }) {
       <ScrollProgress />
 
       {/* ================= HERO ================= */}
-      <section className="hero svp-hero" aria-labelledby="service-title">
+      <section className="hero svp-hero" aria-labelledby="products-hero-title">
         <div className="hero-bg" aria-hidden="true" />
         <span className="svp-dots" aria-hidden="true" />
         <span className="svp-orb svp-orb-a" aria-hidden="true" />
@@ -657,371 +719,263 @@ export default function ServiceDetailPage({ service: propService }) {
 
         <div className="container hero-wrap">
           <div className="copy svp-hero-copy">
+            <div className="breadcrumbs-bar">
+              <nav aria-label="Breadcrumb" className="breadcrumbs">
+                <Link href="/">
+                  <svg className="bc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                  </svg>
+                  Home
+                </Link>
+                <span className="sep">/</span>
+                <span className="current">Products</span>
+              </nav>
+            </div>
+
             <div style={{ marginBottom: "1rem" }}>
               <span className="eyebrow-hero">
-                <strong>{service.category}</strong> {service.badge}
+                <span className="eyebrow-live-dot" aria-hidden="true" />
+                <strong>Vision</strong> Proprietary SaaS &amp; Turnkey Mobile Software
               </span>
             </div>
 
-            <h1 id="service-title">
-              {service.title} <em>Built for Scalable Growth</em>
+            <h1 id="products-hero-title">
+              Market-Ready SaaS Platforms &amp;{" "}
+              <em>Turnkey Mobile Software Engineered for Scale</em>
             </h1>
 
             <p className="lead">
-              {service.heroSubtitle || service.description}
+              Launch enterprise-grade counter POS billing, water purifier CRM, fleet tracking,
+              and real estate plotting ERP platforms in days. Battle-tested, white-label ready,
+              and engineered for rapid business growth.
             </p>
 
             <div className="cta-row">
               <Link className="btn btn-primary" href="/contact">
-                Schedule Technical Consultation{" "}
-                <svg className="i" aria-hidden="true">
+                Schedule Sandbox Demo{" "}
+                <svg className="i" aria-hidden="true" width="18" height="18">
                   <use href="#i-arrow" />
                 </svg>
               </Link>
+              <a className="btn btn-ghost" href="#products-grid">
+                Explore All Products ↓
+              </a>
+            </div>
+
+            <div className="hero-trust-row" aria-label="Product Platform Guarantees">
+              <div className="hero-trust-item">
+                <span className="trust-stars" aria-hidden="true">★★★★★</span>
+                <span><strong>Turnkey</strong> Deployment</span>
+              </div>
+              <span className="hero-trust-sep" aria-hidden="true" />
+              <div className="hero-trust-item">
+                <svg className="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span><strong>Zero</strong> Per-User Monthly Fees</span>
+              </div>
+              <span className="hero-trust-sep" aria-hidden="true" />
+              <div className="hero-trust-item">
+                <svg className="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                <span><strong>100%</strong> Source Code Ownership</span>
+              </div>
             </div>
           </div>
 
           <div className="svp-hero-wrap">
             <span className="svp-chip svp-chip-a" aria-hidden="true">
-              <b /> {service.category}
+              <b /> Business SaaS
             </span>
             <span className="svp-chip svp-chip-b" aria-hidden="true">
-              <b /> 100% IP Ownership
+              <b /> Mobile Apps
             </span>
 
-            <ServiceHeroTilt className="bcard big svp-hero-card">
+            <Reveal
+              className="bcard big svp-hero-card"
+              tilt
+              reveal={false}
+            >
               <div className="bcard-top">
-                <span className="btag">Performance Benchmarks</span>
+                <span className="btag">01 · Production Ready</span>
                 <span className="blink" aria-hidden="true">
                   <svg className="i">
                     <use href="#i-arrow" />
                   </svg>
                 </span>
               </div>
-              <span className="agent-live">
-                <i />
-                Live SLA &amp; Standards
-              </span>
-              <h2>Engineered for Measurable Outcomes</h2>
+
+              <h2>Instant Time-to-Market Advantage</h2>
               <p>
-                Every build is held to strict performance, security, and
-                conversion benchmarks.
+                Bypass 9+ months of boilerplate development. Deploy battle-hardened SaaS solutions
+                with managed cloud hosting or full source code buyout.
               </p>
 
-              {service.metrics?.length > 0 && (
-                <div className="svp-stats">
-                  {service.metrics.map((m, idx) => (
-                    <div key={idx}>
-                      <CountUp value={m.value} />
-                      <span>{m.label}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </ServiceHeroTilt>
+              <div className="agent-live">
+                <i /> 4 Active Proprietary Products
+              </div>
+
+              <div className="svp-stats">
+                {heroStats.map((st, i) => (
+                  <div key={i}>
+                    <CountUp value={st.value} />
+                    <span>{st.label}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ================= TECH STACK MARQUEE ================= */}
-      <div className="svp-marquee" aria-label="Technologies used for this service">
+      {/* ================= MARQUEE TICKER ================= */}
+      <div className="svp-marquee" aria-hidden="true">
         <div className="svp-marquee-track">
-          {[0, 1].map((g) => (
-            <div className="svp-marquee-group" key={g} aria-hidden={g === 1}>
-              {marqueeTags.map((t) => (
-                <span key={`${g}-${t}`}>{t}</span>
-              ))}
-            </div>
-          ))}
+          <div className="svp-marquee-group">
+            {marqueeKeywords.map((tag, idx) => (
+              <span key={`mq1-${idx}`}>{tag}</span>
+            ))}
+          </div>
+          <div className="svp-marquee-group">
+            {marqueeKeywords.map((tag, idx) => (
+              <span key={`mq2-${idx}`}>{tag}</span>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* ================= CORE CAPABILITIES ================= */}
-      <section className="sec" id="capabilities">
+      {/* ================= CATALOG SECTION ================= */}
+      <section className="sec alt" id="products-catalog">
         <div className="container">
           <Reveal className="sec-head">
-            <span className="eyebrow">Capabilities</span>
-            <h2>Specialized Solutions We Ship into Production</h2>
+            <span className="eyebrow">Product Catalog</span>
+            <h2>Proven Platforms Engineered to Accelerate Your Operations</h2>
             <p>
-              From custom application architecture to automated workflows and
-              system integrations — engineered to solve your specific
-              operational bottlenecks.
+              Choose from our lineup of proprietary SaaS tools, field service mobility suites,
+              and industry-specific ERP applications.
             </p>
           </Reveal>
 
-          <div className="cols c3">
-            {service.capabilities?.map((cap, idx) => (
-              <article
+          <ProductFilterGrid
+            products={trimmedProducts}
+          />
+        </div>
+      </section>
+
+      {/* ================= WHY CHOOSE VISION PRODUCTS ================= */}
+      <section className="sec" id="why-products">
+        <div className="container">
+          <Reveal className="sec-head">
+            <span className="eyebrow">Enterprise Delivery</span>
+            <h2>Why Organizations Launch with Vision Products</h2>
+            <p>
+              We deliver mature, scalable software architectures with zero vendor lock-in,
+              allowing you to scale faster while protecting your balance sheet.
+            </p>
+          </Reveal>
+
+          <div className="cols c4">
+            {whyProductItems.map((item, idx) => (
+              <Reveal
                 key={idx}
-                className="card svc-card svp-card"
-                style={{ "--i": idx }}
+                delay={idx * 80}
+                className="card svp-step"
+                spot
               >
-                <div className="svp-card-top">
-                  <span className="ico">
-                    <svg className="i" aria-hidden="true">
-                      <use href={`#${cap.icon || service.icon || "i-code"}`} />
-                    </svg>
-                  </span>
-                  <span className="svc-num">
-                    {String(idx + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <h3>{cap.title}</h3>
-                <p>{cap.description}</p>
-
-                {cap.features?.length > 0 && (
-                  <ul className="ticks">
-                    {cap.features.map((feat, fIdx) => (
-                      <li key={fIdx}>
-                        <svg className="i" aria-hidden="true">
-                          <use href="#i-check" />
-                        </svg>
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {service.tags?.length > 0 && (
-                  <div className="svc-tags">
-                    {service.tags.slice(0, 3).map((t, tIdx) => (
-                      <span key={tIdx}>{t}</span>
-                    ))}
-                  </div>
-                )}
-              </article>
+                <span className="ico">
+                  <svg className="i" aria-hidden="true">
+                    <use href={`#${item.icon}`} />
+                  </svg>
+                </span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================= FEATURED PROJECTS / CASE STUDIES ================= */}
-      <section className="sec alt" id="projects">
+      {/* ================= 4-STEP TURNKEY WORKFLOW ================= */}
+      <section className="sec alt" id="workflow">
         <div className="container">
           <Reveal className="sec-head">
-            <span className="eyebrow">Featured Work</span>
-            <h2>Real-World Projects We&apos;ve Successfully Delivered</h2>
+            <span className="eyebrow">How We Deliver</span>
+            <h2>From Discovery to Production Go-Live in 4 Simple Steps</h2>
             <p>
-              Explore recent projects and case studies showcasing how we
-              design, build, and scale solutions with {service.title}.
+              Our battle-tested onboarding framework guarantees frictionless deployment,
+              customization, and data integration with complete SLA coverage.
             </p>
           </Reveal>
 
-          {projects.length > 0 ? (
-            <div className="cols c3">
-              {projects.map((proj, idx) => (
-                <ProjectCard
-                  key={proj.id}
-                  proj={proj}
-                  delay={(idx % 3) * 110}
-                />
-              ))}
-            </div>
-          ) : (
-            <Reveal className="svp-empty-work-box">
-              <div className="svp-empty-work-icon" aria-hidden="true">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                </svg>
-              </div>
-              <span className="svp-empty-work-badge">Production Updates In Progress</span>
-              <h3>Featured Work Not Available for {service.title}</h3>
-              <p>
-                Production deployments and client case studies for {service.title} are currently being documented or are protected under active enterprise Non-Disclosure Agreements (NDAs).
-              </p>
-              <div className="svp-empty-work-actions">
-                <Link href="/contact" className="btn btn-primary">
-                  Request Private Architecture Demo{" "}
+          <div className="cols c4">
+            {turnkeySteps.map((step, idx) => (
+              <Reveal
+                key={step.n}
+                delay={idx * 90}
+                className="card svp-step"
+                spot
+              >
+                <span className="svp-step-num">{step.n}</span>
+                <span className="ico">
                   <svg className="i" aria-hidden="true">
-                    <use href="#i-arrow" />
+                    <use href={`#${step.icon}`} />
                   </svg>
-                </Link>
-                <Link href="/work" className="btn btn-ghost">
-                  Browse All Case Studies
-                </Link>
-              </div>
-            </Reveal>
-          )}
+                </span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ================= DELIVERY LIFECYCLE ================= */}
-      {service.workflow?.length > 0 && (
-        <section className="sec" id="workflow">
-          <div className="container">
-            <Reveal className="sec-head">
-              <span className="eyebrow">Our Methodology</span>
-              <h2>How We Deliver {service.title} From End to End</h2>
-              <p>
-                A battle-tested 4-step delivery pipeline combining strategic
-                scoping, rapid prototyping, bi-weekly agile demos, and
-                zero-downtime release.
-              </p>
-            </Reveal>
+      {/* ================= FAQS ================= */}
+      <section className="sec" id="faqs">
+        <div className="container">
+          <Reveal className="sec-head">
+            <span className="eyebrow">Common Questions</span>
+            <h2>Frequently Asked Questions About Our Products</h2>
+            <p>
+              Have questions regarding licensing, source code ownership, white-labeling, or
+              custom integrations? Find our direct answers below.
+            </p>
+          </Reveal>
 
-            <div className="cols c4">
-              {service.workflow.map((flow, idx) => (
-                <Reveal key={idx} delay={idx * 120} className="card svp-step">
-                  <span className="svp-step-num">{flow.step}</span>
-                  <span className="ico">
-                    <svg className="i" aria-hidden="true">
-                      <use
-                        href={`#${workflowIcons[idx % workflowIcons.length]}`}
-                      />
-                    </svg>
-                  </span>
-                  <h3>{flow.title}</h3>
-                  <p>{flow.desc}</p>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+          <FaqAccordion items={generalProductFaqs} />
+        </div>
+      </section>
 
-      {/* ================= BUSINESS ADVANTAGES ================= */}
-      {service.advantages?.length > 0 && (
-        <section className="sec alt" id="advantages">
-          <div className="container">
-            <Reveal className="sec-head">
-              <span className="eyebrow">Why Vision</span>
-              <h2>
-                Why Fast-Moving Companies Partner With Us for {service.title}
-              </h2>
-              <p>
-                We operate as your high-velocity engineering partner, committed
-                to code ownership, sub-second performance, and measurable
-                business impact.
-              </p>
-            </Reveal>
-
-            <div className="cols c2">
-              {service.advantages.map((adv, idx) => (
-                <Reveal
-                  key={idx}
-                  delay={(idx % 2) * 110}
-                  className="card svp-why"
-                >
-                  <span className="ico">
-                    <svg className="i" aria-hidden="true">
-                      <use
-                        href={`#${advantageIcons[idx % advantageIcons.length]}`}
-                      />
-                    </svg>
-                  </span>
-                  <div>
-                    <h3>{adv.title}</h3>
-                    <p>{adv.desc}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ================= FAQ ACCORDION ================= */}
-      {service.faqs?.length > 0 && (
-        <section className="sec" id="faqs">
-          <div className="container">
-            <Reveal className="sec-head">
-              <span className="eyebrow">Frequently Asked Questions</span>
-              <h2>Everything You Need to Know About {service.title}</h2>
-              <p>
-                Clear answers regarding project timelines, code ownership,
-                technical security, and post-launch SLAs.
-              </p>
-            </Reveal>
-
-            <FaqAccordion items={service.faqs} />
-          </div>
-        </section>
-      )}
-
-      {/* ================= COMPLEMENTARY SERVICES ================= */}
-      {otherServices.length > 0 && (
-        <section className="sec alt">
-          <div className="container">
-            <Reveal className="sec-head">
-              <span className="eyebrow">Complementary Solutions</span>
-              <h2>Explore Other Core Services</h2>
-              <p>
-                Integrate your technology stack with our complementary
-                engineering and growth services.
-              </p>
-            </Reveal>
-
-            <div className="cols c3">
-              {otherServices.slice(0, 3).map((other, idx) => (
-                <article
-                  key={other.id}
-                  className="card svc-card svp-card"
-                  style={{ "--i": idx }}
-                >
-                  <div className="svp-card-top">
-                    <span className="ico">
-                      <svg className="i" aria-hidden="true">
-                        <use href={`#${other.icon}`} />
-                      </svg>
-                    </span>
-                    <span className="svc-num">{other.number}</span>
-                  </div>
-                  <h3>{other.title}</h3>
-                  <p>{other.shortDescription}</p>
-
-                  <div className="svc-tags">
-                    {other.tags?.map((t, tidx) => (
-                      <span key={tidx}>{t}</span>
-                    ))}
-                  </div>
-
-                  <Link
-                    className="more"
-                    href={`/services/${other.slug}`}
-                    aria-label={`View Specifications: ${other.title}`}
-                  >
-                    View Specifications{" "}
-                    <svg className="i" aria-hidden="true">
-                      <use href="#i-arrow" />
-                    </svg>
-                  </Link>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ================= FINAL CONSULTATION CTA ================= */}
+      {/* ================= CALL TO ACTION ================= */}
       <section className="sec svp-cta-sec">
         <div className="container">
           <Reveal className="cta-box svp-cta">
             <div>
-              <span className="eyebrow">Ready to Build?</span>
-              <h2>Let&apos;s Architect Your {service.title ? service.title.replace(/\s*solutions?$/i, "") : "Digital"} Solution</h2>
+              <span className="eyebrow">Instant Time-to-Market</span>
+              <h2>Ready to Deploy a Turnkey Solution for Your Enterprise?</h2>
               <p className="sub">
-                Connect directly with a lead solution architect. We&apos;ll
-                evaluate your use case, provide an architectural feasibility
-                blueprint, and scope realistic milestones.
+                Book a 30-minute interactive sandbox demo with our principal product engineers.
+                We&apos;ll walk you through administrative controls, database models, and deployment
+                options tailored to your technical requirements.
               </p>
               <div className="svp-cta-actions">
                 <Link className="btn btn-light" href="/contact">
-                  Book a Discovery Call →
+                  Schedule Sandbox Demo →
                 </Link>
-                <Link className="btn btn-ghost" href="/services">
-                  Browse All Services
-                </Link>
+                <a className="btn btn-ghost" href="#products-catalog">
+                  Explore Catalog
+                </a>
               </div>
             </div>
 
             <div className="svp-poc">
               <div className="svp-poc-card">
-                <div className="svp-poc-big">100% IP</div>
-                <div className="svp-poc-title">Full Code Ownership</div>
+                <div className="svp-poc-big">24–48 Hrs</div>
+                <div className="svp-poc-title">Private Sandbox Access</div>
                 <p>
-                  All repositories, deployment scripts, and intellectual
-                  property transfer to your organization upon delivery.
+                  Receive dedicated staging credentials to test full admin dashboards, customer
+                  apps, and API endpoints before making a decision.
                 </p>
               </div>
             </div>

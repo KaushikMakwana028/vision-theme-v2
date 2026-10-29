@@ -1,5 +1,6 @@
 export const brandInfo = {
   name: "Vision Technolabs",
+  heroLead: "Software development company in Naroda, Ahmedabad building websites, mobile apps, AI automation and cloud solutions for businesses across Gujarat and India.",
   tagline: "Software Development Company",
   description:
     "Vision Technolabs is a software development company based in Naroda, Ahmedabad, specializing in website development, mobile app development, cloud solutions, and digital marketing. We help businesses across Gujarat build scalable, high-quality digital products — from custom web platforms to feature-rich mobile apps. Our team focuses on clean code, timely delivery, and long-term technical partnership. Contact us to discuss your next project.",

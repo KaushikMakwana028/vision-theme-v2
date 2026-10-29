@@ -1160,8 +1160,25 @@ export default function WorkDetailPage({ project }) {
 
         <div className="container hero-wrap">
           <div className="copy svp-hero-copy">
+            <div className="breadcrumbs-bar">
+              <nav aria-label="Breadcrumb" className="breadcrumbs">
+                <Link href="/">
+                  <svg className="bc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                  </svg>
+                  Home
+                </Link>
+                <span className="sep">/</span>
+                <Link href="/work">Work</Link>
+                <span className="sep">/</span>
+                <span className="current">{project.title}</span>
+              </nav>
+            </div>
+
             <div style={{ marginBottom: "0.5rem" }}>
               <span className="eyebrow-hero">
+                <span className="eyebrow-live-dot" aria-hidden="true" />
                 <strong>{project.category || project.tags?.[0]}</strong> · Delivered Case Study
               </span>
             </div>

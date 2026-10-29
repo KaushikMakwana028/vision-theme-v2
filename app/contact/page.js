@@ -1,4 +1,4 @@
-import ContactPage from "@/pages/contactPage";
+import ContactPage from "@/views/contactPage";
 import { buildMetadata } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import { professionalServiceSchema } from "@/lib/schema";

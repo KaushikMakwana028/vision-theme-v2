@@ -33,11 +33,11 @@ export default function BlogExplorer({ articles = [] }) {
               <span className="mag-read">{article.readTime}</span>
             </div>
 
-            <h3>
+            <h2>
               <Link href={`/blog/${article.slug || article.id}`}>
                 {article.title}
               </Link>
-            </h3>
+            </h2>
 
             <p>{article.excerpt}</p>
 

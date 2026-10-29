@@ -1,4 +1,4 @@
-import HomePage from "@/pages/homePage";
+import HomePage from "@/views/homePage";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 import { professionalServiceSchema } from "@/lib/schema";

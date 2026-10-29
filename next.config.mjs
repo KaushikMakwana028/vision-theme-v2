@@ -52,6 +52,13 @@ const nextConfig = {
         destination: "/contact",
         permanent: true,
       },
+      { source: "/products/billbook", destination: "/products/billsbook", permanent: true },
+      { source: "/products/bill-book", destination: "/products/billsbook", permanent: true },
+      { source: "/products/filter-book", destination: "/products/filterbook", permanent: true },
+      { source: "/products/tripbook", destination: "/products/tripsbook", permanent: true },
+      { source: "/products/trips-book", destination: "/products/tripsbook", permanent: true },
+      { source: "/products/site-desk", destination: "/products/sitedesk", permanent: true },
+      { source: "/products/sidedesk", destination: "/products/sitedesk", permanent: true },
       {
         source: "/product",
         destination: "/products",

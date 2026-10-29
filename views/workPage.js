@@ -682,9 +682,24 @@ export default function WorkPage() {
 
         <div className="container hero-wrap">
           <div className="copy svp-hero-copy">
-            <div style={{ marginBottom: "0.5rem" }}>
+            <div className="breadcrumbs-bar">
+              <nav aria-label="Breadcrumb" className="breadcrumbs">
+                <Link href="/">
+                  <svg className="bc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                  </svg>
+                  Home
+                </Link>
+                <span className="sep">/</span>
+                <span className="current">Work</span>
+              </nav>
+            </div>
+
+            <div style={{ marginBottom: "0.85rem" }}>
               <span className="eyebrow-hero">
-                <strong>Vision</strong> Proven Engineering Outcomes
+                <span className="eyebrow-live-dot" aria-hidden="true" />
+                <strong>Vision</strong> Proven Engineering Outcomes · Production Case Studies
               </span>
             </div>
 
@@ -706,6 +721,30 @@ export default function WorkPage() {
                   <use href="#i-arrow" />
                 </svg>
               </Link>
+              <a className="btn btn-ghost" href="#portfolio-grid">
+                Explore All Projects ↓
+              </a>
+            </div>
+
+            <div className="hero-trust-row" aria-label="Portfolio Track Record">
+              <div className="hero-trust-item">
+                <span className="trust-stars" aria-hidden="true">★★★★★</span>
+                <span><strong>500+</strong> Delivered</span>
+              </div>
+              <span className="hero-trust-sep" aria-hidden="true" />
+              <div className="hero-trust-item">
+                <svg className="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span><strong>99.4%</strong> On-Time SLA</span>
+              </div>
+              <span className="hero-trust-sep" aria-hidden="true" />
+              <div className="hero-trust-item">
+                <svg className="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                <span><strong>100%</strong> IP Ownership</span>
+              </div>
             </div>
           </div>
 

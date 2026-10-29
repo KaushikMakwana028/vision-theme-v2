@@ -73,6 +73,7 @@ export default function WorkFilterGrid({ categories = [], counts = {}, projects 
                 alt={proj.imageAlt || `${proj.title} case study developed by Vision Technolabs in Ahmedabad`}
                 width={800}
                 height={450}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                 }}
